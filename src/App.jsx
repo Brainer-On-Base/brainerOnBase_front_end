@@ -2,6 +2,9 @@ import { useState } from 'react'
 import brainerCoin from '/brainerCoin.png'
 import './App.css'
 import useModals from './hooks/useSweetAlert'
+import { Canvas } from '@react-three/fiber'
+import CoinRain from './components/CoinRain'
+import { StyledAppContainer, StyledHomeContent } from './components/styled-components/container'
 
 function App() {
   const {useTextModal} = useModals()
@@ -19,7 +22,20 @@ function App() {
 
 
   return (
-    <>
+    <StyledAppContainer>
+      <Canvas
+        style={{ width: '100%', height: '100%', position: 'absolute', zIndex: -1 }}
+        camera={ {
+              fov: 45,
+              near: 0.1,
+              far: 200,
+              position: [ 0, 0, 6 ]
+          } }
+          // onCreated={created}
+        >
+        <CoinRain/>
+    </Canvas>
+    <StyledHomeContent>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={brainerCoin} className="logo" alt="Vite logo" />
@@ -34,7 +50,9 @@ function App() {
       <p className="read-the-docs">
         COMING SOON
       </p>
-    </>
+      </StyledHomeContent>
+
+    </StyledAppContainer>
   )
 }
 
