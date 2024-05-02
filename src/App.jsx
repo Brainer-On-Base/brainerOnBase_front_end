@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import reactLogo from '/Designer (5).png'
-import viteLogo from '/Designer (5).png'
+import brainerCoin from '/brainerCoin.png'
 import './App.css'
 import useModals from './hooks/useSweetAlert'
 
@@ -23,7 +22,7 @@ function App() {
     <>
       <div>
         <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
+          <img src={brainerCoin} className="logo" alt="Vite logo" />
         </a>
       </div>
       <h1>BRAINER</h1>
