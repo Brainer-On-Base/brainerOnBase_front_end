@@ -65,6 +65,7 @@ export const StyledHomeContent = styled('div')`
       }
       
       .read-the-docs {
+        margin-top: 4em;
         color: #888;
       }
       

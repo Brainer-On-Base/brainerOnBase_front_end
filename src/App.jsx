@@ -12,8 +12,8 @@ function App() {
 
   const handleModal = () => {
     useTextModal({
-      text: 'FOR BUY THE PRESALE YOU HAVE TO SEND 0.2 SOL TO THE FOLLOWING ADDRESS',
-      title: 'GET INTO PRESALE', 
+      text: `FOR BUY THE PRESALE YOU HAVE TO SEND 0.2 SOL TO THE FOLLOWING ADDRESS: 8BanJUWdRMVi8us32LeJZPrGCxEr4sJPDAptf2iKfD9J`,
+      title: 'ARE YOU A NO BRAINER?', 
       confirmButtonColor: '#ff437d', 
       textColor: 'white',
       onConfirmFunction: () => alert('anotado')
@@ -42,14 +42,14 @@ function App() {
         </a>
       </div>
       <h1>BRAINER</h1>
+      <p className="read-the-docs">
+        COMING SOON ...
+      </p>
       <div className="card">
         <button onClick={() => handleModal()}>
           BUY PRE-SALE
         </button>
       </div>
-      <p className="read-the-docs">
-        COMING SOON
-      </p>
       </StyledHomeContent>
 
     </StyledAppContainer>
