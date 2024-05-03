@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import brainerCoin from '/brainerCoin.png'
 import './App.css'
-import useModals from './hooks/useSweetAlert'
+import useModals from '../hooks/useSweetAlert'
 import { Canvas } from '@react-three/fiber'
-import CoinRain from './components/CoinRain'
-import { StyledAppContainer, StyledHomeContent } from './components/styled-components/container'
+import CoinRain from '../components/CoinRain'
+import { StyledAppContainer, StyledHomeContent } from '../components/styled-components/container'
+import { useNavigate } from 'react-router-dom'
 
 function App() {
   const {useTextModal} = useModals()
-  
+  const navigate = useNavigate()
 
   const handleModal = () => {
     useTextModal({
@@ -16,7 +17,7 @@ function App() {
       title: 'ARE YOU A NO BRAINER?', 
       confirmButtonColor: '#ff437d', 
       textColor: 'white',
-      onConfirmFunction: () => alert('anotado')
+      onConfirmFunction: () => {}
     })
   }
 
@@ -43,11 +44,11 @@ function App() {
       </div>
       <h1>BRAINER</h1>
       <p className="read-the-docs">
-        COMING SOON ...
+        ARE YOU A NO BRAINER ?
       </p>
       <div className="card">
-        <button onClick={() => handleModal()}>
-          BUY PRE-SALE
+        <button onClick={() => navigate('/home')}>
+          JOIN THE COMMUNITY
         </button>
       </div>
       </StyledHomeContent>
