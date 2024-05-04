@@ -98,3 +98,50 @@ export const StyledHomeContent = styled('div')`
 
 
 `
+
+
+export const StyledNavbarContainer = styled('div')`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+
+
+    img{
+        width: 80px;
+        margin: 2em 1em 2em 2em;
+        padding: 2px;
+        will-change: filter;
+        transition: filter 300ms;
+        border-radius: 80%;
+        border: 2px solid black;
+        background-color: #530354;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+          
+          &:hover {
+            filter: drop-shadow(0 0 2em #c464ffaa);
+          }
+    }
+
+    h1 {
+        font-size: 2.5em;
+        line-height: 1.1;
+        transition: filter 300ms;
+        font-family: "Luckiest Guy", cursive;
+        color: #888;
+
+      }
+
+    svg{
+        font-size: 24px;
+        cursor: pointer;
+        margin: 10px;
+        transition: all 0.2s ease;
+        background-color: ${({backgroundcolor}) => backgroundcolor ? backgroundcolor : 'transparent'};
+        &:hover{
+            color: #1c93e3;
+        }
+    }
+`

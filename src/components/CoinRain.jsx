@@ -7,7 +7,7 @@ const CoinRain = () => {
     const calcRandom = () => (Math.random(0.5) - 0.5) * 12
 
     useEffect(() => {
-        const newCoins = [...Array(200)].map((_, index) => ({
+        const newCoins = [...Array(300)].map((_, index) => ({
             key: index,
             position: [
                 calcRandom(),
