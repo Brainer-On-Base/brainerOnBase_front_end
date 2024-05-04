@@ -41,6 +41,7 @@ export const StyledAppContainer = styled('div')`
     flex-direction: column;
     margin: 0 auto;
 
+
 `
 
 
@@ -140,8 +141,32 @@ export const StyledNavbarContainer = styled('div')`
         margin: 10px;
         transition: all 0.2s ease;
         background-color: ${({backgroundcolor}) => backgroundcolor ? backgroundcolor : 'transparent'};
+        border-radius: 50%;
         &:hover{
             color: #1c93e3;
+            background: white;
+            
         }
     }
+`
+
+
+export const StyledWelcomeSection = styled('div')`
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    .bottom-image-container{
+        padding: 2em;
+        display: flex;
+        align-self: flex-end;
+        align-items: flex-end;
+        justify-content:space-between;
+        width: 100%;
+        img{
+            width: 350px;
+        }
+        
+    }
+
+
 `

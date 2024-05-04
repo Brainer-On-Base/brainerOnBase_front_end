@@ -14,7 +14,7 @@ export default function Navbar() {
             </StyledFlexCenterContainer>
             <StyledFlexCenterContainer style={{width: 'auto', margin: '2em'}}>
                 <FontAwesomeIcon icon={faTelegram} size="1x" title="Join our Telegram"/>
-                <FontAwesomeIcon icon={faTwitter} size="1x" title="Follow on twitter"/>
+                <FontAwesomeIcon icon={faTwitter} size="1x" style={{background: 'transparent'}} title="Follow on twitter"/>
             </StyledFlexCenterContainer>
         </StyledNavbarContainer>)
 }
