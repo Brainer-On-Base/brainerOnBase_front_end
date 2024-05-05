@@ -5,6 +5,7 @@ import { styled } from "@mui/system";
 export const StyledFlexCenterContainer = styled('div')`
     display: flex;
     align-items: center;
+
     width: 100%;
 `
 
@@ -161,15 +162,46 @@ export const StyledWelcomeSection = styled('div')`
         position: absolute;
         bottom: 0;
     }
-    // .bottom-image-container{
-    //     display: flex;
-    //     justify-content:space-between;
-    //     width: 100%;
-    //     img{
-    //         width: 350px;
-    //     }
-        
-    // }
 
 
 `
+
+
+
+
+export const StyledFooterSection = styled('div')`
+    width: 100%;
+    display: flex;
+    height: auto;
+    margin-top: 2em;
+    padding-bottom: 1em;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    p{
+        text-align: center;
+        margin: 0;
+        font-size: 16px;
+    }
+
+
+    span{
+        font-size: 20px;
+        font-family: "Luckiest Guy", cursive;
+        color: #ff437d;
+
+    }
+
+    img{
+        width: 40px;
+        border-radius: 50%;     
+        &:hover{
+            animation: logo-spin 1.2s;
+        }
+    }
+
+    @media(max-width: 900px){
+        width: 80%;
+    }
+`
+
