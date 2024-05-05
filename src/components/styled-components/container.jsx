@@ -162,7 +162,15 @@ export const StyledWelcomeSection = styled('div')`
         width: 350px;
         position: absolute;
         bottom: 0;
+        transition: filter 300ms;
+        cursor: pointer;
+
+        &:hover {
+            filter: drop-shadow(0 0 2em #c464ffaa);
+          }
     }
+
+    
 
 
 `
@@ -196,6 +204,12 @@ export const StyledTokenomicsSection = styled('div')`
         position: absolute;
         right: 50px;
         top: 100px;
+        transition: filter 300ms;
+        cursor: pointer;
+
+        &:hover {
+            filter: drop-shadow(0 0 2em #c464ffaa);
+          }
     }
     .img2{
         width: 250px;
@@ -203,6 +217,11 @@ export const StyledTokenomicsSection = styled('div')`
         left: 20px;
         transform: scaleX(-1);
         bottom: 0px;
+        transition: filter 300ms;
+        cursor: pointer;
+        &:hover {
+            filter: drop-shadow(0 0 2em #c464ffaa);
+          }
     }
 `
 
@@ -233,9 +252,6 @@ export const StyledFooterSection = styled('div')`
     img{
         width: 40px;
         border-radius: 50%;     
-        &:hover{
-            animation: logo-spin 1.2s;
-        }
     }
 
     @media(max-width: 900px){
@@ -243,3 +259,61 @@ export const StyledFooterSection = styled('div')`
     }
 `
 
+
+
+export const StyledBubbleDialog = styled('div')`
+    animation: appear 0.2s forwards; /* Animation for each letter */
+    opacity: 0; /* Start with opacity 0 */
+    p{
+        margin: 0;
+
+    }
+    position: absolute;
+    right: ${(position) => position?.right};
+    z-index: 999999;
+    top: ${(position) => position?.top};
+    left: ${(position) => position?.left};
+    bottom: ${(position) => position?.bottom};
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 20px;
+    line-height: 1.3em;
+    background-color: #fff;
+    color: #000;
+    padding: 12px;
+    box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
+    box-sizing: border-box;
+    width: ${({width}) => width ?? '200px'};
+    transition: all 1s ease;
+
+    &:after{
+        position: absolute;
+        z-index: 999999;
+        content: "";
+        height: 4px;
+        width: 4px;
+        bottom: -8px;
+        left: 90px; 
+        background-color: #fff;
+        box-shadow: 0 4px #000, 0 8px #000, 0 12px #000, 0 16px #000, -4px 12px #000, -8px 8px #000, -12px 4px #000, -4px 4px #fff, -8px 4px #fff, -4px 8px #fff, -4px 0 #fff, -8px 0 #fff, -12px 0 #fff;
+        // transform: rotate(35deg); /* Rotar el piquito */
+
+    }
+
+    span{
+        font-size: 20px;
+        font-family: "Luckiest Guy", cursive;
+        color: #ff437d;
+
+    }
+
+
+
+
+
+
+`
