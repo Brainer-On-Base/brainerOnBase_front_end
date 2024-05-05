@@ -6,12 +6,13 @@ export default function BubbleDialog({
     children,
     positionStyle,
     positionDialogSpik,
-    width= '200px'
+    width= '200px',
+    ...props
 }) {
 
 
   return (
-  <StyledBubbleDialog position={positionStyle} width={width} positionspik={positionDialogSpik}
+  <StyledBubbleDialog position={positionStyle} width={width} positionspik={positionDialogSpik} {...props}
   style={{display: active ? 'block' : 'none'}}
   >
         {children}

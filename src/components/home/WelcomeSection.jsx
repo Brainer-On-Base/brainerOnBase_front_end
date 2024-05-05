@@ -5,23 +5,16 @@ import BubbleDialog from "../BubbleDialog";
 
 export default function WelcomeSection() {
   const [activeBubble, setActiveBubble] = useState(false);
+  const [activeBubble2, setActiveBubble2] = useState(false);
 
     useEffect(() => {
       const timeoutId = setTimeout(() => {
-        setActiveBubble(false);
-      }, 6000);
+        setActiveBubble(true);
+      }, 1000);
 
       // Limpiar el temporizador cuando el componente se desmonte o activeBubble cambie a true
       return () => clearTimeout(timeoutId);
-    }, [activeBubble]); // Ejecutar solo una vez al montar el componente
-
-    useEffect(() => {
-            // Cambiar activeBubble a true después de 5 segundos
-     setTimeout(() => {
-      setActiveBubble(true);
-    }, 1000);
-
-    }, []);
+    }, []); // Ejecutar solo una vez al montar el componente
 
 
   return <StyledWelcomeSection style={{alignItems:'flex-start'}}>
@@ -35,10 +28,11 @@ export default function WelcomeSection() {
     {/* <div className="bottom-image-container"> */}
         <img src="Designer (4).png" onClick={() => setActiveBubble(!activeBubble)}/>
         <BubbleDialog
+          className="bubble-1500"
           active={activeBubble}
           positionStyle={{
-            bottom: '300px',
-            left: '0px'
+            bottom: '350px',
+            left: '20px'
           }}
           width="400px"
         >

@@ -131,23 +131,28 @@ export const StyledNavbarContainer = styled('div')`
 export const StyledWelcomeSection = styled('div')`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     width: 100%;
     height: 100vh;
     .home-text-container{
         width: 100%;
         height: 100%;
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         justify-content: center;
         flex-direction: column;
         margin-bottom: 6em;
+
         h1{
             font-size: 5em;
+            margin-right: 1em;
             line-height: 1.1;
             transition: filter 300ms;
             font-family: "Luckiest Guy", cursive;
             color: #888;
+        }
+
+        button{
+            margin-right: 12em;
         }
 
     }
@@ -163,7 +168,7 @@ export const StyledWelcomeSection = styled('div')`
           }
     }
 
-    
+
 
 
 `
@@ -289,11 +294,11 @@ export const StyledBubbleDialog = styled('div')`
         content: "";
         height: 4px;
         width: 4px;
-        bottom: -8px;
+        bottom: ${({positionspik}) => positionspik?.bottom ?? '-8px'};
         left: ${({positionspik}) => positionspik?.left ?? '90px'};
         background-color: #fff;
         box-shadow: 0 4px #000, 0 8px #000, 0 12px #000, 0 16px #000, -4px 12px #000, -8px 8px #000, -12px 4px #000, -4px 4px #fff, -8px 4px #fff, -4px 8px #fff, -4px 0 #fff, -8px 0 #fff, -12px 0 #fff;
-        // transform: rotate(35deg); /* Rotar el piquito */
+        transform: ${({positionspik}) => positionspik?.rotate === 'true' ? 'rotate(150deg)' : ''}; /* Rotar el piquito */
 
     }
 
@@ -324,7 +329,6 @@ export const StyledCardSection = styled('div')`
     position: relative;
     width: 100%;
 
-
 `
 
 
@@ -348,6 +352,11 @@ export const StyledCard = styled('div')`
     img{ 
         width: 350px;
         margin: 0em 1em;
+        transition: filter 300ms;
+        cursor: pointer;
+        &:hover {
+            filter: drop-shadow(0 0 1em #c464ffaa);
+          }
     }
 
     p{
@@ -369,4 +378,19 @@ export const StyledCard = styled('div')`
         margin: 0em 4em 2em 0em;
     }
 
+
+    @media(max-width: 1200px){
+        align-self: center !important;;
+        margin: 1em !important;
+    }
+
+    @media(max-width: 1000px){
+        width: 80%;
+        margin: 1em !important;
+    }
+    @media(max-width: 900px){
+        img{
+           display: none;
+        }
+    }
 `
