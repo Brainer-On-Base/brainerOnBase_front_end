@@ -332,7 +332,7 @@ export const StyledCard = styled('div')`
     border-radius: 8px;
     border: 2px solid transparent;
     padding: 0.6em 1.2em;
-    font-size: 1.5em;
+    font-size: 1.8em;
     font-weight: 500;
     font-family: inherit;
     background-color: #1a1a1a;
@@ -340,14 +340,20 @@ export const StyledCard = styled('div')`
     transition: border-color 0.25s;
     font-family: "Luckiest Guy", cursive;
     // border-color: #ff437d;
-    width: 500px;
+    width: 900px;
     align-self: flex-start;
-    margin: 0em 0em 0em 4em;
+    margin: 0em 0em 2em 4em;
+    display: flex;
+
+    img{ 
+        width: 350px;
+        margin: 0em 1em;
+    }
 
     p{
         font-size: 0.8em !important;
         font-family: monospace;
-        font-size: 20px;
+        font-size: 490px;
         line-height: 1.3em;
     }
 
@@ -355,14 +361,12 @@ export const StyledCard = styled('div')`
         font-size: 20px;
         font-family: "Luckiest Guy", cursive;
         color: #ff437d;
-
     }
 
 
     &:nth-of-type(2), &:nth-of-type(4) {
         align-self: flex-end;
-        margin: 0em 4em 0em 0em;
-
+        margin: 0em 4em 2em 0em;
     }
 
 `
