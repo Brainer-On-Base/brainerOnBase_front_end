@@ -248,7 +248,8 @@ export const StyledTokenomicsSection = styled('div')`
     h1{
         font-size: 120px;
         font-family: "Luckiest Guy", cursive;
-        margin: 1em 0 0em 2em;
+        margin-top: 1em;
+        margin-left: 2em;
 
     }
 
@@ -293,6 +294,19 @@ export const StyledTokenomicsSection = styled('div')`
         &:hover {
             filter: drop-shadow(0 0 2em #c464ffaa);
           }
+    }
+
+    @media(max-width: 1250px){
+        h1{
+            font-size: 100px;
+            margin-left: 1em;
+        }
+    }
+
+    @media(max-width: 850px){
+            display: none;
+    }
+
     }
 `
 
