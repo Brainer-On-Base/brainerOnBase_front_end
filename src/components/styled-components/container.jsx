@@ -169,6 +169,66 @@ export const StyledWelcomeSection = styled('div')`
     }
 
 
+    @media(max-width: 1300px){
+        .home-text-container{
+            align-items: center;
+
+            h1{
+                margin-right: 0;
+            }
+            button{
+                margin-right: 0;
+            }
+    
+        }
+        .bubble{
+            bottom: 50px !important;
+            left: 250px !important;
+
+            &:after{
+                left: -8px !important;
+                top: 10px !important;
+                background-color: #fff;
+                box-shadow: 0 4px #000, 0 8px #000, 0 12px #000, 0 16px #000, -4px 12px #000, -8px 8px #000, -12px 4px #000, -4px 4px #fff, -8px 4px #fff, -4px 8px #fff, -4px 0 #fff, -8px 0 #fff, -12px 0 #fff;
+                transform: rotate(90deg); /* Rotar el piquito */
+        
+            }
+        }
+        img{
+            width: 250px;
+        }
+    }
+
+    @media(max-width: 900px){
+        .home-text-container{
+
+            h1{
+                font-size: 3em;
+            }
+    
+        }
+        .bubble{
+            width: auto;
+        }
+    }
+
+    @media(max-width: 550px){
+        .home-text-container{
+
+            h1{
+                font-size: 2em;
+            }
+
+            button{
+                margin-right: 0;
+            }
+    
+        }
+        .bubble{
+            left: 200px !important;
+            width: auto;
+        }
+    }
 
 
 `
@@ -183,12 +243,25 @@ export const StyledTokenomicsSection = styled('div')`
     justify-content: flex-start;
     position: relative;
     width: 100%;
+    overflow: hidden;
 
     h1{
         font-size: 120px;
         font-family: "Luckiest Guy", cursive;
         margin: 1em 0 0em 2em;
 
+    }
+
+    .css-wqy0la-MuiResponsiveChart-container{
+        width: 100%;
+        display: flex;
+        aling-items: center;
+
+        @media(max-width: 1100px){
+            tspan, .MuiChartsLegend-mark{
+                display: none;
+            }
+        }
     }
 
     .pie-chart-container{

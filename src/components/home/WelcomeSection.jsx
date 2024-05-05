@@ -28,7 +28,7 @@ export default function WelcomeSection() {
     {/* <div className="bottom-image-container"> */}
         <img src="Designer (4).png" onClick={() => setActiveBubble(!activeBubble)}/>
         <BubbleDialog
-          className="bubble-1500"
+          className="bubble bubble-1500"
           active={activeBubble}
           positionStyle={{
             bottom: '350px',
