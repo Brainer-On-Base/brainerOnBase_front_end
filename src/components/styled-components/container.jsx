@@ -138,6 +138,7 @@ export const StyledNavbarContainer = styled('div')`
 export const StyledWelcomeSection = styled('div')`
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 100%;
     height: 100vh;
     .home-text-container{
@@ -168,9 +169,46 @@ export const StyledWelcomeSection = styled('div')`
 
 
 
+export const StyledTokenomicsSection = styled('div')`
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    width: 100%;
+
+    h1{
+        font-size: 120px;
+        font-family: "Luckiest Guy", cursive;
+        margin: 1em 0 0em 2em;
+
+    }
+
+    .pie-chart-container{
+        font-family: "Luckiest Guy", cursive;
+        border-radius: 8px;
+        color: white !important;
+    }
+
+    .img1{
+        width: 250px;
+        position: absolute;
+        right: 50px;
+        top: 100px;
+    }
+    .img2{
+        width: 250px;
+        position: absolute;
+        left: 20px;
+        transform: scaleX(-1);
+        bottom: 0px;
+    }
+`
+
 
 export const StyledFooterSection = styled('div')`
-    width: 100%;
+    width: 80%;
     display: flex;
     height: auto;
     margin-top: 2em;

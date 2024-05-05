@@ -9,8 +9,8 @@ export default function Footer() {
     </p>
     <p>
         The <span>BRAINER</span> project is 100% community lead and there is no formal team or roadmap yet. The <span>BRAINER TOKEN</span> is completely for entertainment purposes only.
-        At least at first... we're <span>BUILDING</span>
     </p>
+        <p>We're <span>BUILDING</span></p>
     <StyledFlexCenterContainer style={{justifyContent:'center'}}>
         <img src="./brainerCoin.png"/>
         <p id="copyright" style={{margin: '10px'}}>

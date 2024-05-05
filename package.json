@@ -29,6 +29,7 @@
     "react": "18.2",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "18.2",
+    "react-google-charts": "^4.0.1",
     "react-router-dom": "^6.23.0",
     "styled-components": "^6.1.8",
     "sweetalert2": "^11.10.8",
