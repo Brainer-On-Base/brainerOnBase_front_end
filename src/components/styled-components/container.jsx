@@ -78,24 +78,7 @@ export const StyledHomeContent = styled('div')`
         transition: filter 300ms;
       }
       
-    button {
-        border-radius: 8px;
-        border: 1px solid transparent;
-        padding: 0.6em 1.2em;
-        font-size: 1.5em;
-        font-weight: 500;
-        font-family: inherit;
-        background-color: #1a1a1a;
-        cursor: pointer;
-        transition: border-color 0.25s;
-    }
-    button:hover {
-        border-color: #ff437d;
-    }
-    button:focus,
-    button:focus-visible {
-        outline: 4px auto -webkit-focus-ring-color;
-    }
+
 
 
 `
@@ -153,20 +136,40 @@ export const StyledNavbarContainer = styled('div')`
 
 export const StyledWelcomeSection = styled('div')`
     display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100vh;
-    .bottom-image-container{
-        padding: 2em;
-        display: flex;
-        align-self: flex-end;
-        align-items: flex-end;
-        justify-content:space-between;
+    .home-text-container{
         width: 100%;
-        img{
-            width: 350px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 6em;
+        h1{
+            font-size: 5em;
+            line-height: 1.1;
+            transition: filter 300ms;
+            font-family: "Luckiest Guy", cursive;
+            color: #888;
         }
-        
+
     }
+    img{
+        width: 350px;
+        position: absolute;
+        bottom: 0;
+    }
+    // .bottom-image-container{
+    //     display: flex;
+    //     justify-content:space-between;
+    //     width: 100%;
+    //     img{
+    //         width: 350px;
+    //     }
+        
+    // }
 
 
 `

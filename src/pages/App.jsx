@@ -6,6 +6,7 @@ import { Canvas } from '@react-three/fiber'
 import CoinRain from '../components/CoinRain'
 import { StyledAppContainer, StyledHomeContent } from '../components/styled-components/container'
 import { useNavigate } from 'react-router-dom'
+import { StyledButton } from '../components/styled-components/buttons'
 
 function App() {
   const {useTextModal} = useModals()
@@ -47,9 +48,9 @@ function App() {
         ARE YOU A NO BRAINER ?
       </p>
       <div className="card">
-        <button onClick={() => navigate('/home')}>
+        <StyledButton onClick={() => navigate('/home')}>
           JOIN THE COMMUNITY
-        </button>
+        </StyledButton>
       </div>
       </StyledHomeContent>
 
