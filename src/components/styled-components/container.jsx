@@ -269,11 +269,11 @@ export const StyledBubbleDialog = styled('div')`
 
     }
     position: absolute;
-    right: ${(position) => position?.right};
+    right: ${({position}) => position?.right};
     z-index: 999999;
-    top: ${(position) => position?.top};
-    left: ${(position) => position?.left};
-    bottom: ${(position) => position?.bottom};
+    top: ${({position}) => position?.top};
+    left: ${({position}) => position?.left};
+    bottom: ${({position}) => position?.bottom};
     justify-content: center;
     display: flex;
     align-items: center;
@@ -297,7 +297,7 @@ export const StyledBubbleDialog = styled('div')`
         height: 4px;
         width: 4px;
         bottom: -8px;
-        left: 90px; 
+        left: ${({positionspik}) => positionspik?.left ?? '90px'};
         background-color: #fff;
         box-shadow: 0 4px #000, 0 8px #000, 0 12px #000, 0 16px #000, -4px 12px #000, -8px 8px #000, -12px 4px #000, -4px 4px #fff, -8px 4px #fff, -4px 8px #fff, -4px 0 #fff, -8px 0 #fff, -12px 0 #fff;
         // transform: rotate(35deg); /* Rotar el piquito */

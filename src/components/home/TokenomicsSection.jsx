@@ -2,9 +2,19 @@ import React, { useEffect, useState } from "react";
 import { StyledTokenomicsSection } from "../styled-components/container";
 import { PieChart, pieArcLabelClasses } from "@mui/x-charts";
 import { ResponsiveChartContainer } from '@mui/x-charts';
+import BubbleDialog from "../BubbleDialog";
 
 export default function TokenomicsSection() {
+    const [activeBubble, setActiveBubble] = useState(true);
 
+    // useEffect(() => {
+    //   const timeoutId = setTimeout(() => {
+    //     setActiveBubble(false);
+    //   }, 6000);
+
+    //   // Limpiar el temporizador cuando el componente se desmonte o activeBubble cambie a true
+    //   return () => clearTimeout(timeoutId);
+    // }, [activeBubble]); // Ejecutar solo una vez al montar el componente
 
     const tokenomicsData = [
         { id: 0, value: 2000000000, label: 'Community & Airdrops - 20%' },
@@ -20,7 +30,21 @@ export default function TokenomicsSection() {
         <h1>
             TOKENOMICS
         </h1>
-        <img className="img1" src="./Designer (6).png"/>
+        <img className="img1" src="./Designer (6).png" onClick={() => setActiveBubble(!activeBubble)}/>
+        <BubbleDialog
+          active={activeBubble}
+          positionDialogSpik={{
+            left: '240px'
+          }}
+          positionStyle={{
+            top: '-14px',
+            right: '60px'
+          }}
+          width="400px"
+        >
+            <p>Take a look to our <span>TOKENOMICS</span> to clarify your doubts!</p>
+            <p> We are a community <span>REAL</span> token!</p>
+        </BubbleDialog>
     <div className="pie-chart-container" id="pieContainer">
         <PieChart
             series={[
