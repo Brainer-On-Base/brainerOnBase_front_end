@@ -25,14 +25,7 @@ export const StyledFlexBetweenContainer = styled('div')`
 `
 
 
-export const StyledXCard = styled('div')`
-    border-radius: 0 !important;
-    background-color: rgb(255, 255, 255);
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;    
-    margin-top: 0;
-    margin-bottom: 1.5rem;
-    overflow:hidden;
-`
+
 export const StyledAppContainer = styled('div')`
     width: 100%;
     min-height: 50vh;
@@ -315,5 +308,61 @@ export const StyledBubbleDialog = styled('div')`
 
 
 
+
+`
+
+
+
+export const StyledCardSection = styled('div')`
+    height: auto;
+    margin-top: 4em;
+    margin-bottom: 4em;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    width: 100%;
+
+
+`
+
+
+export const StyledCard = styled('div')`
+    border-radius: 8px;
+    border: 2px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1.5em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    font-family: "Luckiest Guy", cursive;
+    // border-color: #ff437d;
+    width: 500px;
+    align-self: flex-start;
+    margin: 0em 0em 0em 4em;
+
+    p{
+        font-size: 0.8em !important;
+        font-family: monospace;
+        font-size: 20px;
+        line-height: 1.3em;
+    }
+
+    span{
+        font-size: 20px;
+        font-family: "Luckiest Guy", cursive;
+        color: #ff437d;
+
+    }
+
+
+    &:nth-of-type(2), &:nth-of-type(4) {
+        align-self: flex-end;
+        margin: 0em 4em 0em 0em;
+
+    }
 
 `

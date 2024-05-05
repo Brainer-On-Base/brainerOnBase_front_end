@@ -43,7 +43,7 @@ export default function TokenomicsSection() {
           width="400px"
         >
             <p>Take a look to our <span>TOKENOMICS</span> to clarify your doubts!</p>
-            <p> We are a community <span>REAL</span> token!</p>
+            <p> We are a <span>REAL</span> community  token!</p>
         </BubbleDialog>
     <div className="pie-chart-container" id="pieContainer">
         <PieChart
