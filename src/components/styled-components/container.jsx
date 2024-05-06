@@ -419,11 +419,13 @@ export const StyledCardSection = styled('div')`
     justify-content: flex-start;
     position: relative;
     width: 100%;
+    overflow: hidden;
 
 `
 
 
 export const StyledCard = styled('div')`
+    user-select: none;
     border-radius: 8px;
     border: 2px solid transparent;
     padding: 0.6em 1.2em;
@@ -431,7 +433,6 @@ export const StyledCard = styled('div')`
     font-weight: 500;
     font-family: inherit;
     background-color: #1a1a1a;
-    cursor: pointer;
     transition: border-color 0.25s;
     font-family: "Luckiest Guy", cursive;
     // border-color: #ff437d;
@@ -464,7 +465,7 @@ export const StyledCard = styled('div')`
     }
 
 
-    &:nth-of-type(2), &:nth-of-type(4) {
+    &:nth-of-type(2), &:nth-of-type(4), &:nth-of-type(6) {
         align-self: flex-end;
         margin: 0em 4em 2em 0em;
     }
