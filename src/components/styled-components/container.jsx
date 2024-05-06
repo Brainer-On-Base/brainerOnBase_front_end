@@ -125,6 +125,10 @@ export const StyledNavbarContainer = styled('div')`
             
         }
     }
+
+    @media(max-width: 450px){
+        width: unset;
+    }
 `
 
 

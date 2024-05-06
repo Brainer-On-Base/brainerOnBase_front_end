@@ -52,5 +52,22 @@ export default function CardsSection() {
             With years of <span>EXPERIENCE</span> in the industry, they work tirelessly to deliver innovative solutions and drive the success of our platform.</p>
       </div>
     </StyledCard>
+    <StyledCard>
+      <div>
+        <h2>MARKETING & PROMOTION</h2>
+        <p>Spread the word and be part of our journey! <span>Marketing</span> plays a crucial role in increasing awareness and adoption of our project. 
+          From social media campaigns to <span>STRATEGIC PARTNERSHIPS</span>, we invest in various marketing initiatives to reach new audiences and promote <span>OUR VISION</span>.</p>
+      </div>
+      <img src="./marketingBrain.png"/>
+    </StyledCard>
+    <StyledCard>
+      <div>
+        <h2>TOKEN BURNING</h2>
+        <p>Enhance token value through <span>BURNING</span>! We believe in maintaining a healthy <span>TOKEN ECONOMY</span> by periodically burning a portion of our tokens. 
+          This reduces the total supply in circulation, potentially increasing the value of remaining tokens over time. 
+          Join us as we strive to create value for our token holders through strategic <span>TOKEN MANAGMENT</span>.</p>
+      </div>
+      <img src="./burning.png"/>
+    </StyledCard>
   </StyledCardSection>);
 }

@@ -18,9 +18,9 @@ export default function TokenomicsSection() {
 
     const tokenomicsData = [
         { id: 0, value: 2000000000, label: 'Community & Airdrops - 20%' },
-        { id: 1, value: 2000000000, label: 'Incentives & Rewards - 20%' },
+        { id: 1, value: 1500000000, label: 'Incentives & Rewards - 15%' },
         { id: 2, value: 3000000000, label: 'Liquidity & Markets - 30%' },
-        { id: 3, value: 1500000000, label: 'Development Team - 15%' },
+        { id: 3, value: 2000000000, label: 'Development Team - 20%' },
         { id: 4, value: 1000000000, label: 'Marketing Campaing - 10%' },
         { id: 5, value: 500000000, label: 'Token Burning - 5%' },
     ]

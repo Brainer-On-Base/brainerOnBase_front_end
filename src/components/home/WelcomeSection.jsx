@@ -36,7 +36,7 @@ export default function WelcomeSection() {
           }}
           width="400px"
         >
-          <p className="letter-animation">Hey! What are you waiting for to <span>BRAINS</span> up your wallet?!</p>
+          <p className="letter-animation">Hey! What are you waiting for to <span>BRAIN</span> up your wallet?!</p>
         </BubbleDialog>
         {/* <img src="Designer (8).png"/> */}
     {/* </div> */}
