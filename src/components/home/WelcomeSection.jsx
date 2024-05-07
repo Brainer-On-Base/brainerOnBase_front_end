@@ -17,18 +17,18 @@ export default function WelcomeSection() {
     }, []); // Ejecutar solo una vez al montar el componente
 
 
-  return <StyledWelcomeSection style={{alignItems:'flex-start'}}>
+  return <StyledWelcomeSection style={{alignItems:'flex-start', overflow: 'hidden'}}>
     <div className="home-text-container">
-      <h1>ARE YOU A NO BRAINER?</h1>
-      <StyledButton size={'2em'}>
+      <h1 className={'animate__animated animate__backInRight'}>ARE YOU A NO BRAINER?</h1>
+      <StyledButton size={'2em'} className={'animate__animated animate__bounceIn animate__delay-1s'}>
         GET PRE SALE
       </StyledButton>
     </div>
     
     {/* <div className="bottom-image-container"> */}
-        <img src="Designer (4).png" onClick={() => setActiveBubble(!activeBubble)}/>
+        <img src="Designer (4).png" onClick={() => setActiveBubble(!activeBubble)} className={'animate__animated animate__fadeInUp animate__delay-1s'}/>
         <BubbleDialog
-          className="bubble bubble-1500"
+          className={'animate__animated animate__fadeInUp animate__delay-1s bubble bubble-1500'}
           active={activeBubble}
           positionStyle={{
             bottom: '350px',

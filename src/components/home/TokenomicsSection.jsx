@@ -7,21 +7,13 @@ import BubbleDialog from "../BubbleDialog";
 export default function TokenomicsSection() {
     const [activeBubble, setActiveBubble] = useState(true);
 
-    // useEffect(() => {
-    //   const timeoutId = setTimeout(() => {
-    //     setActiveBubble(false);
-    //   }, 6000);
-
-    //   // Limpiar el temporizador cuando el componente se desmonte o activeBubble cambie a true
-    //   return () => clearTimeout(timeoutId);
-    // }, [activeBubble]); // Ejecutar solo una vez al montar el componente
 
     const tokenomicsData = [
         { id: 0, value: 2000000000, label: 'Community & Airdrops - 20%' },
-        { id: 1, value: 1500000000, label: 'Incentives & Rewards - 15%' },
+        { id: 1, value: 1000000000, label: 'Incentives & Rewards - 10%' },
         { id: 2, value: 3000000000, label: 'Liquidity & Markets - 30%' },
         { id: 3, value: 2000000000, label: 'Development Team - 20%' },
-        { id: 4, value: 1000000000, label: 'Marketing Campaing - 10%' },
+        { id: 4, value: 1500000000, label: 'Marketing Campaing - 15%' },
         { id: 5, value: 500000000, label: 'Token Burning - 5%' },
     ]
 
@@ -30,7 +22,7 @@ export default function TokenomicsSection() {
         <h1>
             TOKENOMICS
         </h1>
-        <img className="img1" src="./Designer (6).png" onClick={() => setActiveBubble(!activeBubble)}/>
+        <img src="./Designer (6).png" onClick={() => setActiveBubble(!activeBubble)} className={"img1"}/>
         <BubbleDialog
           active={activeBubble}
           positionDialogSpik={{
@@ -81,7 +73,7 @@ export default function TokenomicsSection() {
             slotProps={{
                 legend: {
                   labelStyle: {
-                    fontSize: 18,
+                    fontSize: 20,
                     fill: 'white',
                     fontFamily: '"Luckiest Guy", cursive',
                   },

@@ -2,46 +2,14 @@ import React, { useEffect, useState } from "react";
 import { StyledCard, StyledCardSection } from "../styled-components/container";
 import VisibilitySensor from 'react-visibility-sensor';
 import classNames from 'classnames'; // Esta librería es útil para manejar múltiples clases CSS de forma condicional
+import handleAnimationScroll from "../../hooks/handleAnimationScroll";
 
 export default function CardsSection() {
-  const [isVisible, setIsVisible] = useState([]);
-
-  
-  useEffect(() => {
-    const handleScroll = () => {
-      const targets = document.querySelectorAll('.target');
-
-      targets.forEach((target, index) => {
-        const targetPosition = target.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight;
-
-        if (targetPosition < screenPosition) {
-          setIsVisible(prevState => {
-            const updatedState = [...prevState];
-            updatedState[index] = true;
-            return updatedState;
-          });
-        } else {
-          setIsVisible(prevState => {
-            const updatedState = [...prevState];
-            updatedState[index] = false;
-            return updatedState;
-          });
-        }
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
+const { isVisible } = handleAnimationScroll('.target')
 
   return (
   <StyledCardSection>
-    <StyledCard className={`animate__animated ${isVisible[0] ? 'animate__backInLeft' : ''} target`}>
+    <StyledCard className={`animate__animated ${isVisible[0] ? 'animate__backInLeft' : ''} target`} style={{visibility: isVisible[0] ? 'visible' : 'hidden'}}>
       <div>
         <h2>COMMUNITY & DROPS</h2>
         <p>Join our <span>COMMUNITY</span> and participate in <span>AIRDROPS</span>! Get involved and receive tokens simply by being an active member of our <span>COMMUNITY</span>. 
@@ -49,7 +17,7 @@ export default function CardsSection() {
       </div>
       <img src="./Designer (26).png"/>
     </StyledCard>
-    <StyledCard className={`animate__animated ${isVisible[1] ? 'animate__backInRight' : ''} target`}>
+    <StyledCard className={`animate__animated ${isVisible[1] ? 'animate__backInRight' : ''} target`} style={{visibility: isVisible[1] ? 'visible' : 'hidden'}}>
       <img src="./Designer (25).png"/>
       <div>
 
@@ -59,7 +27,7 @@ export default function CardsSection() {
       </div>
     </StyledCard>
     
-    <StyledCard className={`animate__animated ${isVisible[2] ? 'animate__backInLeft' : ''} target`}>
+    <StyledCard className={`animate__animated ${isVisible[2] ? 'animate__backInLeft' : ''} target`} style={{visibility: isVisible[2] ? 'visible' : 'hidden'}}>
       <div>
         <h2>LIQUIDITY & MARKETS</h2>
         <p>Liquidity and accessibility! We allocate a significant portion of our token supply to ensure ample liquidity on exchanges. 
@@ -68,7 +36,7 @@ export default function CardsSection() {
       <img src="./Designer (28).png"/>
 
     </StyledCard>
-    <StyledCard className={`animate__animated ${isVisible[3] ? 'animate__backInRight' : ''} target`}>
+    <StyledCard className={`animate__animated ${isVisible[3] ? 'animate__backInRight' : ''} target`} style={{visibility: isVisible[3] ? 'visible' : 'hidden'}}>
       <img src="./Designer (55).png"/>
       <div>
         <h2>DEVELOPMENT TEAM</h2>
@@ -76,7 +44,7 @@ export default function CardsSection() {
             With years of <span>EXPERIENCE</span> in the industry, they work tirelessly to deliver innovative solutions and drive the success of our platform.</p>
       </div>
     </StyledCard>
-    <StyledCard className={`animate__animated ${isVisible[4] ? 'animate__backInLeft' : ''} target`}>
+    <StyledCard className={`animate__animated ${isVisible[4] ? 'animate__backInLeft' : ''} target`} style={{visibility: isVisible[4] ? 'visible' : 'hidden'}}>
       <div>
         <h2>MARKETING & PROMOTION</h2>
         <p>Spread the word and be part of our journey! <span>Marketing</span> plays a crucial role in increasing awareness and adoption of our project. 
@@ -84,7 +52,7 @@ export default function CardsSection() {
       </div>
       <img src="./marketingBrain.png"/>
     </StyledCard>
-    <StyledCard className={`animate__animated ${isVisible[5] ? 'animate__backInRight' : ''} target`}>
+    <StyledCard className={`animate__animated ${isVisible[5] ? 'animate__backInRight' : ''} target`} style={{visibility: isVisible[5] ? 'visible' : 'hidden'}}>
       <img src="./burning.png"/>
       <div>
         <h2>TOKEN BURNING</h2>

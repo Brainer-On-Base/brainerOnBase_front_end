@@ -351,8 +351,7 @@ export const StyledFooterSection = styled('div')`
 
 
 export const StyledBubbleDialog = styled('div')`
-    animation: appear 0.2s forwards; /* Animation for each letter */
-    opacity: 0; /* Start with opacity 0 */
+
     p{
         margin: 0;
 
