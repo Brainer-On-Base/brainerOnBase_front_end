@@ -6,7 +6,15 @@ import BubbleDialog from "../BubbleDialog";
 
 export default function TokenomicsSection() {
     const [activeBubble, setActiveBubble] = useState(true);
+    const [activeBubble2, setActiveBubble2] = useState(true);
+    const [clicksImage3,setClicksImage3] = useState(0);
 
+    useEffect(() => {
+      if(clicksImage3 === 14) {
+        setClicksImage3(0)
+      }
+      console.log(clicksImage3);
+    }, [clicksImage3]);
 
     const tokenomicsData = [
         { id: 0, value: 2000000000, label: 'Community & Airdrops - 20%' },
@@ -19,9 +27,25 @@ export default function TokenomicsSection() {
 
 
   return <StyledTokenomicsSection>
-        <h1>
-            TOKENOMICS
-        </h1>
+        <img src="./Designer (39).png" onClick={() => setClicksImage3(clicksImage3 + 1)} className={"img3"}/>
+        <BubbleDialog
+          id="bubbletokenomics"
+          active={activeBubble}
+          positionDialogSpik={{
+            left: '20px'
+          }}
+          positionStyle={{
+            top: '100px',
+            left: '150px'
+          }}
+          width="520px"
+          height="20px"
+        >
+          <p style={{fontSize: '60px'}}>
+              <span style={{fontSize: '60px', color: "#96105f"}}>TOKENOMICS !  !  !  !</span>
+          </p>
+        </BubbleDialog>
+        <h1></h1>
         <img src="./Designer (6).png" onClick={() => setActiveBubble(!activeBubble)} className={"img1"}/>
         <BubbleDialog
           active={activeBubble}

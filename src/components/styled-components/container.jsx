@@ -266,6 +266,15 @@ export const StyledTokenomicsSection = styled('div')`
             tspan, .MuiChartsLegend-mark{
                 display: none;
             }
+            #bubbletokenomics{
+                display: none;
+            }
+        }
+    }
+
+    @media(max-width: 1100px){
+        #bubbletokenomics{
+            display: none;
         }
     }
 
@@ -295,6 +304,19 @@ export const StyledTokenomicsSection = styled('div')`
         bottom: 0px;
         transition: filter 300ms;
         cursor: pointer;
+        &:hover {
+            filter: drop-shadow(0 0 2em #c464ffaa);
+          }
+    }
+    .img3{
+        width: 250px;
+        position: absolute;
+        left: 20px;
+        top: 200px;
+        transition: filter 300ms;
+        cursor: pointer;
+        z-index: 99999;
+
         &:hover {
             filter: drop-shadow(0 0 2em #c464ffaa);
           }
