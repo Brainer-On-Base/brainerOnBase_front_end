@@ -141,22 +141,17 @@ export const StyledWelcomeSection = styled('div')`
         width: 100%;
         height: 100%;
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         justify-content: center;
         flex-direction: column;
         margin-bottom: 6em;
 
         h1{
             font-size: 5em;
-            margin-right: 1em;
             line-height: 1.1;
             transition: filter 300ms;
             font-family: "Luckiest Guy", cursive;
             color: #888;
-        }
-
-        button{
-            margin-right: 12em;
         }
 
     }
@@ -172,6 +167,19 @@ export const StyledWelcomeSection = styled('div')`
           }
     }
 
+    .bubble{
+        bottom: 60px !important;
+        left: 320px !important;
+
+        &:after{
+            left: -8px !important;
+            top: 10px !important;
+            background-color: #fff;
+            box-shadow: 0 4px #000, 0 8px #000, 0 12px #000, 0 16px #000, -4px 12px #000, -8px 8px #000, -12px 4px #000, -4px 4px #fff, -8px 4px #fff, -4px 8px #fff, -4px 0 #fff, -8px 0 #fff, -12px 0 #fff;
+            transform: rotate(120deg); /* Rotar el piquito */
+    
+        }
+    }
 
     @media(max-width: 1300px){
         .home-text-container{
@@ -187,7 +195,7 @@ export const StyledWelcomeSection = styled('div')`
         }
         .bubble{
             bottom: 50px !important;
-            left: 250px !important;
+            left: 220px !important;
 
             &:after{
                 left: -8px !important;

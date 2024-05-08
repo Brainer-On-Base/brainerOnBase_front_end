@@ -31,8 +31,8 @@ export default function WelcomeSection() {
           className={'animate__animated animate__fadeInUp animate__delay-1s bubble bubble-1500'}
           active={activeBubble}
           positionStyle={{
-            bottom: '350px',
-            left: '20px'
+            bottom: '50px',
+            left: '300px'
           }}
           width="400px"
         >
