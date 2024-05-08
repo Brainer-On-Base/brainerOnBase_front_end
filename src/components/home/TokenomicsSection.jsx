@@ -27,7 +27,7 @@ export default function TokenomicsSection() {
 
 
   return <StyledTokenomicsSection>
-        <img src="./Designer (39).png" onClick={() => setClicksImage3(clicksImage3 + 1)} className={"img3"}/>
+        {/* <img src="./Designer (39).png" onClick={() => setClicksImage3(clicksImage3 + 1)} className={"img3"}/>
         <BubbleDialog
           id="bubbletokenomics"
           active={activeBubble}
@@ -44,9 +44,8 @@ export default function TokenomicsSection() {
           <p style={{fontSize: '60px'}}>
               <span style={{fontSize: '60px', color: "#96105f"}}>TOKENOMICS !  !  !  !</span>
           </p>
-        </BubbleDialog>
-        {/* <h1 style={{marginBottom: 0}}>TOKENOMICS</h1> */}
-        <h1 style={{marginBottom: '2em'}}></h1>
+        </BubbleDialog> */}
+        <h1 style={{marginBottom: 0}}>TOKENOMICS</h1>
         <img src="./Designer (6).png" onClick={() => setActiveBubble(!activeBubble)} className={"img1"}/>
         <BubbleDialog
           active={activeBubble}
