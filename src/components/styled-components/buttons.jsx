@@ -12,6 +12,7 @@ export const StyledButton = styled('button')`
     cursor: pointer;
     transition: border-color 0.25s;
     font-family: "Luckiest Guy", cursive;
+    color: white !important;
 
     &:hover {
         border-color: #ff437d;
