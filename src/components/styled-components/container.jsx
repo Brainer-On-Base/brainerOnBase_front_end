@@ -229,7 +229,8 @@ export const StyledWelcomeSection = styled('div')`
     
         }
         .bubble{
-            left: 200px !important;
+            bottom: 20px !important;
+            left: 160px !important;
             width: auto;
         }
     }
@@ -312,7 +313,7 @@ export const StyledTokenomicsSection = styled('div')`
         width: 250px;
         position: absolute;
         left: 20px;
-        top: 200px;
+        top: 250px;
         transition: filter 300ms;
         cursor: pointer;
         z-index: 99999;
@@ -338,9 +339,12 @@ export const StyledTokenomicsSection = styled('div')`
 
 
 export const StyledFooterSection = styled('div')`
-    width: 80%;
+  background-color: #242424;
+
+    width: 100%;
     display: flex;
     height: auto;
+    padding-top: 4em;
     margin-top: 2em;
     padding-bottom: 1em;
     flex-direction: column;

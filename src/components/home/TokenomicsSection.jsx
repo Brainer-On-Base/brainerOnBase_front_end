@@ -35,7 +35,7 @@ export default function TokenomicsSection() {
             left: '20px'
           }}
           positionStyle={{
-            top: '100px',
+            top: '150px',
             left: '150px'
           }}
           width="520px"
@@ -45,7 +45,8 @@ export default function TokenomicsSection() {
               <span style={{fontSize: '60px', color: "#96105f"}}>TOKENOMICS !  !  !  !</span>
           </p>
         </BubbleDialog>
-        <h1></h1>
+        {/* <h1 style={{marginBottom: 0}}>TOKENOMICS</h1> */}
+        <h1 style={{marginBottom: '2em'}}></h1>
         <img src="./Designer (6).png" onClick={() => setActiveBubble(!activeBubble)} className={"img1"}/>
         <BubbleDialog
           active={activeBubble}
