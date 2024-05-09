@@ -4,7 +4,7 @@ import Star from "./Star";
 const NightBackground = () => {
     const [stars, setStars] = useState([]);
 
-    const calcRandom = () => (Math.random(0.5) - 0.5) * 10;
+    const calcRandom = () => (Math.random(-0.5) - 0.5) * 20;
 
     useEffect(() => {
         const newStars = [...Array(300)].map((_, index) => ({
@@ -12,7 +12,7 @@ const NightBackground = () => {
             position: [
                 calcRandom(),
                 calcRandom(),
-                Math.random() * 4 // Random z position
+                Math.random() // Random z position
             ],
             scale: [0.05 + Math.random() * 0.1, 0.05 + Math.random() * 0.1, 0.05 + Math.random() * 0.1], // Random scale
             rotation: [0, 0, Math.random() * Math.PI * 2], // Random rotation around z axis
@@ -49,7 +49,7 @@ const NightBackground = () => {
     }, []);
 
     return (
-        <group>
+        <group position={[-4,0,0]}>
             {stars.map((star) => (
                 <Star
                     key={star.key}
