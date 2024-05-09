@@ -90,6 +90,7 @@ export const StyledNavbarContainer = styled('div')`
     justify-content: space-between;
     position: absolute;
     top: 0;
+        z-index: 9999;
 
 
     img{
@@ -142,6 +143,8 @@ export const StyledWelcomeSection = styled('div')`
     flex-direction: column;
     width: 100%;
     height: 100vh;
+    background-image: linear-gradient(to bottom, #230f44, #242424);
+
     .home-text-container{
         width: 100%;
         height: 100%;
@@ -150,13 +153,20 @@ export const StyledWelcomeSection = styled('div')`
         justify-content: center;
         flex-direction: column;
         margin-bottom: 6em;
-
+        z-index: 9999;
         h1{
-            font-size: 5em;
+            font-size: 6em;
             line-height: 1.1;
             transition: filter 300ms;
             font-family: "Luckiest Guy", cursive;
             color: #888;
+
+
+            span{
+                font-family: "Luckiest Guy", cursive;
+                color: #ff437d;
+                
+            }
         }
 
     }
@@ -166,10 +176,15 @@ export const StyledWelcomeSection = styled('div')`
         bottom: 0;
         transition: filter 300ms;
         cursor: pointer;
+        z-index: 9999;
 
         &:hover {
             filter: drop-shadow(0 0 2em #c464ffaa);
           }
+    }
+
+    .baloon{
+        right: 0;
     }
 
     .bubble{
