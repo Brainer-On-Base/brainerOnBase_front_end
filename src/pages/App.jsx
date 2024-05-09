@@ -4,7 +4,7 @@ import './App.css'
 import useModals from '../hooks/useSweetAlert'
 import { Canvas } from '@react-three/fiber'
 import CoinRain from '../components/CoinRain'
-import { StyledAppContainer, StyledHomeContent } from '../components/styled-components/container'
+import { StyledAppContainer, StyledHomeContent, StyledInitAppContainer } from '../components/styled-components/container'
 import { useNavigate } from 'react-router-dom'
 import { StyledButton } from '../components/styled-components/buttons'
 
@@ -12,28 +12,18 @@ function App() {
   const {useTextModal} = useModals()
   const navigate = useNavigate()
 
-  const handleModal = () => {
-    useTextModal({
-      text: `FOR BUY THE PRESALE YOU HAVE TO SEND 0.2 SOL TO THE FOLLOWING ADDRESS: 8BanJUWdRMVi8us32LeJZPrGCxEr4sJPDAptf2iKfD9J`,
-      title: 'ARE YOU A NO BRAINER?', 
-      confirmButtonColor: '#ff437d', 
-      textColor: 'white',
-      onConfirmFunction: () => {}
-    })
-  }
 
 
   return (
-    <StyledAppContainer>
+    <StyledInitAppContainer>
       <Canvas
-        style={{ width: '100%', height: '100%', position: 'absolute', zIndex: -1 }}
+        style={{ width: '100%', height: '100%', position: 'absolute', zIndex: 9 }}
         camera={ {
               fov: 45,
               near: 0.1,
               far: 200,
               position: [ 0, 0, 6 ]
           } }
-          // onCreated={created}
         >
         <CoinRain/>
     </Canvas>
@@ -54,7 +44,7 @@ function App() {
       </div>
       </StyledHomeContent>
 
-    </StyledAppContainer>
+    </StyledInitAppContainer>
   )
 }
 

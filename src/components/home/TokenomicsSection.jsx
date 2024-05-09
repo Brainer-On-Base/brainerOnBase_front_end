@@ -16,15 +16,16 @@ export default function TokenomicsSection() {
       console.log(clicksImage3);
     }, [clicksImage3]);
 
-    const tokenomicsData = [
-        { id: 0, value: 2000000000, label: 'Community & Airdrops - 20%' },
-        { id: 1, value: 1000000000, label: 'Incentives & Rewards - 10%' },
-        { id: 2, value: 3000000000, label: 'Liquidity & Markets - 30%' },
-        { id: 3, value: 2000000000, label: 'Development Team - 20%' },
-        { id: 4, value: 1500000000, label: 'Marketing Campaing - 15%' },
-        { id: 5, value: 500000000, label: 'Token Burning - 5%' },
-    ]
+    const totalSupply = 10000000000; // Suministro total
 
+    const tokenomicsData = [
+      { "id": 2, "value": Math.round(totalSupply * 0.45), "label": "Liquidity & Markets - 45%" },
+        { "id": 0, "value": Math.round(totalSupply * 0.15), "label": "Community & Airdrops - 15%" },
+        { "id": 1, "value": Math.round(totalSupply * 0.15), "label": "Incentives & Rewards - 15%" },
+        { "id": 3, "value": Math.round(totalSupply * 0.10), "label": "Development Team - 10%" },
+        { "id": 4, "value": Math.round(totalSupply * 0.10), "label": "Marketing Campaign - 10%" },
+        { "id": 5, "value": Math.round(totalSupply * 0.05), "label": "Token Burning - 5%" }
+    ];
 
   return <StyledTokenomicsSection>
         {/* <img src="./Designer (39).png" onClick={() => setClicksImage3(clicksImage3 + 1)} className={"img3"}/>

@@ -28,12 +28,17 @@ export const StyledFlexBetweenContainer = styled('div')`
 
 export const StyledAppContainer = styled('div')`
     width: 100%;
-    min-height: 50vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     margin: 0 auto;
+`
+
+
+export const StyledInitAppContainer = styled(StyledAppContainer)`
+background-color: #242424;
 
 
 `
@@ -43,7 +48,7 @@ export const StyledHomeContent = styled('div')`
     text-align: center;
     font-family: "Luckiest Guy", cursive;
     margin: 0 auto;
-    
+    z-index: 99;
     .logo {
         height: 6em;
         padding: 2px;
