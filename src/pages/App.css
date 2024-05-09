@@ -57,3 +57,14 @@ body::-webkit-scrollbar-thumb {
     opacity: 1; /* End with opacity 1 */
   }
 }
+
+
+@keyframes despegue {
+  0%, 100% {
+    transform: translate(0, 20%); /* Empieza y termina en el centro horizontal */
+  }
+  50% {
+    transform: translate(-20%, -40%); /* Mueve hacia arriba y a la izquierda */
+    opacity: 1; /* Se vuelve visible */
+  }
+}

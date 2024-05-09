@@ -32,7 +32,7 @@ export default function WelcomeSection() {
         <ambientLight intensity={ 1.5 } />
         <NightBackground/>
     </Canvas>
-
+    <img src="Designer (59).png" className="baloon"/>
     <div className="home-text-container">
       <h1 className={'animate__animated animate__backInRight'}>ARE YOU A NO <span>BRAINER</span>?</h1>
       <StyledButton size={'2em'} className={'animate__animated animate__bounceIn animate__delay-1s'}>

@@ -184,7 +184,11 @@ export const StyledWelcomeSection = styled('div')`
     }
 
     .baloon{
+        z-index: 99999;
         right: 0;
+        transform: scaleX(-1);
+        animation: despegue 5s infinite alternate;
+
     }
 
     .bubble{
