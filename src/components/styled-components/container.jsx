@@ -184,10 +184,11 @@ export const StyledWelcomeSection = styled('div')`
     }
 
     .baloon{
+        width: 280px;
         z-index: 99999;
-        right: 0;
-        transform: scaleX(-1);
-        animation: despegue 5s infinite alternate;
+        left: 0;
+        // transform: scaleX(-1);
+        animation: fly 5s infinite alternate;
 
     }
 

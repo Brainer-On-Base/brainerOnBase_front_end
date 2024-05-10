@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyledWelcomeSection } from "../styled-components/container";
+import { StyledPageLine, StyledWelcomeSection } from "../styled-components/container";
 import { StyledButton } from "../styled-components/buttons";
 import BubbleDialog from "../BubbleDialog";
 import NightBackground from "../NIghtBackground";
@@ -32,7 +32,9 @@ export default function WelcomeSection() {
         <ambientLight intensity={ 1.5 } />
         <NightBackground/>
     </Canvas>
-    <img src="Designer (59).png" className="baloon"/>
+
+    <img src="Designer (59) flip (1).png" className="baloon"/>
+
     <div className="home-text-container">
       <h1 className={'animate__animated animate__backInRight'}>ARE YOU A NO <span>BRAINER</span>?</h1>
       <StyledButton size={'2em'} className={'animate__animated animate__bounceIn animate__delay-1s'}>
@@ -41,7 +43,7 @@ export default function WelcomeSection() {
     </div>
     
     {/* <div className="bottom-image-container"> */}
-        <img src="Designer (4).png" onClick={() => setActiveBubble(!activeBubble)} className={'animate__animated animate__fadeInUp animate__delay-1s'}/>
+        {/* <img src="Designer (4).png" onClick={() => setActiveBubble(!activeBubble)} className={'animate__animated animate__fadeInUp animate__delay-1s'}/>
         <BubbleDialog
           className={'animate__animated animate__fadeInUp animate__delay-1s bubble bubble-1500'}
           active={activeBubble}
@@ -52,7 +54,7 @@ export default function WelcomeSection() {
           width="400px"
         >
           <p className="letter-animation">Hey! What are you waiting for to <span>BRAIN</span> up your wallet?!</p>
-        </BubbleDialog>
+        </BubbleDialog> */}
         {/* <img src="Designer (8).png"/> */}
     {/* </div> */}
   </StyledWelcomeSection>;

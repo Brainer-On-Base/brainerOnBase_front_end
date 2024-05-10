@@ -7,7 +7,7 @@ const NightBackground = () => {
     const calcRandom = () => (Math.random(-0.5) - 0.5) * 20;
 
     useEffect(() => {
-        const newStars = [...Array(300)].map((_, index) => ({
+        const newStars = [...Array(400)].map((_, index) => ({
             key: index,
             position: [
                 calcRandom(),

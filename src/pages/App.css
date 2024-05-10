@@ -68,3 +68,14 @@ body::-webkit-scrollbar-thumb {
     opacity: 1; /* Se vuelve visible */
   }
 }
+
+
+@keyframes fly {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-70%);
+  }
+}
+
