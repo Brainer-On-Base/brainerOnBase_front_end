@@ -144,7 +144,6 @@ export const StyledWelcomeSection = styled('div')`
     width: 100%;
     height: 100vh;
     background-image: linear-gradient(to bottom, #230f44, #242424);
-
     .home-text-container{
         width: 100%;
         height: 100%;
@@ -281,7 +280,29 @@ export const StyledHistorySection = styled('div')`
     justify-content: flex-start;
     position: relative;
     width: 100%;
-    overflow: hidden;
+
+
+
+    .img1{
+        width: 250px;
+        position: absolute;
+        right: 50px;
+        bottom: -180px;
+        transition: filter 300ms;
+        cursor: pointer;
+        z-index: 9999;
+
+        &:hover {
+            filter: drop-shadow(0 0 2em #c464ffaa);
+          }
+    }
+
+
+    @media(max-width: 1350px){
+        img, #bubbletokenomics{ 
+            display: none !important;
+        }
+    }
 
 `
 
@@ -393,20 +414,6 @@ export const StyledTokenomicsSection = styled('div')`
     position: relative;
     width: 100%;
     overflow: hidden;
-
-
-    .img1{
-        width: 250px;
-        // position: absolute;
-        right: 50px;
-        top: 100px;
-        transition: filter 300ms;
-        cursor: pointer;
-
-        &:hover {
-            filter: drop-shadow(0 0 2em #c464ffaa);
-          }
-    }
 `
 
 

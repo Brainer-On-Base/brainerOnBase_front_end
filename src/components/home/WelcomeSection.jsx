@@ -20,7 +20,7 @@ export default function WelcomeSection() {
 
 
   return <StyledWelcomeSection style={{alignItems:'flex-start', overflow: 'hidden'}}>
-    <Canvas
+    {/* <Canvas
         style={{ width: '100%', height: '100%', position: 'absolute', zIndex: 1 }}
         camera={ {
               fov: 45,
@@ -31,7 +31,7 @@ export default function WelcomeSection() {
         >
         <ambientLight intensity={ 1.5 } />
         <NightBackground/>
-    </Canvas>
+    </Canvas> */}
 
     <img src="Designer (59) flip (1).png" className="baloon"/>
 

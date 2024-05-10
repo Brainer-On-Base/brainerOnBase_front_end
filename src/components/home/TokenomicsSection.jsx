@@ -8,28 +8,12 @@ const { isVisible } = handleAnimationScroll('.target')
 
   return (
   <StyledTokenomicsSection>
-      <img src="./Designer (6).png"  className={"img1"}/>
-      <BubbleDialog
-        positionDialogSpik={{
-          left: '240px'
-        }}
-        positionStyle={{
-          top: '-14px',
-          right: '60px'
-        }}
-        width="400px"
-      >
-          <p>Take a look to our <span>TOKENOMICS</span> to clarify your doubts!</p>
-          <p> We are a <span>REAL</span> community  token!</p>
-      </BubbleDialog>
-
-
     <StyledCard className={`animate__animated ${isVisible[0] ? 'animate__backInLeft' : ''} target`} style={{visibility: isVisible[0] ? 'visible' : 'hidden'}}>
-    <div>
+      <div>
         <h2>LIQUIDITY & MARKETS</h2>
         <p style={{marginTop: '-40px', marginBottom: '2em'}}>45% - 4.500.000.000</p>
         <p>Liquidity and accessibility! We allocate a significant portion of our token supply to ensure ample liquidity on exchanges. 
-            This facilitates <span>SMOOTH TRADING EXPERIENCES</span> for our users and supports the growth of our token in various markets.</p>
+        This facilitates <span>SMOOTH TRADING EXPERIENCES</span> for our users and supports the growth of our token in various markets.</p>
       </div>
       <img src="./Designer (28).png"/>
     </StyledCard>
