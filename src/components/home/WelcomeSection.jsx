@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyledPageLine, StyledWelcomeSection } from "../styled-components/container";
+import { StyledWelcomeSection } from "../styled-components/container";
 import { StyledButton } from "../styled-components/buttons";
 import BubbleDialog from "../BubbleDialog";
 import NightBackground from "../NIghtBackground";

@@ -273,8 +273,8 @@ export const StyledWelcomeSection = styled('div')`
 
 
 
-export const StyledTokenomicsSection = styled('div')`
-    height: auto;
+export const StyledHistorySection = styled('div')`
+    height: 100vh;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -283,91 +283,6 @@ export const StyledTokenomicsSection = styled('div')`
     width: 100%;
     overflow: hidden;
 
-    h1{
-        font-size: 120px;
-        font-family: "Luckiest Guy", cursive;
-        margin-top: 1em;
-        margin-left: 2em;
-
-    }
-
-    .css-wqy0la-MuiResponsiveChart-container{
-        width: 100%;
-        display: flex;
-        aling-items: center;
-
-        @media(max-width: 1100px){
-            tspan, .MuiChartsLegend-mark{
-                display: none;
-            }
-            #bubbletokenomics{
-                display: none;
-            }
-        }
-    }
-
-    @media(max-width: 1100px){
-        #bubbletokenomics{
-            display: none;
-        }
-    }
-
-    .pie-chart-container{
-        font-family: "Luckiest Guy", cursive;
-        border-radius: 8px;
-        color: white !important;
-    }
-
-    .img1{
-        width: 250px;
-        position: absolute;
-        right: 50px;
-        top: 100px;
-        transition: filter 300ms;
-        cursor: pointer;
-
-        &:hover {
-            filter: drop-shadow(0 0 2em #c464ffaa);
-          }
-    }
-    .img2{
-        width: 250px;
-        position: absolute;
-        left: 20px;
-        transform: scaleX(-1);
-        bottom: 0px;
-        transition: filter 300ms;
-        cursor: pointer;
-        &:hover {
-            filter: drop-shadow(0 0 2em #c464ffaa);
-          }
-    }
-    .img3{
-        width: 250px;
-        position: absolute;
-        left: 20px;
-        top: 250px;
-        transition: filter 300ms;
-        cursor: pointer;
-        z-index: 99999;
-
-        &:hover {
-            filter: drop-shadow(0 0 2em #c464ffaa);
-          }
-    }
-
-    @media(max-width: 1250px){
-        h1{
-            font-size: 100px;
-            margin-left: 1em;
-        }
-    }
-
-    @media(max-width: 850px){
-            display: none;
-    }
-
-    }
 `
 
 
@@ -467,7 +382,7 @@ export const StyledBubbleDialog = styled('div')`
 
 
 
-export const StyledCardSection = styled('div')`
+export const StyledTokenomicsSection = styled('div')`
     height: auto;
     margin-top: 4em;
     margin-bottom: 4em;
@@ -479,6 +394,19 @@ export const StyledCardSection = styled('div')`
     width: 100%;
     overflow: hidden;
 
+
+    .img1{
+        width: 250px;
+        // position: absolute;
+        right: 50px;
+        top: 100px;
+        transition: filter 300ms;
+        cursor: pointer;
+
+        &:hover {
+            filter: drop-shadow(0 0 2em #c464ffaa);
+          }
+    }
 `
 
 
