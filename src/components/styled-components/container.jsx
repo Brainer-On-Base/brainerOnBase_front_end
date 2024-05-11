@@ -169,25 +169,24 @@ export const StyledWelcomeSection = styled('div')`
             }
         }
 
+        button{
+            filter: drop-shadow(0 0 5em #c464ffaa);
+
+        }
+
     }
     img{
         width: 350px;
         position: absolute;
         bottom: 0;
         transition: filter 300ms;
-        cursor: pointer;
-        z-index: 9999;
-
-        &:hover {
-            filter: drop-shadow(0 0 2em #c464ffaa);
-          }
+        z-index: 9999 !important;
     }
 
 
     .moon{
         right: 120px;
         animation: rotate 8s infinite alternate;
-
     }
 
     .baloon{
@@ -292,7 +291,6 @@ export const StyledHistorySection = styled('div')`
     .astronaut{
         width: 350px;
         animation: fly_short 4s infinite alternate;
-
     }
 
 
@@ -300,6 +298,7 @@ export const StyledHistorySection = styled('div')`
         margin: 0;
         font-family: "Luckiest Guy", cursive;
         z-index: 9999;
+
 
         &:nth-of-type(1){
             margin-top: -140px;
