@@ -33,7 +33,7 @@ export default function WelcomeSection() {
         <NightBackground/>
     </Canvas> */}
 
-    <img src="Designer (59) flip (1).png" className="baloon"/>
+    <img src="rocket.png" className="baloon"/>
 
     <div className="home-text-container">
       <h1 className={'animate__animated animate__backInRight'}>ARE YOU A NO <span>BRAINER</span>?</h1>

@@ -11,7 +11,7 @@ export default function HistorySection() {
     <p>HISTORY</p>
 
 
-    <img src="./Designer (6).png"  className={"img1"}/>
+    <img src="./tokenomic.png"  className={"img1"}/>
       <BubbleDialog
         id="bubbletokenomics"
         active={true}

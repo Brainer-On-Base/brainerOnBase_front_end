@@ -15,10 +15,10 @@ const { isVisible } = handleAnimationScroll('.target')
         <p>Liquidity and accessibility! We allocate a significant portion of our token supply to ensure ample liquidity on exchanges. 
         This facilitates <span>SMOOTH TRADING EXPERIENCES</span> for our users and supports the growth of our token in various markets.</p>
       </div>
-      <img src="./Designer (28).png"/>
+      <img src="./trading.png"/>
     </StyledCard>
     <StyledCard className={`animate__animated ${isVisible[1] ? 'animate__backInRight' : ''} target`} style={{visibility: isVisible[1] ? 'visible' : 'hidden'}}>
-      <img src="./Designer (25).png"/>
+      <img src="./rewards.png"/>
       <div>
         <h2>INCENTIVES & REWARDS</h2>
         <p style={{marginTop: '-40px', marginBottom: '2em'}}>15% - 1.500.000.000</p>
@@ -34,11 +34,11 @@ const { isVisible } = handleAnimationScroll('.target')
         <p>Join our <span>COMMUNITY</span> and participate in <span>AIRDROPS</span>! Get involved and receive tokens simply by being an active member of our <span>COMMUNITY</span>. 
         Engage with fellow members, share your thoughts, and stay up-to-date with the latest developments.</p>
       </div>
-      <img src="./Designer (26).png"/>
+      <img src="./rewards2.png"/>
 
     </StyledCard>
     <StyledCard className={`animate__animated ${isVisible[3] ? 'animate__backInRight' : ''} target`} style={{visibility: isVisible[3] ? 'visible' : 'hidden'}}>
-      <img src="./Designer (55).png"/>
+      <img src="./development.png"/>
       <div>
         <h2>DEVELOPMENT TEAM</h2>
         <p style={{marginTop: '-40px', marginBottom: '2em'}}>10% - 1.000.000.000</p>

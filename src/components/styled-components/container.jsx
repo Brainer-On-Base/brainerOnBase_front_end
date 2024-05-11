@@ -144,6 +144,7 @@ export const StyledWelcomeSection = styled('div')`
     width: 100%;
     height: 100vh;
     background-image: linear-gradient(to bottom, #230f44, #242424);
+    background-size: cover;
     .home-text-container{
         width: 100%;
         height: 100%;
