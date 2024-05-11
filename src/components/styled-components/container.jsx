@@ -307,7 +307,7 @@ export const StyledWelcomeSection = styled('div')`
 export const StyledHistorySection = styled('div')`
     height: 140vh;
     display: flex;
-    padding-top: 2.5em;
+    padding-top: 1em;
     align-items: flex-start;
     flex-direction: column;
     justify-content: flex-start;
@@ -317,7 +317,15 @@ export const StyledHistorySection = styled('div')`
     .astronaut{
         width: 350px;
         animation: fly_short 3.5s infinite alternate;
+        // filter: drop-shadow(0 0 2em #c464ffaa);
+
     }
+
+    .path {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: dash 5s linear forwards;
+      }
 
 
     h1{
@@ -339,13 +347,8 @@ export const StyledHistorySection = styled('div')`
         right: 50px;
         bottom: -180px;
         transition: filter 300ms;
-        cursor: pointer;
         z-index: 9999;
-
-        &:hover {
-            filter: drop-shadow(0 0 2em #c464ffaa);
-          }
-          animation: fly_short 2s infinite alternate;
+        animation: fly_short 2s infinite alternate;
 
     }
 
