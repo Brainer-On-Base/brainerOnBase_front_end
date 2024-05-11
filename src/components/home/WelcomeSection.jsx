@@ -9,7 +9,7 @@ import { Perf } from "r3f-perf";
 export default function WelcomeSection() {
 
 
-  return <StyledWelcomeSection style={{alignItems:'flex-start', overflow: 'hidden'}}>
+  return <StyledWelcomeSection style={{alignItems:'flex-start'}}>
       <Canvas
         style={{ width: '100%', height: '100%', position: 'absolute', zIndex: 1, top: 0, bottom: 0 }}
         camera={ {
@@ -25,10 +25,10 @@ export default function WelcomeSection() {
     <img src="rocket.png" className="baloon"/>
 
     <div className="home-text-container">
-      <h1>BRAINER</h1>
-      <h1>ON BASE</h1>
-      <h1 className={'animate__animated animate__backInRight'}>ARE YOU A NO <span>BRAINER</span>?</h1>
-      <StyledButton size={'2em'} className={'animate__animated animate__bounceIn animate__delay-1s'}>
+      <h1 className={'animate__animated animate__backInDown'}>BRAINER</h1>
+      <h1 className={'animate__animated animate__fadeInDown animate__delay-1s'}>ON BASE</h1>
+      <h1 className={'animate__animated animate__fadeIn animate__delay-1s '}>ARE YOU A NO <span>BRAINER</span>?</h1>
+      <StyledButton size={'2em'} className={'animate__animated animate__fadeIn animate__delay-2s'}>
         GET PRE SALE
       </StyledButton>
     </div>

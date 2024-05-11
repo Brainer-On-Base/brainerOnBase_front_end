@@ -305,7 +305,7 @@ export const StyledWelcomeSection = styled('div')`
 
 
 export const StyledHistorySection = styled('div')`
-    height: 120vh;
+    height: 140vh;
     display: flex;
     padding-top: 2.5em;
     align-items: flex-start;
@@ -325,21 +325,11 @@ export const StyledHistorySection = styled('div')`
         font-family: "Luckiest Guy", cursive;
         z-index: 9999;
         text-shadow: 0 .0377358491em 0 #000, .0125786164em .0377358491em 0 #000, .0125786164em -.0125786164em 0 #000, -.0125786164em .0125786164em 0 #000, -.0125786164em -.0125786164em;
+        font-size: 150px;
+        color: #ff437d;
+        // color: #e72eff;
+        // color: #888;
 
-
-        &:nth-of-type(1){
-            margin-top: -100px;
-            font-size: 150px;
-            // color: #e72eff;
-            color: #ff437d;
-
-        }
-        &:nth-of-type(2){
-            margin-top: -80px;
-            font-size: 80px;
-            color: #88;
-            color: white;
-        }
     }
 
 
@@ -355,6 +345,8 @@ export const StyledHistorySection = styled('div')`
         &:hover {
             filter: drop-shadow(0 0 2em #c464ffaa);
           }
+          animation: fly_short 2s infinite alternate;
+
     }
 
 
