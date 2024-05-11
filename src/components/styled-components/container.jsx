@@ -282,6 +282,29 @@ export const StyledHistorySection = styled('div')`
     position: relative;
     width: 100%;
 
+    img{
+        width: 350px;
+    }
+
+
+    h1{
+        margin: 0;
+        font-family: "Luckiest Guy", cursive;
+
+        &:nth-of-type(1){
+            margin-top: -140px;
+            font-size: 150px;
+            color: #e72eff;
+        }
+        &:nth-of-type(2){
+            margin-top: -40px;
+            font-size: 80px;
+            color: #888;
+            color: #ff437d;
+
+
+        }
+    }
 
 
     .img1{

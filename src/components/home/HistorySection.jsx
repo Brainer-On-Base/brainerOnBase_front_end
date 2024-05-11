@@ -1,14 +1,49 @@
 import React, { useEffect, useState } from "react";
-import { StyledHistorySection } from "../styled-components/container";
+import { StyledFlexFullCenterContainer, StyledHistorySection } from "../styled-components/container";
 import BubbleDialog from "../BubbleDialog";
 
 
 export default function HistorySection() {
+  const [isVisible, setIsVisible] = useState([]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const targets = document.getElementById('history');
+
+      targets.forEach((target, index) => {
+        const targetPosition = target.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight;
+
+        if (targetPosition < screenPosition) {
+          setIsVisible(prevState => {
+            const updatedState = [...prevState];
+            updatedState[index] = true;
+            return updatedState;
+          });
+        } else {
+          setIsVisible(prevState => {
+            const updatedState = [...prevState];
+            updatedState[index] = false;
+            return updatedState;
+          });
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  console.log(isVisible);
   return <StyledHistorySection>
+    <StyledFlexFullCenterContainer style={{height: 'auto', flexDirection:'column'}}>
+        <StyledFlexFullCenterContainer  style={{height: 'auto', borderTop: '1px solid white'}}/>
+        <img src="./history.png"  />
+        <h1>BRAINER</h1>
+    </StyledFlexFullCenterContainer>
 
-
-    <p>HISTORY</p>
 
 
     <img src="./tokenomic.png"  className={"img1"}/>
