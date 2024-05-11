@@ -38,8 +38,9 @@ export const StyledAppContainer = styled('div')`
 
 
 export const StyledInitAppContainer = styled(StyledAppContainer)`
-background-color: #242424;
-
+background-color: #242424 !important;
+z-index: 9999;
+height: 100vh;
 
 `
 
@@ -282,6 +283,7 @@ export const StyledWelcomeSection = styled('div')`
 export const StyledHistorySection = styled('div')`
     height: 100vh;
     display: flex;
+    padding-top: 2.5em;
     align-items: flex-start;
     flex-direction: column;
     justify-content: flex-start;
@@ -290,7 +292,7 @@ export const StyledHistorySection = styled('div')`
 
     .astronaut{
         width: 350px;
-        animation: fly_short 4s infinite alternate;
+        animation: fly_short 3.5s infinite alternate;
     }
 
 

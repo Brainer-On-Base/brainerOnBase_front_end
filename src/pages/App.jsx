@@ -15,7 +15,7 @@ function App() {
   return (
     <StyledInitAppContainer>
       <Canvas
-        style={{ width: '100%', height: '100%', position: 'absolute', zIndex: 9 }}
+        style={{ width: '100%', height: '100%', position: 'absolute', zIndex: 1 }}
         camera={ {
               fov: 45,
               near: 0.1,
