@@ -27,14 +27,12 @@ function App() {
     </Canvas>
     <StyledHomeContent>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
+        <a href="/home">
           <img src={brainerCoin} className="logo" alt="Vite logo" />
         </a>
       </div>
       <h1>BRAINER</h1>
-      <p className="read-the-docs">
-        ARE YOU A NO BRAINER ?
-      </p>
+
       <div className="card">
         <StyledButton onClick={() => navigate('/home')}>
           JOIN THE COMMUNITY
