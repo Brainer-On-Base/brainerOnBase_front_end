@@ -25,6 +25,8 @@ export default function WelcomeSection() {
     <img src="rocket.png" className="baloon"/>
 
     <div className="home-text-container">
+      <h1>BRAINER</h1>
+      <h1>ON BASE</h1>
       <h1 className={'animate__animated animate__backInRight'}>ARE YOU A NO <span>BRAINER</span>?</h1>
       <StyledButton size={'2em'} className={'animate__animated animate__bounceIn animate__delay-1s'}>
         GET PRE SALE

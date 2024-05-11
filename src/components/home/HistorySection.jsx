@@ -21,9 +21,8 @@ export default function HistorySection() {
         <NightBackground/>
     </Canvas>
     <StyledFlexFullCenterContainer style={{height: 'auto', flexDirection:'column'}}>
+        <h1>OUR HISTORY</h1>
         <img src="./history.png" className="astronaut" />
-        <h1>BRAINER</h1>
-        <h1>ON BASE</h1>
     </StyledFlexFullCenterContainer>
 
 

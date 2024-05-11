@@ -77,10 +77,6 @@ export const StyledHomeContent = styled('div')`
         line-height: 1.1;
         transition: filter 300ms;
       }
-      
-
-
-
 `
 
 
@@ -91,7 +87,7 @@ export const StyledNavbarContainer = styled('div')`
     justify-content: space-between;
     position: absolute;
     top: 0;
-        z-index: 9999;
+    z-index: 99999999999;
 
 
     img{
@@ -155,13 +151,30 @@ export const StyledWelcomeSection = styled('div')`
         flex-direction: column;
         margin-bottom: 6em;
         z-index: 9999;
+        
         h1{
             font-size: 6em;
             line-height: 1.1;
             transition: filter 300ms;
             font-family: "Luckiest Guy", cursive;
-            color: #888;
+            text-shadow: 0 .0377358491em 0 #000, .0125786164em .0377358491em 0 #000, .0125786164em -.0125786164em 0 #000, -.0125786164em .0125786164em 0 #000, -.0125786164em -.0125786164em;
 
+            &:nth-of-type(1){
+                margin-top: 80px;
+                font-size: 150px;
+                color: #ff437d;
+            }
+            &:nth-of-type(2){
+                margin-top: -120px;
+                font-size: 80px;
+                color: #88;
+                color: white;
+            }
+            &:nth-of-type(3){
+                text-shadow: none;
+                font-size: 80px;
+                color: #888;
+            }
 
             span{
                 font-family: "Luckiest Guy", cursive;
@@ -172,7 +185,6 @@ export const StyledWelcomeSection = styled('div')`
 
         button{
             filter: drop-shadow(0 0 5em #c464ffaa);
-
         }
 
     }
@@ -186,7 +198,8 @@ export const StyledWelcomeSection = styled('div')`
 
 
     .moon{
-        right: 120px;
+        top: 120px;
+        right: 50px;
         animation: rotate 8s infinite alternate;
     }
 
@@ -194,49 +207,13 @@ export const StyledWelcomeSection = styled('div')`
         width: 280px;
         z-index: 99999;
         left: 0;
-        // transform: scaleX(-1);
         animation: fly 4s infinite alternate;
-
     }
 
-    .bubble{
-        bottom: 60px !important;
-        left: 320px !important;
-
-        &:after{
-            left: -8px !important;
-            top: 10px !important;
-            background-color: #fff;
-            box-shadow: 0 4px #000, 0 8px #000, 0 12px #000, 0 16px #000, -4px 12px #000, -8px 8px #000, -12px 4px #000, -4px 4px #fff, -8px 4px #fff, -4px 8px #fff, -4px 0 #fff, -8px 0 #fff, -12px 0 #fff;
-            transform: rotate(120deg); /* Rotar el piquito */
-    
-        }
-    }
 
     @media(max-width: 1300px){
         .home-text-container{
             align-items: center;
-
-            h1{
-                margin-right: 0;
-            }
-            button{
-                margin-right: 0;
-            }
-    
-        }
-        .bubble{
-            bottom: 50px !important;
-            left: 220px !important;
-
-            &:after{
-                left: -8px !important;
-                top: 10px !important;
-                background-color: #fff;
-                box-shadow: 0 4px #000, 0 8px #000, 0 12px #000, 0 16px #000, -4px 12px #000, -8px 8px #000, -12px 4px #000, -4px 4px #fff, -8px 4px #fff, -4px 8px #fff, -4px 0 #fff, -8px 0 #fff, -12px 0 #fff;
-                transform: rotate(90deg); /* Rotar el piquito */
-        
-            }
         }
         img{
             width: 250px;
@@ -244,48 +221,77 @@ export const StyledWelcomeSection = styled('div')`
     }
 
     @media(max-width: 1050px){
-        .home-text-container{
-            h1{
-                font-size: 4em;
-            }
-        }
-
         .moon{
             right: 40px;
+            top: 200px;
             animation: rotate 8s infinite alternate;
         }
-    }
-    @media(max-width: 900px){
-        .home-text-container{
-            h1{
-                font-size: 3em;
-            }
-        }
-    }
-    @media(max-width: 900px){
-        .baloon{
+
+        .baloon {
             display: none;
         }
     }
-
-    @media(max-width: 550px){
+    @media(max-width: 900px){
         .home-text-container{
-
             h1{
-                font-size: 2em;
+                &:nth-of-type(1){
+                    margin-top: 80px;
+                    font-size: 120px;
+                    color: #ff437d;
+                }
+                &:nth-of-type(2){
+                    margin-top: -100px;
+                    font-size: 50px;
+                    color: #88;
+                    color: white;
+                }
+                &:nth-of-type(3){
+                    text-shadow: none;
+                    font-size: 60px;
+                    color: #888;
+                }
+            }
+        }
+        .moon{
+            width: 150px;
+            right: 40px;
+            top: 460px !important;
+            animation: rotate 8s infinite alternate;
+        }
+
+    }
+
+    @media(max-width: 650px){
+        .moon{
+            display: none;
+        }
+        .home-text-container{
+            h1{
+                &:nth-of-type(1){
+                    margin-top: 100px;
+                    font-size: 100px;
+                    color: #ff437d;
+                }
+                &:nth-of-type(2){
+                    margin-top: -80px;
+                    font-size: 50px;
+                    color: #88;
+                    color: white;
+                }
+                &:nth-of-type(3){
+                    text-shadow: none;
+                    font-size: 30px;
+                    color: #888;
+                }
             }
 
             button{
-                margin-right: 0;
+                margin-top: 2em;
             }
-    
-        }
-        .bubble{
-            bottom: 20px !important;
-            left: 160px !important;
-            width: auto;
         }
     }
+
+
 
 
 `
@@ -312,22 +318,21 @@ export const StyledHistorySection = styled('div')`
         margin: 0;
         font-family: "Luckiest Guy", cursive;
         z-index: 9999;
+        text-shadow: 0 .0377358491em 0 #000, .0125786164em .0377358491em 0 #000, .0125786164em -.0125786164em 0 #000, -.0125786164em .0125786164em 0 #000, -.0125786164em -.0125786164em;
 
 
         &:nth-of-type(1){
-            margin-top: -140px;
+            margin-top: -100px;
             font-size: 150px;
             // color: #e72eff;
             color: #ff437d;
 
         }
         &:nth-of-type(2){
-            margin-top: -120px;
-            font-size: 100px;
+            margin-top: -80px;
+            font-size: 80px;
             color: #88;
             color: white;
-
-
         }
     }
 
