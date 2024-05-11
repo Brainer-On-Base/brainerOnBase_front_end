@@ -12,8 +12,6 @@ function App() {
   const {useTextModal} = useModals()
   const navigate = useNavigate()
 
-
-
   return (
     <StyledInitAppContainer>
       <Canvas

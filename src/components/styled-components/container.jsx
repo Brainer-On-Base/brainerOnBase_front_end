@@ -28,7 +28,7 @@ export const StyledFlexBetweenContainer = styled('div')`
 
 export const StyledAppContainer = styled('div')`
     width: 100%;
-    min-height: 100vh;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -183,12 +183,19 @@ export const StyledWelcomeSection = styled('div')`
           }
     }
 
+
+    .moon{
+        right: 120px;
+        animation: rotate 8s infinite alternate;
+
+    }
+
     .baloon{
         width: 280px;
         z-index: 99999;
         left: 0;
         // transform: scaleX(-1);
-        animation: fly 5s infinite alternate;
+        animation: fly 4s infinite alternate;
 
     }
 
@@ -282,14 +289,17 @@ export const StyledHistorySection = styled('div')`
     position: relative;
     width: 100%;
 
-    img{
+    .astronaut{
         width: 350px;
+        animation: fly_short 4s infinite alternate;
+
     }
 
 
     h1{
         margin: 0;
         font-family: "Luckiest Guy", cursive;
+        z-index: 9999;
 
         &:nth-of-type(1){
             margin-top: -140px;

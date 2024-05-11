@@ -59,23 +59,32 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-@keyframes despegue {
-  0%, 100% {
-    transform: translate(0, 20%); /* Empieza y termina en el centro horizontal */
-  }
-  50% {
-    transform: translate(-20%, -40%); /* Mueve hacia arriba y a la izquierda */
-    opacity: 1; /* Se vuelve visible */
-  }
-}
-
-
 @keyframes fly {
   0% {
     transform: translateY(0);
   }
   100% {
     transform: translateY(-70%);
+  }
+}
+
+@keyframes fly_short {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-15%);
+  }
+}
+
+
+
+@keyframes rotate {
+  0% {
+    transform: rotate(10deg) translateY(-5%);
+  }
+  100% {
+    transform: rotate(-20deg) ;
   }
 }
 

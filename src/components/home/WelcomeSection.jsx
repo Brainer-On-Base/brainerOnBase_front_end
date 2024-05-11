@@ -4,6 +4,7 @@ import { StyledButton } from "../styled-components/buttons";
 import BubbleDialog from "../BubbleDialog";
 import NightBackground from "../NIghtBackground";
 import { Canvas } from "@react-three/fiber";
+import { Perf } from "r3f-perf";
 
 export default function WelcomeSection() {
   const [activeBubble, setActiveBubble] = useState(false);
@@ -18,10 +19,9 @@ export default function WelcomeSection() {
       return () => clearTimeout(timeoutId);
     }, []); // Ejecutar solo una vez al montar el componente
 
-
   return <StyledWelcomeSection style={{alignItems:'flex-start', overflow: 'hidden'}}>
-    {/* <Canvas
-        style={{ width: '100%', height: '100%', position: 'absolute', zIndex: 1 }}
+      <Canvas
+        style={{ width: '100%', height: '100%', position: 'absolute', zIndex: 1, top: 0, bottom: 0 }}
         camera={ {
               fov: 45,
               near: 0.1,
@@ -29,10 +29,9 @@ export default function WelcomeSection() {
               position: [ 0, 0, 6 ]
           } }
         >
-        <ambientLight intensity={ 1.5 } />
         <NightBackground/>
-    </Canvas> */}
-
+    </Canvas>
+    <img src="moon.png" className="moon"/>
     <img src="rocket.png" className="baloon"/>
 
     <div className="home-text-container">
