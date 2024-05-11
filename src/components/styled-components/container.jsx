@@ -106,12 +106,18 @@ export const StyledNavbarContainer = styled('div')`
           }
     }
 
-    h1 {
+    a {
         font-size: 2.5em;
         line-height: 1.1;
-        transition: filter 300ms;
+        transition: all 300ms;
         font-family: "Luckiest Guy", cursive;
         color: #888;
+        text-decoration: none;
+
+        &:hover{
+            color: white;
+            cursor: pointer;
+        }
 
       }
 
@@ -299,7 +305,7 @@ export const StyledWelcomeSection = styled('div')`
 
 
 export const StyledHistorySection = styled('div')`
-    height: 100vh;
+    height: 120vh;
     display: flex;
     padding-top: 2.5em;
     align-items: flex-start;

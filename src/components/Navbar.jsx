@@ -10,8 +10,8 @@ export default function Navbar() {
     return (
         <StyledNavbarContainer>
             <StyledFlexCenterContainer>
-                <img src="./brainerCoin.png" onClick={() => navigate('/')} style={{cursor:'pointer'}}/>
-                <h1>BRAINER</h1>
+                <img src="./brainerCoin.png" onClick={() => navigate('/home')} style={{cursor:'pointer'}}/>
+                <a href="#bubbletokenomics">TOKENOMICS</a>
             </StyledFlexCenterContainer>
             <StyledFlexCenterContainer style={{width: 'auto', margin: '2em'}}>
                 <FontAwesomeIcon icon={faTelegram} size="1x" title="Join our Telegram"/>
