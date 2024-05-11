@@ -23,6 +23,7 @@ export default function HistorySection() {
     <StyledFlexFullCenterContainer style={{height: 'auto', flexDirection:'column'}}>
         <img src="./history.png" className="astronaut" />
         <h1>BRAINER</h1>
+        <h1>ON BASE</h1>
     </StyledFlexFullCenterContainer>
 
 

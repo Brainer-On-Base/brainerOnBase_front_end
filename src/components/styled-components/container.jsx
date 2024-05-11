@@ -243,16 +243,28 @@ export const StyledWelcomeSection = styled('div')`
         }
     }
 
+    @media(max-width: 1050px){
+        .home-text-container{
+            h1{
+                font-size: 4em;
+            }
+        }
+
+        .moon{
+            right: 40px;
+            animation: rotate 8s infinite alternate;
+        }
+    }
     @media(max-width: 900px){
         .home-text-container{
-
             h1{
                 font-size: 3em;
             }
-    
         }
-        .bubble{
-            width: auto;
+    }
+    @media(max-width: 900px){
+        .baloon{
+            display: none;
         }
     }
 
@@ -305,13 +317,15 @@ export const StyledHistorySection = styled('div')`
         &:nth-of-type(1){
             margin-top: -140px;
             font-size: 150px;
-            color: #e72eff;
+            // color: #e72eff;
+            color: #ff437d;
+
         }
         &:nth-of-type(2){
-            margin-top: -40px;
-            font-size: 80px;
-            color: #888;
-            color: #ff437d;
+            margin-top: -120px;
+            font-size: 100px;
+            color: #88;
+            color: white;
 
 
         }
@@ -453,7 +467,6 @@ export const StyledTokenomicsSection = styled('div')`
 
 
 export const StyledCard = styled('div')`
-    user-select: none;
     border-radius: 8px;
     border: 2px solid transparent;
     padding: 0.6em 1.2em;
