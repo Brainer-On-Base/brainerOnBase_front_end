@@ -313,19 +313,12 @@ export const StyledHistorySection = styled('div')`
     justify-content: flex-start;
     position: relative;
     width: 100%;
-
     .astronaut{
         width: 350px;
         animation: fly_short 3.5s infinite alternate;
         // filter: drop-shadow(0 0 2em #c464ffaa);
-
     }
 
-    .path {
-        stroke-dasharray: 1000;
-        stroke-dashoffset: 1000;
-        animation: dash 5s linear forwards;
-      }
 
 
     h1{
@@ -335,9 +328,6 @@ export const StyledHistorySection = styled('div')`
         text-shadow: 0 .0377358491em 0 #000, .0125786164em .0377358491em 0 #000, .0125786164em -.0125786164em 0 #000, -.0125786164em .0125786164em 0 #000, -.0125786164em -.0125786164em;
         font-size: 150px;
         color: #ff437d;
-        // color: #e72eff;
-        // color: #888;
-
     }
 
 
@@ -359,6 +349,47 @@ export const StyledHistorySection = styled('div')`
         }
     }
 
+`
+
+
+export const StyledAstronautCard =  styled('div')`
+    position: absolute;
+    width: 450px;
+    height: auto;
+    border: 1px solid black;
+    background: #1a1a1a;
+    z-index: 999;
+    padding: 1em;
+    border-radius: 8px;
+    padding: 0.6em;
+    font-size: 1.5em;
+    font-weight: 500;
+    
+    h2{
+        font-family: "Luckiest Guy", cursive;
+        margin-top: 0;
+    }
+
+    p{
+        margin-top: 0;
+        font-size: 1em !important;
+        font-family: monospace;
+        line-height: 1.3em;
+    }
+`
+
+export const StyledAstronautCard1 = styled(StyledAstronautCard)`
+    top: 320px;
+    left: 40px;
+`
+export const StyledAstronautCard2 = styled(StyledAstronautCard)`
+    top: 320px;
+    right: 40px;
+`
+export const StyledAstronautCard3 = styled(StyledAstronautCard)`
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
 `
 
 
@@ -474,7 +505,6 @@ export const StyledTokenomicsSection = styled('div')`
 
 export const StyledCard = styled('div')`
     border-radius: 8px;
-    border: 2px solid transparent;
     padding: 0.6em 1.2em;
     font-size: 1.8em;
     font-weight: 500;

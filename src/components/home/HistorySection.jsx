@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyledFlexFullCenterContainer, StyledHistorySection } from "../styled-components/container";
+import { StyledAstronautCard, StyledAstronautCard1, StyledAstronautCard2, StyledAstronautCard3, StyledFlexFullCenterContainer, StyledHistorySection } from "../styled-components/container";
 import BubbleDialog from "../BubbleDialog";
 import { Canvas } from "@react-three/fiber";
 import NightBackground from "../NIghtBackground";
@@ -24,6 +24,19 @@ export default function HistorySection() {
         <h1>OUR HISTORY</h1>
         <img src="./history.png" className="astronaut" />
     </StyledFlexFullCenterContainer>
+
+    <StyledAstronautCard1>
+      <h2>4% TAX</h2>
+      <p> Funds collected are directed towards buybacks, ensuring liquidity and facilitating future listings to enhance its global accessibility and utility. </p>
+    </StyledAstronautCard1>
+    <StyledAstronautCard2>
+      <h2>4% TAX</h2>
+      <p> Funds collected are directed towards buybacks, ensuring liquidity and facilitating future listings to enhance its global accessibility and utility. </p>
+    </StyledAstronautCard2>
+    <StyledAstronautCard3>
+      <h2>LOCKED LP</h2>
+      <p>  </p>
+    </StyledAstronautCard3>
 
 
 
