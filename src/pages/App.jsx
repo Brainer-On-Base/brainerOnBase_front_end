@@ -7,6 +7,7 @@ import CoinRain from '../components/CoinRain'
 import { StyledAppContainer, StyledHomeContent, StyledInitAppContainer } from '../components/styled-components/container'
 import { useNavigate } from 'react-router-dom'
 import { StyledButton } from '../components/styled-components/buttons'
+import { View } from '@react-three/drei'
 
 function App() {
   const {useTextModal} = useModals()
@@ -14,7 +15,7 @@ function App() {
 
   return (
     <StyledInitAppContainer>
-      <Canvas
+      <View
         style={{ width: '100%', height: '100%', position: 'absolute', zIndex: 1 }}
         camera={ {
               fov: 45,
@@ -24,7 +25,7 @@ function App() {
           } }
         >
         <CoinRain/>
-    </Canvas>
+    </View>
     <StyledHomeContent>
       <div>
         <a href="/home">
