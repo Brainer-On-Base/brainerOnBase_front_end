@@ -213,6 +213,7 @@ export const StyledWelcomeSection = styled('div')`
         width: 280px;
         z-index: 99999;
         left: 0;
+        bottom: 0;
         animation: fly 4s infinite alternate;
     }
 
@@ -315,7 +316,7 @@ export const StyledHistorySection = styled('div')`
     width: 100%;
     .astronaut{
         width: 350px;
-        animation: fly_short 3.5s infinite alternate;
+        animation: fly_short 3.5s infinite alternate, fadeInUp 0.2s;
         // filter: drop-shadow(0 0 2em #c464ffaa);
     }
 
@@ -394,9 +395,9 @@ export const StyledAstronautCard2 = styled(StyledAstronautCard)`
     right: 40px;
 `
 export const StyledAstronautCard3 = styled(StyledAstronautCard)`
-    bottom: 20px;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    bottom: 100px;
+    left: 510px;
+
 `
 
 
