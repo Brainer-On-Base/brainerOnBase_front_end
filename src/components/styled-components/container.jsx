@@ -335,7 +335,7 @@ export const StyledHistorySection = styled('div')`
         width: 250px;
         position: absolute;
         right: 50px;
-        bottom: -180px;
+        bottom: -250px;
         transition: filter 300ms;
         z-index: 9999;
         animation: fly_short 2s infinite alternate;
@@ -375,6 +375,13 @@ export const StyledAstronautCard =  styled('div')`
         font-size: 1em !important;
         font-family: monospace;
         line-height: 1.3em;
+    }
+
+    span{
+        font-size: 25px;
+        font-family: "Luckiest Guy", cursive;
+        color: #ff437d;
+
     }
 `
 

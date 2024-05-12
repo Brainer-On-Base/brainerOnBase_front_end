@@ -21,21 +21,21 @@ export default function HistorySection() {
         <NightBackground/>
     </Canvas>
     <StyledFlexFullCenterContainer style={{height: 'auto', flexDirection:'column'}}>
-        <h1>OUR HISTORY</h1>
+        <h1>ABOUT</h1>
         <img src="./history.png" className="astronaut" />
     </StyledFlexFullCenterContainer>
 
     <StyledAstronautCard1>
       <h2>4% TAX</h2>
-      <p> Funds collected are directed towards buybacks, ensuring liquidity and facilitating future listings to enhance its global accessibility and utility. </p>
+      <p> Funds collected are directed towards <span>BUYBACKS</span>, ensuring liquidity and facilitating <span>FUTURE LISTINGS</span> to enhance its global accessibility and utility. </p>
     </StyledAstronautCard1>
     <StyledAstronautCard2>
-      <h2>4% TAX</h2>
-      <p> Funds collected are directed towards buybacks, ensuring liquidity and facilitating future listings to enhance its global accessibility and utility. </p>
+      <h2>WE ARE A FAMILY</h2>
+      <p>We prioritize your <span>VOICE</span> and <span>IDEAS</span> above all. Join us in building a vibrant ecosystem where every member plays a vital role in shaping our journey to the <span>MOON</span>.</p>
     </StyledAstronautCard2>
     <StyledAstronautCard3>
       <h2>LOCKED LP</h2>
-      <p>  </p>
+      <p> Our locked liquidity pool feature <span>SAFEGUARDS</span> investor assets by securely locking liquidity, promoting <span>CONFIDENCE</span> and <span>STABILITY</span> in the market.</p>
     </StyledAstronautCard3>
 
 
@@ -48,7 +48,7 @@ export default function HistorySection() {
           left: '240px'
         }}
         positionStyle={{
-          bottom: '40px',
+          bottom: '-20px',
           right: '40px'
         }}
         width="400px"
