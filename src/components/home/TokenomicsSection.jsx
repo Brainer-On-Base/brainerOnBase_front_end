@@ -23,7 +23,7 @@ const { isVisible } = handleAnimationScroll('.target')
       <div>
         <h2>COMMUNITY & REWARDS</h2>
         <p style={{marginTop: '-40px', marginBottom: '2em'}}>15% - 1.500.000.000</p>
-        <p>Join our <span>COMMUNITY</span> and participate in <span>AIRDROPS</span>! Explore various ways to <span>EARN TOKENS</span> creating engaging content, participating in contests, or spreading the word about our project. Be part of our growing ecosystem.</p>
+        <p>Join our <span>COMMUNITY</span> and participate in <span>AIRDROPS</span>! Explore various ways to <span>EARN TOKENS</span> creating engaging content, participating in contests, or spreading the word about our project. Be part of our <span>growing ecosystem</span>.</p>
       </div>
 
     </StyledCard>
