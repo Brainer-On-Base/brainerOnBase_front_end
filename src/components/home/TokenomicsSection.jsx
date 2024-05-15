@@ -11,33 +11,23 @@ const { isVisible } = handleAnimationScroll('.target')
     <StyledCard className={`animate__animated ${isVisible[0] ? 'animate__backInLeft' : ''} target`} style={{visibility: isVisible[0] ? 'visible' : 'hidden'}}>
       <div>
         <h2>LIQUIDITY & MARKETS</h2>
-        <p style={{marginTop: '-40px', marginBottom: '2em'}}>45% - 4.500.000.000</p>
+        <p style={{marginTop: '-40px', marginBottom: '2em'}}>60% - 6.000.000.000</p>
         <p>Liquidity and accessibility! We allocate a significant portion of our token supply to ensure ample liquidity on exchanges. 
         This facilitates <span>SMOOTH TRADING EXPERIENCES</span> for our users and supports the growth of our token in various markets.</p>
       </div>
       <img src="./trading.png"/>
     </StyledCard>
-    <StyledCard className={`animate__animated ${isVisible[1] ? 'animate__backInRight' : ''} target`} style={{visibility: isVisible[1] ? 'visible' : 'hidden'}}>
-      <img src="./rewards.png"/>
-      <div>
-        <h2>INCENTIVES & REWARDS</h2>
-        <p style={{marginTop: '-40px', marginBottom: '2em'}}>15% - 1.500.000.000</p>
-        <p><span>EARN rewards</span> for your contributions! Whether you're creating engaging content, participating in contests, or spreading the word about our project,
-            we want to reward you for your efforts. Explore various ways to <span>EARN TOKENS</span> and be part of our growing ecosystem.</p>
-      </div>
-    </StyledCard>
     
-    <StyledCard className={`animate__animated ${isVisible[2] ? 'animate__backInLeft' : ''} target`} style={{visibility: isVisible[2] ? 'visible' : 'hidden'}}>
-      <div>
-        <h2>COMMUNITY & DROPS</h2>
-        <p style={{marginTop: '-40px', marginBottom: '2em'}}>15% - 1.500.000.000</p>
-        <p>Join our <span>COMMUNITY</span> and participate in <span>AIRDROPS</span>! Get involved and receive tokens simply by being an active member of our <span>COMMUNITY</span>. 
-        Engage with fellow members, share your thoughts, and stay up-to-date with the latest developments.</p>
-      </div>
+    <StyledCard className={`animate__animated ${isVisible[1] ? 'animate__backInLeft' : ''} target`} style={{visibility: isVisible[1] ? 'visible' : 'hidden'}}>
       <img src="./rewards2.png"/>
+      <div>
+        <h2>COMMUNITY & REWARDS</h2>
+        <p style={{marginTop: '-40px', marginBottom: '2em'}}>15% - 1.500.000.000</p>
+        <p>Join our <span>COMMUNITY</span> and participate in <span>AIRDROPS</span>! Explore various ways to <span>EARN TOKENS</span> creating engaging content, participating in contests, or spreading the word about our project. Be part of our growing ecosystem.</p>
+      </div>
 
     </StyledCard>
-    <StyledCard className={`animate__animated ${isVisible[3] ? 'animate__backInRight' : ''} target`} style={{visibility: isVisible[3] ? 'visible' : 'hidden'}}>
+    <StyledCard className={`animate__animated ${isVisible[2] ? 'animate__backInRight' : ''} target`} style={{visibility: isVisible[2] ? 'visible' : 'hidden'}}>
       <img src="./development.png"/>
       <div>
         <h2>DEVELOPMENT TEAM</h2>
@@ -46,7 +36,7 @@ const { isVisible } = handleAnimationScroll('.target')
             With years of <span>EXPERIENCE</span> in the industry, they work tirelessly to deliver innovative solutions and drive the success of our platform.</p>
       </div>
     </StyledCard>
-    <StyledCard className={`animate__animated ${isVisible[4] ? 'animate__backInLeft' : ''} target`} style={{visibility: isVisible[4] ? 'visible' : 'hidden'}}>
+    <StyledCard className={`animate__animated ${isVisible[3] ? 'animate__backInLeft' : ''} target`} style={{visibility: isVisible[3] ? 'visible' : 'hidden'}}>
       <div>
         <h2>MARKETING & PROMOTION</h2>
         <p style={{marginTop: '-40px', marginBottom: '2em'}}>10% - 1.000.000.000</p>
@@ -55,7 +45,7 @@ const { isVisible } = handleAnimationScroll('.target')
       </div>
       <img src="./marketingBrain.png"/>
     </StyledCard>
-    <StyledCard className={`animate__animated ${isVisible[5] ? 'animate__backInRight' : ''} target`} style={{visibility: isVisible[5] ? 'visible' : 'hidden'}}>
+    <StyledCard className={`animate__animated ${isVisible[4] ? 'animate__backInRight' : ''} target`} style={{visibility: isVisible[4] ? 'visible' : 'hidden'}}>
       <img src="./burning.png"/>
       <div>
         <h2>TOKEN BURNING</h2>
