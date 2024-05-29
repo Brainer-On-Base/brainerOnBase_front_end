@@ -8,9 +8,9 @@ export default function Footer() {
         <span>BRAINER</span> is a meme cryptocurrency project with no intrinsic value or expectation of financial return. 
     </p>
     <p>
-        The <span>BRAINER</span> project is 100% community lead. The <span>BRAINER TOKEN</span> is completely for entertainment purposes only.
+        The <span>BRAINER</span> project is 100% community lead.
     </p>
-        <p>We're <span>BUILDING</span> for us</p>
+        <p>We're <span>BUILDING</span> for us.</p>
     <StyledFlexCenterContainer style={{justifyContent:'center'}}>
         <img src="./brainerCoin.png"/>
         <p id="copyright" style={{margin: '10px'}}>

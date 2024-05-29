@@ -5,3 +5,9 @@
     border-radius: 0;
     font-family: "Luckiest Guy", cursive;
   }
+
+
+.swal2-container{
+  z-index: 99999999999999999999;
+  overflow: hidden !important;
+}

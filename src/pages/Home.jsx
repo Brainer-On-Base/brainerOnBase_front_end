@@ -6,8 +6,12 @@ import Footer from "../components/Footer";
 import TokenomicsSection from "../components/home/TokenomicsSection";
 import HistorySection from "../components/home/HistorySection";
 import { useLocation } from "react-router-dom";
+import useModals from "../hooks/useSweetAlert";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCopy } from "@fortawesome/free-regular-svg-icons";
 
 export default function Home() {
+  const {copied,copyToClipboard} = useModals()
 
   const location = useLocation();
 
@@ -20,12 +24,15 @@ export default function Home() {
     }
   }, [location]);
 
+
   return <StyledAppContainer>
       <Navbar/>
       <WelcomeSection/>
       <StyledAddressContainer>
         <h3><span>$BNR</span> ADDRESS</h3>
-        <p>XXXAA0000XXXXX</p>
+        <p onClick={() => copyToClipboard('0x5b8BB48898b67c3481677c5Ac462786c18Db11F6')}>
+          <FontAwesomeIcon icon={faCopy} style={{marginRight: '20px'}}/>
+          0x5b8BB48898b67c3481677c5Ac462786c18Db11F6</p>
       </StyledAddressContainer>
       <HistorySection/>
       <TokenomicsSection/>

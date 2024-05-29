@@ -144,7 +144,7 @@ export const StyledNavbarContainer = styled('div')`
 
 
 export const StyledAddressContainer = styled('div')`
-    width: 100%;
+    width: 50%;
     background-color: transparent;
     display: flex;
     align-items: center;
@@ -161,11 +161,14 @@ export const StyledAddressContainer = styled('div')`
     }
 
     p{
+        display: flex;
+        align-items: center;
         font-weight:bold;
         font-family: monospace;
         font-size: 40px;
         color: #ff437d;
         margin: 0;
+        cursor: pointer;
     }
 
 `

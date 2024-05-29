@@ -1,8 +1,9 @@
 import Swal from "sweetalert2";
 import './sweetAlertClasses.css'
+import { useCallback, useState } from "react";
 
 export default function useModals () {
-
+    const [copied, setCopied] = useState(false);
     const useTextModal = async ({text,title, confirmButtonColor, textColor, onConfirmFunction}) => {
         Swal.fire({
             text: text,
@@ -73,10 +74,48 @@ export default function useModals () {
             onConfirmFunction(result.value);  
         }
     };
+    const copyToClipboard = useCallback((text) => {
+        navigator.clipboard.writeText(text).then(
+          () => {
+            setCopied(true);
+            Swal.fire({
+              toast: true,
+              position: 'bottom',
+              icon: 'success',
+              title: 'Contract copied!',
+              showConfirmButton: false,
+              timer: 5000,
+              timerProgressBar: true,
+              showClass: {
+                popup: `
+                  animate__animated
+                  animate__fadeInUp
+                  animate__faster
+                `
+            },
+            hideClass: {
+                popup: `
+                  animate__animated
+                  animate__fadeOutDown
+                  animate__faster
+                `
+            },
 
+            });
+            setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
+          },
+          (err) => {
+            console.error('Could not copy text: ', err);
+          }
+        );
+    }, []);
+    
+    
    
     return {
         useTextModal,
-        useInputModal
+        useInputModal,
+        copied,
+        copyToClipboard
     }
 }
