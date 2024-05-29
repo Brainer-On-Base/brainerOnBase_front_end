@@ -31,7 +31,7 @@ export default function HistorySection() {
       <h2>WE ARE A FAMILY</h2>
       <p>We prioritize your <span>VOICE</span> and <span>IDEAS</span> above all. Join us in building a vibrant community where every member plays a vital role in our journey to the <span>MOON</span>.</p>
     </StyledAstronautCard2>
-    <StyledAstronautCard3 className={`animate__animated ${isVisible[4] ? 'animate__backInUp' : ''} animations`} style={{visibility: isVisible[4] ? 'visible' : 'hidden'}}>
+    <StyledAstronautCard3 className={`animate__animated ${isVisible[3] ? 'animate__backInUp' : ''} animations`} style={{visibility: isVisible[3] ? 'visible' : 'hidden'}}>
       <h2>LOCKED LP</h2>
       <p> Our locked liquidity pool feature <span>SAFEGUARDS</span> investor assets by securely locking liquidity, promoting <span>CONFIDENCE</span> and <span>STABILITY</span> in the market.</p>
     </StyledAstronautCard3>

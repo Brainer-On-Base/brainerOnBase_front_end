@@ -141,6 +141,34 @@ export const StyledNavbarContainer = styled('div')`
 `
 
 
+export const StyledAddressContainer = styled('div')`
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: black;
+    font-family: "Luckiest Guy", cursive;
+    z-index: 999999;
+
+    h3{
+        font-size: 40px;
+        margin: 0;
+        color: white;
+    }
+
+    p{
+        font-weight:bold;
+        font-family: monospace;
+        font-size: 40px;
+        color: #ff437d;
+        margin: 0;
+    }
+
+`
+
+
 export const StyledWelcomeSection = styled('div')`
     display: flex;
     flex-direction: column;
@@ -303,6 +331,147 @@ export const StyledWelcomeSection = styled('div')`
 
 `
 
+export const StyledWelcomeSection2 = styled('div')`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #230f44, #242424);
+    background-size: cover;
+    .home-text-container{
+        margin-top: 4em;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        margin-bottom: 6em;
+        z-index: 9999;
+        
+        h1{
+            font-size: 2em;
+            line-height: 1.1;
+            transition: filter 300ms;
+            font-family: "Luckiest Guy", cursive;
+            text-shadow: 0 .0377358491em 0 #000, .0125786164em .0377358491em 0 #000, .0125786164em -.0125786164em 0 #000, -.0125786164em .0125786164em 0 #000, -.0125786164em -.0125786164em;
+
+            &:nth-of-type(1){
+                margin-top: 80px;
+                font-size: 140px;
+                color: #ff437d;
+            }
+            &:nth-of-type(2){
+                margin-top: -120px;
+                font-size: 60px;
+                color: #88;
+                color: white;
+            }
+            &:nth-of-type(3){
+                text-shadow: none;
+                font-size: 60px;
+                color: #888;
+            }
+
+            span{
+                font-family: "Luckiest Guy", cursive;
+                color: #ff437d;
+                
+            }
+        }
+
+        button{
+            filter: drop-shadow(0 0 5em #c464ffaa);
+        }
+
+    }
+    img{
+        width: 350px;
+        transition: filter 300ms;
+        z-index: 9999 !important;
+    }
+
+
+    @media(max-width: 1300px){
+        .home-text-container{
+            align-items: center;
+        }
+    }
+
+    @media(max-width: 1050px){
+        .home-text-container{
+            margin-top: 8em;
+            text-align: center;
+            flex-direction: column;
+        }
+        .moon{
+            animation: rotate 8s infinite alternate;
+        }
+    }
+
+    @media(max-width: 900px){
+        .home-text-container{
+            h1{
+                &:nth-of-type(1){
+                    margin-top: 80px;
+                    font-size: 120px;
+                    color: #ff437d;
+                }
+                &:nth-of-type(2){
+                    margin-top: -100px;
+                    font-size: 50px;
+                    color: #88;
+                    color: white;
+                }
+                &:nth-of-type(3){
+                    text-shadow: none;
+                    font-size: 60px;
+                    color: #888;
+                }
+            }
+        }
+        .moon{
+            width: 300px;
+            animation: rotate 8s infinite alternate;
+        }
+
+    }
+
+    @media(max-width: 650px){
+        .moon{
+            display: none;
+        }
+        .home-text-container{
+            h1{
+                &:nth-of-type(1){
+                    margin-top: 100px;
+                    font-size: 100px;
+                    color: #ff437d;
+                }
+                &:nth-of-type(2){
+                    margin-top: -80px;
+                    font-size: 50px;
+                    color: #88;
+                    color: white;
+                }
+                &:nth-of-type(3){
+                    text-shadow: none;
+                    font-size: 30px;
+                    color: #888;
+                }
+            }
+
+            button{
+                margin-top: 2em;
+            }
+        }
+    }
+
+
+
+
+`
+
 
 
 export const StyledHistorySection = styled('div')`
@@ -402,7 +571,7 @@ export const StyledAstronautCard3 = styled(StyledAstronautCard)`
 
 
 export const StyledFooterSection = styled('div')`
-  background-color: #242424;
+  background-color: #1a1a1a;
 
     width: 100%;
     display: flex;

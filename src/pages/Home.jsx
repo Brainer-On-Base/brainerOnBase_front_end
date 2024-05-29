@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { StyledAppContainer } from "../components/styled-components/container";
+import { StyledAddressContainer, StyledAppContainer } from "../components/styled-components/container";
 import Navbar from "../components/Navbar";
 import WelcomeSection from "../components/home/WelcomeSection";
 import Footer from "../components/Footer";
@@ -12,6 +12,10 @@ export default function Home() {
   return <StyledAppContainer>
       <Navbar/>
       <WelcomeSection/>
+      <StyledAddressContainer>
+        <h3><span>$BNR</span> ADDRESS</h3>
+        <p>XXXAA0000XXXXX</p>
+      </StyledAddressContainer>
       <HistorySection/>
       <TokenomicsSection/>
       <Footer/>
