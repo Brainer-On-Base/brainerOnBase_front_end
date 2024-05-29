@@ -11,7 +11,7 @@ export default function HistorySection() {
   const {isVisible} = handleAnimationScroll('.animations')
 
   
-  return <StyledHistorySection>
+  return <StyledHistorySection id="history">
           <View
         style={{ width: '100%', height: '100%', position: 'absolute', zIndex: 1, top: 0, bottom: 0 }}
         >
