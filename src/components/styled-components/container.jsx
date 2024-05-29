@@ -81,18 +81,19 @@ export const StyledHomeContent = styled('div')`
 
 
 export const StyledNavbarContainer = styled('div')`
-    width: 100%;
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: absolute;
     top: 0;
     z-index: 99999999999;
+    margin: 0 auto;
 
 
     img{
         width: 80px;
-        margin: 2em 1em 2em 2em;
+        margin: 2em 1em 2em 0;
         padding: 2px;
         will-change: filter;
         transition: filter 300ms;
@@ -107,12 +108,13 @@ export const StyledNavbarContainer = styled('div')`
     }
 
     a {
-        font-size: 2.5em;
+        font-size: 2em;
         line-height: 1.1;
         transition: all 300ms;
         font-family: "Luckiest Guy", cursive;
         color: #888;
         text-decoration: none;
+        margin-right: 20px;
 
         &:hover{
             color: white;
@@ -406,6 +408,7 @@ export const StyledWelcomeSection2 = styled('div')`
             flex-direction: column;
         }
         .moon{
+            margin-top: 1em;
             animation: rotate 8s infinite alternate;
         }
     }
