@@ -344,7 +344,7 @@ export const StyledWelcomeSection2 = styled('div')`
         height: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-evenly;
         flex-direction: row;
         margin-bottom: 6em;
         z-index: 9999;
@@ -386,9 +386,10 @@ export const StyledWelcomeSection2 = styled('div')`
 
     }
     img{
-        width: 350px;
+        width: 400px;
         transition: filter 300ms;
         z-index: 9999 !important;
+        animation: rotate 8s infinite alternate;
     }
 
 
@@ -400,7 +401,7 @@ export const StyledWelcomeSection2 = styled('div')`
 
     @media(max-width: 1050px){
         .home-text-container{
-            margin-top: 8em;
+            margin-top: 4em;
             text-align: center;
             flex-direction: column;
         }
