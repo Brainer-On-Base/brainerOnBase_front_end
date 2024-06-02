@@ -340,7 +340,7 @@ export const StyledWelcomeSection2 = styled('div')`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background-image: linear-gradient(to bottom, #230f44, #242424);
     background-size: cover;
     .home-text-container{
@@ -445,9 +445,6 @@ export const StyledWelcomeSection2 = styled('div')`
     }
 
     @media(max-width: 650px){
-        .moon{
-            display: none;
-        }
         .home-text-container{
             h1{
                 &:nth-of-type(1){
