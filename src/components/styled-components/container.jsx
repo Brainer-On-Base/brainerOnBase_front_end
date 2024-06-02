@@ -81,7 +81,7 @@ export const StyledHomeContent = styled('div')`
 
 
 export const StyledNavbarContainer = styled('div')`
-    width: 80%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -107,14 +107,14 @@ export const StyledNavbarContainer = styled('div')`
           }
     }
 
-    a {
+    .navbaritems {
         font-size: 2em;
         line-height: 1.1;
         transition: all 300ms;
         font-family: "Luckiest Guy", cursive;
         color: #888;
         text-decoration: none;
-        margin-right: 20px;
+        margin-right: 2px;
 
         &:hover{
             color: white;
