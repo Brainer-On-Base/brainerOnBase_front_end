@@ -28,10 +28,10 @@ function Navbar() {
       name: 'SWAP',
       navigate: '/home#swap',
     },
-    {
-      name: 'MERCH',
-      navigate: '/shop',
-    },
+    // {
+    //   name: 'MERCH',
+    //   navigate: '/shop',
+    // },
     {
       name: 'GAME',
       navigate: '/game',
@@ -58,7 +58,7 @@ function Navbar() {
                 onClick={() => navigate('/home')}
                 style={{ cursor: 'pointer' }}
               />
-                <Typography onClick={() => navigate('/')} className="navbaritems" textAlign="center">BRAINER</Typography>
+                <Typography onClick={() => navigate('/home')} className="navbaritems" textAlign="center">BRAINER</Typography>
             </Stack>
           </Box>
 
