@@ -1,8 +1,6 @@
-import { useState } from 'react'
 import brainerCoin from '/brainerCoin.png'
 import './App.css'
 import useModals from '../hooks/useSweetAlert'
-import { Canvas } from '@react-three/fiber'
 import CoinRain from '../components/CoinRain'
 import { StyledAppContainer, StyledHomeContent, StyledInitAppContainer } from '../components/styled-components/container'
 import { useNavigate } from 'react-router-dom'
@@ -36,7 +34,7 @@ function App() {
 
       <div className="card">
         <StyledButton onClick={() => navigate('/home')}>
-          JOIN THE COMMUNITY
+          JOIN THE SOCIETY
         </StyledButton>
       </div>
       </StyledHomeContent>

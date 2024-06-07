@@ -417,6 +417,9 @@ export const StyledWelcomeSection2 = styled('div')`
         }
 
         button{
+            &:first-of-type{
+                margin-right: 10px;
+            }
             filter: drop-shadow(0 0 5em #c464ffaa);
         }
 
