@@ -144,7 +144,6 @@ export const StyledNavbarContainer = styled('div')`
 
 
 export const StyledAddressContainer = styled('div')`
-    width: 50%;
     background-color: transparent;
     display: flex;
     align-items: center;
@@ -153,23 +152,55 @@ export const StyledAddressContainer = styled('div')`
     color: black;
     font-family: "Luckiest Guy", cursive;
     z-index: 999999;
+    overflow: hidden;
+    margin-bottom: 1em;
 
     h3{
-        font-size: 40px;
+        font-size: 60px !important;
         margin: 0;
         color: white;
     }
 
     p{
+        width: 100%;
         display: flex;
+        jusitfy-content: center;
         align-items: center;
         font-weight:bold;
-        font-family: monospace;
+        font-family: "Luckiest Guy", cursive;
         font-size: 40px;
-        color: #ff437d;
         margin: 0;
         cursor: pointer;
+        color: #888;
+        transition: all 0.4s ease;
+        text-wrap: wrap !important;
+
+        &:hover{
+            color: #ff437d;
+        }
+
+        @media (max-width: 1200px) {
+            font-size: 2em;
+        }
+
+        @media (max-width: 992px) {
+            font-size: 1.8em;
+        }
+
+        @media (max-width: 768px) {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 576px) {
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 500px) {
+            font-size: 1em;
+        }
     }
+
+
 
 `
 
