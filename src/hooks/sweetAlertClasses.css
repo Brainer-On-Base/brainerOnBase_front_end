@@ -11,3 +11,7 @@
   z-index: 99999999999999999999;
   overflow: hidden !important;
 }
+
+div:where(.swal2-container) .swal2-html-container{
+  font-family: monospace;
+}

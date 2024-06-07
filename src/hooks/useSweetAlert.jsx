@@ -4,14 +4,15 @@ import { useCallback, useState } from "react";
 
 export default function useModals () {
     const [copied, setCopied] = useState(false);
-    const useTextModal = async ({text,title, confirmButtonColor, textColor, onConfirmFunction}) => {
+    const useTextModal = async ({text,title,textButton, confirmButtonColor, textColor, onConfirmFunction}) => {
         Swal.fire({
             text: text,
             title: title,
             showCancelButton: false,
-            confirmButtonText: 'Accept',
+            confirmButtonText: textButton ?? 'Accept',
             color: textColor ?? 'black',
-            confirmButtonColor: confirmButtonColor ?? '#43a1a2',
+            confirmButtonColor: confirmButtonColor ?? '#ff437d',
+            showCancelButton: true,
             background: 'rgb(255,255,255)',
             inputAutoFocus: false,
             focusConfirm: true,
@@ -110,12 +111,37 @@ export default function useModals () {
         );
     }, []);
     
+    const showPopUp = ({text, icon}) => {
+      return Swal.fire({
+        toast: true,
+        position: 'bottom',
+        icon: icon,
+        title: text,
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+      },
+      hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+      }})
+    }
     
    
     return {
         useTextModal,
         useInputModal,
         copied,
-        copyToClipboard
+        copyToClipboard,
+        showPopUp
     }
 }
