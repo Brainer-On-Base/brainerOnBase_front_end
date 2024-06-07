@@ -15,3 +15,20 @@
 div:where(.swal2-container) .swal2-html-container{
   font-family: monospace;
 }
+
+p{
+  margin: 0;
+}
+
+p:first-child{
+  color: #ff437d;
+
+  margin-bottom: 20px; 
+  
+}
+
+#colorpink{
+  font-family: "Luckiest Guy", cursive;
+  font-weight: bold;;
+  color: #ff437d;
+}

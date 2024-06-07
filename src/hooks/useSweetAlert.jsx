@@ -6,7 +6,7 @@ export default function useModals () {
     const [copied, setCopied] = useState(false);
     const useTextModal = async ({text,title,textButton, confirmButtonColor, textColor, onConfirmFunction}) => {
         Swal.fire({
-            text: text,
+            html: text,
             title: title,
             showCancelButton: false,
             confirmButtonText: textButton ?? 'Accept',

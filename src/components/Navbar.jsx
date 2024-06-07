@@ -22,12 +22,12 @@ function Navbar() {
     },
     {
       name: 'TOKENOMICS',
-      navigate: '/home#bubbletokenomics',
+      navigate: '/home#tokenomics',
     },
-    {
-      name: 'SWAP',
-      navigate: '/home#swap',
-    },
+    // {
+    //   name: 'SWAP',
+    //   navigate: '/home#swap',
+    // },
     // {
     //   name: 'MERCH',
     //   navigate: '/shop',

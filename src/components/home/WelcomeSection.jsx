@@ -31,8 +31,11 @@ export default function WelcomeSection() {
         className={'animate__animated animate__fadeIn animate__delay-2s'}
         onClick={() => useTextModal({
           textButton: 'JOIN SOCIETY',
-          title:'PRE SALE - 0.02 ETH',
-          text:`Get a spot on the pre-sale list and earn early access to our society, you're one step away from stopping being a no brainer. `, 
+          title:'PRE SALE',
+          text: `
+          <p>COST: 0.02 ETH</p>
+          <p>Get a spot on the <span id="colorpink">PRE SALE</span> list and earn early access to our <span id="colorpink">SOCIETY</span></p> 
+          <p>You're one step away from stopping being a <span id="colorpink">NO BRAINER</span>.</p>`, 
           textColor: 'white'
         })} 
         
