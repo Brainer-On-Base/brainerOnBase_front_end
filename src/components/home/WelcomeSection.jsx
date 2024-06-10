@@ -34,8 +34,8 @@ export default function WelcomeSection() {
           title:'PRE SALE',
           text: `
           <p>COST: 0.02 ETH</p>
-          <p>Get a spot on the <span id="colorpink">PRE SALE</span> list and earn early access to our <span id="colorpink">SOCIETY</span></p> 
-          <p>You're one step away from stopping being a <span id="colorpink">NO BRAINER</span>.</p>`, 
+          <p>Get a spot on the <span id="colorpink">PRE SALE</span> list and earn early access to our <span id="colorpink">SOCIETY</span>.</p> 
+          <p>You're one step away from stopping being a <span id="colorpink">NO BRAINER!</span></p>`, 
           textColor: 'white'
         })} 
         
