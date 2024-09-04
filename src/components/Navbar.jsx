@@ -13,8 +13,11 @@ import { useNavigate } from 'react-router-dom';
 import { StyledNavbarContainer } from './styled-components/container';
 import { Stack } from '@mui/material';
 
-function Navbar() {
+function Navbar({
+  setItem
+}) {
   const [anchorElNav, setAnchorElNav] = useState(null);
+
   const pages = [
     {
       name: 'ABOUT',
@@ -58,7 +61,7 @@ function Navbar() {
                 onClick={() => navigate('/home')}
                 style={{ cursor: 'pointer' }}
               />
-                <Typography onClick={() => navigate('/home')} className="navbaritems" textAlign="center">BRAINER</Typography>
+                <Typography onClick={() => {navigate('/home'), setItem('/home')}} className="navbaritems" textAlign="center">BRAINER</Typography>
             </Stack>
           </Box>
 
@@ -67,7 +70,7 @@ function Navbar() {
               <Button
                 className='navbaritems'
                 key={page.name}
-                onClick={() => navigate(page.navigate)}
+                onClick={() => {navigate(page.navigate), setItem(page.navigate)}}
               >
                 {page.name}
               </Button>
