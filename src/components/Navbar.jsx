@@ -14,14 +14,15 @@ import { StyledNavbarContainer } from './styled-components/container';
 import { Stack } from '@mui/material';
 
 function Navbar({
-  setItem
+  setItem,
+  item
 }) {
   const [anchorElNav, setAnchorElNav] = useState(null);
 
   const pages = [
     {
-      name: 'ABOUT',
-      navigate: '/home#history',
+      name: item === '/home' ? 'ABOUT' : 'HOME',
+      navigate: item === '/home' ? '/home#history' : '/home',
     },
     {
       name: 'TOKENOMICS',
@@ -70,7 +71,7 @@ function Navbar({
               <Button
                 className='navbaritems'
                 key={page.name}
-                onClick={() => {navigate(page.navigate), setItem(page.navigate)}}
+                onClick={() => {navigate(page.navigate), setItem(page.navigate !== '/home#tokenomics' ? page.navigate : item)}}
               >
                 {page.name}
               </Button>

@@ -166,13 +166,25 @@ export const StyledAddressContainer = styled('div')`
     z-index: 999999;
     overflow: hidden;
     margin-bottom: 1em;
+            cursor: pointer;
+    transition: all 0.4s ease;
 
     h3{
+    transition: all 0.4s ease;
+
         font-size: 60px !important;
         margin: 0;
+
         color: white;
     }
 
+    &:hover{
+        p{
+            color: #ff437d !important;
+        }
+        
+        filter: drop-shadow(0 0 1em #ff437d);
+    }
     p{
         width: 100%;
         display: flex;
@@ -187,9 +199,6 @@ export const StyledAddressContainer = styled('div')`
         transition: all 0.4s ease;
         text-wrap: wrap !important;
 
-        &:hover{
-            color: #ff437d;
-        }
 
         @media (max-width: 1200px) {
             font-size: 2em;
@@ -525,7 +534,7 @@ export const StyledWelcomeSection2 = styled('div')`
 
 
 export const StyledHistorySection = styled('div')`
-    height: 140vh;
+    height: 120vh;
     display: flex;
     padding-top: 1em;
     align-items: flex-start;
@@ -533,7 +542,10 @@ export const StyledHistorySection = styled('div')`
     justify-content: flex-start;
     position: relative;
     width: 100%;
+    background-image: linear-gradient(to bottom, #230f44, #242424);
     .astronaut{
+        filter: drop-shadow(0 0 5em #c464ffaa);
+
         width: 300px;
         animation: fly_short 3.5s infinite alternate, fadeInUp 0.2s;
         // filter: drop-shadow(0 0 2em #c464ffaa);
@@ -547,7 +559,18 @@ export const StyledHistorySection = styled('div')`
         text-shadow: 0 .0377358491em 0 #000, .0125786164em .0377358491em 0 #000, .0125786164em -.0125786164em 0 #000, -.0125786164em .0125786164em 0 #000, -.0125786164em -.0125786164em;
         font-size: 150px;
         color: #ff437d;
+        margin: 20px;
+
         
+    }
+
+    h3{
+        top: 100px;
+        color: white;
+        font-family: "Luckiest Guy", cursive;
+        font-size: 60px;
+        position: absolute;
+        z-index: 99999999;
     }
 
 
@@ -563,9 +586,23 @@ export const StyledHistorySection = styled('div')`
     }
 
 
-    @media(max-width: 1350px){
+    @media(max-width: 1200px){
+        justify-content: flex-between;
+        align-items: center;
+        
+        h1{
+            margin-top: 50px;
+        }
+
         img, #bubbletokenomics{ 
             display: none !important;
+        }
+    }
+
+    @media(max-width: 900px){
+        h1{
+            margin: 50px;
+            margin-bottom: 0;
         }
     }
 
@@ -603,6 +640,25 @@ export const StyledAstronautCard =  styled('div')`
         color: #ff437d;
 
     }
+
+    @media(max-width: 1300px){
+        font-size: 1em;
+        p{
+            marin-top: 0;
+            font-size: 1.5em !important;
+        }
+        span{
+            font-size: 20px;
+         }
+    }
+    @media(max-width: 1200px){
+        position: static;
+        margin: 0 1em 1em 1em;
+        width: 90%;
+
+    }
+
+
 `
 
 export const StyledAstronautCard1 = styled(StyledAstronautCard)`
@@ -615,9 +671,11 @@ export const StyledAstronautCard2 = styled(StyledAstronautCard)`
     top: 320px;
     right: 40px;
     animation: ${float} 4.5s ease-in-out infinite;
+
+    
 `
 export const StyledAstronautCard3 = styled(StyledAstronautCard)`
-    bottom: 240px;
+    bottom: 80px;
     left: 410px;
     animation: ${float} 5s ease-in-out infinite;
 `

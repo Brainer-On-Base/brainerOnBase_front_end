@@ -9,10 +9,12 @@ import { useLocation } from "react-router-dom";
 import useModals from "../hooks/useSweetAlert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
+import { View } from "@react-three/drei";
+import NightBackground from "../components/NIghtBackground";
 
 export default function Home() {
   const {copied,copyToClipboard} = useModals()
-  const [showHistory, setShowHistory] = useState('');
+  const [showHistory, setShowHistory] = useState('/home');
 
   const location = useLocation();
 
@@ -25,15 +27,19 @@ export default function Home() {
       }
     }
   }, [location]);
-  console.log(showHistory);
 
   return <StyledAppContainer>
-      <Navbar setItem={setShowHistory}/>
+      <Navbar setItem={setShowHistory} item={showHistory}/>
+      <View
+      style={{ width: '100%', height: '100%', position: 'absolute', zIndex: 1, top: 0, bottom: 0 }}
+    >
+      <NightBackground/>
+    </View>
       {showHistory === '/home' && <WelcomeSection/>}
       {showHistory === '/home#history' && <HistorySection/>}
-      <StyledAddressContainer>
+      <StyledAddressContainer onClick={() => copyToClipboard('0x5b8BB48898b67c3481677c5Ac462786c18Db11F6')}>
         <h3><span>$BNR</span> ADDRESS</h3>
-        <p onClick={() => copyToClipboard('0x5b8BB48898b67c3481677c5Ac462786c18Db11F6')}>
+        <p>
           <FontAwesomeIcon icon={faCopy} style={{marginRight: '20px'}}/>
           0x5b8BB48898b67c3481677c5Ac462786c18Db11F6</p>
       </StyledAddressContainer>
