@@ -7,17 +7,14 @@ import { View } from "@react-three/drei";
 export default function HistorySection() {
 
 return <StyledHistorySection id="history">
-    <View
-      style={{ width: '100%', height: '100%', position: 'absolute', zIndex: 1, top: 0, bottom: 0 }}
-    >
-      <NightBackground/>
-    </View>
+
     <StyledFlexFullCenterContainer style={{height: 'auto', flexDirection:'column'}}>
         <h1  className={`animate__animated animate__fadeInDown animations`} >ABOUT</h1>
+        {/* <h3  className={`animate__animated animate__fadeInDown animations`} >BRAINER</h3> */}
         <img src="./history.png" className={`animate__animated astronaut animations`} />
     </StyledFlexFullCenterContainer>
 
-    <StyledAstronautCard1 className={`animate__animated animate__backInLeft animations`} >
+    <StyledAstronautCard1 className={`animate__animated animate__backInLeft animations `} >
       <h2>4% TAX</h2>
       <p> Funds collected are directed towards <span>BUYBACKS</span>, ensuring liquidity and facilitating <span>FUTURE LISTINGS</span> to enhance its global accessibility and utility. </p>
     </StyledAstronautCard1>

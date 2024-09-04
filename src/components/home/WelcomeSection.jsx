@@ -13,12 +13,7 @@ export default function WelcomeSection() {
 
 
   return <StyledWelcomeSection2 style={{alignItems:'flex-start'}}>
-      <View
-        style={{ width: '100%', height: '100%', position: 'absolute', zIndex: 1, top: 0, bottom: 0 }}
 
-        >
-        <NightBackground/>
-    </View>
     {/* <img src="rocket.png" className="baloon"/> */}
 
     <div className="home-text-container">
