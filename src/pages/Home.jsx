@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { StyledAddressContainer, StyledAppContainer } from "../components/styled-components/container";
 import Navbar from "../components/Navbar";
 import WelcomeSection from "../components/home/WelcomeSection";
@@ -12,8 +12,10 @@ import { faCopy } from "@fortawesome/free-regular-svg-icons";
 
 export default function Home() {
   const {copied,copyToClipboard} = useModals()
+  const [showHistory, setShowHistory] = useState('');
 
   const location = useLocation();
+
 
   useEffect(() => {
     if (location.hash) {
@@ -23,18 +25,19 @@ export default function Home() {
       }
     }
   }, [location]);
-
+  console.log(showHistory);
 
   return <StyledAppContainer>
-      <Navbar/>
-      <WelcomeSection/>
+      <Navbar setItem={setShowHistory}/>
+      {showHistory === '/home' && <WelcomeSection/>}
+      {showHistory === '/home#history' && <HistorySection/>}
       <StyledAddressContainer>
         <h3><span>$BNR</span> ADDRESS</h3>
         <p onClick={() => copyToClipboard('0x5b8BB48898b67c3481677c5Ac462786c18Db11F6')}>
           <FontAwesomeIcon icon={faCopy} style={{marginRight: '20px'}}/>
           0x5b8BB48898b67c3481677c5Ac462786c18Db11F6</p>
       </StyledAddressContainer>
-      {/* <HistorySection/> */}
+
       <TokenomicsSection/>
       <Footer/>
     </StyledAppContainer>;
