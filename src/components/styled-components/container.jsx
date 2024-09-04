@@ -1,6 +1,18 @@
 import { Button } from "@mui/material";
-import { styled } from "@mui/system";
+import { styled, keyframes } from "@mui/system";
 
+// Definir la animación de flotación
+const float = keyframes`
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+`;
 
 export const StyledFlexCenterContainer = styled('div')`
     display: flex;
@@ -522,11 +534,10 @@ export const StyledHistorySection = styled('div')`
     position: relative;
     width: 100%;
     .astronaut{
-        width: 350px;
+        width: 300px;
         animation: fly_short 3.5s infinite alternate, fadeInUp 0.2s;
         // filter: drop-shadow(0 0 2em #c464ffaa);
     }
-
 
 
     h1{
@@ -536,6 +547,7 @@ export const StyledHistorySection = styled('div')`
         text-shadow: 0 .0377358491em 0 #000, .0125786164em .0377358491em 0 #000, .0125786164em -.0125786164em 0 #000, -.0125786164em .0125786164em 0 #000, -.0125786164em -.0125786164em;
         font-size: 150px;
         color: #ff437d;
+        
     }
 
 
@@ -594,17 +606,20 @@ export const StyledAstronautCard =  styled('div')`
 `
 
 export const StyledAstronautCard1 = styled(StyledAstronautCard)`
-    top: 320px;
+    top: 250px;
     left: 40px;
+    animation: ${float} 4s ease-in-out infinite;
+
 `
 export const StyledAstronautCard2 = styled(StyledAstronautCard)`
     top: 320px;
     right: 40px;
+    animation: ${float} 4.5s ease-in-out infinite;
 `
 export const StyledAstronautCard3 = styled(StyledAstronautCard)`
-    bottom: 100px;
-    left: 510px;
-
+    bottom: 240px;
+    left: 410px;
+    animation: ${float} 5s ease-in-out infinite;
 `
 
 
