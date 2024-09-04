@@ -7,7 +7,7 @@ export default function TokenomicsSection() {
 const { isVisible } = handleAnimationScroll('.target')
 
   return (
-  <StyledTokenomicsSection>
+  <StyledTokenomicsSection id="tokenomics">
     <StyledCard className={`animate__animated ${isVisible[0] ? 'animate__backInLeft' : ''} target`} style={{visibility: isVisible[0] ? 'visible' : 'hidden'}}>
       <div>
         <h2>LIQUIDITY & MARKETS</h2>
