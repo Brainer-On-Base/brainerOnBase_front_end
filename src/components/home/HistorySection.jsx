@@ -1,8 +1,5 @@
 import React from "react";
 import { StyledAstronautCard1, StyledAstronautCard2, StyledAstronautCard3, StyledFlexFullCenterContainer, StyledHistorySection } from "../styled-components/container";
-import NightBackground from "../NIghtBackground";
-import { View } from "@react-three/drei";
-
 
 export default function HistorySection() {
 
