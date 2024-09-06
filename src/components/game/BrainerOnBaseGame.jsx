@@ -16,8 +16,8 @@ export default function BrainerOnBaseGame() {
       <Navbar/>
 
       <StyledFlexFullCenterContainer style={{flexDirection:'column', marginTop:'4em'}}>
-        <img src="./gamingbrainer.png" style={{width:'300px'}}/>
-        <h1 style={{fontFamily:'"Luckiest Guy", cursive',fontSize:'35px', textAlign:"center"}}>The game is under construction!</h1>
+        <img src="./gamingbrainer.png" style={{width:'300px'}} className={`animate__animated animate__fadeInDown animations`}/>
+        <h1 style={{fontFamily:'"Luckiest Guy", cursive',fontSize:'35px', textAlign:"center"}} className={`animate__animated animate__fadeInDown animations animate__delay-1s`}>The game is under construction!</h1>
       </StyledFlexFullCenterContainer>
 
     </StyledFlexFullCenterContainer>
