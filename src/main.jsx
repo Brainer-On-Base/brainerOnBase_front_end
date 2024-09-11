@@ -5,9 +5,11 @@ import { BrowserRouter } from 'react-router-dom'
 import Routes from './routes/Routes'
 import { Canvas } from '@react-three/fiber'
 import { Preload, View } from '@react-three/drei'
+import Provider from './provider'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <Provider>
     <BrowserRouter>
       <Routes />
       <Canvas
@@ -17,5 +19,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Preload all />
         </Canvas>
     </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
 )

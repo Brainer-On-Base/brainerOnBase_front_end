@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StyledAddressContainer, StyledAppContainer } from "../components/styled-components/container";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar/Navbar";
 import WelcomeSection from "../components/home/WelcomeSection";
 import Footer from "../components/Footer";
 import TokenomicsSection from "../components/home/TokenomicsSection";
