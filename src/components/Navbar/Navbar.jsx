@@ -38,7 +38,7 @@ function Navbar({
     //   navigate: '/shop',
     // },
     {
-      name: 'GAME',
+      name: 'LAUNCH',
       navigate: '/game',
     },
   ];
