@@ -118,7 +118,6 @@ function Navbar({
             </Menu>
           </Box>
         </Toolbar>
-        <ConnectWallet/>
       </Container>
     </StyledNavbarContainer>
   );

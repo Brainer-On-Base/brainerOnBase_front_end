@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
+import useModals from "../hooks/useSweetAlert";
 
 const ConnectWallet = () => {
   const [account, setAccount] = useState(null);
   const [error, setError] = useState(null);
+  const {showPopUp} = useModals()
 
   const checkIfWalletIsConnected = async () => {
     try {
       const { ethereum } = window;
 
       if (!ethereum) {
-        setError("MetaMask no está instalado");
+        showPopUp({text:'Metamask is not installed', icon:'error'})
         return;
       }
 
@@ -17,6 +19,8 @@ const ConnectWallet = () => {
 
       if (accounts.length !== 0) {
         setAccount(accounts[0]);
+        showPopUp({text:'Your Wallet is connected.', icon:'success'})
+
       }
     } catch (err) {
       console.error(err);
@@ -28,14 +32,14 @@ const ConnectWallet = () => {
       const { ethereum } = window;
 
       if (!ethereum) {
-        setError("MetaMask no está instalado");
+        showPopUp({text:'Metamask is not installed', icon:'error'})
         return;
       }
 
       const accounts = await ethereum.request({ method: "eth_requestAccounts" });
       setAccount(accounts[0]);
     } catch (err) {
-      setError("Error al conectar MetaMask");
+      showPopUp({text:'Error while connecting with metamask. Try again later', icon:'error'})
       console.error(err);
     }
   };
