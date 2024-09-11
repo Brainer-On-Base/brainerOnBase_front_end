@@ -10,8 +10,9 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { StyledNavbarContainer } from './styled-components/container';
+import { StyledNavbarContainer } from '../styled-components/container';
 import { Stack } from '@mui/material';
+import ConnectWallet from '../ConnectWallet';
 
 function Navbar({
   setItem,
@@ -66,6 +67,7 @@ function Navbar({
             </Stack>
           </Box>
 
+          {/* Desktop */}
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -78,6 +80,7 @@ function Navbar({
             ))}
           </Box>
 
+          {/* Responsive */}
           <Box sx={{ display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-end' }}>
             <IconButton
               size="large"
@@ -115,6 +118,7 @@ function Navbar({
             </Menu>
           </Box>
         </Toolbar>
+        <ConnectWallet/>
       </Container>
     </StyledNavbarContainer>
   );
