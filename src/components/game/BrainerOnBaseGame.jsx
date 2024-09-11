@@ -2,7 +2,7 @@ import React from "react";
 import { StyledFlexFullCenterContainer } from "../styled-components/container";
 import { View } from "@react-three/drei";
 import NightBackground from "../NIghtBackground";
-import Navbar from "../Navbar";
+import Navbar from "../Navbar/Navbar";
 
 export default function BrainerOnBaseGame() {
   return (
