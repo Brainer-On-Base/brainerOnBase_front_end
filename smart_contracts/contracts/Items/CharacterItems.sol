@@ -37,7 +37,12 @@ contract CharacterItems is ERC721, Ownable {
         _safeMint(recipient, newItemId);
 
         // Registrar el nuevo item
-        items[newItemId] = Item({itemType: itemType, owner: recipient});
+        items[newItemId] = Item({
+            itemType: itemType,
+            owner: recipient,
+            price: 0,
+            isForSale: false
+        });
 
         itemCounter += 1;
         return newItemId;
