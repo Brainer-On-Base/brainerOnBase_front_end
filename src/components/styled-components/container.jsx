@@ -533,8 +533,8 @@ export const StyledWelcomeSection2 = styled('div')`
 
 
 
-export const StyledHistorySection = styled('div')`
-    height: 120vh;
+export const StyledHomeSection = styled('div')`
+    min-height: 120vh;
     display: flex;
     padding-top: 1em;
     align-items: flex-start;
@@ -543,13 +543,6 @@ export const StyledHistorySection = styled('div')`
     position: relative;
     width: 100%;
     background-image: linear-gradient(to bottom, #230f44, #242424);
-    .astronaut{
-        filter: drop-shadow(0 0 5em #c464ffaa);
-
-        width: 300px;
-        animation: fly_short 3.5s infinite alternate, fadeInUp 0.2s;
-        // filter: drop-shadow(0 0 2em #c464ffaa);
-    }
 
 
     h1{
@@ -560,9 +553,35 @@ export const StyledHistorySection = styled('div')`
         font-size: 150px;
         color: #ff437d;
         margin: 20px;
-
-        
     }
+
+
+    @media(max-width: 1200px){
+        justify-content: flex-between;
+        align-items: center;
+        
+        h1{
+            margin-top: 50px;
+        }
+    }
+
+    @media(max-width: 900px){
+        h1{
+            margin: 50px;
+            margin-bottom: 0;
+        }
+    }
+
+`
+export const StyledAboutSection = styled(StyledHomeSection)`
+    .astronaut{
+        filter: drop-shadow(0 0 5em #c464ffaa);
+
+        width: 300px;
+        animation: fly_short 3.5s infinite alternate, fadeInUp 0.2s;
+        // filter: drop-shadow(0 0 2em #c464ffaa);
+    }
+
 
     h3{
         top: 100px;
@@ -587,24 +606,63 @@ export const StyledHistorySection = styled('div')`
 
 
     @media(max-width: 1200px){
-        justify-content: flex-between;
-        align-items: center;
-        
-        h1{
-            margin-top: 50px;
-        }
 
         img, #bubbletokenomics{ 
             display: none !important;
         }
     }
 
-    @media(max-width: 900px){
-        h1{
-            margin: 50px;
-            margin-bottom: 0;
-        }
+
+`
+export const StyledHistorySection = styled(StyledHomeSection)`
+    position: relative;    
+    .title{
+        margin-top: 0.4em;
     }
+
+    .astronaut{
+        filter: drop-shadow(0 0 5em #c464ffaa);
+        position: absolute;
+        left: 50px;
+        top: 30%;
+        width: 300px;
+        animation: fly_short 3.5s infinite alternate, fadeInUp 0.2s;
+        // filter: drop-shadow(0 0 2em #c464ffaa);
+    }
+
+    p{
+        font-size: 25px;
+        margin-top: -2em;
+        font-weight: 100;
+        font-family: cursive;
+        font-weight: 600;
+    }
+
+    .firstText{
+        margin-left: 10em;
+        margin-top: 2em;
+        width: 1000px;
+        font-weight: 100;
+    }
+
+
+`
+export const StyledRoadmapSection = styled(StyledHomeSection)`
+    position: relative;    
+    .title{
+        margin-top: 0.4em;
+    }
+
+
+    p{
+        font-size: 25px;
+        margin-top: -2em;
+        font-weight: 100;
+        font-family: cursive;
+        font-weight: 600;
+    }
+
+
 
 `
 

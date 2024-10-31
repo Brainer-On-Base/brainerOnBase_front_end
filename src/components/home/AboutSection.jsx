@@ -1,9 +1,9 @@
 import React from "react";
-import { StyledAstronautCard1, StyledAstronautCard2, StyledAstronautCard3, StyledFlexFullCenterContainer, StyledHistorySection } from "../styled-components/container";
+import { StyledAboutSection, StyledAstronautCard1, StyledAstronautCard2, StyledAstronautCard3, StyledFlexFullCenterContainer } from "../styled-components/container";
 
 export default function AboutSection() {
 
-return <StyledHistorySection id="history">
+return <StyledAboutSection id="history">
 
     <StyledFlexFullCenterContainer style={{height: 'auto', flexDirection:'column'}}>
         <h1  className={`animate__animated animate__fadeInDown animations`} >ABOUT</h1>
@@ -42,5 +42,5 @@ return <StyledHistorySection id="history">
           <p>Take a look to our <span>TOKENOMICS</span> to clarify your doubts!</p>
           <p> We are a <span>REAL</span> community  token!</p>
       </BubbleDialog> */}
-    </StyledHistorySection>;
+    </StyledAboutSection>;
 }

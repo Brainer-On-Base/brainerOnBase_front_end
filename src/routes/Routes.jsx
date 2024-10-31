@@ -1,8 +1,8 @@
 import { Routes as ReactRoutes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import App from '../pages/App';
-import BrainerOnBaseGame from '../components/app/BrainerOnBaseGame';
 import BrainerOnBaseShop from '../components/shop/BrainerOnBaseShop';
+import BrainerOnBaseGame from '../components/game/BrainerOnBaseGame';
 
 
 const Routes = () => {

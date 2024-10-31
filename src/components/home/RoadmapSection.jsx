@@ -1,14 +1,14 @@
 import React from "react";
-import { StyledAstronautCard1, StyledAstronautCard2, StyledAstronautCard3, StyledFlexFullCenterContainer, StyledHistorySection } from "../styled-components/container";
+import { StyledAboutSection, StyledAstronautCard1, StyledAstronautCard2, StyledAstronautCard3, StyledFlexFullCenterContainer, StyledRoadmapSection } from "../styled-components/container";
 
 export default function RoadmapSection() {
 
-return <StyledHistorySection id="history">
+return <StyledRoadmapSection id="history">
 
     <StyledFlexFullCenterContainer style={{height: 'auto', flexDirection:'column'}}>
-        <h1  className={`animate__animated animate__fadeInDown animations`} >ROADMAP</h1>
+        <h1  className={`animate__animated animate__fadeInDown animations title`} >ROADMAP</h1>
         {/* <h3  className={`animate__animated animate__fadeInDown animations`} >BRAINER</h3> */}
-        <img src="./history.png" className={`animate__animated astronaut animations`} />
+        {/* <img src="./history.png" className={`animate__animated astronaut animations`} /> */}
     </StyledFlexFullCenterContainer>
 
 
@@ -28,5 +28,5 @@ return <StyledHistorySection id="history">
           <p>Take a look to our <span>TOKENOMICS</span> to clarify your doubts!</p>
           <p> We are a <span>REAL</span> community  token!</p>
       </BubbleDialog> */}
-    </StyledHistorySection>;
+    </StyledRoadmapSection>;
 }
