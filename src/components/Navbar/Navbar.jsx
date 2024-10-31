@@ -22,8 +22,16 @@ function Navbar({
 
   const pages = [
     {
-      name: item === '/home' ? 'ABOUT' : 'HOME',
-      navigate: item === '/home' ? '/home#history' : '/home',
+      name: 'HISTORY',
+      navigate: '/home#history',
+    },
+    {
+      name: 'ABOUT',
+      navigate: '/home#about',
+    },
+    {
+      name: 'Roadmap',
+      navigate: '/home#roadmap',
     },
     {
       name: 'TOKENOMICS',
@@ -34,13 +42,13 @@ function Navbar({
     //   navigate: '/home#swap',
     // },
     // {
-    //   name: 'MERCH',
+    //   name: 'MARKETPLACE',
     //   navigate: '/shop',
     // },
-    {
-      name: 'LAUNCH',
-      navigate: '/game',
-    },
+    // {
+    //   name: 'LAUNCH',
+    //   navigate: '/game',
+    // },
   ];
   const navigate = useNavigate();
 

@@ -1,12 +1,12 @@
 import React from "react";
 import { StyledAstronautCard1, StyledAstronautCard2, StyledAstronautCard3, StyledFlexFullCenterContainer, StyledHistorySection } from "../styled-components/container";
 
-export default function HistorySection() {
+export default function RoadmapSection() {
 
 return <StyledHistorySection id="history">
 
     <StyledFlexFullCenterContainer style={{height: 'auto', flexDirection:'column'}}>
-        <h1  className={`animate__animated animate__fadeInDown animations`} >HISTORY</h1>
+        <h1  className={`animate__animated animate__fadeInDown animations`} >ROADMAP</h1>
         {/* <h3  className={`animate__animated animate__fadeInDown animations`} >BRAINER</h3> */}
         <img src="./history.png" className={`animate__animated astronaut animations`} />
     </StyledFlexFullCenterContainer>
