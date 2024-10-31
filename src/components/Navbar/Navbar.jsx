@@ -25,10 +25,10 @@ function Navbar({
       name: 'HISTORY',
       navigate: '/home#history',
     },
-    {
-      name: 'ABOUT',
-      navigate: '/home#about',
-    },
+    // {
+    //   name: 'ABOUT',
+    //   navigate: '/home#about',
+    // },
     {
       name: 'Roadmap',
       navigate: '/home#roadmap',
