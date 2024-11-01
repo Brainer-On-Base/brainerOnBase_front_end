@@ -6,10 +6,6 @@ import { faArrowCircleLeft, faArrowCircleRight } from "@fortawesome/free-solid-s
 import { StyledButton } from "../styled-components/buttons";
 import { BRAINER_HISTORY_ARRAY } from "../../CONSTANTS";
 
-
-
-
-
 export default function HistorySection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fadeDirection, setFadeDirection] = useState("animate__fadeInLeft");

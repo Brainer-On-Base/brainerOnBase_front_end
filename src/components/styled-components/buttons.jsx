@@ -14,7 +14,6 @@ export const StyledButton = styled('button')`
     font-family: "Luckiest Guy", cursive;
     color: white !important;
     margin: ${({margin}) => margin ? margin : '0'};
-
     &:hover {
         border-color: #ff437d;
     }
