@@ -232,7 +232,6 @@ export const StyledWelcomeSection = styled('div')`
     flex-direction: column;
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(to bottom, #230f44, #242424);
     background-size: cover;
     .home-text-container{
         width: 100%;
@@ -394,7 +393,6 @@ export const StyledWelcomeSection2 = styled('div')`
     flex-direction: column;
     width: 100%;
     min-height: 100vh;
-    background-image: linear-gradient(to bottom, #230f44, #242424);
     background-size: cover;
     .home-text-container{
         margin-top: 4em;
@@ -543,7 +541,6 @@ export const StyledHomeSection = styled('div')`
     justify-content: flex-start;
     position: relative;
     width: 100%;
-    background-image: linear-gradient(to bottom, #230f44, #242424);
 
 
     h1{
@@ -723,7 +720,8 @@ export const StyledAstronautCard3 = styled(StyledAstronautCard)`
 
 
 export const StyledFooterSection = styled('div')`
-  background-color: #1a1a1a;
+//   background-color: #1a1a1a;
+    background: transparent;
 
     width: 100%;
     display: flex;
