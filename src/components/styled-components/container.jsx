@@ -568,6 +568,18 @@ export const StyledHomeSection = styled('div')`
             margin: 50px;
             margin-bottom: 0;
         }
+
+        .title{
+            width: 100%;
+            text-align: center;
+            font-size: 100px;
+        }
+    }
+    @media(max-width: 500px){
+        .title{
+            margin-top: 90px !important;
+            font-size: 80px;
+        }
     }
 
 `
@@ -908,28 +920,58 @@ export const StyledRoadmapSection = styled(StyledHomeSection)`
         font-weight: 600;
     }
 
-    .img1{
+    .img1 {
         width: 250px;
         position: absolute;
-        top: 300px;
-        left: 50%; /* Centramos horizontalmente */
-        transform: translateX(-50%); /* Para que quede centrada */
+        top: ${({ ship }) => ship > 1900  ? 1900 : ship < 400 ? 400 + 100 : ship + 100}px;
+        left: 50%; /* Centra horizontalmente */
+        transform: translateX(-50%); /* Para centrar horizontalmente */
         filter: drop-shadow(0 0 5em #c464ffaa);
-        animation: fly_short 3.5s infinite alternate, fadeInUp 0.2s;
         z-index: 9999;
-        transition: transform 0.2s ease; /* Suaviza la rotación */
+        transition: transform 0.3s ease; /* Suaviza el giro al cambiar de dirección */
+        
+        /* Animación inicial al cargar */
+        animation: fly_short 3.5s infinite alternate, fadeInUp 0.2s;
     }
 
-    /* Estilos para scroll hacia abajo */
-    .img1.scrolling-down {
-        transform: translate(-50%, -50%) rotate(90deg);
+    /* Rotación y movimiento hacia abajo */
+    .scrolling-down {
+        animation: rotateAndMoveDown 0.5s forwards;
     }
 
-    /* Estilos para scroll hacia arriba */
-    .img1.scrolling-up {
-        transform: translate(-50%, -50%) rotate(-90deg);
+    /* Rotación y movimiento hacia arriba */
+    .scrolling-up {
+        animation: rotateAndMoveUp 0.5s forwards;
     }
+
+    /* Keyframes para rotar y mover hacia abajo */
+    @keyframes rotateAndMoveDown {
+        0% {
+            transform: translate(-50%, 0) rotate(0deg);
+        }
+        100% {
+            transform: translate(-50%, 20px) rotate(-90deg); /* Rota y desplaza hacia abajo */
+        }
+    }
+
+    /* Keyframes para rotar y mover hacia arriba */
+    @keyframes rotateAndMoveUp {
+        0% {
+            transform: translate(-50%, 20px) rotate(90deg); /* Parte desde abajo y girado */
+        }
+        100% {
+            transform: translate(-50%, 0) rotate(0deg); /* Regresa a su posición inicial */
+        }
+    }
+
+    @media(max-width: 1200px){
+        .img1 {
+            width: 150px;
+            position: absolute;
+            left: 80%; /* Centra horizontalmente */
+        }
 `;
+
 
 
 export const StyledRoadmapCard = styled(StyledCard)`

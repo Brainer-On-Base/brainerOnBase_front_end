@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { StyledAboutSection, StyledAstronautCard1, StyledAstronautCard2, StyledAstronautCard3, StyledBubbleDialog, StyledFlexFullCenterContainer, StyledRoadmapCard, StyledRoadmapSection } from "../styled-components/container";
 
 export default function RoadmapSection() {
@@ -7,10 +7,14 @@ export default function RoadmapSection() {
   const [scrollingUp, setScrollingUp] = useState(false);
   const [lastScrollPos, setLastScrollPos] = useState(0);
 
+  const scrollTimeoutRef = useRef(null); // Usar ref para el timeout
+
+
   useEffect(() => {
     let scrollTimeout;
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
+
       
       setIsScrolling(true);
 
@@ -18,19 +22,18 @@ export default function RoadmapSection() {
       if (currentScrollPos > lastScrollPos) {
         setScrollingDown(true);
         setScrollingUp(false);
-      } else {
-        setScrollingUp(true);
+      } else if (currentScrollPos < lastScrollPos) {
         setScrollingDown(false);
+        setScrollingUp(true);
       }
 
-      // Actualizar última posición del scroll
       setLastScrollPos(currentScrollPos);
 
-      // Limpiar el timeout si el usuario sigue haciendo scroll
-      if (scrollTimeout) clearTimeout(scrollTimeout);
+      // Limpiar el timeout anterior si aún está activo
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
 
-      // Detener la animación después de un tiempo sin scroll
-      scrollTimeout = setTimeout(() => {
+      // Configurar un nuevo timeout para detener la animación después del scroll
+      scrollTimeoutRef.current = setTimeout(() => {
         setIsScrolling(false);
         setScrollingDown(false);
         setScrollingUp(false);
@@ -42,11 +45,12 @@ export default function RoadmapSection() {
     // Cleanup para evitar memory leaks
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      if (scrollTimeout) clearTimeout(scrollTimeout);
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
     };
   }, [lastScrollPos]);
 
-return <StyledRoadmapSection id="history">
+
+return <StyledRoadmapSection id="history" ship={lastScrollPos}>
 
   
 
@@ -56,10 +60,10 @@ return <StyledRoadmapSection id="history">
         {/* <img src="./history.png" className={`animate__animated astronaut animations`} /> */}
 
         <img
-          src="./spaceship.png"
-          className={`img1 ${isScrolling ? "scrolling" : ""} ${scrollingDown ? "scrolling-down" : ""} ${scrollingUp ? "scrolling-up" : ""}`}
-          alt="spaceship"
-        />
+        src="./spaceship.png"
+        className={`img1 ${isScrolling ? "scrolling" : ""} ${scrollingDown ? "scrolling-down" : ""} ${scrollingUp ? "scrolling-up" : ""}`}
+        alt="spaceship"
+      />
           
         <StyledRoadmapCard>
           <h2 style={{margin:0}}>Chapter 1</h2>
