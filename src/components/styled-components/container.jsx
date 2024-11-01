@@ -1015,4 +1015,10 @@ export const StyledRoadmapCard = styled(StyledCard)`
             font-size: 0.9em;
         }
     }
+
+
+    &:nth-of-type(2), &:nth-of-type(4), &:nth-of-type(6) {
+        align-self: flex-end;
+        margin: 0em 2em 2em 0em;
+    }
 `
