@@ -48,7 +48,7 @@ export default function Home() {
           0x5b8BB48898b67c3481677c5Ac462786c18Db11F6</p>
       </StyledAddressContainer>
 
-      <TokenomicsSection/>
+      {/* <TokenomicsSection/> */}
       <Footer/>
     </StyledAppContainer>;
 }

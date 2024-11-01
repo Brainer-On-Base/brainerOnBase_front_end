@@ -33,10 +33,10 @@ function Navbar({
       name: 'Roadmap',
       navigate: '/home#roadmap',
     },
-    {
-      name: 'TOKENOMICS',
-      navigate: '/home#tokenomics',
-    },
+    // {
+    //   name: 'TOKENOMICS',
+    //   navigate: '/home#tokenomics',
+    // },
     // {
     //   name: 'SWAP',
     //   navigate: '/home#swap',

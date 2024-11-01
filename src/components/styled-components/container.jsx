@@ -27,6 +27,7 @@ export const StyledFlexFullCenterContainer = styled('div')`
     align-items: center;
     width: 100%;
     height: 100%
+    position: relative;
 `
 
 export const StyledFlexBetweenContainer = styled('div')`
@@ -647,24 +648,6 @@ export const StyledHistorySection = styled(StyledHomeSection)`
 
 
 `
-export const StyledRoadmapSection = styled(StyledHomeSection)`
-    position: relative;    
-    .title{
-        margin-top: 0.4em;
-    }
-
-
-    p{
-        font-size: 25px;
-        margin-top: -2em;
-        font-weight: 100;
-        font-family: cursive;
-        font-weight: 600;
-    }
-
-
-
-`
 
 
 export const StyledAstronautCard =  styled('div')`
@@ -803,6 +786,7 @@ export const StyledBubbleDialog = styled('div')`
     box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
     box-sizing: border-box;
     width: ${({width}) => width ?? '200px'};
+    height: ${({height}) => height ?? '200px'};
     transition: all 1s ease;
 
     &:after{
@@ -874,7 +858,7 @@ export const StyledCard = styled('div')`
           }
     }
 
-    p{
+    p, .text{
         font-size: 0.8em !important;
         font-family: monospace;
         font-size: 490px;
@@ -906,6 +890,68 @@ export const StyledCard = styled('div')`
     @media(max-width: 900px){
         img{
            display: none;
+        }
+    }
+`
+
+
+export const StyledRoadmapSection = styled(StyledHomeSection)`
+    position: relative;    
+
+    .title{
+        margin-top: 0.4em;
+    }
+
+    p{
+        font-size: 25px;
+        margin-top: -2em;
+        font-weight: 100;
+        font-family: cursive;
+        font-weight: 600;
+    }
+
+    .img1{
+        width: 250px;
+        position: absolute;
+        top: 300px;
+        left: 50%; /* Centramos horizontalmente */
+        transform: translateX(-50%); /* Para que quede centrada */
+        filter: drop-shadow(0 0 5em #c464ffaa);
+        animation: fly_short 3.5s infinite alternate, fadeInUp 0.2s;
+        z-index: 9999;
+        transition: transform 0.2s ease; /* Suaviza la rotación */
+    }
+
+    /* Estilos para scroll hacia abajo */
+    .img1.scrolling-down {
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    /* Estilos para scroll hacia arriba */
+    .img1.scrolling-up {
+        transform: translate(-50%, -50%) rotate(-90deg);
+    }
+`;
+
+
+export const StyledRoadmapCard = styled(StyledCard)`
+    height: auto;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: #140829;
+    margin-left: 2em;
+
+    .text{
+        margin: 0;
+        font-size: 1em !important;
+        font-family: monospace;
+        font-size: 490px;
+        line-height: 1.3em;
+        color: white;
+
+        span{
+            font-size: 0.9em;
         }
     }
 `
