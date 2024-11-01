@@ -410,8 +410,12 @@ export const StyledWelcomeSection2 = styled('div')`
             line-height: 1.1;
             transition: filter 300ms;
             font-family: "Luckiest Guy", cursive;
-            text-shadow: 0 .0377358491em 0 #000, .0125786164em .0377358491em 0 #000, .0125786164em -.0125786164em 0 #000, -.0125786164em .0125786164em 0 #000, -.0125786164em -.0125786164em;
-
+        text-shadow:
+            0 .0377358491em 0 #f8b8b8, 
+            .0125786164em .0377358491em 0
+            #f8b8b8, .0125786164em -.0125786164em 0
+            #f8b8b8, -.0125786164em .0125786164em 0
+            #f8b8b8, -.0125786164em -.0125786164em;
             &:nth-of-type(1){
                 margin-top: 80px;
                 font-size: 140px;
@@ -422,6 +426,19 @@ export const StyledWelcomeSection2 = styled('div')`
                 font-size: 60px;
                 color: #88;
                 color: white;
+                text-shadow: none;
+
+                   &::before {
+                    content: "";
+                    display: inline-block;
+                    width: 50px; /* Ajusta el tamaño según el logo */
+                    height: 50px;
+                    background-image: url('./baseLogo.png'); /* Cambia por la ruta de tu logo */
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    margin-right: 2px; /* Espacio entre el logo y el texto */
+                    vertical-align: middle; /* Alinea verticalmente con el texto */
+                }
             }
             &:nth-of-type(3){
                 text-shadow: none;
@@ -547,12 +564,16 @@ export const StyledHomeSection = styled('div')`
         margin: 0;
         font-family: "Luckiest Guy", cursive;
         z-index: 9999;
-        text-shadow: 0 .0377358491em 0 #000, .0125786164em .0377358491em 0 #000, .0125786164em -.0125786164em 0 #000, -.0125786164em .0125786164em 0 #000, -.0125786164em -.0125786164em;
+        text-shadow:
+            0 .0377358491em 0 #f8b8b8, 
+            .0125786164em .0377358491em 0
+            #f8b8b8, .0125786164em -.0125786164em 0
+            #f8b8b8, -.0125786164em .0125786164em 0
+            #f8b8b8, -.0125786164em -.0125786164em;
         font-size: 150px;
         color: #ff437d;
         margin: 20px;
     }
-
 
     @media(max-width: 1200px){
         justify-content: flex-between;

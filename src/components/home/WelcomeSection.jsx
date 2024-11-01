@@ -19,7 +19,7 @@ export default function WelcomeSection() {
     <div className="home-text-container">
       <div>
         <h1 className={'animate__animated animate__backInDown'}>BRAINER</h1>
-        <h1 className={'animate__animated animate__fadeInDown animate__delay-1s'}>ON BASE</h1>
+        <h1 className={'animate__animated animate__fadeInDown animate__delay-1s'}>N BASE</h1>
         <h1 className={'animate__animated animate__fadeIn animate__delay-1s '}>ARE YOU A NO <span>BRAINER</span>?</h1>
         <StyledButton 
         size={'2em'} 
