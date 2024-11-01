@@ -25,7 +25,7 @@ export const StyledFlexFullCenterContainer = styled('div')`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: ${({ width }) => width ? width : "100%" };
     height: 100%
     position: relative;
 `
@@ -764,7 +764,10 @@ export const StyledBubbleDialog = styled('div')`
 
     p{
         margin: 0;
-
+        text-align: left;
+        line-height: 1.5em;
+        color: black !important;
+        font-weight: 100;
     }
     position: absolute;
     right: ${({position}) => position?.right};
@@ -776,12 +779,10 @@ export const StyledBubbleDialog = styled('div')`
     display: flex;
     align-items: center;
     margin: 20px;
-    text-align: center;
-    font-family: monospace;
     font-size: 20px;
-    line-height: 1.3em;
     background-color: #fff;
-    color: #000;
+    color: black !important;
+
     padding: 12px;
     box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
     box-sizing: border-box;
@@ -807,7 +808,6 @@ export const StyledBubbleDialog = styled('div')`
         font-size: 20px;
         font-family: "Luckiest Guy", cursive;
         color: #ff437d;
-
     }
 
 
