@@ -4,6 +4,7 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 0;
     font-family: "Luckiest Guy", cursive;
+    border-radius: 2%;
   }
 
 
@@ -14,6 +15,7 @@
 
 div:where(.swal2-container) .swal2-html-container{
   font-family: monospace;
+
 }
 
 p{
@@ -22,13 +24,12 @@ p{
 
 p:first-child{
   color: #ff437d;
-
   margin-bottom: 20px; 
   
 }
 
 #colorpink{
   font-family: "Luckiest Guy", cursive;
-  font-weight: bold;;
+  font-weight: bold;
   color: #ff437d;
 }

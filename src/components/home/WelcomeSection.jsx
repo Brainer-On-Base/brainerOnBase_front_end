@@ -7,6 +7,7 @@ import { Canvas } from "@react-three/fiber";
 import { Perf } from "r3f-perf";
 import { View } from "@react-three/drei";
 import useModals from "../../hooks/useSweetAlert";
+import { APP_TEXTS } from "../../APP_TEXTS";
 
 export default function WelcomeSection() {
   const {showPopUp, useTextModal} = useModals()
@@ -25,17 +26,14 @@ export default function WelcomeSection() {
         size={'2em'} 
         className={'animate__animated animate__fadeIn animate__delay-2s'}
         onClick={() => useTextModal({
-          textButton: 'JOIN SOCIETY',
-          title:'PRE SALE',
-          text: `
-          <p>COST: 0.02 ETH</p>
-          <p>Get a spot on the <span id="colorpink">PRE SALE</span> list and earn early access to our <span id="colorpink">SOCIETY</span>.</p> 
-          <p>You're one step away from stopping being a <span id="colorpink">NO BRAINER!</span></p>`, 
+          textButton: APP_TEXTS.HOME_MODAL_TEXT_BUTTON,
+          title:APP_TEXTS.HOME_MODAL_TITLE,
+          text: APP_TEXTS.HOME_MODAL_DESCRIPTION, 
           textColor: 'white'
         })} 
         
         >
-          PRE SALE
+          {APP_TEXTS.HOME_BUTTON_1}
         </StyledButton>
         <StyledButton 
         onClick={()=>  showPopUp({text:'Liquidity pool is not available yet', icon:'warning'})}
