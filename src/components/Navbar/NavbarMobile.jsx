@@ -49,7 +49,8 @@ export default function NavbarMobile({
           }}
           open={Boolean(anchorElNav)}
           sx={{
-            display: { xs: "block", md: "none", left: '-50px', top: '50px', },
+            display: { xs: "block", md: "none"},
+             left: '-50px', top: '50px'
           }}
           
         >
