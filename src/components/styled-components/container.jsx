@@ -646,7 +646,8 @@ export const StyledAboutSection = styled(StyledHomeSection)`
 
 `
 export const StyledHistorySection = styled(StyledHomeSection)`
-    position: relative;    
+    position: relative;   
+    overflow: none; 
     .title{
         margin-top: 0.4em;
     }
@@ -677,6 +678,44 @@ export const StyledHistorySection = styled(StyledHomeSection)`
     }
 
 
+    
+    @media(max-width: 1400px){
+
+        #bubbletokenomics{
+            left: 180px;
+            width: 60%;
+            p{
+                font-size: 20px !important;
+            }
+        }
+    }
+
+
+    
+    
+    @media(max-width: 1200px){
+        .astronaut{
+            position: relative;
+            left: 0;
+        }
+        #bubbletokenomics{
+            position: relative;
+            left: 0;
+            margin: 0;
+            margin: 2em 0;
+            width: 80%;
+            height: auto !important;
+            }
+    }
+        
+    @media(max-width: 900px){
+            .subtitle{
+                font-size: 20px;
+                margin-top: 0;
+                text-align: center;
+            }
+        }
+    
 `
 
 

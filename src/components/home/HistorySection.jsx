@@ -27,7 +27,7 @@ return <StyledHistorySection id="history">
 
     <StyledFlexFullCenterContainer style={{height: 'auto', flexDirection:'column', overflow: 'hidden'}}>
         <h1  className={`animate__animated animate__fadeInDown animations title`}  >HISTORY</h1>
-        <p className='animate__animated animate__fadeInDown animate__delay-1s'>The Rise of the Brainers: Journey to the Moon</p>
+        <p className='animate__animated animate__fadeInDown animate__delay-1s subtitle'>The Rise of the Brainers: Journey to the Moon</p>
         {/* <h3  className={`animate__animated animate__fadeInDown animations`} >BRAINER</h3> */}
         <img src="./history.png" className={`animate__animated astronaut animations`} />
         
