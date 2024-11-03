@@ -98,7 +98,7 @@ export const StyledNavbarContainer = styled('div')`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: absolute;
+    position: fixed;
     top: 0;
     z-index: 99999999999;
     margin: 0 auto;

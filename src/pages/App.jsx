@@ -14,7 +14,7 @@ function App() {
   return (
     <StyledInitAppContainer>
       <View
-        style={{ width: '100%', height: '100%', position: 'absolute', zIndex: 1 }}
+        style={{ width: '100%', height: '100%', position: 'absolute'}}
         camera={ {
               fov: 45,
               near: 0.1,

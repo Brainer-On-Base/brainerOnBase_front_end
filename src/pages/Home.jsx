@@ -33,7 +33,7 @@ export default function Home() {
   return <StyledAppContainer>
       <Navbar setItem={setShowHistory} item={showHistory}/>
       <View
-      style={{ width: '100%', height: '100%', position: 'absolute', zIndex: 1, top: 0, bottom: 0 }}
+      style={{ width: '100%', height: '100%', position: 'absolute', top: 0, bottom: 0 }}
     >
       <NightBackground/>
     </View>

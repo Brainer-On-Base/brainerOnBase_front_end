@@ -62,7 +62,7 @@ function Navbar({
   };
 
   return (
-    <StyledNavbarContainer position="static">
+    <StyledNavbarContainer position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>

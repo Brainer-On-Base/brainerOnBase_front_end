@@ -36,6 +36,7 @@ export default function NavbarMobile({
           <MenuIcon />
         </IconButton>
         <Menu
+          style={{ zIndex: '99999999999999999999999' }}
           id="menu-appbar"
           anchorEl={anchorElNav}
           anchorOrigin={{
@@ -60,7 +61,7 @@ export default function NavbarMobile({
               navigate(page.navigate);
               setAnchorElNav(null); // Cierra el menú después de la navegación
             }}>
-              <Typography className="navbaritems" textAlign="center">{page.name}</Typography>
+              <Typography className="navbaritems" textAlign="center" >{page.name}</Typography>
             </MenuItem>
           ))}
         </Menu>
