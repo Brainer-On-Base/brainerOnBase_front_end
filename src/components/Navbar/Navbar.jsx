@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { StyledNavbarContainer } from '../styled-components/container';
 import { Stack } from '@mui/material';
 import ConnectWallet from '../ConnectWallet';
+import NavbarMobile from './NavbarMobile';
 
 function Navbar({
   setItem,
@@ -88,43 +89,8 @@ function Navbar({
             ))}
           </Box>
 
-          {/* Responsive */}
-          <Box sx={{ display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-end' }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page.name} onClick={() => navigate(page.navigate)}>
-                  <Typography className="navbaritems" textAlign="center">{page.name}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+          {/* Mobile */}
+          <NavbarMobile pages={pages}/>
         </Toolbar>
       </Container>
     </StyledNavbarContainer>
