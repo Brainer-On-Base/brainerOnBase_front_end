@@ -56,11 +56,11 @@ return <StyledHistorySection id="history">
             transform: "translateX(-50%)"
           }}>
             <StyledButton size={"15px"} padding={"5px"} margin={"10px"} onClick={handlePrev} disabled={currentIndex === 0}>
-              <FontAwesomeIcon icon={faArrowCircleLeft} size="x1" />
+              <FontAwesomeIcon icon={faArrowCircleLeft} size="1x" />
             </StyledButton>
             <p>{currentIndex + 1}/{BRAINER_HISTORY_ARRAY.length}</p>
             <StyledButton size={"15px"} padding={"5px"} margin={"10px"} onClick={handleNext} disabled={currentIndex === BRAINER_HISTORY_ARRAY.length - 1}>
-              <FontAwesomeIcon icon={faArrowCircleRight} size="x1" />
+              <FontAwesomeIcon icon={faArrowCircleRight} size="1x" />
             </StyledButton>
           </StyledFlexFullCenterContainer>
       </BubbleDialog>
