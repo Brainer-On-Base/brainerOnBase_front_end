@@ -19,7 +19,6 @@ function Navbar({
   setItem,
   item
 }) {
-  const [anchorElNav, setAnchorElNav] = useState(null);
 
   const pages = [
     {
@@ -53,16 +52,21 @@ function Navbar({
   ];
   const navigate = useNavigate();
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
+  const [scrolled, setScrolled] = useState(false);
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <StyledNavbarContainer position="fixed">
+    <StyledNavbarContainer position="fixed" scrolled={scrolled}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
