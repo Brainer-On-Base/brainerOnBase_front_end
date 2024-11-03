@@ -167,39 +167,44 @@ export const StyledAddressContainer = styled('div')`
     z-index: 999999;
     overflow: hidden;
     margin-bottom: 1em;
-            cursor: pointer;
+    cursor: pointer;
     transition: all 0.4s ease;
 
-    h3{
-    transition: all 0.4s ease;
+    width: 100%;
 
-        font-size: 60px !important;
+    h3 {
+        transition: all 0.4s ease;
+        font-size: 60px;
         margin: 0;
-
         color: white;
+
+        @media (max-width: 900px) {
+            font-size: 40px;
+        }
     }
 
-    &:hover{
-        p{
+    &:hover {
+        p {
             color: #ff437d !important;
         }
         
         filter: drop-shadow(0 0 1em #ff437d);
     }
-    p{
-        width: 100%;
-        display: flex;
-        jusitfy-content: center;
-        align-items: center;
-        font-weight:bold;
+
+    p {
+        font-weight: bold;
         font-family: "Luckiest Guy", cursive;
         font-size: 40px;
         margin: 0;
         cursor: pointer;
         color: #888;
         transition: all 0.4s ease;
-        text-wrap: wrap !important;
-
+        text-align: center;
+        width: 80%;           
+        max-width: 100%;        
+        overflow: hidden;       
+        white-space: nowrap;     
+        text-overflow: ellipsis; 
 
         @media (max-width: 1200px) {
             font-size: 2em;
@@ -212,19 +217,8 @@ export const StyledAddressContainer = styled('div')`
         @media (max-width: 768px) {
             font-size: 1.5em;
         }
-
-        @media (max-width: 576px) {
-            font-size: 1.2em;
-        }
-
-        @media (max-width: 500px) {
-            font-size: 1em;
-        }
     }
-
-
-
-`
+`;
 
 
 export const StyledWelcomeSection = styled('div')`
@@ -541,6 +535,27 @@ export const StyledWelcomeSection2 = styled('div')`
             }
         }
     }
+
+    @media(max-width: 415px){
+        .home-text-container{
+            h1{
+                &:nth-of-type(1){
+                    margin-top: 60px;
+                    font-size: 80px;
+                    color: #ff437d;
+                }
+                &:nth-of-type(2){
+                    margin-top: -60px;
+                    font-size: 50px;
+                    color: #88;
+                    color: white;
+                }
+                &:nth-of-type(3){
+                    text-shadow: none;
+                    font-size: 30px;
+                    color: #888;
+                }
+            }
 
 
 
