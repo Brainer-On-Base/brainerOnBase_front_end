@@ -2,6 +2,7 @@ import { Menu, MenuItem, Typography, IconButton, Box } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import zIndex from "@mui/material/styles/zIndex";
 
 
 
@@ -12,12 +13,13 @@ export default function NavbarMobile({
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
+    if(anchorElNav !== null) {
+      setAnchorElNav(null);
+      return;
+    }
     setAnchorElNav(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
 
   return (
     <>
@@ -46,15 +48,16 @@ export default function NavbarMobile({
             horizontal: "right",
           }}
           open={Boolean(anchorElNav)}
-          onClose={handleCloseNavMenu}
           sx={{
-            display: { xs: "block", md: "none" },
+            display: { xs: "block", md: "none", left: '-50px', top: '50px', },
           }}
+          
         >
           {pages.map((page) => (
-            <MenuItem key={page.name} onClick={() => {
+            <MenuItem key={page.name} 
+            onClick={() => {
               navigate(page.navigate);
-              handleCloseNavMenu(); // Cierra el menú después de la navegación
+              setAnchorElNav(null); // Cierra el menú después de la navegación
             }}>
               <Typography className="navbaritems" textAlign="center">{page.name}</Typography>
             </MenuItem>
