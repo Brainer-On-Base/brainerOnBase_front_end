@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract PixelBrainerCollection is ERC721, Ownable {
     uint256 public currentTokenId;
     uint256 public maxSupply;
-    uint256 public mintPrice = 0.02 ether;
+    uint256 public mintPrice = 0.01 ether;
 
     // Map to store metadata URI for each token
     mapping(uint256 => string) private _tokenURIs;
@@ -16,7 +16,7 @@ contract PixelBrainerCollection is ERC721, Ownable {
     event NFTMinted(
         address indexed recipient,
         uint256 tokenId,
-        string tokenURI,
+        string uri,
         string message
     );
 
@@ -27,33 +27,30 @@ contract PixelBrainerCollection is ERC721, Ownable {
         maxSupply = _maxSupply;
     }
 
-    function mintNFT(
-        address recipient,
-        string memory tokenURI
-    ) external payable {
+    function mintNFT(address recipient, string memory uri) external payable {
         require(currentTokenId < maxSupply, "Max supply reached");
         require(msg.value >= mintPrice, "Insufficient funds");
 
         currentTokenId++;
         _safeMint(recipient, currentTokenId);
-        _setTokenURI(currentTokenId, tokenURI);
+        _setTokenURI(currentTokenId, uri);
 
         // Emitir el evento NFTMinted con los detalles del NFT minteado
         emit NFTMinted(
             recipient,
             currentTokenId,
-            tokenURI,
+            uri,
             "New Pixel Brainer 1st Collection Minted"
         );
     }
 
     // Function to set the token URI for a given token ID
-    function _setTokenURI(uint256 tokenId, string memory tokenURI) internal {
+    function _setTokenURI(uint256 tokenId, string memory uri) internal {
         require(
             _tokenExists(tokenId),
             "ERC721Metadata: URI set of nonexistent token"
         );
-        _tokenURIs[tokenId] = tokenURI;
+        _tokenURIs[tokenId] = uri;
     }
 
     // Custom function to check token existence using ownerOf

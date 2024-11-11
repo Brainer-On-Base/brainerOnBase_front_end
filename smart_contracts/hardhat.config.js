@@ -1,19 +1,30 @@
-require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
+require("@nomicfoundation/hardhat-ethers");
 
-dotenv.config();
 
-/** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: "0.8.27",
+  solidity: {
+    compilers: [
+      {
+        version: "0.8.20",
+      },
+      {
+        version: "0.8.0", // Incluye esta línea solo si necesitas compilar contratos con esta versión específica
+      },
+    ],
+  },
   networks: {
+    ethTestnet: {
+      url: 'https://rpc.ankr.com/eth_sepolia',
+      accounts: [`0x${process.env.PRIVATE_KEY}`],
+    },
     baseTestnet: {
-      url: "https://sepolia.base.org", // RPC URL para la red de pruebas de Base
-      accounts: [process.env.PRIVATE_KEY], 
+      url: "https://sepolia.base.org",
+      accounts: [`0x${process.env.PRIVATE_KEY}`],
     },
     baseMainnet: {
-      url: "https://mainnet.base.org", // RPC URL para la mainnet de Base
-      accounts: [process.env.PRIVATE_KEY], 
+      url: "https://mainnet.base.org",
+      accounts: [`0x${process.env.PRIVATE_KEY}`],
     },
   },
 };
