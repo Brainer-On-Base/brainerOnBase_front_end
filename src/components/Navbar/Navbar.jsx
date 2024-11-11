@@ -94,7 +94,7 @@ function Navbar({
           </Box>
 
           {/* Mobile */}
-          <NavbarMobile pages={pages}/>
+          <NavbarMobile pages={pages} setItem={setItem}/>
         </Toolbar>
       </Container>
     </StyledNavbarContainer>

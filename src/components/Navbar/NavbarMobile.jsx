@@ -7,7 +7,8 @@ import zIndex from "@mui/material/styles/zIndex";
 
 
 export default function NavbarMobile({
-  pages
+  pages,
+  setItem
 }) {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const navigate = useNavigate();
@@ -58,6 +59,7 @@ export default function NavbarMobile({
           {pages.map((page) => (
             <MenuItem key={page.name} 
             onClick={() => {
+              setItem(page.navigate);
               navigate(page.navigate);
               setAnchorElNav(null); // Cierra el menú después de la navegación
             }}>

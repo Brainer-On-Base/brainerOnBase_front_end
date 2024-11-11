@@ -10,7 +10,7 @@ import { useLocation } from "react-router-dom";
 import useModals from "../hooks/useSweetAlert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
-import { View } from "@react-three/drei";
+import { Center, Html, View } from "@react-three/drei";
 import NightBackground from "../components/NIghtBackground";
 import RoadmapSection from "../components/home/RoadmapSection";
 
@@ -37,7 +37,7 @@ export default function Home() {
     >
       <NightBackground/>
     </View>
-      {showHistory === '/home' && <WelcomeSection/>}
+    {showHistory === '/home' && <WelcomeSection/>}
       {showHistory === '/home#history' && <HistorySection/>}
       {showHistory === '/home#about' && <AboutSection/>}
       {showHistory === '/home#roadmap' && <RoadmapSection/>}
@@ -47,7 +47,6 @@ export default function Home() {
           <FontAwesomeIcon icon={faCopy} style={{marginRight: '20px'}}/>
           0x5b8BB48898b67c3481677c5Ac462786c18Db11F6</p>
       </StyledAddressContainer>
-
       {/* <TokenomicsSection/> */}
       <Footer/>
     </StyledAppContainer>;
