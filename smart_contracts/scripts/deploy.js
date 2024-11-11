@@ -6,8 +6,8 @@ async function main() {
     // Define el maxSupply del contrato
     const maxSupply = 100;
     // Despliega el contrato con el maxSupply especificado
-    const contract = await PixelBrainerCollection.deploy(maxSupply).then((c) => c.deployed());
-    console.log(contract);
+    const contract = await PixelBrainerCollection.deploy(maxSupply);
+    console.log("YOUR CONTRACT", contract);
     // Espera a que la transacción de despliegue se confirme
     // await contract.deployTransaction.wait();
   
