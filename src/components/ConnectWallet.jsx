@@ -3,56 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWallet, faSignOutAlt } from "@fortawesome/free-solid-svg-icons"; // Icono de billetera y de desconexión
 import useModals from "../hooks/useSweetAlert";
 import AccountContext from "../provider/AccountProvider/AccountContext";
+import UseContract from "../hooks/useContract";
 
 const ConnectWallet = () => {
-  const {setAccount, account} = React.useContext(AccountContext);
-  const { showPopUp } = useModals();
+  const { connectWallet: connectWalletProvider, disconnectWallet, account} = UseContract()
 
-  const checkIfWalletIsConnected = async () => {
-    try {
-      const { ethereum } = window;
-
-      if (!ethereum) {
-        showPopUp({ text: "Metamask is not installed", icon: "error" });
-        return;
-      }
-
-      const accounts = await ethereum.request({ method: "eth_accounts" });
-
-      if (accounts.length !== 0) {
-        setAccount(accounts[0]);
-        showPopUp({ text: "Your Wallet is connected.", icon: "success" });
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const connectWallet = async () => {
-    try {
-      const { ethereum } = window;
-
-      if (!ethereum) {
-        showPopUp({ text: "Metamask is not installed", icon: "error" });
-        return;
-      }
-
-      const accounts = await ethereum.request({ method: "eth_requestAccounts" });
-      setAccount(accounts[0]);
-    } catch (err) {
-      showPopUp({ text: "Error while connecting with metamask. Try again later", icon: "error" });
-      console.error(err);
-    }
-  };
-
-  const disconnectWallet = () => {
-    setAccount(null);
-    showPopUp({ text: "Wallet disconnected.", icon: "info" });
-  };
-
-  useEffect(() => {
-    checkIfWalletIsConnected();
-  }, []);
 
   return (
     <div>
@@ -69,7 +24,7 @@ const ConnectWallet = () => {
           <FontAwesomeIcon icon={faSignOutAlt} style={styles.disconnectIcon} />
         </div>
       ) : (
-        <button onClick={connectWallet} style={styles.connectButton}>
+        <button onClick={connectWalletProvider} style={styles.connectButton}>
           <FontAwesomeIcon icon={faWallet} style={styles.walletIcon} />
         </button>
       )}
