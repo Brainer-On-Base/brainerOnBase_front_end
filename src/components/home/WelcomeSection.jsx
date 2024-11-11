@@ -61,11 +61,11 @@ export default function WelcomeSection() {
         >
           {APP_TEXTS.HOME_BUTTON_1}
         </StyledButton>
-        <StyledButton 
+        {/* <StyledButton 
         onClick={()=>  showPopUp({text:'Liquidity pool is not available yet', icon:'warning'})}
         size={'2em'} className={'animate__animated animate__fadeIn animate__delay-2s'}>
           CHARTS
-        </StyledButton>
+        </StyledButton> */}
       </div>
       <img src="moon.png" className="moon"/>
 

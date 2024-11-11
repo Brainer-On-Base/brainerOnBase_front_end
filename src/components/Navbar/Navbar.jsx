@@ -1,13 +1,9 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StyledNavbarContainer } from '../styled-components/container';
@@ -33,6 +29,7 @@ function Navbar({
       name: 'Roadmap',
       navigate: '/home#roadmap',
     },
+
     // {
     //   name: 'TOKENOMICS',
     //   navigate: '/home#tokenomics',
@@ -49,7 +46,12 @@ function Navbar({
     //   name: 'LAUNCH',
     //   navigate: '/game',
     // },
+    {
+      name: 'Wallet',
+      component: <ConnectWallet />,
+    },
   ];
+  
   const navigate = useNavigate();
 
   const [scrolled, setScrolled] = useState(false);
@@ -65,8 +67,9 @@ function Navbar({
     };
   }, []);
 
+
   return (
-    <StyledNavbarContainer position="fixed" scrolled={scrolled}>
+    <StyledNavbarContainer position="fixed" scrolled={scrolled} >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
@@ -83,6 +86,7 @@ function Navbar({
           {/* Desktop */}
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
+              page.name === 'Wallet' ? page.component :
               <Button
                 className='navbaritems'
                 key={page.name}

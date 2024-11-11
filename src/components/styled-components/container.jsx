@@ -149,7 +149,7 @@ export const StyledNavbarContainer = styled('div')`
         border-radius: 50%;
         &:hover{
             color: #1c93e3;
-            background: white;
+            // background: white;
             
         }
     }
