@@ -57,7 +57,7 @@ export default function NavbarMobile({
           
         >
           {pages.map((page) => (
-            page.name === 'Wallet' ? page.component :
+            page.name !== 'Wallet' &&
             <MenuItem key={page.name} 
             onClick={() => {
               setItem(page.navigate);

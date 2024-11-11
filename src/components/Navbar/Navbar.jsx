@@ -86,7 +86,7 @@ function Navbar({
           {/* Desktop */}
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              page.name === 'Wallet' ? page.component :
+              page.name === 'Wallet' ? <React.Fragment key={page.name}>{page.component}</React.Fragment> :
               <Button
                 className='navbaritems'
                 key={page.name}

@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWallet, faSignOutAlt } from "@fortawesome/free-solid-svg-icons"; // Icono de billetera y de desconexión
 import useModals from "../hooks/useSweetAlert";
+import AccountContext from "../provider/AccountProvider/AccountContext";
 
 const ConnectWallet = () => {
-  const [account, setAccount] = useState(null);
+  const {setAccount, account} = React.useContext(AccountContext);
   const { showPopUp } = useModals();
 
   const checkIfWalletIsConnected = async () => {
