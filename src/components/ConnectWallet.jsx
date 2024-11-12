@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWallet, faSignOutAlt } from "@fortawesome/free-solid-svg-icons"; // Icono de billetera y de desconexión
-import useModals from "../hooks/useSweetAlert";
-import AccountContext from "../provider/AccountProvider/AccountContext";
 import UseContract from "../hooks/useContract";
 
 const ConnectWallet = () => {
   const { connectWallet: connectWalletProvider, disconnectWallet, account} = UseContract()
-
 
   return (
     <div>

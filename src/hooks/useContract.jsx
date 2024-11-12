@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BRAINER_BPC_NFT_ABI_CONTRACT, BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS } from '../CONSTANTS';
 import useModals from './useSweetAlert';
 import AccountContext from '../provider/AccountProvider/AccountContext';
+import { ethers } from 'ethers';
 
 const UseContract = () => {
     const { account, setAccount, web3provider, setWeb3Provider } = React.useContext(AccountContext);
@@ -9,54 +10,56 @@ const UseContract = () => {
     const { showPopUp } = useModals();
 
     const connectWallet = async () => {
-        if (!ethereum) {
+        if (!window.ethereum) {
             showPopUp({ text: "Metamask is not installed", icon: "error" });
             return;
         }
         try {
             const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
             setAccount(accounts[0]);
-            const tempProvider = new ethers.providers.Web3Provider(window.ethereum);
-            setWeb3Provider(tempProvider);
-          } catch (error) {
-            showPopUp({ text: "Error while connecting with metamask. Try again later", icon: "error" });
-            console.error(err);
+            showPopUp({ text: "Wallet connected!", icon: "success" });
+
+            // Utiliza BrowserProvider en ethers v6
+            const eth_web3_provider = new ethers.BrowserProvider(window.ethereum);
+            setWeb3Provider(eth_web3_provider);
+        } catch (error) {
+            showPopUp({ text: "Error while connecting with Metamask. Try again later", icon: "error" });
+            console.error(error);
         }
     };
-
 
     const disconnectWallet = () => {
         setAccount(null);
         showPopUp({ text: "Wallet disconnected.", icon: "info" });
-      };
-    
+    };
 
     const mint_BPC1_NFT = async () => {
-        // Conectar el contrato de NFT
-        const signer = web3provider.getSigner();
-        const nftContract = new ethers.Contract(BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS, BRAINER_BPC_NFT_ABI_CONTRACT, signer);
+        if (!web3provider) {
+            alert("Please connect your wallet first.");
+            return;
+        }
 
         try {
-            nftContract.mintNFT(account, uri, { value: ethers.utils.parseEther("0.01") });
+            const signer = await web3provider.getSigner();
+            const nftContract = new ethers.Contract(BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS, BRAINER_BPC_NFT_ABI_CONTRACT, signer);
+
+            // Llama a la función de minting y espera la transacción
+            const tx = await nftContract.mintNFT(account, uri, { value: ethers.parseEther("0.01") });
             await tx.wait();
-             alert("NFT minted successfully!");
+            showPopUp({ text: "NFT minted successfully!", icon: "success" });
         } catch (error) {
             console.error("Error minting NFT:", error);
-            alert("Error minting NFT. Check the console for details.");
+            showPopUp({ text: "Error minting NFT. Try again later", icon: "error" });
         }
     };
 
-
-
-
-
-    return (
-        {
-            connectWallet,
-            disconnectWallet,
-            mint_BPC1_NFT
-        }
-    );
-}
+    return {
+        connectWallet,
+        disconnectWallet,
+        mint_BPC1_NFT,
+        account,
+        web3provider
+    };
+};
 
 export default UseContract;
