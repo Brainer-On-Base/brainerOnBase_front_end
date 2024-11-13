@@ -65,25 +65,17 @@ return <StyledRoadmapSection id="history" ship={lastScrollPos}>
         alt="spaceship"
       />
           
-        <StyledRoadmapCard>
-          <h2 style={{margin:0}}>Chapter 1</h2>
-          <p style={{margin: 0}}><span>The rise of the Brainers</span></p>
-          {/* <p style={{marginTop: '-20px', marginBottom: '2em'}}>
-          In this initial chapter, our mission is to gather the necessary funds and support to bring this revolutionary project to life.
-          We will launch an inaugural collection of NFTs and the first drop of the main character, the <span>BRAINER</span>.
-          Each NFT will serve not only as a collectible work of art but also as a symbol of membership in our Society.
-          With these resources, we will take the first steps toward building Brainer Society and its ecosystem.</p> */}
-            {/* <p style={{margin: 0}}>MAKE NOISE !</p>
-            <p style={{margin: 0}}>Inaugural collection of NFTs in pixelArt of diferents brainers</p>
-            <p style={{margin: 0}}>Drop of the main character. <span>BRAINER</span></p>
-            <p style={{margin: 0}}>Creation of the <span>BRAINER SOCIETY</span></p> */}
-          <ul>
-          <li><p className="text">Social media marketing campaign to build buzz and ignite <span>community</span> engagement.</p></li>
-          <li><p className="text">Inaugural collection of NFTs in pixelArt of diferents brainers.</p></li>
-            <li><p className="text">Drop of the main NFT character.</p></li>
-            <li><p className="text">Creation of the <span>BRAINER SOCIETY</span>community.</p></li>
-          </ul>
-        </StyledRoadmapCard>
+          <StyledRoadmapCard>
+            <h2 style={{margin:0}}>Chapter 1</h2>
+            <p style={{margin: 0}}><span>The rise of the Brainers</span></p>
+            <ul>
+              <li><p className="text">Social media marketing campaign to build buzz and ignite <span>community</span> engagement.</p></li>
+              <li><p className="text">Inaugural collection of NFTs in pixelArt of different brainers.</p></li>
+              <li><p className="text">Drop of the main NFT character.</p></li>
+              <li><p className="text">Creation of the <span>BRAINER SOCIETY</span> community.</p></li>
+              <li><p className="text">Fundraising campaign to gather resources to build the <span>BRAINER SOCIETY</span> metaverse.</p></li>
+            </ul>
+          </StyledRoadmapCard>
 
         <StyledRoadmapCard>
           <h2 style={{margin:0}}>Chapter 2</h2>
