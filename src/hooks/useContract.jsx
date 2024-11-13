@@ -41,7 +41,7 @@ const UseContract = () => {
 
         try {
             const signer = await web3provider.getSigner();
-            const nftContract = new ethers.Contract(BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS, BRAINER_BPC_NFT_ABI_CONTRACT, signer);
+            const nftContract = new ethers.Contract(BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS, BRAINER_BPC_NFT_ABI_CONTRACT.abi, signer);
 
             // Llama a la función de minting y espera la transacción
             const tx = await nftContract.mintNFT(account, uri, { value: ethers.parseEther("0.01") });

@@ -4,39 +4,13 @@ import { StyledButton } from "../styled-components/buttons";
 import useModals from "../../hooks/useSweetAlert";
 import { APP_TEXTS } from "../../APP_TEXTS";
 import { ethers } from 'ethers';
+import UseContract from "../../hooks/useContract";
 
 export default function WelcomeSection() {
   const {showPopUp, useTextModal} = useModals()
+  const { mint_BPC1_NFT } = UseContract()
 
-  const [account, setAccount] = useState(null);
-  const [loading, setLoading] = useState(false);
 
-  const connectWallet = async () => {
-      if (window.ethereum) {
-          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-          setAccount(accounts[0]);
-      } else {
-          alert("Por favor, instala MetaMask.");
-      }
-  };
-
-  const mintNFT = async () => {
-      setLoading(true);
-      try {
-          const provider = new ethers.providers.Web3Provider(window.ethereum);
-          const signer = provider.getSigner();
-          const contract = new ethers.Contract(contractAddress, MyNFTCollection.abi, signer);
-
-          const transaction = await contract.mintNFT(account);
-          await transaction.wait();
-          alert("NFT minting successful!");
-      } catch (error) {
-          console.error(error);
-          alert("Error en el minting");
-      } finally {
-          setLoading(false);
-      }
-  };
 
   return <StyledWelcomeSection2 style={{alignItems:'flex-start'}}>
 
@@ -55,7 +29,7 @@ export default function WelcomeSection() {
           title:APP_TEXTS.HOME_MODAL_TITLE,
           text: APP_TEXTS.HOME_MODAL_DESCRIPTION, 
           textColor: 'white',
-          onConfirmFunction:  async () =>  await mintNFT()
+          onConfirmFunction:  async () =>  await mint_BPC1_NFT()
         })} 
         
         >
