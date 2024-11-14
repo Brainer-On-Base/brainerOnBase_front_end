@@ -4,7 +4,7 @@ import { View } from "@react-three/drei";
 import NightBackground from "../NIghtBackground";
 import Navbar from "../Navbar/Navbar";
 
-export default function BrainerOnBaseGame() {
+export default function BrainerOnBaseMain() {
   return (
     <StyledFlexFullCenterContainer 
       style={{

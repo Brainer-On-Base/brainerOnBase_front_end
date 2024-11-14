@@ -2,7 +2,7 @@ import { Routes as ReactRoutes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import App from '../pages/App';
 import BrainerOnBaseShop from '../components/shop/BrainerOnBaseShop';
-import BrainerOnBaseGame from '../components/game/BrainerOnBaseGame';
+import BrainerOnBaseMain from '../components/game/BrainerOnBaseMain';
 
 
 const Routes = () => {
@@ -11,7 +11,7 @@ const Routes = () => {
             <Route path="/home" element={<Home />} />
             <Route
                 exact path={'/game'}
-                element={<BrainerOnBaseGame/>}
+                element={<BrainerOnBaseMain/>}
             />
             <Route
                 exact path={'/shop'}
