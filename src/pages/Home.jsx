@@ -42,7 +42,7 @@ export default function Home() {
       {showHistory === '/home#about' && <AboutSection/>}
       {showHistory === '/home#roadmap' && <RoadmapSection/>}
       <StyledAddressContainer onClick={() => copyToClipboard('0x5b8BB48898b67c3481677c5Ac462786c18Db11F6')}>
-        <h3><span>$BNR</span> ADDRESS</h3>
+        <h3><span>$NRN</span> ADDRESS</h3>
         <p>
           <FontAwesomeIcon icon={faCopy} style={{marginRight: '20px'}}/>
           0x5b8BB48898b67c3481677c5Ac462786c18Db11F6</p>

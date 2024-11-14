@@ -73,6 +73,7 @@ return <StyledRoadmapSection id="history" ship={lastScrollPos}>
               <li><p className="text">Inaugural collection of NFTs in pixelArt of different brainers.</p></li>
               <li><p className="text">Drop of the main NFT character.</p></li>
               <li><p className="text">Creation of the <span>BRAINER SOCIETY</span> community.</p></li>
+              <li><p className="text">Creation of <span>NEURON</span>. The currency of Brainer Society</p></li>
               <li><p className="text">Fundraising campaign to gather resources to build the <span>BRAINER SOCIETY</span> metaverse.</p></li>
             </ul>
           </StyledRoadmapCard>
