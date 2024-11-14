@@ -13,6 +13,9 @@ import { faCopy } from "@fortawesome/free-regular-svg-icons";
 import { Center, Html, View } from "@react-three/drei";
 import NightBackground from "../components/NIghtBackground";
 import RoadmapSection from "../components/home/RoadmapSection";
+import { StyledButton, StyledLaunchGameButton } from "../components/styled-components/buttons";
+
+
 
 export default function Home() {
   const {copied,copyToClipboard} = useModals()
@@ -47,6 +50,11 @@ export default function Home() {
           <FontAwesomeIcon icon={faCopy} style={{marginRight: '20px'}}/>
           0x5b8BB48898b67c3481677c5Ac462786c18Db11F6</p>
       </StyledAddressContainer>
+      <StyledLaunchGameButton
+        onClick={() => window.open("https://play.braineronbase.io/")}
+      >
+        LAUNCH GAME
+      </StyledLaunchGameButton>
       {/* <TokenomicsSection/> */}
       <Footer/>
     </StyledAppContainer>;

@@ -24,3 +24,19 @@ export const StyledButton = styled('button')`
 
 
 `
+
+
+export const StyledLaunchGameButton = styled(StyledButton)`
+    padding: 1em 2em;
+    font-size: 28px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 2em;
+    display: block;
+
+
+
+    &:active {
+        background-color: #731e58;
+    }
+`;
