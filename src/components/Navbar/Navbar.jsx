@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { StyledNavbarContainer } from '../styled-components/container';
 import { Stack } from '@mui/material';
 import ConnectWallet from '../ConnectWallet';
@@ -15,6 +15,8 @@ function Navbar({
   setItem,
   item
 }) {
+  const location = useLocation()
+  const isPlaying = location.pathname === '/game'
 
   const pages = [
     {
@@ -76,15 +78,15 @@ function Navbar({
             <Stack flexDirection={'row'} alignItems={'center'}>
               <img
                 src="./brainerCoin.png"
-                onClick={() => navigate('/home')}
+                onClick={() => {navigate('/home'), setItem('/home')}}
                 style={{ cursor: 'pointer' }}
               />
-                <Typography onClick={() => {navigate('/home'), setItem('/home')}} className="navbaritems" textAlign="center">BRAINER</Typography>
+                <Typography onClick={() => {navigate('/home'), setItem('/home')}} className="navbaritems" textAlign="center">{isPlaying ? 'EXIT GAME' : 'BRAINER'}</Typography>
             </Stack>
           </Box>
 
           {/* Desktop */}
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+          {!isPlaying && <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               page.name === 'Wallet' ? <React.Fragment key={page.name}>{page.component}</React.Fragment> :
               <Button
@@ -95,7 +97,10 @@ function Navbar({
                 {page.name}
               </Button>
             ))}
-          </Box>
+          </Box>}
+
+          {isPlaying &&  <React.Fragment key={'Wallet'}>{pages[pages.length - 1]?.component}</React.Fragment>}
+
 
           {/* Mobile */}
           <NavbarMobile pages={pages} setItem={setItem}/>

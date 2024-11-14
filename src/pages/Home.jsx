@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import TokenomicsSection from "../components/home/TokenomicsSection";
 import HistorySection from "../components/home/HistorySection";
 import AboutSection from "../components/home/AboutSection";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useModals from "../hooks/useSweetAlert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
@@ -20,6 +20,7 @@ import { StyledButton, StyledLaunchGameButton } from "../components/styled-compo
 export default function Home() {
   const {copied,copyToClipboard} = useModals()
   const [showHistory, setShowHistory] = useState('/home');
+  const navigate = useNavigate()
 
   const location = useLocation();
 
@@ -51,7 +52,7 @@ export default function Home() {
           0x5b8BB48898b67c3481677c5Ac462786c18Db11F6</p>
       </StyledAddressContainer>
       <StyledLaunchGameButton
-        onClick={() => window.open("https://play.braineronbase.io/")}
+        onClick={() => navigate("/game")}
       >
         LAUNCH GAME
       </StyledLaunchGameButton>
