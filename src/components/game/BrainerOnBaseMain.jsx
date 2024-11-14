@@ -9,7 +9,11 @@ export default function BrainerOnBaseMain() {
     <StyledFlexFullCenterContainer 
       style={{
         backgroundImage: 'linear-gradient(to bottom, #230f44, #242424)',
-         height:'100vh'}}>
+         height:'100vh',
+        overflow: 'hidden',
+        }}
+          
+         >
       <View style={{ width: '100%', height: '100%', position: 'absolute', zIndex: 1, top: 0, bottom: 0 }}>
         <NightBackground/>
       </View>

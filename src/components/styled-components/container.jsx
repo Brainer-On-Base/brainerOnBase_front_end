@@ -26,8 +26,7 @@ export const StyledFlexFullCenterContainer = styled('div')`
     justify-content: center;
     align-items: center;
     width: ${({ width }) => width ? width : "100%" };
-    height: 100%
-    position: relative;
+    height: ${({ height }) => height ? height : "100%" };
 `
 
 export const StyledFlexBetweenContainer = styled('div')`

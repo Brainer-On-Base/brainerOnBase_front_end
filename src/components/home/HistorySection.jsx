@@ -50,10 +50,9 @@ return <StyledHistorySection id="history">
         className='animate__animated animate__fadeIn firstText'
       >
           <p className={`animate__animated animate_fadeIn`}>{BRAINER_HISTORY_ARRAY[currentIndex]}</p>
-          <StyledFlexFullCenterContainer width={"100%"} style={{ justifyContent: "flex-end", position: "absolute",
-            bottom: "0",          
-            left: "50%",           
-            transform: "translateX(-50%)"
+          <StyledFlexFullCenterContainer width={"100%"} height={"auto"} style={{ justifyContent: "flex-end",
+            bottom: "50px",          
+            left: "0px",           
           }}>
             <StyledButton size={"15px"} padding={"5px"} margin={"10px"} onClick={handlePrev} disabled={currentIndex === 0}>
               <FontAwesomeIcon icon={faArrowCircleLeft} size="1x" />
