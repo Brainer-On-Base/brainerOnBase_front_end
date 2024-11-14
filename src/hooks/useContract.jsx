@@ -13,14 +13,12 @@ const UseContract = () => {
 
     useEffect(() => {
         if(web3provider) {
-            mint()
+            getQuantityminted()
         }
     }, [account])
 
-    const mint = async() => {
-        await getMintedCount()
-
-    }
+    const getQuantityminted = async () => await getMintedCount()
+    
 
     const connectWallet = async () => {
         if (!window.ethereum) {
