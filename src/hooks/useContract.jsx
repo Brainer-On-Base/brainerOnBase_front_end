@@ -6,7 +6,7 @@ import { ethers } from 'ethers';
 import { useEffect } from 'react';
 
 const UseContract = () => {
-    const { account, setAccount, web3provider, setWeb3Provider } = React.useContext(AccountContext);
+    const { account, setAccount, web3provider, setWeb3Provider, isConnected } = React.useContext(AccountContext);
     const [uri, setUri] = useState("");
     const { showPopUp } = useModals();
 
@@ -85,7 +85,8 @@ const UseContract = () => {
         mint_BPC1_NFT,
         account,
         web3provider,
-        getMintedCount
+        getMintedCount,
+        isConnected
     };
 };
 

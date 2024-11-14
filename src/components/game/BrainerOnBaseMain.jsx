@@ -3,8 +3,11 @@ import { StyledFlexFullCenterContainer } from "../styled-components/container";
 import { View } from "@react-three/drei";
 import NightBackground from "../NIghtBackground";
 import Navbar from "../Navbar/Navbar";
+import UseContract from "../../hooks/useContract";
 
 export default function BrainerOnBaseMain() {
+  const {isConnected} = UseContract()
+
   return (
     <StyledFlexFullCenterContainer 
       style={{
@@ -19,10 +22,17 @@ export default function BrainerOnBaseMain() {
       </View>
       <Navbar/>
 
+      {isConnected ? 
+      <StyledFlexFullCenterContainer style={{flexDirection:'column', marginTop:'4em'}}>
+        <img src="./gamingbrainer.png" style={{width:'300px'}} className={`animate__animated animate__fadeInDown animations`}/> 
+
+      </StyledFlexFullCenterContainer>
+
+      :
       <StyledFlexFullCenterContainer style={{flexDirection:'column', marginTop:'4em'}}>
         <img src="./gamingbrainer.png" style={{width:'300px'}} className={`animate__animated animate__fadeInDown animations`}/>
         <h1 style={{fontFamily:'"Luckiest Guy", cursive',fontSize:'35px', textAlign:"center"}} className={`animate__animated animate__fadeInDown animations animate__delay-1s`}>The game is under construction!</h1>
-      </StyledFlexFullCenterContainer>
+      </StyledFlexFullCenterContainer>}
 
     </StyledFlexFullCenterContainer>
   

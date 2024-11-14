@@ -13,13 +13,13 @@ const AccountProvider = ({ children }) => {
     useEffect(() => {
         if (account) {
             localStorage.setItem('account', account);
-            
+            setIsConnected(true);
+
             // Recrear el proveedor web3 al recargar la página
             if (!web3provider) {
                 try {
-                    const provider = new ethers.providers.Web3Provider(window.ethereum);
-                    setWeb3Provider(provider);
-                    setIsConnected(true);
+                    const eth_web3_provider = new ethers.BrowserProvider(window.ethereum);
+                    setWeb3Provider(eth_web3_provider);
                 } catch (error) {
                     console.error('Error recreando el proveedor:', error);
                 }
