@@ -48,10 +48,9 @@ const UseContract = () => {
 
     const mint_BPC1_NFT = async (uri) => {
         if (!web3provider) {
-            alert("Please connect your wallet first.");
+            showPopUp({ text: "Connect your wallet first.", icon: "warning" });
             return;
         }
-
 
         try {
             const signer = await web3provider.getSigner();
@@ -68,18 +67,8 @@ const UseContract = () => {
     };
 
     const getMintedCount = async () => {
-        if (!web3provider) {
-            alert("Please connect your wallet first.");
-            return;
-        }
-
-        // const network = await web3provider.getNetwork();
-
-        // if (web3provider && network.chainId !== 11155111) {
-        //     console.error("Not connected to Sepolia network");
-        //     return false;
-        // }
-
+        if (!web3provider) return;
+        
         try {
             const nftContract = new ethers.Contract(BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS, BRAINER_BPC_NFT_ABI_CONTRACT.abi, web3provider);
             console.log("provider", web3provider);
