@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract PixelBrainerCollection is ERC721, Ownable {
-    uint256 public currentTokenId;
+    uint256 public currentTokenId = 0;
     uint256 public maxSupply;
     uint256 public mintPrice = 0.01 ether;
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyledAddressContainer, StyledWelcomeSection2 } from "../styled-components/container";
+import { StyledAddressContainer, StyledFlexCenterContainer, StyledWelcomeSection2 } from "../styled-components/container";
 import { StyledButton } from "../styled-components/buttons";
 import useModals from "../../hooks/useSweetAlert";
 import { APP_TEXTS } from "../../APP_TEXTS";
@@ -21,6 +21,8 @@ export default function WelcomeSection() {
         <h1 className={'animate__animated animate__backInDown'}>BRAINER</h1>
         <h1 className={'animate__animated animate__fadeInDown animate__delay-1s'}>N BASE</h1>
         <h1 className={'animate__animated animate__fadeIn animate__delay-1s '}>ARE YOU A NO <span>BRAINER</span>?</h1>
+        <StyledFlexCenterContainer>
+
         <StyledButton 
         size={'2em'} 
         className={'animate__animated animate__fadeIn animate__delay-2s'}
@@ -35,6 +37,9 @@ export default function WelcomeSection() {
         >
           {APP_TEXTS.HOME_BUTTON_1}
         </StyledButton>
+        <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">0/8000 minted</p>
+        </StyledFlexCenterContainer>
+
         {/* <StyledButton 
         onClick={()=>  showPopUp({text:'Liquidity pool is not available yet', icon:'warning'})}
         size={'2em'} className={'animate__animated animate__fadeIn animate__delay-2s'}>

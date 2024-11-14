@@ -402,6 +402,14 @@ export const StyledWelcomeSection2 = styled('div')`
         flex-direction: row;
         margin-bottom: 6em;
         z-index: 9999;
+
+        .minted-quantity{
+            font-family: "Luckiest Guy", cursive;
+            margin-left: 8px;            
+            font-size: 40px;
+            color: #888;
+            text-transform: uppercase;
+        }
         
         h1{
             font-size: 2em;

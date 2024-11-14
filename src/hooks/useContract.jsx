@@ -3,11 +3,24 @@ import { BRAINER_BPC_NFT_ABI_CONTRACT, BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS } f
 import useModals from './useSweetAlert';
 import AccountContext from '../provider/AccountProvider/AccountContext';
 import { ethers } from 'ethers';
+import { useEffect } from 'react';
 
 const UseContract = () => {
     const { account, setAccount, web3provider, setWeb3Provider } = React.useContext(AccountContext);
     const [uri, setUri] = useState("");
     const { showPopUp } = useModals();
+
+
+    useEffect(() => {
+        if(web3provider) {
+            mint()
+        }
+    }, [account])
+
+    const mint = async() => {
+        await getMintedCount()
+
+    }
 
     const connectWallet = async () => {
         if (!window.ethereum) {
@@ -33,11 +46,12 @@ const UseContract = () => {
         showPopUp({ text: "Wallet disconnected.", icon: "info" });
     };
 
-    const mint_BPC1_NFT = async () => {
+    const mint_BPC1_NFT = async (uri) => {
         if (!web3provider) {
             alert("Please connect your wallet first.");
             return;
         }
+
 
         try {
             const signer = await web3provider.getSigner();
@@ -53,12 +67,41 @@ const UseContract = () => {
         }
     };
 
+    const getMintedCount = async () => {
+        if (!web3provider) {
+            alert("Please connect your wallet first.");
+            return;
+        }
+
+        // const network = await web3provider.getNetwork();
+
+        // if (web3provider && network.chainId !== 11155111) {
+        //     console.error("Not connected to Sepolia network");
+        //     return false;
+        // }
+
+        try {
+            const nftContract = new ethers.Contract(BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS, BRAINER_BPC_NFT_ABI_CONTRACT.abi, web3provider);
+            console.log("provider", web3provider);
+            console.log("nftContract", nftContract);
+
+            const mintedCount = await web3provider.currentTokenId();
+
+            showPopUp({ text: `Total NFTs minted: ${mintedCount}`, icon: "info" });
+            return mintedCount;
+        } catch (error) {
+            console.error("Error fetching minted count:", error);
+            showPopUp({ text: "Error fetching minted count. Try again later", icon: "error" });
+        }
+    };
+
     return {
         connectWallet,
         disconnectWallet,
         mint_BPC1_NFT,
         account,
-        web3provider
+        web3provider,
+        getMintedCount
     };
 };
 
