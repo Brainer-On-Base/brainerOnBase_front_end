@@ -7,7 +7,6 @@ import { useEffect } from 'react';
 
 const UseContract = () => {
     const { account, setAccount, web3provider, setWeb3Provider, isConnected } = React.useContext(AccountContext);
-    const [uri, setUri] = useState("");
     const { showPopUp } = useModals();
 
 

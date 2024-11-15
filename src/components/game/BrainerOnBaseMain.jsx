@@ -4,9 +4,11 @@ import { View } from "@react-three/drei";
 import NightBackground from "../NIghtBackground";
 import Navbar from "../Navbar/Navbar";
 import UseContract from "../../hooks/useContract";
+import { StyledButton } from "../styled-components/buttons";
 
 export default function BrainerOnBaseMain() {
-  const {isConnected} = UseContract()
+  const {isConnected, connectWallet} = UseContract()
+
 
   return (
     <StyledFlexFullCenterContainer 
@@ -24,14 +26,21 @@ export default function BrainerOnBaseMain() {
 
       {isConnected ? 
       <StyledFlexFullCenterContainer style={{flexDirection:'column', marginTop:'4em'}}>
-        <img src="./gamingbrainer.png" style={{width:'300px'}} className={`animate__animated animate__fadeInDown animations`}/> 
+        <img src="./videogamegains.png" style={{width:'300px'}} className={`animate__animated animate__fadeIn animations`}/> 
+        <h1 style={{fontFamily:'"Luckiest Guy", cursive',fontSize:'35px', textAlign:"center"}} className={`animate__animated animate__fadeInDown animations animate__delay-1s`}>The game is under construction!</h1>
 
       </StyledFlexFullCenterContainer>
 
       :
       <StyledFlexFullCenterContainer style={{flexDirection:'column', marginTop:'4em'}}>
         <img src="./gamingbrainer.png" style={{width:'300px'}} className={`animate__animated animate__fadeInDown animations`}/>
-        <h1 style={{fontFamily:'"Luckiest Guy", cursive',fontSize:'35px', textAlign:"center"}} className={`animate__animated animate__fadeInDown animations animate__delay-1s`}>The game is under construction!</h1>
+        <StyledButton
+          style={{zIndex: 2, marginTop:'2em'}}
+          size={'2em'}
+          onClick={connectWallet}
+        >
+            CONNECT WALLET
+        </StyledButton>
       </StyledFlexFullCenterContainer>}
 
     </StyledFlexFullCenterContainer>
