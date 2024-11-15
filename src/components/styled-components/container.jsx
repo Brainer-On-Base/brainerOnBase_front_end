@@ -820,6 +820,7 @@ export const StyledAstronautCard3 = styled(StyledAstronautCard)`
 export const StyledFooterSection = styled('div')`
 //   background-color: #1a1a1a;
     background: transparent;
+    position: relative;
 
     width: 100%;
     display: flex;
@@ -855,6 +856,30 @@ export const StyledFooterSection = styled('div')`
 
     @media(max-width: 900px){
         width: 80%;
+    }
+
+
+    .spaceship{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 150px;
+        animation: rotateAndMoveUp 8s infinite alternate;
+    }
+
+
+    .social {
+        display: none;
+    }
+
+
+    @media(max-width: 980px){
+        .spaceship, #bubbletokenomics{
+            display: none !important;
+        }
+        .social{
+            display: flex;
+        }
     }
 `
 
