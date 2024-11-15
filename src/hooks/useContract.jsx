@@ -72,12 +72,9 @@ const UseContract = () => {
         try {
             const nftContract = new ethers.Contract(BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS, BRAINER_BPC_NFT_ABI_CONTRACT.abi, web3provider);
             const mintedCount = await nftContract.currentTokenId();
-
-            showPopUp({ text: `Total NFTs minted: ${mintedCount}`, icon: "info" });
             return mintedCount;
         } catch (error) {
             console.error("Error fetching minted count:", error);
-            showPopUp({ text: "Error fetching minted count. Try again later", icon: "error" });
         }
     };
 

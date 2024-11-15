@@ -20,11 +20,6 @@ export default function WelcomeSection() {
 }, [getMintedCount]);
 
 
-  const quantity = async () => {
-    const mintedCount = await getMintedCount();
-    return(mintedCount);
-  };
-
   return <StyledWelcomeSection2 style={{alignItems:'flex-start'}}>
 
     {/* <img src="rocket.png" className="baloon"/> */}

@@ -860,6 +860,7 @@ export const StyledFooterSection = styled('div')`
 
 
     .spaceship{
+        transorm: scaleX(-1);
         position: absolute;
         bottom: 0;
         right: 0;
