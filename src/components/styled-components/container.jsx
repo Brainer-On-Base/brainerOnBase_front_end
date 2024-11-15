@@ -845,8 +845,12 @@ export const StyledFooterSection = styled('div')`
     }
 
     img{
+     &:first-of-type {
+        transform: scaleX(-1); 
+    }
         width: 40px;
         border-radius: 50%;     
+        margin: 1em 2em;
     }
 
     @media(max-width: 900px){
