@@ -27,7 +27,7 @@ contract PixelBrainerCollection is ERC721, Ownable {
         maxSupply = _maxSupply;
     }
 
-    function mintNFT(address recipient, string memory uri) external payable {
+    function mintNFT(address recipient, string memory uri) public payable {
         require(currentTokenId < maxSupply, "Max supply reached");
         require(msg.value >= mintPrice, "Insufficient funds");
 

@@ -625,4 +625,4 @@ export const BRAINER_BPC_NFT_ABI_CONTRACT =  {
       "stateMutability": "nonpayable",
       "type": "function"
     }
-]}
+  ]}

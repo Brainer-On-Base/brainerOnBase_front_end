@@ -8,9 +8,22 @@ import UseContract from "../../hooks/useContract";
 
 export default function WelcomeSection() {
   const {showPopUp, useTextModal} = useModals()
-  const { mint_BPC1_NFT } = UseContract()
+  const { mint_BPC1_NFT, getMintedCount } = UseContract()
+  const [mintedCount, setMintedCount] = useState(null)
+
+  useEffect(() => {
+    const fetchMintedCount = async () => {
+        const count = await getMintedCount();
+        setMintedCount(count);
+    };
+    fetchMintedCount();
+}, [getMintedCount]);
 
 
+  const quantity = async () => {
+    const mintedCount = await getMintedCount();
+    return(mintedCount);
+  };
 
   return <StyledWelcomeSection2 style={{alignItems:'flex-start'}}>
 
@@ -37,7 +50,7 @@ export default function WelcomeSection() {
         >
           {APP_TEXTS.HOME_BUTTON_1}
         </StyledButton>
-        <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">0/8000 minted</p>
+        <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">{`${mintedCount}/8000 minted`}</p>
         </StyledFlexCenterContainer>
 
         {/* <StyledButton 
