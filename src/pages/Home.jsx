@@ -14,6 +14,7 @@ import { Center, Html, View } from "@react-three/drei";
 import NightBackground from "../components/NIghtBackground";
 import RoadmapSection from "../components/home/RoadmapSection";
 import { StyledButton, StyledLaunchGameButton } from "../components/styled-components/buttons";
+import NFTCollections from "../components/home/NFTCollections";
 
 
 
@@ -45,6 +46,7 @@ export default function Home() {
       {showHistory === '/home#history' && <HistorySection/>}
       {showHistory === '/home#about' && <AboutSection/>}
       {showHistory === '/home#roadmap' && <RoadmapSection/>}
+      <NFTCollections/>
       <StyledAddressContainer onClick={() => copyToClipboard('0x5b8BB48898b67c3481677c5Ac462786c18Db11F6')}>
         <h3><span>$NRN</span> ADDRESS</h3>
         <p>
