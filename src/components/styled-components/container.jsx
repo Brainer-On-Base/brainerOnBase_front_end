@@ -694,7 +694,6 @@ export const StyledHistorySection = styled(StyledHomeSection)`
         font-size: 25px;
         margin-top: -2em;
         font-weight: 100;
-        font-family: cursive;
         font-weight: 600;
     }
 
@@ -1034,7 +1033,6 @@ export const StyledRoadmapSection = styled(StyledHomeSection)`
         font-size: 25px;
         margin-top: -2em;
         font-weight: 100;
-        font-family: cursive;
         font-weight: 600;
     }
 
@@ -1153,14 +1151,12 @@ export const StyledNFTCollectionsContainer = styled(StyledFlexFullCenterContaine
             p, li{
                 font-size: 20px;
                 font-weight: 100;
-                font-family: cursive;
                 font-weight: 600;
                 color: #aaa;
 
                 span{
                     color: #ff437d;
                     font-weight: 600;
-                    font-family: cursive;
                     font-family: "Luckiest Guy", cursive;
                 font-size: 20px;
 
