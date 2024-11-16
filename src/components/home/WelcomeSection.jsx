@@ -8,7 +8,7 @@ import UseContract from "../../hooks/useContract";
 
 export default function WelcomeSection() {
   const {showPopUp, useTextModal} = useModals()
-  const { mint_BPC1_NFT, getMintedCount } = UseContract()
+  const { mint_BPC1_NFT, getMintedCount, web3provider } = UseContract()
   const [mintedCount, setMintedCount] = useState(null)
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function WelcomeSection() {
         >
           {APP_TEXTS.HOME_BUTTON_1}
         </StyledButton>
-        <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">{`${mintedCount}/8000 minted`}</p>
+        {web3provider && <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">{`${mintedCount}/8000 minted`}</p>}
         </StyledFlexCenterContainer>
 
         {/* <StyledButton 
