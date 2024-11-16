@@ -34,7 +34,7 @@ const NFTCollections = () => {
                 </div>
                 <div className='nft-examples-images'>
                     {[...Array(12)].map((_, index) => (
-                        <img key={index} src="./brainerCoin.png" alt="NFT Collection" />
+                        <img key={index} src={`./1stCollectionNFT/${index + 1}.png`} alt="NFT Collection" />
                     ))}
                 </div>
             </div>

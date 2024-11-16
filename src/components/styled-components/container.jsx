@@ -153,9 +153,6 @@ export const StyledNavbarContainer = styled('div')`
         }
     }
 
-    @media(max-width: 450px){
-        width: unset;
-    }
 `
 
 
@@ -458,12 +455,17 @@ export const StyledWelcomeSection2 = styled('div')`
             }
         }
 
-        button{
-            &:first-of-type{
-                margin-right: 10px;
-            }
-            filter: drop-shadow(0 0 5em #c464ffaa);
+        .welcome-actions{
+                button{
+                    &:first-of-type{
+                        margin-right: 10px;
+                    }
+                    filter: drop-shadow(0 0 5em #c464ffaa);
+                }
+                justify-content: center;
+                flex-wrap: wrap;
         }
+
 
     }
     img{
