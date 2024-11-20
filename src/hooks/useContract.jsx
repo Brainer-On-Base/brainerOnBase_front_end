@@ -43,19 +43,20 @@ const UseContract = () => {
         showPopUp({ text: "Wallet disconnected.", icon: "info" });
     };
 
-    const mint_BPC1_NFT = async (uri) => {
+    const mint_BPC1_NFT = async () => {
         if (!web3provider) {
             showPopUp({ text: "Connect your wallet first.", icon: "warning" });
             return;
         }
 
+        const quantity = await getMintedCount();
+        let uri = `https://silver-accessible-aardvark-723.mypinata.cloud/ipfs/QmNj6XdNeP8fPJu7nDvD1zFiLZZqnP5J5RrdcpLnuVNBWh/${quantity}.json`
+
         try {
             const signer = await web3provider.getSigner();
-            console.log("Signer:", signer);
 
             const nftContract = new ethers.Contract(BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS, BRAINER_BPC_NFT_ABI_CONTRACT.abi, signer);
 
-            console.log(nftContract.mintNFT);
             // Llama a la función de minting y espera la transacción
             const tx = await nftContract.mintNFT(account, uri, { value: ethers.parseEther("0.01") });
             await tx.wait();
