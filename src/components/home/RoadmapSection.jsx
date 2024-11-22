@@ -10,47 +10,47 @@ export default function RoadmapSection() {
   const scrollTimeoutRef = useRef(null); // Usar ref para el timeout
 
 
-  useEffect(() => {
-    let scrollTimeout;
-    const handleScroll = () => {
-      const currentScrollPos = window.scrollY;
+  // useEffect(() => {
+  //   let scrollTimeout;
+  //   const handleScroll = () => {
+  //     const currentScrollPos = window.scrollY;
 
       
-      setIsScrolling(true);
+  //     setIsScrolling(true);
 
-      // Detectar dirección del scroll
-      if (currentScrollPos > lastScrollPos) {
-        setScrollingDown(true);
-        setScrollingUp(false);
-      } else if (currentScrollPos < lastScrollPos) {
-        setScrollingDown(false);
-        setScrollingUp(true);
-      }
+  //     // Detectar dirección del scroll
+  //     if (currentScrollPos > lastScrollPos) {
+  //       setScrollingDown(true);
+  //       setScrollingUp(false);
+  //     } else if (currentScrollPos < lastScrollPos) {
+  //       setScrollingDown(false);
+  //       setScrollingUp(true);
+  //     }
 
-      setLastScrollPos(currentScrollPos);
+  //     setLastScrollPos(currentScrollPos);
 
-      // Limpiar el timeout anterior si aún está activo
-      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+  //     // Limpiar el timeout anterior si aún está activo
+  //     if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
 
-      // Configurar un nuevo timeout para detener la animación después del scroll
-      scrollTimeoutRef.current = setTimeout(() => {
-        setIsScrolling(false);
-        setScrollingDown(false);
-        setScrollingUp(false);
-      }, 150); // Ajusta el tiempo según tus necesidades
-    };
+  //     // Configurar un nuevo timeout para detener la animación después del scroll
+  //     scrollTimeoutRef.current = setTimeout(() => {
+  //       setIsScrolling(false);
+  //       setScrollingDown(false);
+  //       setScrollingUp(false);
+  //     }, 150); // Ajusta el tiempo según tus necesidades
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    // Cleanup para evitar memory leaks
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
-    };
-  }, [lastScrollPos]);
+  //   // Cleanup para evitar memory leaks
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //     if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+  //   };
+  // }, [lastScrollPos]);
 
 
-return <StyledRoadmapSection id="history" ship={lastScrollPos}>
+return <StyledRoadmapSection id="history" ship={0}>
 
   
 
@@ -62,23 +62,24 @@ return <StyledRoadmapSection id="history" ship={lastScrollPos}>
         <img
         src="./spaceship.png"
         className={`img1 ${isScrolling ? "scrolling" : ""} ${scrollingDown ? "scrolling-down" : ""} ${scrollingUp ? "scrolling-up" : ""}`}
+        // className={`img1`}
         alt="spaceship"
       />
           
           <StyledRoadmapCard>
             <h2 style={{margin:0}}>Chapter 1</h2>
-            <p style={{margin: 0}}><span>The rise of the Brainers</span></p>
+            <p style={{margin: 0}} className="subtitle"><span>The rise of the Brainers</span></p>
             <ul>
               <li><p className="text">Social media marketing campaign to build buzz and ignite <span>community</span> engagement.</p></li>
               <li><p className="text">Inaugural collection of NFTs in pixelArt of different brainers.</p></li>
               <li><p className="text">Drop of the main NFT character.</p></li>
               <li><p className="text">Creation of the <span>BRAINER SOCIETY</span> community.</p></li>
-              <li><p className="text">Creation of <span>NEURON</span>. The currency of Brainer Society</p></li>
+              <li><p className="text">Creation of <span>NEURON</span>. The currency of Brainer Society.</p></li>
               <li><p className="text">Fundraising campaign to gather resources to build the <span>BRAINER SOCIETY</span> metaverse.</p></li>
             </ul>
           </StyledRoadmapCard>
 
-        <StyledRoadmapCard>
+        {/* <StyledRoadmapCard>
           <h2 style={{margin:0}}>Chapter 2</h2>
           <p style={{margin: 0, marginBottom: '1em'}}><span>Building the team</span></p>
           <p className="text"><span>TEAM BUILDING</span>. This chapter is dedicated to bringing together passionate individuals who share our vision and will help build the future of <span>BRAINER SOCIETY</span>.</p>
@@ -108,7 +109,7 @@ return <StyledRoadmapSection id="history" ship={lastScrollPos}>
           </p>
 
 
-        </StyledRoadmapCard>
+        </StyledRoadmapCard> */}
         
     </StyledFlexFullCenterContainer>
 

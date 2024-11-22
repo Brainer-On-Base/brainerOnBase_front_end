@@ -77,7 +77,7 @@ body::-webkit-scrollbar-thumb {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-5%);
+    transform: translateY(-10%);
   }
 }
 

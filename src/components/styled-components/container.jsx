@@ -891,10 +891,12 @@ export const StyledBubbleDialog = styled('div')`
 
     p{
         margin: 0;
+        font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
         text-align: left;
         line-height: 1.5em;
         color: black !important;
-        font-weight: 100;
+
     }
     position: absolute;
     right: ${({position}) => position?.right};
@@ -914,7 +916,7 @@ export const StyledBubbleDialog = styled('div')`
     box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
     box-sizing: border-box;
     width: ${({width}) => width ?? '200px'};
-    height: ${({height}) => height ?? '200px'};
+    min-height: ${({height}) => height ?? '200px'};
     transition: all 1s ease;
 
     &:after{
@@ -1040,14 +1042,15 @@ export const StyledRoadmapSection = styled(StyledHomeSection)`
         width: 250px;
         position: absolute;
         top: ${({ ship }) => ship > 1900  ? 1900 : ship < 400 ? 400 + 100 : ship + 100}px;
-        left: 50%; /* Centra horizontalmente */
+        right: 20px;
+        // left: 100%; /* Centra horizontalmente */
         transform: translateX(-50%); /* Para centrar horizontalmente */
         filter: drop-shadow(0 0 5em #c464ffaa);
         z-index: 9999;
         transition: transform 0.3s ease; /* Suaviza el giro al cambiar de dirección */
         
         /* Animación inicial al cargar */
-        animation: fly_short 3.5s infinite alternate, fadeInUp 0.2s;
+        animation: fly_short 2.5s infinite alternate, fadeInUp 0.2s;
     }
 
     /* Rotación y movimiento hacia abajo */
@@ -1092,22 +1095,35 @@ export const StyledRoadmapSection = styled(StyledHomeSection)`
 
 export const StyledRoadmapCard = styled(StyledCard)`
     height: auto;
-    width: 500px;
+    width: 90%;
     display: flex;
+    align-self: center;
     flex-direction: column;
     background-color: #140829;
-    margin-left: 2em;
+    margin-left: 0;
+
+    h2{
+        font-size: 2em;
+    }
+
+
 
     .text{
         margin: 0;
         font-size: 1em !important;
         font-family: monospace;
-        font-size: 490px;
         line-height: 1.3em;
         color: white;
 
         span{
             font-size: 0.9em;
+        }
+    }
+
+
+    .subtitle{
+        span{
+            font-size: 1.5em;
         }
     }
 
