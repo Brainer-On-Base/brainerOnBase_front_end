@@ -50,7 +50,7 @@ export default function RoadmapSection() {
   // }, [lastScrollPos]);
 
 
-return <StyledRoadmapSection id="history" ship={0}>
+return <StyledRoadmapSection id="roadmap" ship={0}>
 
   
 
