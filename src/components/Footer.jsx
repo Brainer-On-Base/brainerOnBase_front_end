@@ -54,7 +54,7 @@ export default function Footer() {
               <FontAwesomeIcon icon={faDiscord} size="1x" />
             </StyledButton>
       </BubbleDialog>
-      <img className="spaceship" src="./brainerCoin5.png" alt="Brainer Coin Logo" />
+      <img className="spaceship" src="./brainerCoin5.png" alt="Brainer Coin Logo"  style={{transform: 'scaleX(-1) ', overflow: 'hidden'}}/>
 
       <StyledFlexFullCenterContainer width="100%" style={{marginTop: '1em'}} className="social">
       <StyledButton size={"15px"} padding={"5px"} margin={"0  5px 10px 5px"}>
