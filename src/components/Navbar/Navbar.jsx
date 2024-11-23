@@ -81,7 +81,7 @@ function Navbar({
                 onClick={() => {navigate('/home'), setItem('/home')}}
                 style={{ cursor: 'pointer' }}
               />
-                <Typography onClick={() => {navigate('/home'), setItem('/home')}} className="navbaritems" textAlign="center">{isPlaying ? 'GO BACK' : 'BRAINER'}</Typography>
+                <Typography onClick={() => {navigate('/home#home'), setItem('/home')}} className="navbaritems" textAlign="center">{isPlaying ? 'GO BACK' : 'BRAINER'}</Typography>
             </Stack>
           </Box>
 

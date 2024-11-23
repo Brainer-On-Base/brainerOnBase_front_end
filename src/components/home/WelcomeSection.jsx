@@ -20,7 +20,7 @@ export default function WelcomeSection() {
 }, [getMintedCount]);
 
 
-  return <StyledWelcomeSection2 style={{alignItems:'flex-start'}}>
+  return <StyledWelcomeSection2 style={{alignItems:'flex-start'}} id="home">
 
     {/* <img src="rocket.png" className="baloon"/> */}
 
