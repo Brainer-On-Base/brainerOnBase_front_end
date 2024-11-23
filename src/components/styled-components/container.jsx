@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import { styled, keyframes } from "@mui/system";
+import { motion } from "framer-motion";
 
 // Definir la animación de flotación
 const float = keyframes`
@@ -156,7 +157,7 @@ export const StyledNavbarContainer = styled('div')`
 `
 
 
-export const StyledAddressContainer = styled('div')`
+export const StyledAddressContainer = styled(motion.div)`
     background-color: transparent;
     display: flex;
     align-items: center;
