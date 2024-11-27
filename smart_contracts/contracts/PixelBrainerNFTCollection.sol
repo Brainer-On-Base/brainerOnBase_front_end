@@ -8,6 +8,7 @@ contract PixelBrainerCollection is ERC721, Ownable {
     uint256 public currentTokenId = 0;
     uint256 public maxSupply;
     uint256 public mintPrice = 0.01 ether;
+    uint256 public transferFeePercentage = 1; // 1% fee for each transfer
 
     // Map to store metadata URI for each token
     mapping(uint256 => string) private _tokenURIs;
@@ -71,5 +72,31 @@ contract PixelBrainerCollection is ERC721, Ownable {
             "ERC721Metadata: URI query for nonexistent token"
         );
         return _tokenURIs[tokenId];
+    }
+
+    // Override _transfer function to include fee deduction
+    function _transfer(
+        address from,
+        address to,
+        uint256 tokenId
+    ) internal override {
+        uint256 transferFee = (msg.value * transferFeePercentage) / 100;
+        require(
+            msg.value >= transferFee,
+            "Insufficient funds for transfer fee"
+        );
+
+        // Transfer the fee to the contract
+        payable(address(this)).transfer(transferFee);
+
+        // Proceed with the transfer
+        super._transfer(from, to, tokenId);
+    }
+
+    // Function to withdraw collected fees to a specified address
+    function withdrawFunds(address payable recipient) public onlyOwner {
+        uint256 balance = address(this).balance;
+        require(balance > 0, "No funds to withdraw");
+        recipient.transfer(balance);
     }
 }
