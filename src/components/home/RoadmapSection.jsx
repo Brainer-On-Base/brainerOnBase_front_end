@@ -71,10 +71,10 @@ return <StyledRoadmapSection id="roadmap" ship={0}>
             <p style={{margin: 0}} className="subtitle"><span>The rise of the Brainers</span></p>
             <ul>
               <li><p className="text">Social media marketing campaign to build buzz and ignite <span>community</span> engagement.</p></li>
-              <li><p className="text">Inaugural collection of NFTs in pixelArt of different brainers.</p></li>
-              <li><p className="text">Drop of the main NFT character.</p></li>
               <li><p className="text">Creation of the <span>BRAINER SOCIETY</span> community.</p></li>
-              <li><p className="text">Creation of <span>NEURON</span>. The currency of Brainer Society.</p></li>
+              <li><p className="text">Inaugural collection of <span>NFTs in pixelArt</span> of different brainers.</p></li>
+              {/* <li><p className="text">Drop of the main NFT character.</p></li> */}
+              <li><p className="text">Creation and airdrop of <span>NEURON</span>. The currency of Brainer Society.</p></li>
               <li><p className="text">Fundraising campaign to gather resources to build the <span>BRAINER SOCIETY</span> metaverse.</p></li>
             </ul>
           </StyledRoadmapCard>

@@ -22,7 +22,6 @@ export default function BrainerOnBaseMain() {
       style={{
         backgroundImage: 'linear-gradient(to bottom, #230f44, #242424)',
          height:'100vh',
-        overflow: 'hidden',
         }}
           
          >

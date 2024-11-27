@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyledHomeSection } from '../styled-components/container';
 import { styled } from '@mui/system';
+import { StyledButton } from '../styled-components/buttons';
 
 const MainMenu = ({
     setGameNavigation,
@@ -38,6 +39,7 @@ export const StyledGameMain = styled(StyledHomeSection)`
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+    overflow-y: auto;
 
     h1{
             transition: filter 300ms;
