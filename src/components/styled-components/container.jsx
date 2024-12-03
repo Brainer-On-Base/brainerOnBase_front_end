@@ -1142,6 +1142,7 @@ export const StyledNFTCollectionsContainer = styled(StyledFlexFullCenterContaine
         font-family: "Luckiest Guy", cursive;
         font-weight: 600;
         text-align: center;
+        color: white;
     }
 
     .nft-content-container {
