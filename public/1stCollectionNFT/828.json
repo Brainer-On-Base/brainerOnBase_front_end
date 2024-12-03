@@ -1,0 +1,39 @@
+{
+    "image": "https://silver-accessible-aardvark-723.mypinata.cloud/ipfs/Qmd5eAc3EJZWhBY6TNhs8QGhnBfrTFyTsUwC7QRHd4MKBy/828.png",
+    "tokenId": 828,
+    "name": "Pixel Brainer 828",
+    "attributes": [
+        {
+            "trait_type": "Body",
+            "value": "Brain"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Headgear",
+            "value": "Mexican Hat"
+        },
+        {
+            "trait_type": "Mouth",
+            "value": "Smile"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Dollar Sign Necklace"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Empty"
+        },
+        {
+            "trait_type": "Background",
+            "value": "Deep Violet"
+        },
+        {
+            "trait_type": "Extra",
+            "value": "Empty"
+        }
+    ]
+}

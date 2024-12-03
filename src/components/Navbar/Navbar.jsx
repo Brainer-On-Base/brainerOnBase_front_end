@@ -16,7 +16,7 @@ function Navbar({
   item
 }) {
   const location = useLocation()
-  const isPlaying = location.pathname === '/game'
+  const isPlaying = location.pathname === '/game' || location.pathname.includes('/nft-details')
 
   const pages = [
     {
@@ -77,7 +77,7 @@ function Navbar({
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
             <Stack flexDirection={'row'} alignItems={'center'}>
               <img
-                src="./brainerCoin.png"
+                src="/brainerCoin.png"
                 onClick={() => {navigate('/home'), setItem('/home')}}
                 style={{ cursor: 'pointer' }}
               />

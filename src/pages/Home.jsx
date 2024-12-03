@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import TokenomicsSection from "../components/home/TokenomicsSection";
 import HistorySection from "../components/home/HistorySection";
 import AboutSection from "../components/home/AboutSection";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import useModals from "../hooks/useSweetAlert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
@@ -59,6 +59,11 @@ export default function Home() {
       >
         WHITE PAPER
       </StyledLaunchGameButton>
+      {/* <Link to="/nft-details">
+        <StyledButton>
+          View NFT Collection
+        </StyledButton>
+      </Link> */}
       {/* <TokenomicsSection/> */}
       <Footer/>
     </StyledAppContainer>;

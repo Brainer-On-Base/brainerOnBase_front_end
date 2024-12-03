@@ -1,0 +1,39 @@
+{
+    "image": "https://silver-accessible-aardvark-723.mypinata.cloud/ipfs/Qmd5eAc3EJZWhBY6TNhs8QGhnBfrTFyTsUwC7QRHd4MKBy/835.png",
+    "tokenId": 835,
+    "name": "Pixel Brainer 835",
+    "attributes": [
+        {
+            "trait_type": "Body",
+            "value": "Brain"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Round Glasses"
+        },
+        {
+            "trait_type": "Headgear",
+            "value": "Mexican Hat"
+        },
+        {
+            "trait_type": "Mouth",
+            "value": "Smile"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Ruby Necklace"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Empty"
+        },
+        {
+            "trait_type": "Background",
+            "value": "Midnight Violet"
+        },
+        {
+            "trait_type": "Extra",
+            "value": "Empty"
+        }
+    ]
+}

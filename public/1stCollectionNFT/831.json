@@ -1,0 +1,39 @@
+{
+    "image": "https://silver-accessible-aardvark-723.mypinata.cloud/ipfs/Qmd5eAc3EJZWhBY6TNhs8QGhnBfrTFyTsUwC7QRHd4MKBy/831.png",
+    "tokenId": 831,
+    "name": "Pixel Brainer 831",
+    "attributes": [
+        {
+            "trait_type": "Body",
+            "value": "Brain"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Headgear",
+            "value": "Black Hat"
+        },
+        {
+            "trait_type": "Mouth",
+            "value": "Circular"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Mystic Amulet Necklace"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Joint"
+        },
+        {
+            "trait_type": "Background",
+            "value": "Midnight Violet"
+        },
+        {
+            "trait_type": "Extra",
+            "value": "Empty"
+        }
+    ]
+}

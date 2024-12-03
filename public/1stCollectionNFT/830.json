@@ -1,0 +1,39 @@
+{
+    "image": "https://silver-accessible-aardvark-723.mypinata.cloud/ipfs/Qmd5eAc3EJZWhBY6TNhs8QGhnBfrTFyTsUwC7QRHd4MKBy/830.png",
+    "tokenId": 830,
+    "name": "Pixel Brainer 830",
+    "attributes": [
+        {
+            "trait_type": "Body",
+            "value": "Brain"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Thunder"
+        },
+        {
+            "trait_type": "Headgear",
+            "value": "Magician Hat"
+        },
+        {
+            "trait_type": "Mouth",
+            "value": "Golden Teeth"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Ruby Necklace"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Empty"
+        },
+        {
+            "trait_type": "Background",
+            "value": "Midnight Violet"
+        },
+        {
+            "trait_type": "Extra",
+            "value": "Empty"
+        }
+    ]
+}

@@ -1,0 +1,39 @@
+{
+    "image": "https://silver-accessible-aardvark-723.mypinata.cloud/ipfs/Qmd5eAc3EJZWhBY6TNhs8QGhnBfrTFyTsUwC7QRHd4MKBy/838.png",
+    "tokenId": 838,
+    "name": "Pixel Brainer 838",
+    "attributes": [
+        {
+            "trait_type": "Body",
+            "value": "Brain"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Opium"
+        },
+        {
+            "trait_type": "Headgear",
+            "value": "Blue Hat"
+        },
+        {
+            "trait_type": "Mouth",
+            "value": "Smile"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Empty"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Empty"
+        },
+        {
+            "trait_type": "Background",
+            "value": "Deep Violet"
+        },
+        {
+            "trait_type": "Extra",
+            "value": "Left Plant"
+        }
+    ]
+}

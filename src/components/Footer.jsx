@@ -18,11 +18,11 @@ export default function Footer() {
       We're <span>BUILDING</span> for the fun of it, and for all of us.
       </p>
       <StyledFlexCenterContainer style={{ justifyContent: 'center' }}>
-        <img src="./brainerCoin.png" alt="Brainer Coin Logo" />
+        <img src="/brainerCoin.png" alt="Brainer Coin Logo" />
         <p id="copyright" style={{ margin: '10px' }}>
           Copyright © 2024. All rights reserved. - braineronbase@gmail.com
         </p>
-        <img src="./brainerCoin.png" alt="Brainer Coin Logo" />
+        <img src="/brainerCoin.png" alt="Brainer Coin Logo" />
       </StyledFlexCenterContainer>
 
 
@@ -54,7 +54,7 @@ export default function Footer() {
               <FontAwesomeIcon icon={faDiscord} size="1x" />
             </StyledButton>
       </BubbleDialog>
-      <img className="spaceship" src="./brainerCoin5.png" alt="Brainer Coin Logo"  style={{transform: 'scaleX(-1) ', overflow: 'hidden'}}/>
+      <img className="spaceship" src="/brainerCoin5.png" alt="Brainer Coin Logo"  style={{transform: 'scaleX(-1) ', overflow: 'hidden'}}/>
 
       <StyledFlexFullCenterContainer width="100%" style={{marginTop: '1em'}} className="social">
       <StyledButton size={"15px"} padding={"5px"} margin={"0  5px 10px 5px"}>

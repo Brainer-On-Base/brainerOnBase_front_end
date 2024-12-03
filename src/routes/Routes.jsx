@@ -3,6 +3,7 @@ import Home from '../pages/Home';
 import App from '../pages/App';
 import BrainerOnBaseShop from '../components/shop/BrainerOnBaseShop';
 import BrainerOnBaseMain from '../components/game/BrainerOnBaseMain';
+import NftDetails from '../pages/NftDetails';
 
 
 const Routes = () => {
@@ -16,6 +17,10 @@ const Routes = () => {
             <Route
                 exact path={'/shop'}
                 element={<BrainerOnBaseShop/>}
+            />
+            <Route
+                exact path={'/nft-details/:id'}
+                element={<NftDetails/>}
             />
             <Route
                 exact path={'/'}

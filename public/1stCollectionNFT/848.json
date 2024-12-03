@@ -1,0 +1,39 @@
+{
+    "image": "https://silver-accessible-aardvark-723.mypinata.cloud/ipfs/Qmd5eAc3EJZWhBY6TNhs8QGhnBfrTFyTsUwC7QRHd4MKBy/848.png",
+    "tokenId": 848,
+    "name": "Pixel Brainer 848",
+    "attributes": [
+        {
+            "trait_type": "Body",
+            "value": "Brain"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Black Sunglasses"
+        },
+        {
+            "trait_type": "Headgear",
+            "value": "Black Hat"
+        },
+        {
+            "trait_type": "Mouth",
+            "value": "Circular"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Dollar Sign Necklace"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Empty"
+        },
+        {
+            "trait_type": "Background",
+            "value": "Grape"
+        },
+        {
+            "trait_type": "Extra",
+            "value": "Right Plant"
+        }
+    ]
+}

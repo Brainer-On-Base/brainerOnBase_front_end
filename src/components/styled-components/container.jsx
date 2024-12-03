@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import { styled, keyframes } from "@mui/system";
 import { motion } from "framer-motion";
 
-// Definir la animación de flotación
+// Define the floating animation
 const float = keyframes`
   0% {
     transform: translateY(0px);
@@ -18,9 +18,8 @@ const float = keyframes`
 export const StyledFlexCenterContainer = styled('div')`
     display: flex;
     align-items: center;
-
     width: 100%;
-`
+`;
 
 export const StyledFlexFullCenterContainer = styled('div')`
     display: flex;
@@ -28,16 +27,14 @@ export const StyledFlexFullCenterContainer = styled('div')`
     align-items: center;
     width: ${({ width }) => width ? width : "100%" };
     height: ${({ height }) => height ? height : "100%" };
-`
+`;
 
 export const StyledFlexBetweenContainer = styled('div')`
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-`
-
-
+`;
 
 export const StyledAppContainer = styled('div')`
     width: 100%;
@@ -47,16 +44,13 @@ export const StyledAppContainer = styled('div')`
     justify-content: center;
     flex-direction: column;
     margin: 0 auto;
-`
-
+`;
 
 export const StyledInitAppContainer = styled(StyledAppContainer)`
-background-color: #242424 !important;
-z-index: 9999;
-height: 100vh;
-
-`
-
+    background-color: #242424 !important;
+    z-index: 9999;
+    height: 100vh;
+`;
 
 export const StyledHomeContent = styled('div')`
     text-align: center;
@@ -65,6 +59,12 @@ export const StyledHomeContent = styled('div')`
     z-index: 99;
     .logo {
         height: 6em;
+        padding: 2px;
+        will-change: filter;
+        transition: filter 300ms;
+        border-radius: 80%;
+        border: 2px solid black;
+        background-color: #530354;
         padding: 2px;
         will-change: filter;
         transition: filter 300ms;
@@ -253,7 +253,7 @@ export const StyledWelcomeSection = styled('div')`
             &:nth-of-type(2){
                 margin-top: -120px;
                 font-size: 80px;
-                color: #88;
+                color: #888;
                 color: white;
             }
             &:nth-of-type(3){
@@ -329,7 +329,7 @@ export const StyledWelcomeSection = styled('div')`
                 &:nth-of-type(2){
                     margin-top: -100px;
                     font-size: 50px;
-                    color: #88;
+                    color: #888;
                     color: white;
                 }
                 &:nth-of-type(3){
@@ -362,7 +362,7 @@ export const StyledWelcomeSection = styled('div')`
                 &:nth-of-type(2){
                     margin-top: -80px;
                     font-size: 50px;
-                    color: #88;
+                    color: #888;
                     color: white;
                 }
                 &:nth-of-type(3){
@@ -427,7 +427,7 @@ export const StyledWelcomeSection2 = styled('div')`
             &:nth-of-type(2){
                 margin-top: -120px;
                 font-size: 60px;
-                color: #88;
+                color: #888;
                 color: white;
                 text-shadow: none;
 
@@ -506,7 +506,7 @@ export const StyledWelcomeSection2 = styled('div')`
                 &:nth-of-type(2){
                     margin-top: -100px;
                     font-size: 50px;
-                    color: #88;
+                    color: #888;
                     color: white;
                 }
                 &:nth-of-type(3){
@@ -534,7 +534,7 @@ export const StyledWelcomeSection2 = styled('div')`
                 &:nth-of-type(2){
                     margin-top: -80px;
                     font-size: 50px;
-                    color: #88;
+                    color: #888;
                     color: white;
                 }
                 &:nth-of-type(3){
@@ -561,7 +561,7 @@ export const StyledWelcomeSection2 = styled('div')`
                 &:nth-of-type(2){
                     margin-top: -60px;
                     font-size: 50px;
-                    color: #88;
+                    color: #888;
                     color: white;
                 }
                 &:nth-of-type(3){
@@ -939,13 +939,7 @@ export const StyledBubbleDialog = styled('div')`
         font-family: "Luckiest Guy", cursive;
         color: #ff437d;
     }
-
-
-
-
-
-
-`
+    `
 
 
 
@@ -1215,6 +1209,10 @@ export const StyledNFTCollectionsContainer = styled(StyledFlexFullCenterContaine
                 aspect-ratio: 1/1;
                 object-fit: cover;
                 border-radius: 8px;
+                &:hover {
+                    cursor: pointer;
+                    filter: drop-shadow(0 0 1em #c464ffaa);
+                }
             }
         }
     }
@@ -1263,4 +1261,46 @@ export const StyledNFTCollectionsContainer = styled(StyledFlexFullCenterContaine
             display: none;    
         }
     }
+`
+
+
+export const StyledNFTDetailsContainer = styled(StyledHomeSection)`
+    min-height: 100vh;
+    width: 100%;
+    align-items: center;
+
+    h1{
+
+            line-height: 1.1;
+            transition: filter 300ms;
+            font-family: "Luckiest Guy", cursive;
+        text-shadow:
+            0 .0377358491em 0 #f8b8b8, 
+            .0125786164em .0377358491em 0
+            #f8b8b8, .0125786164em -.0125786164em 0
+            #f8b8b8, -.0125786164em .0125786164em 0
+            #f8b8b8, -.0125786164em -.0125786164em;
+            &:nth-of-type(1){
+                margin-top: 40px;
+                font-size: 90px;
+                color: #ff437d;
+            }
+            &:nth-of-type(2){
+                margin-top: -20px;
+                font-size: 80px;
+                color: #888;
+                color: white;
+                text-shadow: none;
+            }
+        }
+    }
+
+    h2{
+        margin: 0.2em 0 2em 0;
+        font-size: 2.5em;
+        font-family: "Luckiest Guy", cursive;
+        color: #ff437d;
+
+    }
+
 `

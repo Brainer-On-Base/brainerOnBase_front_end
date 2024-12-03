@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { StyledNFTCollectionsContainer } from '../styled-components/container';
+import { useNavigate } from 'react-router-dom';
 
 const NFTCollections = () => {
+    const navigate = useNavigate()
     const fadeInUp = {
         hidden: { opacity: 0, y: 50 },
         visible: { opacity: 1, y: 0 },
@@ -111,13 +113,14 @@ const NFTCollections = () => {
                     {[...Array(12)].map((_, index) => (
                         <motion.img
                             key={index}
-                            src={`./1stCollectionNFT/${index + 1}.png`}
+                            src={`./1stCollectionNFT/${807 + index}.png`}
                             alt="NFT Collection"
                             whileHover={{ scale: 1.1 }}
                             variants={{
                                 hidden: { opacity: 0, y: 20 }, // Aparece desde abajo
                                 visible: { opacity: 1, y: 0 }, // Llega a su posición final
                             }}
+                            onClick={() => navigate(`/nft-details/${807 + index}`)}
                         />
                     ))}
                 </motion.div>
