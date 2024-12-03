@@ -8,35 +8,35 @@ const { isVisible } = handleAnimationScroll('.target')
 
   return (
   <StyledTokenomicsSection id="tokenomics">
-    <StyledCard className={`animate__animated ${isVisible[0] ? 'animate__backInLeft' : ''} target`} style={{visibility: isVisible[0] ? 'visible' : 'hidden'}}>
+    <StyledCard className={`animate__animated ${isVisible[0] ? 'animate__backInLeft' : ''} target`} style={{visibility: isVisible[0] ? 'visible' : 'hidden', alignItems:'center'}}>
       <div>
         <h2>LIQUIDITY & MARKETS</h2>
         <p style={{marginTop: '-40px', marginBottom: '2em'}}>65% - 6.500.000.000</p>
         <p>Liquidity and accessibility! We allocate a significant portion of our token supply to ensure ample liquidity on exchanges. 
         This facilitates <span>SMOOTH TRADING EXPERIENCES</span> for our users and supports the growth of our token in various markets.</p>
       </div>
-      <img src="./trading.png"/>
+      <img style={{marginRight: 0}} src="./trading.png"/>
     </StyledCard>
     
-    <StyledCard className={`animate__animated ${isVisible[1] ? 'animate__backInRight' : ''} target`} style={{visibility: isVisible[1] ? 'visible' : 'hidden'}}>
-      <img src="./rewards2.png"/>
+    <StyledCard className={`animate__animated ${isVisible[1] ? 'animate__backInRight' : ''} target`} style={{visibility: isVisible[1] ? 'visible' : 'hidden', alignItems:'center'}}>
+      <img style={{marginLeft: 0}} src="./rewards2.png"/>
       <div>
         <h2>PLAY & EARN</h2>
         <p style={{marginTop: '-40px', marginBottom: '2em'}}>15% - 1,500,000,000</p>
         <p>Join our <span>SOCIETY</span> and dive into our <span>GAME</span>! Discover a exciting way to <span>EARN TOKENS</span> by playing in our society. <span>INVITE</span> friends and explore our <span>WORLD</span>. </p>
       </div>
     </StyledCard>
-    <StyledCard className={`animate__animated ${isVisible[2] ? 'animate__backInLeft' : ''} target`} style={{visibility: isVisible[2] ? 'visible' : 'hidden'}}>
+    <StyledCard className={`animate__animated ${isVisible[2] ? 'animate__backInLeft' : ''} target`} style={{visibility: isVisible[2] ? 'visible' : 'hidden', alignItems:'center'}}>
       <div>
         <h2>DEVELOPMENT TEAM</h2>
         <p style={{marginTop: '-40px', marginBottom: '2em'}}>10% - 1.000.000.000</p>
         <p> Our talented developers are committed to <span>BUILDING</span> and <span>IMPROVING</span> our <span>SOCIETY</span>. 
             With years of <span>EXPERIENCE</span> in the industry, they work tirelessly to deliver innovative solutions and drive the success of our <span>WORLD</span>.</p>
       </div>
-      <img src="./development.png"/>
+      <img style={{marginRight: 0}} src="./development.png"/>
     </StyledCard>
-    <StyledCard className={`animate__animated ${isVisible[3] ? 'animate__backInRight' : ''} target`} style={{visibility: isVisible[3] ? 'visible' : 'hidden'}}>
-    <img src="./marketingBrain.png"/>
+    <StyledCard className={`animate__animated ${isVisible[3] ? 'animate__backInRight' : ''} target`} style={{visibility: isVisible[3] ? 'visible' : 'hidden', alignItems:'center'}}>
+    <img style={{marginLeft: 0}} src="./marketingBrain.png"/>
       <div>
         <h2>MARKETING & PROMOTION</h2>
         <p style={{marginTop: '-40px', marginBottom: '2em'}}>5% - 500.000.000</p>
@@ -44,7 +44,7 @@ const { isVisible } = handleAnimationScroll('.target')
           From social media campaigns to <span>STRATEGIC PARTNERSHIPS</span>, we invest in various marketing initiatives to reach new audiences and promote <span>OUR VISION</span>.</p>
       </div>
     </StyledCard>
-    <StyledCard className={`animate__animated ${isVisible[4] ? 'animate__backInLeft' : ''} target`} style={{visibility: isVisible[4] ? 'visible' : 'hidden'}}>
+    <StyledCard className={`animate__animated ${isVisible[4] ? 'animate__backInLeft' : ''} target`} style={{visibility: isVisible[4] ? 'visible' : 'hidden', alignItems:'center'}}>
       <div>
         <h2>TOKEN BURNING</h2>
         <p style={{marginTop: '-40px', marginBottom: '2em'}}>5% - 500.000.000</p>
@@ -52,7 +52,7 @@ const { isVisible } = handleAnimationScroll('.target')
           This reduces the total supply in circulation, potentially increasing the value of remaining tokens over time. 
           Join us as we strive to create value for our token holders through strategic <span>TOKEN MANAGMENT</span>.</p>
       </div>
-      <img src="./burning.png"/>
+      <img style={{marginRight: 0}} src="./burning.png"/>
 
     </StyledCard>
   </StyledTokenomicsSection>);

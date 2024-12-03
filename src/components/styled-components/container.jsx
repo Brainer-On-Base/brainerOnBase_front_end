@@ -945,7 +945,6 @@ export const StyledBubbleDialog = styled('div')`
 
 export const StyledTokenomicsSection = styled('div')`
     height: auto;
-    margin-top: 4em;
     margin-bottom: 4em;
     display: flex;
     align-items: flex-start;
@@ -972,8 +971,10 @@ export const StyledCard = styled('div')`
     margin: 0em 0em 2em 4em;
     display: flex;
 
+
     img{ 
-        width: 350px;
+        width: 200px;
+        height: 200px;
         margin: 0em 1em;
         transition: filter 300ms;
         cursor: pointer;
@@ -982,10 +983,15 @@ export const StyledCard = styled('div')`
           }
     }
 
+    h2{
+        font-size: 1.4em;
+        margin-bottom: 1em;
+    }
+
     p, .text{
         font-size: 0.8em !important;
         font-family: monospace;
-        font-size: 490px;
+        font-size: 40px;
         line-height: 1.3em;
     }
 
@@ -1003,7 +1009,7 @@ export const StyledCard = styled('div')`
 
 
     @media(max-width: 1200px){
-        align-self: center !important;;
+        align-self: center !important;
         margin: 1em !important;
     }
 
@@ -1084,6 +1090,13 @@ export const StyledRoadmapSection = styled(StyledHomeSection)`
             position: absolute;
             left: 80%; /* Centra horizontalmente */
         }
+    }
+    @media(max-width: 750px){
+        .img1 {
+            position: absolute;
+            right: 0; /* Centra horizontalmente */
+        }
+    }
 `;
 
 

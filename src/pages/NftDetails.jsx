@@ -76,7 +76,14 @@ const NftDetails = () => {
         setNftData(data);
       })
       .catch((error) => console.error(error));
+    window.scrollTo(0, 0);
+
   }, [id]);
+
+
+  useEffect(() => {
+  }, [id]); 
+
 
 
   return (

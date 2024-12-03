@@ -53,6 +53,7 @@ export default function Home() {
           <FontAwesomeIcon icon={faCopy} style={{marginRight: '20px'}}/>
           0x5b8BB48898b67c3481677c5Ac462786c18Db11F6</p>
       </StyledAddressContainer>
+      <TokenomicsSection/>
       <StyledLaunchGameButton
         // onClick={() => navigate("/game")}
         // onClick={() => window.open("www.google.com")}

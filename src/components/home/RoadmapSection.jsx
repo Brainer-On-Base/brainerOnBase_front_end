@@ -64,6 +64,7 @@ return <StyledRoadmapSection id="roadmap" ship={0}>
         className={`img1 ${isScrolling ? "scrolling" : ""} ${scrollingDown ? "scrolling-down" : ""} ${scrollingUp ? "scrolling-up" : ""}`}
         // className={`img1`}
         alt="spaceship"
+        
       />
           
           <StyledRoadmapCard>
