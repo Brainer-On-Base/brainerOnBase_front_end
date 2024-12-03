@@ -8,6 +8,7 @@ import { View } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { StyledButton } from '../components/styled-components/buttons';
 
 const TraitContainer = styled.div`
   display: flex;
@@ -126,6 +127,13 @@ const NftDetails = () => {
           </TraitContainer>
         </NFTImageContainer>
       </StyledNFTDetailsContainer>
+      <StyledButton
+        style={{
+            marginTop: '2em'
+        }}
+      >
+        SEE COLLECTION ON OPEN SEA
+      </StyledButton>
       <Footer />
     </StyledAppContainer>
   );
