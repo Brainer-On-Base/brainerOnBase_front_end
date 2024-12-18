@@ -57,7 +57,7 @@ const UseContract = () => {
     }
 
     const quantity = await getMintedCount();
-    let uri = `https://silver-accessible-aardvark-723.mypinata.cloud/ipfs/QmNj6XdNeP8fPJu7nDvD1zFiLZZqnP5J5RrdcpLnuVNBWh/${quantity}.json`;
+    let uri = `http://145.223.96.84:8080/ipfs/QmeExBi3v1ZpsbH15srbMnEfk3Zj6nk3EwmzTJtbF8cRnf/${quantity}.json`;
 
     try {
       const signer = await web3provider.getSigner();
