@@ -946,6 +946,7 @@ export const StyledBubbleDialog = styled('div')`
 export const StyledTokenomicsSection = styled('div')`
     height: auto;
     margin-bottom: 4em;
+    margin-top: 4em;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -953,6 +954,19 @@ export const StyledTokenomicsSection = styled('div')`
     position: relative;
     width: 100%;
     overflow: hidden;
+
+
+    h2 {
+        margin: 0;
+        font-size: 4em;
+        width: 100%;
+        font-family: "Luckiest Guy", cursive;
+        font-weight: 600;
+        text-align: center;
+        color: white;
+        margin-bottom: 1em;
+    }
+
 `
 
 
@@ -984,7 +998,8 @@ export const StyledCard = styled('div')`
     }
 
     h2{
-        font-size: 1.4em;
+        text-align: left !important;
+        font-size: 1.4em !important;
         margin-bottom: 1em;
     }
 

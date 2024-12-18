@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { StyledAppContainer, StyledNFTDetailsContainer } from "../components/styled-components/container";
+import React, { useEffect, useState } from "react";
+import {
+  StyledAppContainer,
+  StyledNFTDetailsContainer,
+} from "../components/styled-components/container";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer";
 import NightBackground from "../components/NIghtBackground";
 import NFTCollections from "../components/home/NFTCollections";
-import { View } from '@react-three/drei';
-import { motion } from 'framer-motion';
-import { useParams } from 'react-router-dom';
-import styled from 'styled-components';
-import { StyledButton } from '../components/styled-components/buttons';
+import { View } from "@react-three/drei";
+import { motion } from "framer-motion";
+import { useParams } from "react-router-dom";
+import styled from "styled-components";
+import { StyledButton } from "../components/styled-components/buttons";
+import UseContract from "../hooks/useContract";
 
 const TraitContainer = styled.div`
   display: flex;
@@ -20,13 +24,13 @@ const TraitContainer = styled.div`
 `;
 
 const NFTImageContainer = styled(motion.div)`
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: row;
-    box-sizing: border-box;
-    padding: 0 4em;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: row;
+  box-sizing: border-box;
+  padding: 0 4em;
+  width: 100%;
 
   img {
     width: 300px;
@@ -36,75 +40,77 @@ const NFTImageContainer = styled(motion.div)`
 `;
 
 const TraitTag = styled.div`
-    width: 200px;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    font-size: 12px;
-    border-radius: 5px;
-    margin: 10px 10px;
+  width: 200px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 12px;
+  border-radius: 5px;
+  margin: 10px 10px;
 `;
 
-
-
-
 const NftDetails = () => {
-    const {id} = useParams();
-  const [showHistory, setShowHistory] = useState('/home');
-  const [nftData, setNftData] = useState(null)
-  
+  const { id } = useParams();
+  const [showHistory, setShowHistory] = useState("/home");
+  const [nftData, setNftData] = useState(null);
+  const { getIPFSInfo } = UseContract();
+
   const staggerContainer = {
     hidden: { opacity: 0 },
     visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.3, // Tiempo entre la animación de cada <li>
-            duration: 0.5,        // Duración de la animación del contenedor
-        },
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3, // Tiempo entre la animación de cada <li>
+        duration: 0.5, // Duración de la animación del contenedor
+      },
     },
   };
   useEffect(() => {
     // Cargar el JSON desde la carpeta public
-    fetch(`/1stCollectionNFT/${id}.json`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch NFT data");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setNftData(data);
-      })
-      .catch((error) => console.error(error));
+    getInfo();
     window.scrollTo(0, 0);
-
   }, [id]);
 
+  useEffect(() => {}, [id]);
 
-  useEffect(() => {
-  }, [id]); 
-
-
+  const getInfo = async () => {
+    const data = await getIPFSInfo(id);
+    setNftData(data);
+  };
 
   return (
     <StyledAppContainer>
-      <Navbar setItem={setShowHistory} item={showHistory}/>
+      <Navbar setItem={setShowHistory} item={showHistory} />
       <View
-      style={{ width: '100%', height: '100%', position: 'absolute', top: 0, bottom: 0 }}
-    >
-      <NightBackground/>
-    </View>
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "absolute",
+          top: 0,
+          bottom: 0,
+        }}
+      >
+        <NightBackground />
+      </View>
       <StyledNFTDetailsContainer>
-      <h1  className={`animate__animated animate__fadeInDown animations title`}  >Pixel Brainer</h1>
-      <h1  className={`animate__animated animate__fadeInDown animations title`}  >Collection</h1>
-      <h2>{nftData?.name}</h2>
-      <NFTImageContainer
+        <h1
+          className={`animate__animated animate__fadeInDown animations title`}
+        >
+          Pixel Brainer
+        </h1>
+        <h1
+          className={`animate__animated animate__fadeInDown animations title`}
+        >
+          Collection
+        </h1>
+        <h2>{nftData?.name}</h2>
+        <NFTImageContainer
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
         >
           <motion.img
-            src={`/1stCollectionNFT/${id}.png`}
+            src={nftData?.image}
             alt="NFT image"
             style={{ zIndex: 99999 }}
             variants={{
@@ -136,7 +142,7 @@ const NftDetails = () => {
       </StyledNFTDetailsContainer>
       <StyledButton
         style={{
-            marginTop: '2em'
+          marginTop: "2em",
         }}
       >
         SEE COLLECTION ON OPEN SEA

@@ -2,12 +2,25 @@ import React from "react";
 import { StyledCard, StyledTokenomicsSection } from "../styled-components/container";
 import handleAnimationScroll from "../../hooks/handleAnimationScroll";
 import BubbleDialog from "../BubbleDialog";
+import { motion } from 'framer-motion';
 
 export default function TokenomicsSection() {
 const { isVisible } = handleAnimationScroll('.target')
-
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
   return (
   <StyledTokenomicsSection id="tokenomics">
+    <motion.h2
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={fadeInUp}
+        transition={{ duration: 0.5, delay: 0.2 }} // 1s delay after entering viewport
+    >
+        TOKENOMICS
+    </motion.h2>
     <StyledCard className={`animate__animated ${isVisible[0] ? 'animate__backInLeft' : ''} target`} style={{visibility: isVisible[0] ? 'visible' : 'hidden', alignItems:'center'}}>
       <div>
         <h2>LIQUIDITY & MARKETS</h2>
