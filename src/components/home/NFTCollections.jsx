@@ -97,7 +97,7 @@ const NFTCollections = () => {
                 icon: "./commonBrainer.png",
               },
               {
-                text: "BE PART OF THE HISTORY: Owning a Pixel Brainer is a symbol of your support for the rise of Brainers everywhere.",
+                text: "BE PART OF THE HISTORY: Owning a Pixel Brainer is a symbol of your support for the rise of Brainers everywhere and you will receive exclusive benefits in the future.",
                 icon: "./commonBrainer.png",
               },
             ].map((item, index) => (
