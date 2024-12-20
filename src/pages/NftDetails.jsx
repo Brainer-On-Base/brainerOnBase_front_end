@@ -132,9 +132,9 @@ const NftDetails = () => {
                 <p>
                   <strong>Value:</strong> {attr.value}
                 </p>
-                <p>
+                {/* <p>
                   <strong>Rarity:</strong> {Math.floor(Math.random() * 100)}%
-                </p>
+                </p> */}
               </TraitTag>
             ))}
           </TraitContainer>

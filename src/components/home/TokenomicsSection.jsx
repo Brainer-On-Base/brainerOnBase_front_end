@@ -65,9 +65,9 @@ export default function TokenomicsSection() {
           </p>
           <p>
             Join our <span>SOCIETY</span> and dive into our <span>GAME</span>!
-            Discover a exciting way to <span>BURN TOKENS</span> by playing in
-            our society. <span>INVITE</span> friends and explore our{" "}
-            <span>WORLD</span>.{" "}
+            Discover a exciting way to <span>BURN TOKENS</span> and{" "}
+            <span>EARN TOKENS</span> by playing in our society.{" "}
+            <span>INVITE</span> friends and explore our <span>WORLD</span>.{" "}
           </p>
         </div>
       </StyledCard>
