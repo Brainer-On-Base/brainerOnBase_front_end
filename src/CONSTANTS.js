@@ -627,4 +627,4 @@ export const BRAINER_BPC_NFT_ABI_CONTRACT = {
 };
 
 export const BRAINER_IPFS_METADATA =
-  "http://145.223.96.84:8080/ipfs/QmeExBi3v1ZpsbH15srbMnEfk3Zj6nk3EwmzTJtbF8cRnf/";
+  "http://145.223.96.84:8081/ipfs/QmNX3ej1VwzirtLeF4dcPtUuZonq46RponPiMSabFnE9GM/";

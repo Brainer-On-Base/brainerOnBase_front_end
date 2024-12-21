@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   BRAINER_BPC_NFT_ABI_CONTRACT,
   BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
+  BRAINER_IPFS_METADATA,
 } from "../CONSTANTS";
 import useModals from "./useSweetAlert";
 import AccountContext from "../provider/AccountProvider/AccountContext";
@@ -97,9 +98,7 @@ const UseContract = () => {
   };
 
   const getIPFSInfo = async (id) => {
-    const response = await fetch(
-      `http://145.223.96.84:8080/ipfs/QmeExBi3v1ZpsbH15srbMnEfk3Zj6nk3EwmzTJtbF8cRnf/${id}.json`
-    )
+    const response = await fetch(`${BRAINER_IPFS_METADATA}/${id}.json`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch NFT data");
