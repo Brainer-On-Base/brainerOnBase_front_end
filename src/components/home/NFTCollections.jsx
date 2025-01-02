@@ -132,29 +132,30 @@ const NFTCollections = () => {
             visible: {
               opacity: 1,
               transition: {
-                staggerChildren: 0.1, // Tiempo entre animaciones de los hijos
-                duration: 0.3, // Duración de cada animación
+                duration: 0.5, // Duración general de la animación del contenedor
               },
             },
           }}
         >
-          {nftData?.map((_, index) => (
+          {nftData?.map((item, index) => (
             <motion.img
               key={index}
-              src={_?.image}
+              src={item?.image}
               alt="NFT Collection"
               whileHover={{ scale: 1.1 }}
+              initial="hidden" // Aseguramos que cada hijo tenga su estado inicial
+              animate="visible" // Aseguramos que cada hijo tenga su estado final
               variants={{
-                hidden: { opacity: 0, y: 20 }, // Aparece desde abajo
-                visible: { opacity: 1, y: 0 }, // Llega a su posición final
+                hidden: { opacity: 0, y: 20 }, // Empieza oculto y desplazado
+                visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }, // Se hace visible
               }}
               onClick={() => {
                 // Extraer el ID de la URL
-                const urlParts = _?.image.split("/");
+                const urlParts = item?.image.split("/");
                 const fileName = urlParts[urlParts.length - 1].replace(
                   ".json",
                   ""
-                ); // Obtener el ID y remover ".json"
+                );
                 const id = fileName.match(/\d+/)?.[0]; // Extraer solo el número del archivo
 
                 // Navegar a la nueva ruta con el ID
