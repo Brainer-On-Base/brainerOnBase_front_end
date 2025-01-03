@@ -805,10 +805,6 @@ export const StyledFooterSection = styled("div")`
     margin: 1em 2em;
   }
 
-  @media (max-width: 900px) {
-    width: 80%;
-  }
-
   .spaceship {
     transorm: scaleX(-1);
     position: absolute;
