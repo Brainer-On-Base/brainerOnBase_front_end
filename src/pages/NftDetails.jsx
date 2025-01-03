@@ -37,6 +37,11 @@ const NFTImageContainer = styled(motion.div)`
     height: 300px;
     border-radius: 10px;
   }
+
+  @media (max-width: 814px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const TraitTag = styled.div`

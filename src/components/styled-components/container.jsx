@@ -1273,9 +1273,27 @@ export const StyledNFTDetailsContainer = styled(StyledHomeSection)`
   }
 
   h2 {
-    margin: 0.2em 0 2em 0;
+    margin: 0.2em 0;
     font-size: 2.5em;
     font-family: "Luckiest Guy", cursive;
     color: #ff437d;
+  }
+
+  @media screen and (max-width: 814px) {
+    h1 {
+      &:nth-of-type(1) {
+        font-size: 60px; /* Reduce el tamaño para pantallas pequeñas */
+        margin-top: 20px; /* Ajusta el margen para que no ocupe demasiado espacio */
+      }
+      &:nth-of-type(2) {
+        font-size: 50px; /* Reduce también el tamaño del segundo título */
+        margin-top: 0 !important; /* Ajusta el margen superior */
+      }
+    }
+
+    h2 {
+      margin-top: 1em;
+      font-size: 2em; /* Reduce un poco el tamaño del subtítulo */
+    }
   }
 `;
