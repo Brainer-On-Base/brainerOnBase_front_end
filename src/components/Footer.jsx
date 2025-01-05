@@ -59,7 +59,7 @@ export default function Footer() {
           size={"15px"}
           padding={"5px"}
           margin={"0  5px 10px 5px"}
-          onClick={() => handleNavigateLink("https://x.com/BrainerOnBase")}
+          onClick={() => handleNavigateLink("https://x.com/BrainerOnBase_")}
         >
           <FontAwesomeIcon icon={faX} size="1x" />
         </StyledButton>
@@ -67,7 +67,7 @@ export default function Footer() {
           size={"15px"}
           padding={"5px"}
           margin={"0 5px 10px 5px"}
-          onClick={() => handleNavigateLink("https://t.me/braineronbase")}
+          onClick={() => handleNavigateLink("https://t.me/+lNnryX05Do4xNWY0")}
         >
           <FontAwesomeIcon icon={faTelegram} size="1x" />
         </StyledButton>
