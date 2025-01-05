@@ -72,7 +72,7 @@ export default function Home() {
       </StyledAddressContainer>
       <TokenomicsSection />
       <StyledLaunchGameButton
-        onClick={() => window.open("https://docs.braineronbase.com/")}
+        onClick={() => window.open("https://discord.gg/vjbzwuvJ")}
       >
         WHITE PAPER
       </StyledLaunchGameButton>

@@ -67,7 +67,7 @@ export default function Footer() {
           size={"15px"}
           padding={"5px"}
           margin={"0 5px 10px 5px"}
-          onClick={() => handleNavigateLink("https://t.me/+lNnryX05Do4xNWY0")}
+          onClick={() => handleNavigateLink("https://t.me/+cJSxITBwX_FhNmVk")}
         >
           <FontAwesomeIcon icon={faTelegram} size="1x" />
         </StyledButton>
