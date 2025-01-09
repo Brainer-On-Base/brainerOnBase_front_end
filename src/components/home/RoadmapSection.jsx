@@ -1,5 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import { StyledAboutSection, StyledAstronautCard1, StyledAstronautCard2, StyledAstronautCard3, StyledBubbleDialog, StyledFlexFullCenterContainer, StyledRoadmapCard, StyledRoadmapSection } from "../styled-components/container";
+import {
+  StyledAboutSection,
+  StyledAstronautCard1,
+  StyledAstronautCard2,
+  StyledAstronautCard3,
+  StyledBubbleDialog,
+  StyledFlexFullCenterContainer,
+  StyledRoadmapCard,
+  StyledRoadmapSection,
+} from "../styled-components/container";
 
 export default function RoadmapSection() {
   const [isScrolling, setIsScrolling] = useState(false);
@@ -9,13 +18,11 @@ export default function RoadmapSection() {
 
   const scrollTimeoutRef = useRef(null); // Usar ref para el timeout
 
-
   // useEffect(() => {
   //   let scrollTimeout;
   //   const handleScroll = () => {
   //     const currentScrollPos = window.scrollY;
 
-      
   //     setIsScrolling(true);
 
   //     // Detectar dirección del scroll
@@ -49,36 +56,91 @@ export default function RoadmapSection() {
   //   };
   // }, [lastScrollPos]);
 
-
-return <StyledRoadmapSection id="roadmap" ship={0}>
-
-  
-
-    <StyledFlexFullCenterContainer style={{height: 'auto', flexDirection:'column', width:'100%'}}>
-        <h1  className={`animate__animated animate__fadeInDown animations title`} >ROADMAP</h1>
+  return (
+    <StyledRoadmapSection id="roadmap" ship={0}>
+      <StyledFlexFullCenterContainer
+        style={{ height: "auto", flexDirection: "column", width: "100%" }}
+      >
+        <h1
+          className={`animate__animated animate__fadeInDown animations title`}
+        >
+          ROADMAP
+        </h1>
         {/* <h3  className={`animate__animated animate__fadeInDown animations`} >BRAINER</h3> */}
         {/* <img src="./history.png" className={`animate__animated astronaut animations`} /> */}
 
         <img
-        src="./spaceship.png"
-        className={`img1 ${isScrolling ? "scrolling" : ""} ${scrollingDown ? "scrolling-down" : ""} ${scrollingUp ? "scrolling-up" : ""}`}
-        // className={`img1`}
-        alt="spaceship"
-        
-      />
-          
-          <StyledRoadmapCard>
-            <h2 style={{margin:0}}>Chapter 1</h2>
-            <p style={{margin: 0}} className="subtitle"><span>The rise of the Brainers</span></p>
-            <ul>
-              <li><p className="text">Social media marketing campaign to build buzz and ignite <span>community</span> engagement.</p></li>
-              <li><p className="text">Creation of the <span>BRAINER SOCIETY</span> community.</p></li>
-              <li><p className="text">Inaugural collection of <span>NFTs in pixelArt</span> of different brainers.</p></li>
-              {/* <li><p className="text">Drop of the main NFT character.</p></li> */}
-              <li><p className="text">Creation and airdrop of <span>NEURON</span>. The currency of Brainer Society.</p></li>
-              <li><p className="text">Fundraising campaign to gather resources to build the <span>BRAINER SOCIETY</span> metaverse.</p></li>
-            </ul>
-          </StyledRoadmapCard>
+          src="./spaceship.png"
+          className={`img1 ${isScrolling ? "scrolling" : ""} ${
+            scrollingDown ? "scrolling-down" : ""
+          } ${scrollingUp ? "scrolling-up" : ""}`}
+          // className={`img1`}
+          alt="spaceship"
+        />
+
+        <StyledRoadmapCard>
+          <h2 style={{ margin: 0 }}>Chapter 1</h2>
+          <p style={{ margin: 0 }} className="subtitle">
+            <span>The rise of the Brainers</span>
+          </p>
+          <ul>
+            <li>
+              <img
+                src={"./commonBrainer.png"}
+                alt="Bullet Point"
+                className="bullet-icon"
+              />
+              <p className="text">
+                Social media marketing campaign to build buzz and ignite{" "}
+                <span>community</span> engagement.
+              </p>
+            </li>
+            <li>
+              <img
+                src={"./commonBrainer.png"}
+                alt="Bullet Point"
+                className="bullet-icon"
+              />
+              <p className="text">
+                Creation of the <span>BRAINER SOCIETY</span> community.
+              </p>
+            </li>
+            <li>
+              <img
+                src={"./commonBrainer.png"}
+                alt="Bullet Point"
+                className="bullet-icon"
+              />
+              <p className="text">
+                Inaugural collection of <span>NFTs in pixelArt</span> of
+                different brainers.
+              </p>
+            </li>
+            {/* <li><p className="text">Drop of the main NFT character.</p></li> */}
+            <li>
+              <img
+                src={"./commonBrainer.png"}
+                alt="Bullet Point"
+                className="bullet-icon"
+              />
+              <p className="text">
+                Creation and airdrop of <span>NEURON</span>. The currency of
+                Brainer Society.
+              </p>
+            </li>
+            <li>
+              <img
+                src={"./commonBrainer.png"}
+                alt="Bullet Point"
+                className="bullet-icon"
+              />
+              <p className="text">
+                Fundraising campaign to gather resources to build the{" "}
+                <span>BRAINER SOCIETY</span> metaverse.
+              </p>
+            </li>
+          </ul>
+        </StyledRoadmapCard>
 
         {/* <StyledRoadmapCard>
           <h2 style={{margin:0}}>Chapter 2</h2>
@@ -111,9 +173,7 @@ return <StyledRoadmapSection id="roadmap" ship={0}>
 
 
         </StyledRoadmapCard> */}
-        
-    </StyledFlexFullCenterContainer>
-
-  
-    </StyledRoadmapSection>;
+      </StyledFlexFullCenterContainer>
+    </StyledRoadmapSection>
+  );
 }

@@ -63,16 +63,24 @@ export const StyledHomeContent = styled("div")`
     will-change: filter;
     transition: filter 300ms;
     border-radius: 80%;
-    border: 2px solid black;
-    background-color: #530354;
+    /* border: 2px solid black; */
+    /* background-color: #530354; */
     padding: 2px;
     will-change: filter;
     transition: filter 300ms;
-    border-radius: 80%;
-    border: 2px solid black;
-    background-color: #530354;
+    width: 350px;
+    height: 350px;
+    /* border: 2px solid black; */
+    /* background-color: #530354; */
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
       rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    animation: rotate 8s infinite alternate;
+
+    img {
+      width: 400px;
+      transition: filter 300ms;
+      z-index: 9999 !important;
+    }
   }
   .logo:hover {
     filter: drop-shadow(0 0 2em #c464ffaa);
@@ -112,7 +120,7 @@ export const StyledNavbarContainer = styled("div")`
     will-change: filter;
     transition: filter 300ms;
     border-radius: 80%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     background-color: #530354;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
       rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -1086,6 +1094,20 @@ export const StyledRoadmapCard = styled(StyledCard)`
     }
   }
 
+  ul {
+    padding-left: 0;
+    li {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      .bullet-icon {
+        width: 50px;
+        height: 50px;
+        margin-left: 0;
+      }
+    }
+  }
+
   &:nth-of-type(2),
   &:nth-of-type(4),
   &:nth-of-type(6) {
@@ -1095,6 +1117,14 @@ export const StyledRoadmapCard = styled(StyledCard)`
 
   @media screen and (max-width: 814px) {
     font-size: 1.2em;
+  }
+
+  @media (max-width: 900px) {
+    img {
+      display: block;
+      width: 40px !important;
+      height: 40px !important;
+    }
   }
 `;
 
