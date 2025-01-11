@@ -62,23 +62,20 @@ export const StyledHomeContent = styled("div")`
     padding: 2px;
     will-change: filter;
     transition: filter 300ms;
-    border-radius: 80%;
-    /* border: 2px solid black; */
-    /* background-color: #530354; */
     padding: 2px;
     will-change: filter;
     transition: filter 300ms;
     width: 350px;
     height: 350px;
-    /* border: 2px solid black; */
-    /* background-color: #530354; */
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
     animation: rotate 8s infinite alternate;
+    border: none;
 
     img {
       width: 400px;
       transition: filter 300ms;
+      border: none;
+
       z-index: 9999 !important;
     }
   }

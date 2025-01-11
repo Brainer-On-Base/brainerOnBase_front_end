@@ -13,45 +13,81 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { StyledButton } from "../components/styled-components/buttons";
 import UseContract from "../hooks/useContract";
-
+import { themeColors } from "../themeColors";
 const TraitContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   width: 100%;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
+  gap: 1em; /* Espaciado entre las columnas y filas */
+  margin: 1em 0;
+  align-items: start;
   justify-content: center;
-  align-items: center;
-  z-index: 99999;
+  box-sizing: border-box;
+  z-index: 9999999;
+  align-items: stretch;
 `;
 
-const NFTImageContainer = styled(motion.div)`
+const NFTCardContainer = styled(motion.div)`
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5em;
+  max-width: 400px;
+  border-radius: 20px;
   box-sizing: border-box;
-  padding: 0 4em;
-  width: 100%;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(145deg, #2a0845, #6441a5); /* Fondo degradado */
+  color: #ffffff;
+  overflow: hidden;
+  z-index: 9999999;
+
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.2); /* Fondo translúcido */
+    z-index: 9999999;
+
+    h2 {
+      margin: 0 0 0.5em;
+      font-size: 2em;
+      font-weight: bold;
+      color: #ffe600; /* Color destacado para el título */
+      text-align: center;
+    }
+  }
 
   img {
-    width: 300px;
-    height: 300px;
-    border-radius: 10px;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 15px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
   }
 
   @media (max-width: 814px) {
-    flex-direction: column;
-    align-items: center;
+    max-width: 100%;
+    padding: 1em;
   }
 `;
 
 const TraitTag = styled.div`
-  width: 200px;
-  padding: 15px;
-  background: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  font-size: 12px;
-  border-radius: 5px;
-  margin: 10px 10px;
+  background: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Bordes suaves */
+  padding: 0.5em;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: left;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+
+  p {
+    margin: 0;
+  }
 `;
 
 const NftDetails = () => {
@@ -59,6 +95,7 @@ const NftDetails = () => {
   const [showHistory, setShowHistory] = useState("/home");
   const [nftData, setNftData] = useState(null);
   const { getIPFSInfo } = UseContract();
+  const [backgroundColor, setBackgroundColor] = useState("#230f44");
 
   const staggerContainer = {
     hidden: { opacity: 0 },
@@ -81,6 +118,12 @@ const NftDetails = () => {
   const getInfo = async () => {
     const data = await getIPFSInfo(id);
     setNftData(data);
+    const backgroundColor = data.attributes.filter(
+      (attr) => attr.trait_type === "Background"
+    );
+    setBackgroundColor(
+      themeColors[backgroundColor[0].value.toLowerCase() + "Violet"]
+    );
   };
 
   return (
@@ -108,42 +151,25 @@ const NftDetails = () => {
         >
           Collection
         </h1>
-        <h2>{nftData?.name}</h2>
-        <NFTImageContainer
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-        >
-          <motion.img
-            src={nftData?.image}
-            alt="NFT image"
-            style={{ zIndex: 99999 }}
-            variants={{
-              hidden: { opacity: 0, y: 10 },
-              visible: { opacity: 1, y: 0 },
-            }}
-          />
-          <TraitContainer initial="hidden" animate="visible">
-            {nftData?.attributes.map((attr, index) => (
-              <TraitTag
-                key={index}
-                initial="hidden"
-                animate="visible"
-                variants={staggerContainer}
-              >
-                <p>
-                  <strong>Type:</strong> {attr.trait_type}
-                </p>
-                <p>
-                  <strong>Value:</strong> {attr.value}
-                </p>
-                {/* <p>
-                  <strong>Rarity:</strong> {Math.floor(Math.random() * 100)}%
-                </p> */}
-              </TraitTag>
-            ))}
-          </TraitContainer>
-        </NFTImageContainer>
+        <NFTCardContainer background={backgroundColor}>
+          <div className="card-container">
+            <h2>{nftData?.name}</h2>
+            <img
+              src={nftData?.image}
+              alt="NFT image"
+              style={{ zIndex: 99999 }}
+            />
+            <TraitContainer>
+              {nftData?.attributes.map((attr, index) => (
+                <TraitTag key={index}>
+                  <p>
+                    <strong>{attr.trait_type}:</strong> {attr.value}
+                  </p>
+                </TraitTag>
+              ))}
+            </TraitContainer>
+          </div>
+        </NFTCardContainer>
       </StyledNFTDetailsContainer>
       <StyledButton
         style={{
