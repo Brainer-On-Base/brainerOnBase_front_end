@@ -32,7 +32,7 @@ const NFTCardContainer = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   padding: 1.5em;
-  max-width: 400px;
+  max-width: 450px;
   border-radius: 20px;
   box-sizing: border-box;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
@@ -62,7 +62,7 @@ const NFTCardContainer = styled(motion.div)`
 
   img {
     width: 100%;
-    max-width: 300px;
+    max-width: 350px;
     height: auto;
     border-radius: 15px;
     border: 3px solid rgba(255, 255, 255, 0.2);
@@ -80,13 +80,36 @@ const TraitTag = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.2); /* Bordes suaves */
   padding: 0.5em;
   border-radius: 10px;
-  color: #ffffff;
   font-size: 14px;
   text-align: left;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 
+  transition: transform 0.3s ease, background 0.3s ease; /* Suaviza hover */
+
+  &:hover {
+    transform: translateY(-5px); /* Desplazamiento hacia arriba */
+    background: rgba(255, 255, 255, 0.2); /* Color más visible */
+  }
+
   p {
     margin: 0;
+  }
+`;
+
+const FloatAnimation = styled.div`
+  z-index: 999999999;
+  animation: float 3s ease-in-out infinite;
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
   }
 `;
 
@@ -151,25 +174,27 @@ const NftDetails = () => {
         >
           Collection
         </h1>
-        <NFTCardContainer background={backgroundColor}>
-          <div className="card-container">
-            <h2>{nftData?.name}</h2>
-            <img
-              src={nftData?.image}
-              alt="NFT image"
-              style={{ zIndex: 99999 }}
-            />
-            <TraitContainer>
-              {nftData?.attributes.map((attr, index) => (
-                <TraitTag key={index}>
-                  <p>
-                    <strong>{attr.trait_type}:</strong> {attr.value}
-                  </p>
-                </TraitTag>
-              ))}
-            </TraitContainer>
-          </div>
-        </NFTCardContainer>
+        <FloatAnimation>
+          <NFTCardContainer background={backgroundColor}>
+            <div className="card-container">
+              <h2>{nftData?.name}</h2>
+              <img
+                src={nftData?.image}
+                alt="NFT image"
+                style={{ zIndex: 99999 }}
+              />
+              <TraitContainer>
+                {nftData?.attributes.map((attr, index) => (
+                  <TraitTag key={index}>
+                    <p>
+                      <strong>{attr.trait_type}:</strong> {attr.value}
+                    </p>
+                  </TraitTag>
+                ))}
+              </TraitContainer>
+            </div>
+          </NFTCardContainer>
+        </FloatAnimation>
       </StyledNFTDetailsContainer>
       <StyledButton
         style={{
