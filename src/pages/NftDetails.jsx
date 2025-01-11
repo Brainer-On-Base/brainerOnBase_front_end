@@ -6,14 +6,16 @@ import {
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer";
 import NightBackground from "../components/NIghtBackground";
-import NFTCollections from "../components/home/NFTCollections";
 import { View } from "@react-three/drei";
 import { motion } from "framer-motion";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { StyledButton } from "../components/styled-components/buttons";
 import UseContract from "../hooks/useContract";
 import { themeColors } from "../themeColors";
+import { TbArrowBigRightFilled } from "react-icons/tb";
+import { TbArrowBigLeftFilled } from "react-icons/tb";
+
 const TraitContainer = styled.div`
   display: grid;
   width: 100%;
@@ -113,12 +115,59 @@ const FloatAnimation = styled.div`
   }
 `;
 
+const ArrowLeft = styled(TbArrowBigLeftFilled)`
+  z-index: 999999;
+  margin: 0 1em;
+  font-size: 5em;
+  color: #ffffff; /* Color base */
+  transition: transform 0.3s ease, color 0.3s ease; /* Suaviza animaciones */
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.2); /* Hace la flecha más grande al hover */
+    color: #ff437d; /* Color vibrante para combinar con las cartas */
+  }
+
+  &:active {
+    transform: scale(1.1); /* Pequeña compresión al hacer clic */
+    color: #ffe600; /* Un toque de amarillo brillante al clic */
+  }
+`;
+
+const ArrowRight = styled(TbArrowBigRightFilled)`
+  z-index: 999999;
+  margin: 0 1em;
+  font-size: 5em;
+  color: #ffffff; /* Color base */
+  transition: transform 0.3s ease, color 0.3s ease; /* Suaviza animaciones */
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.2); /* Hace la flecha más grande al hover */
+    color: #ff437d; /* Color vibrante para combinar con las cartas */
+  }
+
+  &:active {
+    transform: scale(1.1); /* Pequeña compresión al hacer clic */
+    color: #ffe600; /* Un toque de amarillo brillante al clic */
+  }
+`;
+
+const NFTDetailsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+`;
+
 const NftDetails = () => {
   const { id } = useParams();
   const [showHistory, setShowHistory] = useState("/home");
   const [nftData, setNftData] = useState(null);
   const { getIPFSInfo } = UseContract();
   const [backgroundColor, setBackgroundColor] = useState("#230f44");
+  const navigate = useNavigate();
 
   const staggerContainer = {
     hidden: { opacity: 0 },
@@ -136,8 +185,6 @@ const NftDetails = () => {
     window.scrollTo(0, 0);
   }, [id]);
 
-  useEffect(() => {}, [id]);
-
   const getInfo = async () => {
     const data = await getIPFSInfo(id);
     setNftData(data);
@@ -147,6 +194,12 @@ const NftDetails = () => {
     setBackgroundColor(
       themeColors[backgroundColor[0].value.toLowerCase() + "Violet"]
     );
+  };
+
+  const handleNavigate = (id) => {
+    console.log(id);
+    if (id < 0 || id > 49) return;
+    navigate(`/nft-details/${id}`);
   };
 
   return (
@@ -174,27 +227,31 @@ const NftDetails = () => {
         >
           Collection
         </h1>
-        <FloatAnimation>
-          <NFTCardContainer background={backgroundColor}>
-            <div className="card-container">
-              <h2>{nftData?.name}</h2>
-              <img
-                src={nftData?.image}
-                alt="NFT image"
-                style={{ zIndex: 99999 }}
-              />
-              <TraitContainer>
-                {nftData?.attributes.map((attr, index) => (
-                  <TraitTag key={index}>
-                    <p>
-                      <strong>{attr.trait_type}:</strong> {attr.value}
-                    </p>
-                  </TraitTag>
-                ))}
-              </TraitContainer>
-            </div>
-          </NFTCardContainer>
-        </FloatAnimation>
+        <NFTDetailsContainer>
+          <ArrowLeft onClick={() => handleNavigate(parseInt(id) - 1)} />
+          <FloatAnimation>
+            <NFTCardContainer background={backgroundColor}>
+              <div className="card-container">
+                <h2>{nftData?.name}</h2>
+                <img
+                  src={nftData?.image}
+                  alt="NFT image"
+                  style={{ zIndex: 99999 }}
+                />
+                <TraitContainer>
+                  {nftData?.attributes.map((attr, index) => (
+                    <TraitTag key={index}>
+                      <p>
+                        <strong>{attr.trait_type}:</strong> {attr.value}
+                      </p>
+                    </TraitTag>
+                  ))}
+                </TraitContainer>
+              </div>
+            </NFTCardContainer>
+          </FloatAnimation>
+          <ArrowRight onClick={() => handleNavigate(parseInt(id) + 1)} />
+        </NFTDetailsContainer>
       </StyledNFTDetailsContainer>
       <StyledButton
         style={{
