@@ -182,7 +182,7 @@ const NftDetails = () => {
   useEffect(() => {
     // Cargar el JSON desde la carpeta public
     getInfo();
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   }, [id]);
 
   const getInfo = async () => {
