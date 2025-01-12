@@ -58,7 +58,7 @@ const UseContract = () => {
     }
 
     const quantity = await getMintedCount();
-    let uri = `http://145.223.96.84:8080/ipfs/QmeExBi3v1ZpsbH15srbMnEfk3Zj6nk3EwmzTJtbF8cRnf/${quantity}.json`;
+    let uri = `https://braineronbase.com/ipfs/QmRXEswJmrEnap2gDSXQQsZ8Wtpdqc8GQBpCinQgLHP7gW/${quantity}.json`;
 
     try {
       const signer = await web3provider.getSigner();
