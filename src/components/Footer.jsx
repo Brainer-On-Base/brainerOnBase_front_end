@@ -75,7 +75,7 @@ export default function Footer() {
           size={"15px"}
           padding={"5px"}
           margin={"0  5px 10px 5px"}
-          onClick={() => handleNavigateLink("https://discord.gg/braineronbase")}
+          onClick={() => handleNavigateLink("https://discord.gg/Px9Puqhzxw")}
         >
           <FontAwesomeIcon icon={faDiscord} size="1x" />
         </StyledButton>
