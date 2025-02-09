@@ -73,7 +73,7 @@ function Navbar({ setItem, item }) {
           <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
             <Stack flexDirection={"row"} alignItems={"center"}>
               <img
-                src="/coinimage2222.jpg"
+                src="/commonBrainer.png"
                 onClick={() => {
                   navigate("/home"), setItem("/home");
                 }}
