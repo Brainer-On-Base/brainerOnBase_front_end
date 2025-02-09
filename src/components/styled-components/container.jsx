@@ -118,9 +118,9 @@ export const StyledNavbarContainer = styled("div")`
     transition: filter 300ms;
     border-radius: 80%;
     /* border: 2px solid black; */
-    background-color: #530354;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    /* background-color: #530354; */
+    /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; */
 
     &:hover {
       filter: drop-shadow(0 0 2em #c464ffaa);

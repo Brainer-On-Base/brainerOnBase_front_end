@@ -90,6 +90,7 @@ const UseContract = () => {
         BRAINER_BPC_NFT_ABI_CONTRACT.abi,
         web3provider
       );
+      console.log(nftContract);
       const mintedCount = await nftContract.currentTokenId();
       return mintedCount;
     } catch (error) {
@@ -112,7 +113,34 @@ const UseContract = () => {
 
     return response;
   };
+  const getMintedNFTs = async () => {
+    const mintedNFTs = [];
+    const nftContract = new ethers.Contract(
+      BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
+      BRAINER_BPC_NFT_ABI_CONTRACT.abi,
+      web3provider
+    );
 
+    // Crear un array de promesas
+    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    console.log(nftContract);
+    for (let tokenId = 1; tokenId <= 50; tokenId++) {
+      try {
+        const uri = await nftContract.tokenURI(tokenId);
+        console.log("URI", uri);
+        console.log(`Token ${tokenId} está minteado con URI: ${uri}`);
+        mintedNFTs.push({ tokenId, uri });
+      } catch (error) {
+        console.log(`Token ${tokenId} no está minteado o no existe.`);
+      }
+      await delay(100); // Retraso de 100ms entre cada solicitud
+    }
+
+    // Esperar a que todas las promesas se resuelvan
+
+    console.log("NFTs minteados:", mintedNFTs);
+    return mintedNFTs;
+  };
   return {
     connectWallet,
     disconnectWallet,
@@ -122,6 +150,7 @@ const UseContract = () => {
     isConnected,
     getMintedCount,
     getIPFSInfo,
+    getMintedNFTs,
   };
 };
 
