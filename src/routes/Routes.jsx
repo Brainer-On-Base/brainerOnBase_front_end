@@ -3,7 +3,7 @@ import Home from "../pages/Home";
 import App from "../pages/App";
 import BrainerOnBaseShop from "../components/shop/BrainerOnBaseShop";
 import BrainerOnBaseMain from "../components/game/BrainerOnBaseMain";
-import NftDetails from "../pages/NftDetails";
+import NftCollectionList from "../pages/NftCollectionList";
 
 const Routes = () => {
   return (
@@ -11,7 +11,7 @@ const Routes = () => {
       <Route path="/home" element={<Home />} />
       <Route path={"/game"} element={<BrainerOnBaseMain />} />
       <Route path={"/shop"} element={<BrainerOnBaseShop />} />
-      <Route path={"/nft-details/:id"} element={<NftDetails />} />
+      <Route path={"/nft-list"} element={<NftCollectionList />} />
       <Route path={"/"} element={<App />} />
     </ReactRoutes>
   );
