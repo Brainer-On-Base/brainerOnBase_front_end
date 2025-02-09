@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { StyledNFTCollectionsContainer } from "../styled-components/container";
 import { useNavigate } from "react-router-dom";
 import UseContract from "../../hooks/useContract";
+import { StyledButton } from "../styled-components/buttons";
 
 const NFTCollections = () => {
   const navigate = useNavigate();
@@ -12,10 +13,16 @@ const NFTCollections = () => {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
   };
-  const { getIPFSInfo } = UseContract();
+  const { getIPFSInfo, getMintedNFTs } = UseContract();
 
+  async function getNFTS() {
+    const getnft = await getMintedNFTs(); // Llamada a la función para obtener los NFTs minteados
+    console.log(getnft); // Imprime el resultado directamente
+  }
   useEffect(() => {
-    getInfo();
+    // getInfo();
+    // getNFTS();
+    getHardCodeNFTs();
   }, []);
 
   const getInfo = async () => {
@@ -35,6 +42,18 @@ const NFTCollections = () => {
     }
 
     setNftData(data); // Actualizar el estado con los datos obtenidos
+  };
+
+  const getHardCodeNFTs = () => {
+    let data = [];
+    for (let i = 0; i < 12; i++) {
+      data.push({
+        name: "NFT Name",
+        description: "NFT Description",
+        image: `/nftCollectionImages/${i + 1}.png`,
+      });
+    }
+    setNftData(data);
   };
 
   return (
@@ -149,21 +168,31 @@ const NFTCollections = () => {
                 hidden: { opacity: 0, y: 20 }, // Empieza oculto y desplazado
                 visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }, // Se hace visible
               }}
-              onClick={() => {
-                // Extraer el ID de la URL
-                const urlParts = item?.image.split("/");
-                const fileName = urlParts[urlParts.length - 1].replace(
-                  ".json",
-                  ""
-                );
-                const id = fileName.match(/\d+/)?.[0]; // Extraer solo el número del archivo
+              // onClick={() => {
+              //   // Extraer el ID de la URL
+              //   const urlParts = item?.image.split("/");
+              //   const fileName = urlParts[urlParts.length - 1].replace(
+              //     ".json",
+              //     ""
+              //   );
+              //   const id = fileName.match(/\d+/)?.[0]; // Extraer solo el número del archivo
 
-                // Navegar a la nueva ruta con el ID
-                navigate(`/nft-details/${id}`);
-              }}
+              //   // Navegar a la nueva ruta con el ID
+              //   navigate(`/nft-details/${id}`);
+              // }}
             />
           ))}
         </motion.div>
+      </motion.div>
+      <motion.div style={{ marginTop: "-2rem", marginBottom: "3rem" }}>
+        <StyledButton
+          className="brainer-button"
+          onClick={() => {
+            navigate("/nft-list");
+          }}
+        >
+          VIEW ALL
+        </StyledButton>
       </motion.div>
     </StyledNFTCollectionsContainer>
   );
