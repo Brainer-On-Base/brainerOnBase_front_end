@@ -12,7 +12,9 @@ import { View } from "@react-three/drei";
 import { motion } from "framer-motion";
 import { StyledButton } from "../components/styled-components/buttons";
 import UseContract from "../hooks/useContract";
-import NftDetails from "../components/NftDetails/NftDetails";
+import NftDetails, {
+  FloatAnimation,
+} from "../components/NftDetails/NftDetails";
 import styled from "styled-components";
 
 const StyledNFTList = styled(StyledFlexFullCenterContainer)`
@@ -104,23 +106,24 @@ const NftCollectionList = () => {
         </StyledButton>
         <StyledNFTList>
           {nftList.map((nft, index) => (
-            <motion.div
-              key={index}
-              className={`animate__animated animate__fadeInUp animations`}
-              onClick={() => setNftSelected(nft)}
-            >
-              <img
-                src={nft.image}
-                alt="NFT"
-                style={{
-                  width: "200px",
-                  height: "200px",
-                  objectFit: "cover",
-                  borderRadius: "10px",
-                  margin: "1em",
-                }}
-              />
-            </motion.div>
+            <FloatAnimation delay={index} key={index}>
+              <motion.div
+                className={`animate__animated animate__fadeInUp animations`}
+                onClick={() => setNftSelected(nft)}
+              >
+                <img
+                  src={nft.image ?? "/nftCollectionImages/unknown.png"}
+                  alt="NFT"
+                  style={{
+                    width: "200px",
+                    height: "200px",
+                    objectFit: "cover",
+                    borderRadius: "10px",
+                    margin: "1em",
+                  }}
+                />
+              </motion.div>
+            </FloatAnimation>
           ))}
         </StyledNFTList>
       </StyledNFTDetailsContainer>

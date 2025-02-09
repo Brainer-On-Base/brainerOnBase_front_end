@@ -91,9 +91,11 @@ const TraitTag = styled.div`
   }
 `;
 
-const FloatAnimation = styled.div`
+export const FloatAnimation = styled.div`
   z-index: 999999999;
   animation: float 3s ease-in-out infinite;
+  animation-delay: ${({ delay }) =>
+    delay !== undefined ? `${delay * 0.2}s` : "0s"};
 
   @keyframes float {
     0% {
