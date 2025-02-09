@@ -150,7 +150,7 @@ const NFTDetailsModal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.449);
+  background: rgba(0, 0, 0, 0.587);
   padding: 2em;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
