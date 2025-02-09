@@ -50,6 +50,7 @@ const NftCollectionList = () => {
     console.log(getnft); // Imprime el resultado directamente
   }
   useEffect(() => {
+    window.scrollTo(0, 0);
     getInfo();
     getNFTS();
   }, []);
@@ -98,7 +99,9 @@ const NftCollectionList = () => {
         >
           Collection
         </h1>
-        <StyledButton>SEE COLLECTION ON OPEN SEA</StyledButton>
+        <StyledButton style={{ zIndex: 999 }}>
+          SEE COLLECTION ON OPEN SEA
+        </StyledButton>
         <StyledNFTList>
           {nftList.map((nft, index) => (
             <motion.div
