@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { themeColors } from "../../themeColors";
-import { TbArrowBigRightFilled } from "react-icons/tb";
+import { TbArrowBigRightFilled, TbX } from "react-icons/tb";
 import { TbArrowBigLeftFilled } from "react-icons/tb";
 import { useNavigate, useParams } from "react-router-dom";
 import UseContract from "../../hooks/useContract";
@@ -41,6 +41,7 @@ const NFTCardContainer = styled(motion.div)`
     justify-content: center;
     align-items: center;
     padding: 15px;
+    padding-bottom: 0;
     border-radius: 15px;
     background: rgba(0, 0, 0, 0.2); /* Fondo translúcido */
     z-index: 9999999;
@@ -145,6 +146,20 @@ const ArrowRight = styled(TbArrowBigRightFilled)`
   }
 `;
 
+const CloseIcon = styled(TbX)`
+  background: ${themeColors.deepViolet};
+  padding: 5px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  font-size: 2em;
+  color: #ffffff;
+  transition: transform 0.3s ease, color 0.3s ease;
+  z-index: 999999;
+  cursor: pointer;
+`;
+
 const NFTDetailsModal = styled.div`
   position: fixed;
   top: 50%;
@@ -193,6 +208,7 @@ const NftDetails = ({ nftSelected, setNftSelected, nftList }) => {
 
   return (
     <NFTDetailsModal>
+      <CloseIcon onClick={() => setNftSelected(null)} />
       <ArrowLeft
         onClick={() => handleNavigate(parseInt(nftSelected.tokenId) - 1)}
       />
