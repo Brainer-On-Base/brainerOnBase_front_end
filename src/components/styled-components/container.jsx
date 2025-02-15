@@ -19,6 +19,7 @@ export const StyledFlexCenterContainer = styled("div")`
   display: flex;
   align-items: center;
   width: 100%;
+  position: relative;
 `;
 
 export const StyledFlexFullCenterContainer = styled("div")`
@@ -50,6 +51,7 @@ export const StyledInitAppContainer = styled(StyledAppContainer)`
   background-color: #242424 !important;
   z-index: 9999;
   height: 100vh;
+  width: 100%;
 `;
 
 export const StyledHomeContent = styled("div")`
@@ -380,6 +382,7 @@ export const StyledWelcomeSection2 = styled("div")`
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
+  position: relative;
   background-size: cover;
   .home-text-container {
     margin-top: 4em;
@@ -777,7 +780,8 @@ export const StyledAstronautCard3 = styled(StyledAstronautCard)`
 
 export const StyledFooterSection = styled("div")`
   //   background-color: #1a1a1a;
-  background: transparent;
+  /* background: url("/footerbck.png"); */
+  background-size: repeat;
   position: relative;
 
   width: 100%;
@@ -785,12 +789,14 @@ export const StyledFooterSection = styled("div")`
   height: auto;
   padding-top: 4em;
   margin-top: 2em;
-  padding-bottom: 1em;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
   p {
     text-align: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold !important;
     margin: 0;
     font-size: 16px;
   }
@@ -1128,6 +1134,7 @@ export const StyledRoadmapCard = styled(StyledCard)`
 export const StyledNFTCollectionsContainer = styled(
   StyledFlexFullCenterContainer
 )`
+  position: relative;
   flex-direction: column;
   background-color: transparent;
   flex-grow: 1;
