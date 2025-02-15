@@ -58,6 +58,30 @@ const NFTCollections = () => {
 
   return (
     <StyledNFTCollectionsContainer>
+      <motion.img
+        viewport={{ once: true, amount: 0.5 }}
+        src="/spaceship.png"
+        alt="Ship 3"
+        style={{
+          position: "absolute",
+          top: "80px",
+          left: "-200px",
+          width: "160px",
+          transform: "rotateY(180deg)",
+        }}
+        ro
+        animate={{
+          x: ["120vw", "-120vw"], // Va de izquierda a derecha
+          y: [80, 400, 3000, 0], // Movimiento en onda
+          rotate: [0, -10, -100, 0], // Rotación oscilante
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 14,
+          ease: "easeInOut",
+        }}
+      />
+
       <motion.h2
         initial="hidden"
         whileInView="visible"
