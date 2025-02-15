@@ -32,11 +32,11 @@ export default function Footer() {
       </p>
       <StyledFlexFullCenterContainer
         style={{
-          height: "280px",
-          backgroundRepeat: "repeat",
-          justifyContent: "center",
-          alignItems: "flex-end",
-          background: 'url("/footerbck.png")',
+          // height: "280px",
+          // backgroundRepeat: "repeat",
+          // justifyContent: "center",
+          // alignItems: "flex-end",
+          // background: 'url("/footerbck.png")',
           paddingBottom: "1em",
         }}
       >
@@ -44,7 +44,7 @@ export default function Footer() {
           style={{ width: "100%", justifyContent: "center" }}
         >
           <img src="/brainerCoin.png" alt="Brainer Coin Logo" />
-          <p id="copyright" style={{ margin: "10px", color: " black" }}>
+          <p id="copyright" style={{ margin: "10px", color: " white" }}>
             Copyright © 2024. All rights reserved. - braineronbase@gmail.com
           </p>
           <img src="/brainerCoin.png" alt="Brainer Coin Logo" />
@@ -61,22 +61,26 @@ export default function Footer() {
           rotate: "25deg",
         }}
         positionStyle={{
-          right: "120px",
-          top: "0%",
+          right: "80px",
+          top: "-10%",
         }}
-        width="135px"
+        width="180px"
         height="50px"
         className="animate__animated animate__fadeIn firstText"
       >
-        <StyledButton
-          size={"15px"}
-          padding={"5px"}
-          margin={"0  5px 10px 5px"}
-          onClick={() => handleNavigateLink("https://x.com/BrainerOnBase_")}
-        >
-          <FontAwesomeIcon icon={faX} size="1x" />
-        </StyledButton>
-        <StyledButton
+        <p>
+          No Telegram, no discord, only {""}
+          <StyledButton
+            size={"15px"}
+            padding={"5px"}
+            margin={"0  5px 10px 5px"}
+            onClick={() => handleNavigateLink("https://x.com/BrainerOnBase_")}
+          >
+            <FontAwesomeIcon icon={faX} size="1x" />
+          </StyledButton>
+        </p>
+
+        {/* <StyledButton
           size={"15px"}
           padding={"5px"}
           margin={"0 5px 10px 5px"}
@@ -91,7 +95,7 @@ export default function Footer() {
           onClick={() => handleNavigateLink("https://discord.gg/Px9Puqhzxw")}
         >
           <FontAwesomeIcon icon={faDiscord} size="1x" />
-        </StyledButton>
+        </StyledButton> */}
       </BubbleDialog>
       <img
         className="spaceship"
@@ -108,12 +112,12 @@ export default function Footer() {
         <StyledButton size={"15px"} padding={"5px"} margin={"0  5px 10px 5px"}>
           <FontAwesomeIcon icon={faX} size="1x" />
         </StyledButton>
-        <StyledButton size={"15px"} padding={"5px"} margin={"0 5px 10px 5px"}>
+        {/* <StyledButton size={"15px"} padding={"5px"} margin={"0 5px 10px 5px"}>
           <FontAwesomeIcon icon={faTelegram} size="1x" />
         </StyledButton>
         <StyledButton size={"15px"} padding={"5px"} margin={"0  5px 10px 5px"}>
           <FontAwesomeIcon icon={faDiscord} size="1x" />
-        </StyledButton>
+        </StyledButton> */}
       </StyledFlexFullCenterContainer>
     </StyledFooterSection>
   );

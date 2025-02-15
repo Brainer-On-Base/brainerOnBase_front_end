@@ -791,7 +791,7 @@ export const StyledFooterSection = styled("div")`
   margin-top: 2em;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
+  overflow: visible;
   p {
     text-align: center;
     color: white;
@@ -819,7 +819,7 @@ export const StyledFooterSection = styled("div")`
   .spaceship {
     transform: scaleX(-1);
     position: absolute;
-    bottom: 0;
+    bottom: 10;
     right: 0;
     width: 150px;
     animation: rotateAndMoveUp 8s infinite alternate;
