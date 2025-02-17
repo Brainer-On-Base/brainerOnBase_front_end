@@ -13,6 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import BubbleDialog from "./BubbleDialog";
 import { faDiscord, faTelegram } from "@fortawesome/free-brands-svg-icons";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   const handleNavigateLink = (link) => {
@@ -76,7 +77,7 @@ export default function Footer() {
             margin={"0  5px 10px 5px"}
             onClick={() => handleNavigateLink("https://x.com/BrainerOnBase_")}
           >
-            <FontAwesomeIcon icon={faX} size="1x" />
+            <FaXTwitter />
           </StyledButton>
         </p>
 
@@ -110,7 +111,7 @@ export default function Footer() {
         className="social"
       >
         <StyledButton size={"15px"} padding={"5px"} margin={"0  5px 10px 5px"}>
-          <FontAwesomeIcon icon={faX} size="1x" />
+          <FaXTwitter />
         </StyledButton>
         {/* <StyledButton size={"15px"} padding={"5px"} margin={"0 5px 10px 5px"}>
           <FontAwesomeIcon icon={faTelegram} size="1x" />
