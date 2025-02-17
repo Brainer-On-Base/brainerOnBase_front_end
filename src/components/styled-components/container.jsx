@@ -45,6 +45,14 @@ export const StyledAppContainer = styled("div")`
   justify-content: center;
   flex-direction: column;
   margin: 0 auto;
+
+  .minted-quantity {
+    font-family: "Luckiest Guy", cursive;
+    margin-left: 8px;
+    font-size: 40px;
+    color: #888;
+    text-transform: uppercase;
+  }
 `;
 
 export const StyledInitAppContainer = styled(StyledAppContainer)`

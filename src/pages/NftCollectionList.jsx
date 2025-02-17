@@ -16,6 +16,8 @@ import NftDetails, {
   FloatAnimation,
 } from "../components/NftDetails/NftDetails";
 import styled from "styled-components";
+import useModals from "../hooks/useSweetAlert";
+import { APP_TEXTS } from "../APP_TEXTS";
 
 const StyledNFTList = styled(StyledFlexFullCenterContainer)`
   padding: 4em;
@@ -45,7 +47,15 @@ const NftCollectionList = () => {
   const [showHistory, setShowHistory] = useState("/home");
   const [nftSelected, setNftSelected] = useState(null);
   const [nftList, setNftList] = useState([]);
-  const { getIPFSInfo, getMintedNFTs } = UseContract();
+  const {
+    getIPFSInfo,
+    getMintedNFTs,
+    mint_BPC1_NFT,
+    getMintedCount,
+    web3provider,
+  } = UseContract();
+  const { showPopUp, useTextModal } = useModals();
+  const [mintedCount, setMintedCount] = useState(null);
 
   async function getNFTS() {
     const getnft = await getMintedNFTs(); // Llamada a la función para obtener los NFTs minteados
@@ -55,7 +65,14 @@ const NftCollectionList = () => {
     window.scrollTo(0, 0);
     getInfo();
     getNFTS();
+
+    fetchMintedCount();
   }, []);
+
+  const fetchMintedCount = async () => {
+    const count = await getMintedCount();
+    setMintedCount(count);
+  };
 
   const getInfo = async () => {
     const data = [];
@@ -104,6 +121,25 @@ const NftCollectionList = () => {
         <StyledButton style={{ zIndex: 999 }}>
           SEE COLLECTION ON OPEN SEA
         </StyledButton>
+        <StyledButton
+          style={{ zIndex: 999, marginTop: "1em" }}
+          className={"animate__animated animate__fadeIn animate__delay-2s"}
+          onClick={() =>
+            useTextModal({
+              textButton: APP_TEXTS.HOME_MODAL_TEXT_BUTTON,
+              title: APP_TEXTS.HOME_MODAL_TITLE,
+              text: APP_TEXTS.HOME_MODAL_DESCRIPTION,
+              textColor: "white",
+              onConfirmFunction: async () => await mint_BPC1_NFT(),
+            })
+          }
+        >
+          MINT
+        </StyledButton>
+
+        {web3provider && (
+          <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">{`${mintedCount}/8000 minted`}</p>
+        )}
         <StyledNFTList>
           {nftList.map((nft, index) => (
             <FloatAnimation delay={index} key={index}>
