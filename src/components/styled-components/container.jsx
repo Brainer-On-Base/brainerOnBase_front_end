@@ -167,70 +167,6 @@ export const StyledNavbarContainer = styled("div")`
   }
 `;
 
-export const StyledAddressContainer = styled(motion.div)`
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  color: black;
-  font-family: "Luckiest Guy", cursive;
-  z-index: 999999;
-  overflow: hidden;
-  margin-bottom: 1em;
-  cursor: pointer;
-  transition: all 0.4s ease;
-
-  width: 100%;
-
-  h3 {
-    transition: all 0.4s ease;
-    font-size: 60px;
-    margin: 0;
-    color: white;
-
-    @media (max-width: 900px) {
-      font-size: 40px;
-    }
-  }
-
-  &:hover {
-    p {
-      color: #ff437d !important;
-    }
-
-    filter: drop-shadow(0 0 1em #ff437d);
-  }
-
-  p {
-    font-weight: bold;
-    font-family: "Luckiest Guy", cursive;
-    font-size: 40px;
-    margin: 0;
-    cursor: pointer;
-    color: #888;
-    transition: all 0.4s ease;
-    text-align: center;
-    width: 80%;
-    max-width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-
-    @media (max-width: 1200px) {
-      font-size: 2em;
-    }
-
-    @media (max-width: 992px) {
-      font-size: 1.8em;
-    }
-
-    @media (max-width: 768px) {
-      font-size: 1.5em;
-    }
-  }
-`;
-
 export const StyledWelcomeSection = styled("div")`
   display: flex;
   flex-direction: column;
@@ -1332,6 +1268,70 @@ export const StyledNFTDetailsContainer = styled(StyledHomeSection)`
     h2 {
       margin-top: 1em;
       font-size: 2em; /* Reduce un poco el tamaño del subtítulo */
+    }
+  }
+`;
+
+export const StyledTokenSection = styled(motion.div)`
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: black;
+  font-family: "Luckiest Guy", cursive;
+  z-index: 999999;
+  overflow: hidden;
+  margin-bottom: 1em;
+  cursor: pointer;
+  transition: all 0.4s ease;
+
+  width: 100%;
+
+  h3 {
+    transition: all 0.4s ease;
+    font-size: 60px;
+    margin: 0;
+    color: white;
+
+    @media (max-width: 900px) {
+      font-size: 40px;
+    }
+  }
+
+  &:hover {
+    p {
+      color: #ff437d !important;
+    }
+
+    filter: drop-shadow(0 0 1em #ff437d);
+  }
+
+  p {
+    font-weight: bold;
+    font-family: "Luckiest Guy", cursive;
+    font-size: 40px;
+    margin: 0;
+    cursor: pointer;
+    color: #888;
+    transition: all 0.4s ease;
+    text-align: center;
+    width: 80%;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    @media (max-width: 1200px) {
+      font-size: 2em;
+    }
+
+    @media (max-width: 992px) {
+      font-size: 1.8em;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1.5em;
     }
   }
 `;

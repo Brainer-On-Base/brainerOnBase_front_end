@@ -14,14 +14,6 @@ const UseContract = () => {
     React.useContext(AccountContext);
   const { showPopUp } = useModals();
 
-  useEffect(() => {
-    if (web3provider) {
-      getQuantityminted();
-    }
-  }, [account]);
-
-  const getQuantityminted = async () => await getMintedCount();
-
   const connectWallet = async () => {
     if (!window.ethereum) {
       showPopUp({ text: "Metamask is not installed", icon: "error" });
@@ -57,9 +49,6 @@ const UseContract = () => {
       return;
     }
 
-    const quantity = await getMintedCount();
-    let uri = `https://braineronbase.com/ipfs/QmeBaKmJaqx3i1T8cBBaTT1k84wYVvncTHpXL2LVN84sW4/${quantity}.json`;
-
     try {
       const signer = await web3provider.getSigner();
 
@@ -70,7 +59,7 @@ const UseContract = () => {
       );
 
       // Llama a la función de minting y espera la transacción
-      const tx = await nftContract.mintNFT(account, uri, {
+      const tx = await nftContract.mintNFT(account, {
         value: ethers.parseEther("0.01"),
       });
       await tx.wait();
@@ -83,15 +72,17 @@ const UseContract = () => {
 
   const getMintedCount = async () => {
     if (!web3provider) return;
-
     try {
       const nftContract = new ethers.Contract(
         BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
         BRAINER_BPC_NFT_ABI_CONTRACT.abi,
         web3provider
       );
-      console.log(nftContract);
-      const mintedCount = await nftContract.currentTokenId();
+      console.log(nftContract.getFunction("currentTokenId"));
+
+      const getCurrentTokenId = await nftContract.getFunction("currentTokenId");
+      const mintedCount = await getCurrentTokenId();
+
       return mintedCount;
     } catch (error) {
       console.error("Error fetching minted count:", error);
@@ -113,6 +104,7 @@ const UseContract = () => {
 
     return response;
   };
+
   const getMintedNFTs = async () => {
     const mintedNFTs = [];
     const nftContract = new ethers.Contract(
@@ -141,6 +133,7 @@ const UseContract = () => {
     console.log("NFTs minteados:", mintedNFTs);
     return mintedNFTs;
   };
+
   return {
     connectWallet,
     disconnectWallet,

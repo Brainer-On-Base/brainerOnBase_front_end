@@ -21,9 +21,9 @@ import {
   StyledLaunchGameButton,
 } from "../components/styled-components/buttons";
 import NFTCollections from "../components/home/NFTCollections";
+import TokenSection from "../components/home/TokenSection";
 
 export default function Home() {
-  const { copied, copyToClipboard } = useModals();
   const [showHistory, setShowHistory] = useState("/home");
   const navigate = useNavigate();
 
@@ -57,19 +57,8 @@ export default function Home() {
       {showHistory === "/home#about" && <AboutSection />}
       {showHistory === "/home#roadmap" && <RoadmapSection />}
       <NFTCollections />
-      <StyledAddressContainer
-        onClick={() =>
-          copyToClipboard("0x5b8BB48898b67c3481677c5Ac462786c18Db11F6")
-        }
-      >
-        <h3>
-          <span>$NRN</span> ADDRESS
-        </h3>
-        <p>
-          <FontAwesomeIcon icon={faCopy} style={{ marginRight: "20px" }} />
-          0x5b8BB48898b67c3481677c5Ac462786c18Db11F6
-        </p>
-      </StyledAddressContainer>
+
+      <TokenSection />
       <TokenomicsSection />
       <StyledLaunchGameButton
         onClick={() => window.open("https://docs.braineronbase.com")}
