@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-  StyledAddressContainer,
   StyledFlexCenterContainer,
   StyledWelcomeSection2,
 } from "../styled-components/container";
