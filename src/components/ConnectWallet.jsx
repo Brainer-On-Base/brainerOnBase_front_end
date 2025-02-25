@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWallet, faSignOutAlt } from "@fortawesome/free-solid-svg-icons"; // Icono de billetera y de desconexión
+import {
+  faWallet,
+  faBars,
+  faBoxOpen,
+  faUserCircle,
+  faSignOutAlt,
+} from "@fortawesome/free-solid-svg-icons"; // Iconos adicionales
 import UseContract from "../hooks/useContract";
+import { useNavigate } from "react-router-dom";
 
 const ConnectWallet = () => {
   const {
@@ -9,22 +16,57 @@ const ConnectWallet = () => {
     disconnectWallet,
     account,
   } = UseContract();
+  const [showUserMenu, setShowUserMenu] = useState(false);
+  const navigate = useNavigate();
+
+  const toggleUserMenu = () => {
+    setShowUserMenu(!showUserMenu);
+  };
 
   return (
-    <div>
+    <>
       {account ? (
-        <div
-          style={styles.accountContainer}
-          onClick={disconnectWallet}
-          title="Click to disconnect"
-        >
+        <div style={styles.accountContainer} onClick={toggleUserMenu}>
           <FontAwesomeIcon icon={faWallet} style={styles.walletIcon} />
           <span style={styles.accountText}>
             {`${account.substring(0, 6)}...${account.substring(
               account.length - 4
             )}`}
           </span>
-          <FontAwesomeIcon icon={faSignOutAlt} style={styles.disconnectIcon} />
+          <FontAwesomeIcon icon={faBars} style={styles.disconnectIcon} />
+          <div
+            style={{
+              ...styles.userMenu,
+              maxHeight: showUserMenu ? "300px" : "0",
+              transition: "max-height 0.3s ease, opacity 0.3s ease",
+            }}
+          >
+            <div
+              style={styles.menuItem}
+              onClick={() => navigate("/player/profile")}
+            >
+              <FontAwesomeIcon
+                icon={faUserCircle}
+                style={styles.menuItemIcon}
+              />
+              Profile
+            </div>
+            <div
+              style={styles.menuItem}
+              onClick={() => navigate("/player/inventory")}
+            >
+              <FontAwesomeIcon icon={faBoxOpen} style={styles.menuItemIcon} />
+              Inventory
+            </div>
+
+            <div style={styles.menuItem} onClick={disconnectWallet}>
+              <FontAwesomeIcon
+                icon={faSignOutAlt}
+                style={styles.menuItemIcon}
+              />
+              Disconnect
+            </div>
+          </div>
         </div>
       ) : (
         <button onClick={connectWalletProvider} style={styles.connectButton}>
@@ -32,20 +74,20 @@ const ConnectWallet = () => {
           Connect
         </button>
       )}
-    </div>
+    </>
   );
 };
 
 const styles = {
   accountContainer: {
+    position: "relative",
     display: "flex",
     alignItems: "center",
     backgroundColor: "#1e1e1e",
-    padding: "8px 12px",
+    padding: "4px 8px",
     borderRadius: "20px",
     border: "1px solid #ff437d",
     maxWidth: "200px",
-    overflow: "hidden",
     cursor: "pointer",
     transition: "background-color 0.3s, transform 0.3s",
   },
@@ -64,19 +106,48 @@ const styles = {
   disconnectIcon: {
     marginLeft: "8px",
     color: "#ff437d",
+    cursor: "pointer",
   },
   connectButton: {
     display: "flex",
     alignItems: "center",
-    padding: "8px 16px",
+    padding: "4px 8px",
     backgroundColor: "#ff437d",
     color: "#fff",
     fontWeight: "bold",
     border: "none",
     borderRadius: "20px",
+    justifyContent: "flex-start",
     cursor: "pointer",
     fontSize: "14px",
     transition: "background-color 0.3s, transform 0.3s",
+  },
+  userMenu: {
+    position: "absolute",
+    width: "200px",
+    top: "100%",
+    right: "10px",
+    backgroundColor: "#2a2a2a",
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    marginTop: "8px",
+    zIndex: "1000",
+    overflow: "hidden",
+  },
+  menuItem: {
+    padding: "8px 16px",
+    color: "#fff",
+    cursor: "pointer",
+    transition: "background-color 0.3s, opacity 0.3s",
+    display: "flex",
+    alignItems: "center",
+  },
+  menuItemHover: {
+    backgroundColor: "#3a3a3a",
+    opacity: "0.9",
+  },
+  menuItemIcon: {
+    marginRight: "8px",
   },
 };
 
