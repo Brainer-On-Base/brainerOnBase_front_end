@@ -115,10 +115,9 @@ export const StyledNavbarContainer = styled("div")`
   top: 0;
   z-index: 99999999999;
   margin: 0 auto;
-  background-color: ${({ scrolled }) =>
-    scrolled ? "#230f44b8" : "transparent"};
+  background-color: ${({ scrolled }) => (scrolled ? "#230f44" : "transparent")};
   transition: background-color 0.3s ease;
-  height: 120px;
+  height: 80px;
 
   img {
     width: 80px;

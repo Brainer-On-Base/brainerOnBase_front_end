@@ -90,6 +90,7 @@ const styles = {
     maxWidth: "200px",
     cursor: "pointer",
     transition: "background-color 0.3s, transform 0.3s",
+    marginLeft: "10px",
   },
   walletIcon: {
     marginRight: "8px",
@@ -109,6 +110,7 @@ const styles = {
     cursor: "pointer",
   },
   connectButton: {
+    marginLeft: "10px",
     display: "flex",
     alignItems: "center",
     padding: "4px 8px",
