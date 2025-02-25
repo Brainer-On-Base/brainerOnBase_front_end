@@ -13,7 +13,7 @@ const TokenSection = () => {
         copyToClipboard("0x5b8BB48898b67c3481677c5Ac462786c18Db11F6")
       }
     >
-      <h3 style={{ margin: "1em 0" }}>NEURON TOKEN</h3>
+      {/* <h3 style={{ margin: "1em 0" }}>NEURON TOKEN</h3>
 
       <p></p>
 
@@ -25,7 +25,7 @@ const TokenSection = () => {
           <FontAwesomeIcon icon={faCopy} style={{ marginRight: "20px" }} />
           0x5b8BB48898b67c3481677c5Ac462786c18Db11F6
         </p>
-      </div>
+      </div> */}
     </StyledTokenSection>
   );
 };
