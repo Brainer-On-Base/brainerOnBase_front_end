@@ -9,24 +9,35 @@ import { APP_TEXTS } from "../../APP_TEXTS";
 import { ethers } from "ethers";
 import UseContract from "../../hooks/useContract";
 import { motion } from "framer-motion";
+import Loader from "../Loader/Loader";
 
 export default function WelcomeSection() {
   const { showPopUp, useTextModal } = useModals();
   const { mint_BPC1_NFT, getMintedCount, web3provider } = UseContract();
   const [mintedCount, setMintedCount] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [refreshCount, setRefreshCount] = useState(false);
 
   useEffect(() => {
-    const fetchMintedCount = async () => {
-      const count = await getMintedCount();
-      setMintedCount(count);
-    };
     fetchMintedCount();
-  }, [getMintedCount]);
+  }, [refreshCount, getMintedCount]);
+
+  const fetchMintedCount = async () => {
+    const count = await getMintedCount();
+    setMintedCount(count);
+  };
+
+  const mintNft = async () => {
+    setLoading(true);
+    await mint_BPC1_NFT();
+    setRefreshCount(!refreshCount);
+    setLoading(false);
+  };
 
   return (
     <StyledWelcomeSection2 style={{ alignItems: "flex-start" }} id="home">
       {/* <img src="rocket.png" className="baloon"/> */}
-
+      {loading && <Loader showLoading={loading} />}
       <div className="home-text-container">
         <div>
           <h1 className={"animate__animated animate__backInDown"}>BRAINER</h1>
@@ -52,7 +63,7 @@ export default function WelcomeSection() {
                   title: APP_TEXTS.HOME_MODAL_TITLE,
                   text: APP_TEXTS.HOME_MODAL_DESCRIPTION,
                   textColor: "white",
-                  onConfirmFunction: async () => await mint_BPC1_NFT(),
+                  onConfirmFunction: async () => await mintNft(),
                 })
               }
             >
