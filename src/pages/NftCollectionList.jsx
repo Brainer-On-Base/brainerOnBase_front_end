@@ -83,7 +83,6 @@ const NftCollectionList = () => {
       return aNumber - bNumber;
     });
 
-    console.log(sortedNFTs);
     const data = [];
 
     for (let id = 0; id < NFT_QUANTITY; id++) {
@@ -102,7 +101,6 @@ const NftCollectionList = () => {
         data.push(null); // Si no existe el NFT, agregar un valor nulo
       }
     }
-    console.log(data);
 
     setNftList(data); // Actualizar el estado con los datos obtenidos
   };

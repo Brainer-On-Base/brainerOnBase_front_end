@@ -141,7 +141,7 @@ const UseContract = () => {
         uri,
       }));
 
-      console.log("NFTs minteados:", mintedNFTs);
+      // console.log("NFTs minteados:", mintedNFTs);
       return mintedNFTs;
     } catch (error) {
       console.error("Error fetching minted NFTs:", error);
