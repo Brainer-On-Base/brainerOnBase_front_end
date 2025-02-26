@@ -14,7 +14,7 @@ export const BRAINER_HISTORY_ARRAY = [
 ];
 
 export const BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS =
-  "0x5b8BB48898b67c3481677c5Ac462786c18Db11F6";
+  "0x9471C9976214EEE67C1d626C7f1ac4c3b2c950a8";
 export const BRAINER_BPC_NFT_ABI_CONTRACT = {
   abi: [
     {
@@ -388,6 +388,30 @@ export const BRAINER_BPC_NFT_ABI_CONTRACT = {
           internalType: "uint256",
           name: "",
           type: "uint256",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "uint256",
+          name: "start",
+          type: "uint256",
+        },
+        {
+          internalType: "uint256",
+          name: "end",
+          type: "uint256",
+        },
+      ],
+      name: "getTokenURIs",
+      outputs: [
+        {
+          internalType: "string[]",
+          name: "",
+          type: "string[]",
         },
       ],
       stateMutability: "view",
