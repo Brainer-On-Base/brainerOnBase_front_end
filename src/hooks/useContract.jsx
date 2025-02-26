@@ -71,14 +71,13 @@ const UseContract = () => {
   };
 
   const getMintedCount = async () => {
-    if (!web3provider) return;
+    if (!web3provider) return 0;
     try {
       const nftContract = new ethers.Contract(
         BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
         BRAINER_BPC_NFT_ABI_CONTRACT.abi,
         web3provider
       );
-      console.log(nftContract.getFunction("currentTokenId"));
 
       const getCurrentTokenId = await nftContract.getFunction("currentTokenId");
       const mintedCount = await getCurrentTokenId();
@@ -86,11 +85,12 @@ const UseContract = () => {
       return mintedCount;
     } catch (error) {
       console.error("Error fetching minted count:", error);
+      return 0;
     }
   };
 
-  const getIPFSInfo = async (id) => {
-    const response = await fetch(`${BRAINER_IPFS_METADATA}/${id}.json`)
+  const getIPFSInfo = async (uri) => {
+    const response = await fetch(uri)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch NFT data");
@@ -105,33 +105,48 @@ const UseContract = () => {
     return response;
   };
 
-  const getMintedNFTs = async () => {
-    const mintedNFTs = [];
-    const nftContract = new ethers.Contract(
-      BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
-      BRAINER_BPC_NFT_ABI_CONTRACT.abi,
-      web3provider
-    );
+  const getMintedNFTs = async (start = 0, end = 9) => {
+    if (!web3provider) return [];
+    try {
+      const nftContract = new ethers.Contract(
+        BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
+        BRAINER_BPC_NFT_ABI_CONTRACT.abi,
+        web3provider
+      );
 
-    // Crear un array de promesas
-    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-    console.log(nftContract);
-    for (let tokenId = 1; tokenId <= 50; tokenId++) {
-      try {
-        const uri = await nftContract.tokenURI(tokenId);
-        console.log("URI", uri);
-        console.log(`Token ${tokenId} está minteado con URI: ${uri}`);
-        mintedNFTs.push({ tokenId, uri });
-      } catch (error) {
-        console.log(`Token ${tokenId} no está minteado o no existe.`);
+      // Obtener el valor actual de currentTokenId
+      const currentTokenId = await getMintedCount();
+
+      // Si no hay tokens minteados, retornar un array vacío
+      if (currentTokenId === 0) {
+        console.log("No NFTs have been minted yet.");
+        return [];
       }
-      await delay(100); // Retraso de 100ms entre cada solicitud
+
+      // Ajustar el valor de end si es mayor que currentTokenId
+      if (end > currentTokenId) {
+        end = currentTokenId;
+      }
+
+      // Asegurarse de que start no sea mayor que end
+      if (start > end) {
+        console.error("Start index cannot be greater than end index.");
+        return [];
+      }
+
+      // Llama a la nueva función getTokenURIs en lotes
+      const uris = await nftContract.getTokenURIs(start, end);
+      const mintedNFTs = uris.map((uri, index) => ({
+        tokenId: start + index,
+        uri,
+      }));
+
+      console.log("NFTs minteados:", mintedNFTs);
+      return mintedNFTs;
+    } catch (error) {
+      console.error("Error fetching minted NFTs:", error);
+      return [];
     }
-
-    // Esperar a que todas las promesas se resuelvan
-
-    console.log("NFTs minteados:", mintedNFTs);
-    return mintedNFTs;
   };
 
   return {
