@@ -44,6 +44,7 @@ const StyledNFTList = styled(StyledFlexFullCenterContainer)`
 `;
 
 const NftCollectionList = () => {
+  const NFT_QUANTITY = 10;
   const [showHistory, setShowHistory] = useState("/home");
   const [nftSelected, setNftSelected] = useState(null);
   const [nftList, setNftList] = useState([]);
@@ -57,14 +58,9 @@ const NftCollectionList = () => {
   const { showPopUp, useTextModal } = useModals();
   const [mintedCount, setMintedCount] = useState(null);
 
-  async function getNFTS() {
-    const getnft = await getMintedNFTs(); // Llamada a la función para obtener los NFTs minteados
-    console.log(getnft); // Imprime el resultado directamente
-  }
   useEffect(() => {
     window.scrollTo(0, 0);
     getInfo();
-    getNFTS();
 
     fetchMintedCount();
   }, []);
@@ -75,17 +71,38 @@ const NftCollectionList = () => {
   };
 
   const getInfo = async () => {
+    const nftMintedList = await getMintedNFTs(); // Llamada a la función para obtener los NFTs minteados
+
+    // Filtra el primer elemento
+    const filteredNFTs = nftMintedList.slice(1);
+
+    // Ordena los NFTs por el número al final de la URI
+    const sortedNFTs = filteredNFTs.sort((a, b) => {
+      const aNumber = parseInt(a.uri.match(/(\d+)\.json$/)[1]);
+      const bNumber = parseInt(b.uri.match(/(\d+)\.json$/)[1]);
+      return aNumber - bNumber;
+    });
+
+    console.log(sortedNFTs);
     const data = [];
 
-    for (let id = 0; id < 50; id++) {
-      try {
-        const info = await getIPFSInfo(id); // Llamada a tu función que interactúa con IPFS
-        data.push(info); // Agregar la respuesta al array
-      } catch (error) {
-        console.error(`Error fetching data for ID ${id}:`, error);
-        data.push(null); // En caso de error, agregar un valor nulo
+    for (let id = 0; id < NFT_QUANTITY; id++) {
+      const nft = sortedNFTs.find(
+        (nft) => parseInt(nft.uri.match(/(\d+)\.json$/)[1]) === id
+      );
+      if (nft) {
+        try {
+          const info = await getIPFSInfo(nft.uri); // Llamada a tu función que interactúa con IPFS
+          data.push(info); // Agregar la respuesta al array
+        } catch (error) {
+          console.error(`Error fetching data for URI ${nft.uri}:`, error);
+          data.push(null); // En caso de error, agregar un valor nulo
+        }
+      } else {
+        data.push(null); // Si no existe el NFT, agregar un valor nulo
       }
     }
+    console.log(data);
 
     setNftList(data); // Actualizar el estado con los datos obtenidos
   };
@@ -145,10 +162,13 @@ const NftCollectionList = () => {
             <FloatAnimation delay={index} key={index}>
               <motion.div
                 className={`animate__animated animate__fadeInUp animations`}
-                onClick={() => setNftSelected(nft)}
+                onClick={() => {
+                  if (!nft) return false;
+                  setNftSelected(nft);
+                }}
               >
                 <img
-                  src={nft.image ?? "/nftCollectionImages/unknown.png"}
+                  src={nft?.image ?? "/nftCollectionImages/unknown.png"}
                   alt="NFT"
                   style={{
                     width: "200px",
