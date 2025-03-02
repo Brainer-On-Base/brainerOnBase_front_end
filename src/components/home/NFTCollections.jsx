@@ -15,34 +15,9 @@ const NFTCollections = () => {
   };
   const { getIPFSInfo, getMintedNFTs } = UseContract();
 
-  async function getNFTS() {
-    const getnft = await getMintedNFTs(); // Llamada a la función para obtener los NFTs minteados
-    console.log(getnft); // Imprime el resultado directamente
-  }
   useEffect(() => {
-    // getInfo();
-    // getNFTS();
     getHardCodeNFTs();
   }, []);
-
-  const getInfo = async () => {
-    const data = [];
-    const randomIds = Array.from({ length: 12 }, () =>
-      Math.floor(Math.random() * 50)
-    ); // Generar 12 números aleatorios entre 0 y 50
-
-    for (const id of randomIds) {
-      try {
-        const info = await getIPFSInfo(id); // Llamada a tu función que interactúa con IPFS
-        data.push(info); // Agregar la respuesta al array
-      } catch (error) {
-        console.error(`Error fetching data for ID ${id}:`, error);
-        data.push(null); // En caso de error, puedes agregar un valor nulo
-      }
-    }
-
-    setNftData(data); // Actualizar el estado con los datos obtenidos
-  };
 
   const getHardCodeNFTs = () => {
     let data = [];

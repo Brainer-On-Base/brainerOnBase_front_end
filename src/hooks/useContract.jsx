@@ -105,7 +105,7 @@ const UseContract = () => {
     return response;
   };
 
-  const getMintedNFTs = async (start = 0, end = 9) => {
+  const getMintedNFTs = async (start = 0, end = 50) => {
     if (!web3provider) return [];
     try {
       const nftContract = new ethers.Contract(

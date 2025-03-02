@@ -44,7 +44,7 @@ const StyledNFTList = styled(StyledFlexFullCenterContainer)`
 `;
 
 const NftCollectionList = () => {
-  const NFT_QUANTITY = 10;
+  const [nftQuantity, setNftQuantity] = useState(10);
   const [showHistory, setShowHistory] = useState("/home");
   const [nftSelected, setNftSelected] = useState(null);
   const [nftList, setNftList] = useState([]);
@@ -85,7 +85,7 @@ const NftCollectionList = () => {
 
     const data = [];
 
-    for (let id = 0; id < NFT_QUANTITY; id++) {
+    for (let id = 0; id < nftQuantity; id++) {
       const nft = sortedNFTs.find(
         (nft) => parseInt(nft.uri.match(/(\d+)\.json$/)[1]) === id
       );
