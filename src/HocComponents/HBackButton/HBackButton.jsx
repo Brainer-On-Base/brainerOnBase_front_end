@@ -1,6 +1,5 @@
 import React from "react";
 import { BackArrow } from "./HBackButton.styled";
-import backArrow from "../../../assets/icons/booking/backArrow.svg";
 
 const HBackButton = ({
   handleClick,
@@ -17,7 +16,7 @@ const HBackButton = ({
       background={background}
       {...props}
     >
-      <img src={backArrow} alt="BACK" />
+      back
     </BackArrow>
   );
 };

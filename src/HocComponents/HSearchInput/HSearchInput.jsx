@@ -5,14 +5,14 @@ import {
   SearchContainer,
   SearchLabel,
 } from "./HSearchInput.styled";
-import iconSVG from "../../../assets/icons/searchIcon.svg";
+import { TbSearch } from "react-icons/tb";
 
 const HSearchInput = ({
   direction = "column", // Dirección del layout: "row" o "column"
   placeholder = "Search...",
   value = "",
   onChange,
-  icon = iconSVG, // Icono dinámico
+  icon = TbSearch, // Icono dinámico
   width, // Ancho del contenedor (por defecto se toma del theme)
   height, // Altura del contenedor
   borderColor, // Color del borde

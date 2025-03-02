@@ -18,6 +18,7 @@ import NftDetails, {
 import styled from "styled-components";
 import useModals from "../hooks/useSweetAlert";
 import { APP_TEXTS } from "../APP_TEXTS";
+import { HBox } from "../HocComponents";
 
 const StyledNFTList = styled(StyledFlexFullCenterContainer)`
   padding: 4em;
@@ -133,28 +134,30 @@ const NftCollectionList = () => {
         >
           Collection
         </h1>
-        <StyledButton style={{ zIndex: 999 }}>
-          SEE COLLECTION ON OPEN SEA
-        </StyledButton>
-        <StyledButton
-          style={{ zIndex: 999, marginTop: "1em" }}
-          className={"animate__animated animate__fadeIn animate__delay-2s"}
-          onClick={() =>
-            useTextModal({
-              textButton: APP_TEXTS.HOME_MODAL_TEXT_BUTTON,
-              title: APP_TEXTS.HOME_MODAL_TITLE,
-              text: APP_TEXTS.HOME_MODAL_DESCRIPTION,
-              textColor: "white",
-              onConfirmFunction: async () => await mint_BPC1_NFT(),
-            })
-          }
-        >
-          MINT
-        </StyledButton>
+        <HBox>
+          <StyledButton style={{ zIndex: 999 }}>
+            SEE COLLECTION ON OPEN SEA
+          </StyledButton>
+          <StyledButton
+            style={{ zIndex: 999, marginTop: "1em" }}
+            className={"animate__animated animate__fadeIn animate__delay-2s"}
+            onClick={() =>
+              useTextModal({
+                textButton: APP_TEXTS.HOME_MODAL_TEXT_BUTTON,
+                title: APP_TEXTS.HOME_MODAL_TITLE,
+                text: APP_TEXTS.HOME_MODAL_DESCRIPTION,
+                textColor: "white",
+                onConfirmFunction: async () => await mint_BPC1_NFT(),
+              })
+            }
+          >
+            MINT
+          </StyledButton>
 
-        {web3provider && (
-          <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">{`${mintedCount}/8000 minted`}</p>
-        )}
+          {web3provider && (
+            <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">{`${mintedCount}/8000 minted`}</p>
+          )}
+        </HBox>
         <StyledNFTList>
           {nftList.map((nft, index) => (
             <FloatAnimation delay={index} key={index}>

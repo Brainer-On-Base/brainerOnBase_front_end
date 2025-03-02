@@ -10,7 +10,6 @@ import {
 import HInput from "../HInput/HInput";
 import HButton from "../HButton/HButton";
 import { IoMdCloseCircleOutline } from "react-icons/io";
-import { useSounds } from "../../../hooks/useSounds";
 
 const HModal = ({
   title = "Titolo",
@@ -30,7 +29,6 @@ const HModal = ({
   ...props
 }) => {
   const [inputValue, setInputValue] = useState("");
-  const { playCancelar } = useSounds();
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -51,13 +49,11 @@ const HModal = ({
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
       onCloseFunction();
-      playCancelar();
     }
   };
 
   const handleCancel = () => {
     onCloseFunction();
-    playCancelar();
   };
 
   return (
