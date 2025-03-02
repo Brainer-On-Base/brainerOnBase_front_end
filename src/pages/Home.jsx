@@ -27,17 +27,21 @@ export default function Home() {
   const location = useLocation();
 
   useEffect(() => {
+    console.log(location.hash);
     if (location.hash) {
       const element = document.getElementById(location.hash.substring(1));
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
+      setShowHistory(
+        location.hash === "#home" ? "/home" : "/home" + location.hash
+      );
     }
   }, [location]);
 
   return (
     <StyledAppContainer>
-      <Navbar setItem={setShowHistory} item={showHistory} />
+      <Navbar />
       <View
         style={{
           width: "100%",

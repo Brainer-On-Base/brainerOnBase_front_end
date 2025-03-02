@@ -18,7 +18,8 @@ import NftDetails, {
 import styled from "styled-components";
 import useModals from "../hooks/useSweetAlert";
 import { APP_TEXTS } from "../APP_TEXTS";
-import { HBox } from "../HocComponents";
+import { HBox, HPagination } from "../HocComponents";
+import { SiOpensea } from "react-icons/si";
 
 const StyledNFTList = styled(StyledFlexFullCenterContainer)`
   padding: 4em;
@@ -134,12 +135,12 @@ const NftCollectionList = () => {
         >
           Collection
         </h1>
-        <HBox>
-          <StyledButton style={{ zIndex: 999 }}>
-            SEE COLLECTION ON OPEN SEA
+        <HBox align="center" justify="center">
+          <StyledButton style={{ zIndex: 999 }} title="OpenSea">
+            <SiOpensea />
           </StyledButton>
           <StyledButton
-            style={{ zIndex: 999, marginTop: "1em" }}
+            style={{ zIndex: 999 }}
             className={"animate__animated animate__fadeIn animate__delay-2s"}
             onClick={() =>
               useTextModal({
@@ -157,6 +158,7 @@ const NftCollectionList = () => {
           {web3provider && (
             <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">{`${mintedCount}/8000 minted`}</p>
           )}
+          <HPagination />
         </HBox>
         <StyledNFTList>
           {nftList.map((nft, index) => (

@@ -14,6 +14,7 @@ import { HPopUp } from "./HPopUp/HPopUp";
 import HBackButton from "./HBackButton/HBackButton";
 import HToggleButton from "./HToggleButton/HToggleButton";
 import HCalendar from "./HCalendar/HCalendar";
+import HPagination from "./HPagination/HPagination";
 
 export {
   HBox,
@@ -31,4 +32,5 @@ export {
   HBackButton,
   HToggleButton,
   HCalendar,
+  HPagination,
 };

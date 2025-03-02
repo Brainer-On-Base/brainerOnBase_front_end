@@ -4,28 +4,24 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import zIndex from "@mui/material/styles/zIndex";
 
-
-
-export default function NavbarMobile({
-  pages,
-  setItem
-}) {
+export default function NavbarMobile({ pages }) {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
-    if(anchorElNav !== null) {
+    if (anchorElNav !== null) {
       setAnchorElNav(null);
       return;
     }
     setAnchorElNav(event.currentTarget);
   };
 
-
   return (
     <>
       {/* Responsive */}
-      <Box sx={{ display: { xs: "flex", md: "none" }, justifyContent: "flex-end" }}>
+      <Box
+        sx={{ display: { xs: "flex", md: "none" }, justifyContent: "flex-end" }}
+      >
         <IconButton
           size="large"
           aria-label="Menu"
@@ -37,7 +33,7 @@ export default function NavbarMobile({
           <MenuIcon />
         </IconButton>
         <Menu
-          style={{ zIndex: '99999999999999999999999' }}
+          style={{ zIndex: "99999999999999999999999" }}
           id="menu-appbar"
           anchorEl={anchorElNav}
           anchorOrigin={{
@@ -51,22 +47,27 @@ export default function NavbarMobile({
           }}
           open={Boolean(anchorElNav)}
           sx={{
-            display: { xs: "block", md: "none"},
-             left: '-50px', top: '50px'
+            display: { xs: "block", md: "none" },
+            left: "-50px",
+            top: "50px",
           }}
-          
         >
-          {pages.map((page) => (
-            page.name !== 'Wallet' &&
-            <MenuItem key={page.name} 
-            onClick={() => {
-              setItem(page.navigate);
-              navigate(page.navigate);
-              setAnchorElNav(null); // Cierra el menú después de la navegación
-            }}>
-              <Typography className="navbaritems" textAlign="center" >{page.name}</Typography>
-            </MenuItem>
-          ))}
+          {pages?.map(
+            (page) =>
+              page.name !== "Wallet" && (
+                <MenuItem
+                  key={page.name}
+                  onClick={() => {
+                    navigate(page.navigate);
+                    setAnchorElNav(null); // Cierra el menú después de la navegación
+                  }}
+                >
+                  <Typography className="navbaritems" textAlign="center">
+                    {page.name}
+                  </Typography>
+                </MenuItem>
+              )
+          )}
         </Menu>
       </Box>
     </>

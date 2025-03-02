@@ -11,7 +11,7 @@ const Routes = () => {
     <ReactRoutes>
       <Route path="/home" element={<Home />} />
       {/* <Route path={"/game"} element={<BrainerOnBaseMain />} /> */}
-      {/* <Route path={"/marketplace"} element={<BrainerOnBaseMarketplace />} /> */}
+      <Route path={"/marketplace"} element={<BrainerOnBaseMarketplace />} />
       <Route path={"/nft-list"} element={<NftCollectionList />} />
       <Route path={"/player/profile"} element={<PlayerPage />} />
       <Route path={"/player/inventory"} element={<PlayerPage />} />

@@ -11,7 +11,7 @@ import { Stack } from "@mui/material";
 import ConnectWallet from "../ConnectWallet";
 import NavbarMobile from "./NavbarMobile";
 
-function Navbar({ setItem, item }) {
+function Navbar({}) {
   const location = useLocation();
   const isPlaying = location.pathname === "/game";
 
@@ -37,10 +37,10 @@ function Navbar({ setItem, item }) {
     //   name: 'SWAP',
     //   navigate: '/home#swap',
     // },
-    // {
-    //   name: 'MARKETPLACE',
-    //   navigate: '/shop',
-    // },
+    {
+      name: "MARKETPLACE",
+      navigate: "/marketplace",
+    },
     // {
     //   name: 'LAUNCH',
     //   navigate: '/game',
@@ -75,13 +75,13 @@ function Navbar({ setItem, item }) {
               <img
                 src="/commonBrainer.png"
                 onClick={() => {
-                  navigate("/home"), setItem("/home");
+                  navigate("/home");
                 }}
                 style={{ cursor: "pointer" }}
               />
               <Typography
                 onClick={() => {
-                  navigate("/home#home"), setItem("/home");
+                  navigate("/home#home");
                 }}
                 className="navbaritems"
                 textAlign="center"
@@ -104,12 +104,7 @@ function Navbar({ setItem, item }) {
                     className="navbaritems"
                     key={page.name}
                     onClick={() => {
-                      navigate(page.navigate),
-                        setItem(
-                          page.navigate !== "/home#tokenomics"
-                            ? page.navigate
-                            : item
-                        );
+                      navigate(page.navigate);
                     }}
                   >
                     {page.name}
@@ -126,7 +121,7 @@ function Navbar({ setItem, item }) {
           )}
 
           {/* Mobile */}
-          <NavbarMobile pages={pages} setItem={setItem} />
+          <NavbarMobile pages={pages} />
         </Toolbar>
       </Container>
     </StyledNavbarContainer>
