@@ -14,7 +14,12 @@ const HPagination = ({
   margin = "30px 0 0 20px",
 }) => {
   return (
-    <HBox justify="center" align="center" margin={margin}>
+    <HBox
+      justify="center"
+      align="center"
+      margin={margin}
+      style={{ zIndex: 9999999999999 }}
+    >
       <HButton
         disabled={currentPage === 1}
         onClick={() => {
@@ -25,6 +30,7 @@ const HPagination = ({
         }}
         padding={"5px 10px"}
         borderRadius="8px"
+        fontSize={"25px"}
       >
         {"<"}
       </HButton>
@@ -34,6 +40,7 @@ const HPagination = ({
       </HTitle>
       <HButton
         padding={"5px 10px"}
+        fontSize={"25px"}
         disabled={currentPage === totalPages}
         onClick={() => {
           setPagination((prev) => ({
