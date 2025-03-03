@@ -18,7 +18,13 @@ import NftDetails, {
 import styled from "styled-components";
 import useModals from "../hooks/useSweetAlert";
 import { APP_TEXTS } from "../APP_TEXTS";
-import { HBox, HButton, HPagination } from "../HocComponents";
+import {
+  HBox,
+  HButton,
+  HPagination,
+  HPopUp,
+  HSearchInput,
+} from "../HocComponents";
 import { SiOpensea } from "react-icons/si";
 
 const StyledNFTList = styled(HBox)`
@@ -51,6 +57,7 @@ const NftCollectionList = () => {
   } = UseContract();
   const { showPopUp, useTextModal } = useModals();
   const [mintedCount, setMintedCount] = useState(null);
+  const [nftSearch, setNftSearch] = useState("");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -98,6 +105,8 @@ const NftCollectionList = () => {
 
     setNftList(data); // Actualizar el estado con los datos obtenidos
   };
+
+  const handleSearch = (id) => {};
 
   return (
     <StyledAppContainer>
@@ -151,6 +160,7 @@ const NftCollectionList = () => {
                   onConfirmFunction: async () => await mint_BPC1_NFT(),
                 })
               }
+              disabled={!web3provider || mintedCount >= 8000}
             >
               MINT
             </HButton>
@@ -160,14 +170,41 @@ const NftCollectionList = () => {
             )}
           </HBox>
 
-          <HPagination
-            totalPages={8000 / nftQuantity}
-            currentPage={nftQuantity / 10}
-            setPagination={setNftQuantity}
-            labelPage="Page"
-            labelOf="of"
-            margin="0 0 0 1em"
-          />
+          <HBox>
+            <HSearchInput
+              placeholder="Search by id"
+              margin="0 1em 0 0"
+              width="200px"
+              value={nftSearch}
+              onChange={(e) => setNftSearch(e.target.value)}
+              type="number"
+              onKeyDown={(e) => {
+                console.log(e.key);
+                if (e.key === "Enter") {
+                  const id = Number(nftSearch); // Convertir a número
+                  console.log(isNaN(id) || id < 0 || id > 8000);
+                  if (isNaN(id) || id < 0 || id > 8000) {
+                    HPopUp({
+                      type: "error",
+                      message:
+                        "Invalid ID. Please enter a number between 0 and 8000",
+                    });
+                    return;
+                  }
+
+                  handleSearch(id); // Ejecutar la búsqueda
+                }
+              }}
+            />
+            <HPagination
+              totalPages={8000 / nftQuantity}
+              currentPage={nftQuantity / 10}
+              setPagination={setNftQuantity}
+              labelPage="Page"
+              labelOf="of"
+              margin="0 0 0 1em"
+            />
+          </HBox>
         </HBox>
         <StyledNFTList
           align="center"

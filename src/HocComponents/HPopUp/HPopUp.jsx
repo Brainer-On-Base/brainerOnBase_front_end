@@ -59,6 +59,9 @@ export const HPopUpContainer = ({
         theme={theme}
         toastStyle={toastStyle}
         transition={Slide} // Agregar transición
+        style={{
+          zIndex: 999999,
+        }}
       />
     </>
   );

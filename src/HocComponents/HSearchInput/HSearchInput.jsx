@@ -12,7 +12,6 @@ const HSearchInput = ({
   placeholder = "Search...",
   value = "",
   onChange,
-  icon = TbSearch, // Icono dinámico
   width, // Ancho del contenedor (por defecto se toma del theme)
   height, // Altura del contenedor
   borderColor, // Color del borde
@@ -25,6 +24,7 @@ const HSearchInput = ({
   labelColor,
   labelSize,
   labelWeight,
+  type = "text",
   ...props
 }) => {
   return (
@@ -43,10 +43,9 @@ const HSearchInput = ({
         height={height}
         borderColor={borderColor}
       >
-        {icon && (
-          <img src={icon} alt="search-icon" style={{ width: iconSize }} />
-        )}
+        <TbSearch alt="search-icon" size={30} style={{ marginRight: "10px" }} />
         <SearchInput
+          type={type}
           placeholder={placeholder}
           value={value}
           onChange={onChange}

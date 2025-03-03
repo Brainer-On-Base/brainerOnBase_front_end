@@ -25,10 +25,9 @@ export const SearchInputContainer = styled.div`
   height: ${(props) => props.height || "40px"}; /* Altura predeterminada */
   display: flex;
   align-items: center;
-  border: 2.5px solid
-    ${(props) => props.borderColor || props.theme.purpleMedium};
+  border: 1px solid
+    ${(props) => props.borderColor || props.theme.buttonBorderHover};
   border-radius: ${(props) => props.borderRadius || "20px"};
-  background: white;
   box-shadow: rgba(112, 37, 190, 0.11) 0px -6px 26px inset,
     rgba(112, 37, 190, 0.27) 4px 4px 26px inset;
   padding: 0 ${(props) => props.gap || "10px"};
@@ -58,6 +57,12 @@ export const SearchInput = styled.input`
   border-radius: ${(props) => props.borderRadius || "20px"};
   font-family: "Poppins", sans-serif;
   line-height: 1.5;
+
+  input[type="range"]::-webkit-outer-spin-button,
+  input[type="range"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
   &:focus,
   &:focus-visible {
