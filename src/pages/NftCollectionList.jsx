@@ -18,18 +18,10 @@ import NftDetails, {
 import styled from "styled-components";
 import useModals from "../hooks/useSweetAlert";
 import { APP_TEXTS } from "../APP_TEXTS";
-import { HBox, HPagination } from "../HocComponents";
+import { HBox, HButton, HPagination } from "../HocComponents";
 import { SiOpensea } from "react-icons/si";
 
-const StyledNFTList = styled(StyledFlexFullCenterContainer)`
-  padding: 4em;
-  width: 70%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 1em;
+const StyledNFTList = styled(HBox)`
   z-index: 99999;
 
   img {
@@ -135,32 +127,55 @@ const NftCollectionList = () => {
         >
           Collection
         </h1>
-        <HBox align="center" justify="center">
-          <StyledButton style={{ zIndex: 999 }} title="OpenSea">
-            <SiOpensea />
-          </StyledButton>
-          <StyledButton
-            style={{ zIndex: 999 }}
-            className={"animate__animated animate__fadeIn animate__delay-2s"}
-            onClick={() =>
-              useTextModal({
-                textButton: APP_TEXTS.HOME_MODAL_TEXT_BUTTON,
-                title: APP_TEXTS.HOME_MODAL_TITLE,
-                text: APP_TEXTS.HOME_MODAL_DESCRIPTION,
-                textColor: "white",
-                onConfirmFunction: async () => await mint_BPC1_NFT(),
-              })
-            }
-          >
-            MINT
-          </StyledButton>
+        <HBox align="center" justify="space-between" width="90%">
+          <HBox>
+            <HButton
+              style={{ zIndex: 999 }}
+              title="OpenSea"
+              fontSize={"1.5em"}
+              padding={"0.9em 1.2em"}
+            >
+              <SiOpensea />
+            </HButton>
+            <HButton
+              fontSize={"1.5em"}
+              padding={"0.8em 1.2em"}
+              style={{ zIndex: 999 }}
+              className={"animate__animated animate__fadeIn animate__delay-2s"}
+              onClick={() =>
+                useTextModal({
+                  textButton: APP_TEXTS.HOME_MODAL_TEXT_BUTTON,
+                  title: APP_TEXTS.HOME_MODAL_TITLE,
+                  text: APP_TEXTS.HOME_MODAL_DESCRIPTION,
+                  textColor: "white",
+                  onConfirmFunction: async () => await mint_BPC1_NFT(),
+                })
+              }
+            >
+              MINT
+            </HButton>
 
-          {web3provider && (
-            <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">{`${mintedCount}/8000 minted`}</p>
-          )}
-          <HPagination />
+            {web3provider && (
+              <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">{`${mintedCount}/8000 minted`}</p>
+            )}
+          </HBox>
+
+          <HPagination
+            totalPages={8000 / nftQuantity}
+            currentPage={nftQuantity / 10}
+            setPagination={setNftQuantity}
+            labelPage="Page"
+            labelOf="of"
+            margin="0 0 0 1em"
+          />
         </HBox>
-        <StyledNFTList>
+        <StyledNFTList
+          align="center"
+          justify="space-between"
+          width="90%"
+          wrap="wrap"
+          margin="1em 0"
+        >
           {nftList.map((nft, index) => (
             <FloatAnimation delay={index} key={index}>
               <motion.div

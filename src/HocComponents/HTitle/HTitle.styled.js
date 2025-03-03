@@ -7,10 +7,7 @@ export const HTitleText = styled.h1`
     as ? `var(--${as})` : fontSize ? fontSize : "32px"}; /* Tamaño de fuente */
   font-weight: ${({ fontWeight }) => fontWeight || "bold"}; /* Peso de fuente */
   color: ${({ color, theme }) =>
-    theme?.[color] ||
-    color ||
-    theme.purpleMedium ||
-    "#000"}; /* Color del texto */
+    theme?.[color] || color || "white" || "#000"}; /* Color del texto */
   text-align: ${({ textAlign }) =>
     textAlign || "left"}; /* Alineación del texto */
   margin: ${({ margin }) => margin || "0"}; /* Margen */
