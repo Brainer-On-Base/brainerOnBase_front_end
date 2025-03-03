@@ -1,0 +1,50 @@
+export const LightTheme = {
+  pageBackground: "#f4f2f7",
+  titleColor: "#323232",
+  hover: "#000000",
+  buttonColor: "white",
+  buttonBackground: "#1a1a1a",
+  buttonBorderHover: "#ff437d",
+  shadePurpleLight: "linear-gradient(180deg, #ce93d8 0%, #ba68c8 100%)",
+  shadePurpleMedium: "linear-gradient(180deg, #ba68c8 0%, #6a1b9a 100%)",
+  shadePurpleDark: "linear-gradient(180deg, #6a1b9a 6.25%, #44004a 91.73%)",
+  shadePurpleDark2: "linear-gradient(90deg, #6a1b9a 6.25%, #44004a 91.73%)",
+  filterShadowPurple: "drop-shadow(0px 0px 8px rgba(106, 27, 154, 0.8))",
+  filterShadowGold: "drop-shadow(0px 0px 8px rgba(255, 215, 0, 1))",
+  BoxShadowPurple: "3px 3px 4px rgba(106, 27, 154, 0.8)",
+  BoxShadowPurpleComplete: "0px 3px 20px #6a1b9a",
+  BoxShadowGrey: "3px 3px 4px rgba(113, 113, 113, 0.8)",
+  goldColor: "#FFB600",
+  shadowGold: "linear-gradient(180deg, #FFB600 0%, #FDCC06 37%, #FFB600 100%)",
+  shadeGold:
+    "linear-gradient(270deg, #FFB600 8.68%, #FDCC06 42.32%, #FFB600 86.35%)",
+  purpleLight: "#ce93d8",
+  purpleLight2: "#ba68c8",
+  purpleMedium: "#6a1b9a",
+  purpleDark: "#44004a",
+  white: "#FFFFFF",
+  red: "#F74354",
+  green: "#02BC7D",
+};
+
+export const DarkTheme = {
+  pageBackground: "#230f44",
+  titleColor: "#f4f2f7",
+  hover: "#ffffff",
+  buttonColor: "#4FBDDB",
+  shadePurpleDark: "linear-gradient(180deg, #44004a 0%, #230f44 100%)",
+  shadePurpleDark2: "linear-gradient(90deg, #44004a 0%, #230f44 100%)",
+  filterShadowPurple: "drop-shadow(0px 0px 8px rgba(68, 0, 74, 0.8))",
+  BoxShadowPurple: "3px 3px 4px rgba(68, 0, 74, 0.8)",
+  BoxShadowPurpleComplete: "0px 3px 20px #44004a",
+  BoxShadowGrey: "3px 3px 4px rgba(113, 113, 113, 0.8)",
+  purpleMedium: "#6a1b9a",
+  purpleDark: "#44004a",
+  galaxyBlueMedium: "#230f44",
+  galaxyBlueDark: "#242424",
+};
+
+export const themes = {
+  light: LightTheme,
+  dark: DarkTheme,
+};
