@@ -149,6 +149,23 @@ const UseContract = () => {
     }
   };
 
+  const getNFTByTokenId = async (tokenId) => {
+    if (!web3provider) return null;
+    try {
+      const nftContract = new ethers.Contract(
+        BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
+        BRAINER_BPC_NFT_ABI_CONTRACT.abi,
+        web3provider
+      );
+
+      const uri = await nftContract.tokenURI(tokenId);
+      return { tokenId, uri };
+    } catch (error) {
+      console.error("Error fetching NFT by tokenId:", error);
+      return null;
+    }
+  };
+
   return {
     connectWallet,
     disconnectWallet,
@@ -159,6 +176,7 @@ const UseContract = () => {
     getMintedCount,
     getIPFSInfo,
     getMintedNFTs,
+    getNFTByTokenId,
   };
 };
 

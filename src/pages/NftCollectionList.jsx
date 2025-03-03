@@ -54,6 +54,7 @@ const NftCollectionList = () => {
     mint_BPC1_NFT,
     getMintedCount,
     web3provider,
+    getNFTByTokenId,
   } = UseContract();
   const { showPopUp, useTextModal } = useModals();
   const [mintedCount, setMintedCount] = useState(null);
@@ -106,7 +107,17 @@ const NftCollectionList = () => {
     setNftList(data); // Actualizar el estado con los datos obtenidos
   };
 
-  const handleSearch = (id) => {};
+  const handleSearch = async (id) => {
+    const nft = await getNFTByTokenId(id);
+    if (!nft) {
+      HPopUp({
+        type: "error",
+        message: "NFT not found",
+      });
+      return;
+    }
+    console.log(nft);
+  };
 
   return (
     <StyledAppContainer>

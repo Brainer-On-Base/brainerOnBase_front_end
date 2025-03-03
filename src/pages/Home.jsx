@@ -7,16 +7,10 @@ import TokenomicsSection from "../components/home/TokenomicsSection";
 import HistorySection from "../components/home/HistorySection";
 import AboutSection from "../components/home/AboutSection";
 import { useLocation, useNavigate, Link } from "react-router-dom";
-import useModals from "../hooks/useSweetAlert";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCopy } from "@fortawesome/free-regular-svg-icons";
 import { Center, Html, View } from "@react-three/drei";
 import NightBackground from "../components/NIghtBackground";
 import RoadmapSection from "../components/home/RoadmapSection";
-import {
-  StyledButton,
-  StyledLaunchGameButton,
-} from "../components/styled-components/buttons";
+import { StyledLaunchGameButton } from "../components/styled-components/buttons";
 import NFTCollections from "../components/home/NFTCollections";
 import TokenSection from "../components/home/TokenSection";
 
@@ -27,7 +21,7 @@ export default function Home() {
   const location = useLocation();
 
   useEffect(() => {
-    console.log(location.hash);
+    window.scrollTo(0, 0);
     if (location.hash) {
       const element = document.getElementById(location.hash.substring(1));
       if (element) {
@@ -66,12 +60,6 @@ export default function Home() {
       >
         WHITE PAPER
       </StyledLaunchGameButton>
-      {/* <Link to="/nft-details">
-        <StyledButton>
-          View NFT Collection
-        </StyledButton>
-      </Link> */}
-      {/* <TokenomicsSection/> */}
       <Footer />
     </StyledAppContainer>
   );
