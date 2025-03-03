@@ -12,6 +12,7 @@ import {
   TraitContainer,
   TraitTag,
 } from "./NftDetailes.styled";
+import { HButton } from "../../HocComponents";
 
 export const FloatAnimation = styled.div`
   z-index: 999999999;
@@ -62,7 +63,9 @@ const NftDetails = ({ nftSelected, setNftSelected, nftList }) => {
 
   return (
     <NFTDetailsModal>
-      <CloseIcon onClick={() => setNftSelected(null)} />
+      <HButton>
+        <CloseIcon onClick={() => setNftSelected(null)} />
+      </HButton>
       <ArrowLeft
         onClick={() => handleNavigate(parseInt(nftSelected.tokenId) - 1)}
       />
