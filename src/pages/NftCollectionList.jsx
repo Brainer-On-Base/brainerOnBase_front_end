@@ -136,7 +136,7 @@ const NftCollectionList = () => {
         >
           Collection
         </h1>
-        <HBox align="center" justify="space-between" width="90%">
+        <HBox align="center" justify="space-between" width="90%" wrap="wrap">
           <HBox>
             <HButton
               style={{ zIndex: 999 }}
@@ -200,8 +200,6 @@ const NftCollectionList = () => {
               totalPages={8000 / nftQuantity}
               currentPage={nftQuantity / 10}
               setPagination={setNftQuantity}
-              labelPage="Page"
-              labelOf="of"
               margin="0 0 0 1em"
             />
           </HBox>

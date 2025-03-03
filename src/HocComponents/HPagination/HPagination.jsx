@@ -4,8 +4,8 @@ import HBox from "../HBox/HBox";
 import HTitle from "../HTitle/HTitle";
 
 const HPagination = ({
-  labelPage = "Pagina",
-  labelOf = "de",
+  labelPage = "Page",
+  labelOf = "of",
   setPagination,
   totalItems,
   totalPages,
