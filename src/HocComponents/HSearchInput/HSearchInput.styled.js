@@ -5,6 +5,7 @@ export const SearchContainer = styled.div`
   flex-direction: ${({ direction }) =>
     direction || "column"}; /* Dirección (row o column) */
   gap: ${({ gap }) => gap}; /* Espaciado entre label y select */
+  z-index: 99999;
 `;
 
 export const SearchLabel = styled.label`
@@ -25,6 +26,7 @@ export const SearchInputContainer = styled.div`
   height: ${(props) => props.height || "40px"}; /* Altura predeterminada */
   display: flex;
   align-items: center;
+  background: ${(props) => props.theme.buttonBackground}; /* Fondo del input */
   border: 1px solid
     ${(props) => props.borderColor || props.theme.buttonBorderHover};
   border-radius: ${(props) => props.borderRadius || "20px"};
