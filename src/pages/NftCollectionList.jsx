@@ -42,9 +42,10 @@ const StyledNFTList = styled(HBox)`
 
 const NftCollectionList = () => {
   const NFT_QUANTITY = 8000;
-  const NFTs_PER_PAGE = 40;
+  const NFTs_PER_PAGE = 30;
   const [nftSelected, setNftSelected] = useState(null);
   const [nftList, setNftList] = useState([]);
+  const [mintedNftList, setMintedNftList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const {
     getIPFSInfo,
@@ -52,7 +53,6 @@ const NftCollectionList = () => {
     mint_BPC1_NFT,
     getMintedCount,
     web3provider,
-    getNFTByTokenId,
   } = UseContract();
   const { showPopUp, useTextModal } = useModals();
   const [mintedCount, setMintedCount] = useState(null);
@@ -72,6 +72,7 @@ const NftCollectionList = () => {
 
   const getInfo = async () => {
     setLoading(true);
+    setNftSearch("");
     const nftMintedList = await getMintedNFTs();
 
     const filteredNFTs = nftMintedList.slice(1);
@@ -82,6 +83,7 @@ const NftCollectionList = () => {
       return aNumber - bNumber;
     });
 
+    setMintedNftList(sortedNFTs);
     const data = [];
 
     const startIndex = (currentPage - 1) * NFTs_PER_PAGE;
@@ -109,13 +111,31 @@ const NftCollectionList = () => {
   };
 
   const handleSearch = async (id) => {
-    const nft = await getNFTByTokenId(id);
+    const nft = mintedNftList.find(
+      (nft) => parseInt(nft.uri.match(/(\d+)\.json$/)[1]) === id
+    );
     if (!nft) {
-      HPopUp({
-        type: "error",
-        message: "NFT not found",
-      });
+      setNftList([
+        {
+          id,
+          image: "/nftCollectionImages/unknown.png",
+          name: `NFT ${id} not found`,
+        },
+      ]);
       return;
+    }
+    try {
+      const info = await getIPFSInfo(nft.uri);
+      setNftList([info]);
+    } catch (error) {
+      console.error(`Error fetching data for URI ${nft.uri}:`, error);
+      setNftList([
+        {
+          id,
+          image: "/nftCollectionImages/unknown.png",
+          name: `NFT ${id} not found`,
+        },
+      ]);
     }
   };
 
@@ -175,6 +195,14 @@ const NftCollectionList = () => {
           </HBox>
 
           <HBox>
+            {nftList.length === 1 && (
+              <HButton
+                className="animate__animated animate__fadeIn animate__delay"
+                onClick={() => getInfo()}
+              >
+                Cancel Search
+              </HButton>
+            )}
             <HSearchInput
               placeholder="Search by id"
               margin="0 1em 0 0"
