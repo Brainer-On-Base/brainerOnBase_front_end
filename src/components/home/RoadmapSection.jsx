@@ -1,86 +1,113 @@
-import React, { useEffect, useRef, useState } from "react";
-import {
-  StyledAboutSection,
-  StyledAstronautCard1,
-  StyledAstronautCard2,
-  StyledAstronautCard3,
-  StyledBubbleDialog,
-  StyledFlexFullCenterContainer,
-  StyledRoadmapCard,
-  StyledRoadmapSection,
-} from "../styled-components/container";
+import React from "react";
+import GenericTitle from "../GenericTitle/GenericTitle";
+import { HBox } from "../../HocComponents";
+import styled from "styled-components";
+
+const StyledRoadmapCard = styled(HBox)`
+  border-radius: 8px;
+  font-size: 1.8em;
+  font-family: inherit;
+  background-color: ${(props) => props.theme.buttonBackground};
+  font-family: "Luckiest Guy", cursive;
+
+  h2 {
+    font-size: 2em;
+  }
+
+  .text {
+    margin: 0;
+    font-size: 1em !important;
+    font-family: monospace;
+    line-height: 1.3em;
+    color: white;
+
+    span {
+      font-size: 0.9em;
+    }
+  }
+
+  .subtitle {
+    span {
+      font-size: 1.5em;
+    }
+  }
+
+  ul {
+    padding-left: 0;
+    li {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      .bullet-icon {
+        width: 50px;
+        height: 50px;
+        margin-left: 0;
+      }
+    }
+  }
+
+  @media screen and (max-width: 814px) {
+    font-size: 1.2em;
+  }
+
+  @media (max-width: 900px) {
+    img {
+      display: block;
+      width: 40px !important;
+      height: 40px !important;
+    }
+  }
+`;
+
+const StyledRoadmapSection = styled(HBox)`
+  position: relative;
+  margin-bottom: 3em;
+
+  .img1 {
+    width: 250px;
+    position: absolute;
+    top: 500px;
+    right: 20px;
+    transform: translateX(-50%); /* Para centrar horizontalmente */
+    filter: drop-shadow(0 0 5em #c464ffaa);
+    z-index: 9999;
+    transition: transform 0.3s ease; /* Suaviza el giro al cambiar de dirección */
+
+    /* Animación inicial al cargar */
+    animation: fly_short 2.5s infinite alternate, fadeInUp 0.2s;
+  }
+
+  @media (max-width: 1200px) {
+    .img1 {
+      width: 150px;
+      position: absolute;
+      left: 80%; /* Centra horizontalmente */
+    }
+  }
+  @media (max-width: 750px) {
+    .img1 {
+      width: 100px;
+      position: absolute;
+      left: 75%; /* Centra horizontalmente */
+    }
+  }
+`;
 
 export default function RoadmapSection() {
-  const [isScrolling, setIsScrolling] = useState(false);
-  const [scrollingDown, setScrollingDown] = useState(false);
-  const [scrollingUp, setScrollingUp] = useState(false);
-  const [lastScrollPos, setLastScrollPos] = useState(0);
-
-  const scrollTimeoutRef = useRef(null); // Usar ref para el timeout
-
-  // useEffect(() => {
-  //   let scrollTimeout;
-  //   const handleScroll = () => {
-  //     const currentScrollPos = window.scrollY;
-
-  //     setIsScrolling(true);
-
-  //     // Detectar dirección del scroll
-  //     if (currentScrollPos > lastScrollPos) {
-  //       setScrollingDown(true);
-  //       setScrollingUp(false);
-  //     } else if (currentScrollPos < lastScrollPos) {
-  //       setScrollingDown(false);
-  //       setScrollingUp(true);
-  //     }
-
-  //     setLastScrollPos(currentScrollPos);
-
-  //     // Limpiar el timeout anterior si aún está activo
-  //     if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
-
-  //     // Configurar un nuevo timeout para detener la animación después del scroll
-  //     scrollTimeoutRef.current = setTimeout(() => {
-  //       setIsScrolling(false);
-  //       setScrollingDown(false);
-  //       setScrollingUp(false);
-  //     }, 150); // Ajusta el tiempo según tus necesidades
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-
-  //   // Cleanup para evitar memory leaks
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //     if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
-  //   };
-  // }, [lastScrollPos]);
-
   return (
-    <StyledRoadmapSection id="roadmap" ship={0}>
-      <StyledFlexFullCenterContainer
-        style={{ height: "auto", flexDirection: "column", width: "100%" }}
-      >
-        <h1
-          className={`animate__animated animate__fadeInDown animations title`}
+    <StyledRoadmapSection id="roadmap" ship={0} width="100%">
+      <HBox direction="column" width="100%">
+        <GenericTitle title="ROADMAP" />
+        <img src="./spaceship.png" className={`img1 `} alt="spaceship" />
+
+        <StyledRoadmapCard
+          direction="column"
+          width="90%"
+          align="flex-start"
+          padding="20px 50px"
         >
-          ROADMAP
-        </h1>
-        {/* <h3  className={`animate__animated animate__fadeInDown animations`} >BRAINER</h3> */}
-        {/* <img src="./history.png" className={`animate__animated astronaut animations`} /> */}
-
-        <img
-          src="./spaceship.png"
-          className={`img1 ${isScrolling ? "scrolling" : ""} ${
-            scrollingDown ? "scrolling-down" : ""
-          } ${scrollingUp ? "scrolling-up" : ""}`}
-          // className={`img1`}
-          alt="spaceship"
-        />
-
-        <StyledRoadmapCard>
           <h2 style={{ margin: 0 }}>Chapter 1</h2>
-          <p style={{ margin: 0 }} className="subtitle">
+          <p style={{ margin: 0, textAlign: "left" }} className="subtitle">
             <span>The rise of the Brainers</span>
           </p>
           <ul>
@@ -173,7 +200,7 @@ export default function RoadmapSection() {
 
 
         </StyledRoadmapCard> */}
-      </StyledFlexFullCenterContainer>
+      </HBox>
     </StyledRoadmapSection>
   );
 }
