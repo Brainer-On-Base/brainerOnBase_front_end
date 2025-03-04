@@ -11,7 +11,7 @@ import GenericTitle from "../GenericTitle/GenericTitle";
 import { HBox } from "../../HocComponents";
 import styled from "styled-components";
 
-export const StyledHistorySection = styled(HBox)`
+const StyledHistorySection = styled(HBox)`
   min-height: 100vh;
   height: 100%;
   align-items: flex-start;
