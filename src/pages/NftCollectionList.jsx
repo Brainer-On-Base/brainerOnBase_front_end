@@ -21,7 +21,6 @@ import {
 } from "../HocComponents";
 import { SiOpensea } from "react-icons/si";
 import GenericTitle from "../components/GenericTitle/GenericTitle";
-import Loader from "../components/Loader/Loader";
 import { SyncLoader } from "react-spinners";
 
 const StyledNFTList = styled(HBox)`
@@ -174,7 +173,6 @@ const NftCollectionList = () => {
               fontSize={"1.5em"}
               padding={"0.8em 1.2em"}
               style={{ zIndex: 999 }}
-              className={"animate__animated animate__fadeIn animate__delay-2s"}
               onClick={() =>
                 useTextModal({
                   textButton: APP_TEXTS.HOME_MODAL_TEXT_BUTTON,
@@ -190,7 +188,7 @@ const NftCollectionList = () => {
             </HButton>
 
             {web3provider && (
-              <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">{`${mintedCount}/8000 minted`}</p>
+              <p className="minted-quantity">{`${mintedCount}/8000 minted`}</p>
             )}
           </HBox>
 
@@ -276,7 +274,7 @@ const NftCollectionList = () => {
         <NftDetails
           nftSelected={nftSelected}
           setNftSelected={setNftSelected}
-          nftList={nftList}
+          nftList={mintedNftList}
         />
       )}
 

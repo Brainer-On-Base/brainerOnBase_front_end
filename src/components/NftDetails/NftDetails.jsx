@@ -35,7 +35,6 @@ export const FloatAnimation = styled.div`
 
 const NftDetails = ({ nftSelected, setNftSelected, nftList }) => {
   const [backgroundColor, setBackgroundColor] = useState("#230f44");
-
   useEffect(() => {
     getBackground();
   }, [nftSelected]);
@@ -48,16 +47,22 @@ const NftDetails = ({ nftSelected, setNftSelected, nftList }) => {
       themeColors[backgroundColor[0].value.toLowerCase() + "Violet"]
     );
   };
-
-  const handleNavigate = (newIndex) => {
-    if (newIndex < 0 || newIndex >= nftList.length) return; // Evita índices fuera de rango
-
-    const nextNft = nftList.find((nft) => parseInt(nft.tokenId) === newIndex);
-
+  console.log(nftSelected);
+  console.log(nftList);
+  const handleNavigate = (type) => {
+    let actualIndex = nftList.findIndex((nft) => nft.uri === nftSelected.uri);
+    console.log(actualIndex);
+    if (type === "+" && actualIndex < nftList.length - 1) {
+      actualIndex = actualIndex + 1;
+    } else if (type === "-" && actualIndex > 0) {
+      actualIndex = actualIndex - 1;
+    }
+    const nextNft = nftList[actualIndex];
+    console.log(nextNft);
     if (nextNft) {
       setNftSelected(nextNft);
     } else {
-      console.warn(`NFT con tokenId ${newIndex} no encontrado.`);
+      console.warn(`NFT con tokenId ${actualIndex} no encontrado.`);
     }
   };
 
@@ -66,9 +71,7 @@ const NftDetails = ({ nftSelected, setNftSelected, nftList }) => {
       <HButton>
         <CloseIcon onClick={() => setNftSelected(null)} />
       </HButton>
-      <ArrowLeft
-        onClick={() => handleNavigate(parseInt(nftSelected.tokenId) - 1)}
-      />
+      <ArrowLeft onClick={() => handleNavigate("-")} />
       <FloatAnimation>
         <NFTCardContainer background={backgroundColor}>
           <div className="card-container">
@@ -90,9 +93,7 @@ const NftDetails = ({ nftSelected, setNftSelected, nftList }) => {
           </div>
         </NFTCardContainer>
       </FloatAnimation>
-      <ArrowRight
-        onClick={() => handleNavigate(parseInt(nftSelected.tokenId) + 1)}
-      />
+      <ArrowRight onClick={() => handleNavigate("+")} />
     </NFTDetailsModal>
   );
 };
