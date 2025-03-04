@@ -26,6 +26,7 @@ import {
   HSearchInput,
 } from "../HocComponents";
 import { SiOpensea } from "react-icons/si";
+import GenericTitle from "../components/GenericTitle/GenericTitle";
 
 const StyledNFTList = styled(HBox)`
   z-index: 99999;
@@ -135,20 +136,12 @@ const NftCollectionList = () => {
       >
         <NightBackground />
       </View>
-      <StyledNFTDetailsContainer>
-        <h1
-          style={{
-            marginTop: "1em",
-          }}
-          className={`animate__animated animate__fadeInDown animations title`}
-        >
-          Pixel Brainer
-        </h1>
-        <h1
-          className={`animate__animated animate__fadeInDown animations title`}
-        >
-          Collection
-        </h1>
+      <HBox direction="column" align="center" justify="center">
+        <GenericTitle
+          title="Pixel Brainer"
+          subtitle="Collection"
+          style={{ marginTop: "1em" }}
+        />
         <HBox align="center" justify="space-between" width="90%" wrap="wrap">
           <HBox>
             <HButton
@@ -248,7 +241,7 @@ const NftCollectionList = () => {
             </FloatAnimation>
           ))}
         </StyledNFTList>
-      </StyledNFTDetailsContainer>
+      </HBox>
       {nftSelected && (
         <NftDetails
           nftSelected={nftSelected}
