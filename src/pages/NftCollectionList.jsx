@@ -44,8 +44,7 @@ const StyledNFTList = styled(HBox)`
 `;
 
 const NftCollectionList = () => {
-  const [nftQuantity, setNftQuantity] = useState(10);
-  const [showHistory, setShowHistory] = useState("/home");
+  const NFT_QUANTITY = 10;
   const [nftSelected, setNftSelected] = useState(null);
   const [nftList, setNftList] = useState([]);
   const {
@@ -59,6 +58,10 @@ const NftCollectionList = () => {
   const { showPopUp, useTextModal } = useModals();
   const [mintedCount, setMintedCount] = useState(null);
   const [nftSearch, setNftSearch] = useState("");
+  const [pagination, setPagination] = useState({
+    limit: 10,
+    offset: 0,
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -87,7 +90,7 @@ const NftCollectionList = () => {
 
     const data = [];
 
-    for (let id = 0; id < nftQuantity; id++) {
+    for (let id = 0; id < NFT_QUANTITY; id++) {
       const nft = sortedNFTs.find(
         (nft) => parseInt(nft.uri.match(/(\d+)\.json$/)[1]) === id
       );
@@ -116,12 +119,11 @@ const NftCollectionList = () => {
       });
       return;
     }
-    console.log(nft);
   };
 
   return (
     <StyledAppContainer>
-      <Navbar setItem={setShowHistory} item={showHistory} />
+      <Navbar />
       <View
         style={{
           width: "100%",
@@ -208,9 +210,9 @@ const NftCollectionList = () => {
               }}
             />
             <HPagination
-              totalPages={8000 / nftQuantity}
-              currentPage={nftQuantity / 10}
-              setPagination={setNftQuantity}
+              totalPages={NFT_QUANTITY / pagination.limit}
+              currentPage={NFT_QUANTITY / 10}
+              setPagination={setPagination}
               margin="0 0 0 1em"
             />
           </HBox>
