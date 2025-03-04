@@ -3,6 +3,8 @@ import { StyledAppContainer } from "../components/styled-components/container";
 import Navbar from "../components/Navbar/Navbar";
 import { View } from "@react-three/drei";
 import NightBackground from "../components/NIghtBackground";
+import { HBox } from "../HocComponents";
+import GenericTitle from "../components/GenericTitle/GenericTitle";
 
 const BrainerOnBaseMarketplace = () => {
   return (
@@ -19,7 +21,13 @@ const BrainerOnBaseMarketplace = () => {
       >
         <NightBackground />
       </View>
-      ;
+      <HBox direction="column" justify="flex-start" height="100vh">
+        <GenericTitle
+          title="Marketplace"
+          // subtitle="Buy or sell your NFTs"
+          // subtitleFontSize={"40px"}
+        />
+      </HBox>
     </StyledAppContainer>
   );
 };
