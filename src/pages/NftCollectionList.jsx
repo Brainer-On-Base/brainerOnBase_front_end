@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from "react";
-import {
-  StyledAppContainer,
-  StyledFlexCenterContainer,
-  StyledFlexFullCenterContainer,
-  StyledNFTDetailsContainer,
-} from "../components/styled-components/container";
+import { StyledAppContainer } from "../components/styled-components/container";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer";
 import NightBackground from "../components/NIghtBackground";
 import { View } from "@react-three/drei";
 import { motion } from "framer-motion";
-import { StyledButton } from "../components/styled-components/buttons";
 import UseContract from "../hooks/useContract";
 import NftDetails, {
   FloatAnimation,
@@ -27,6 +21,8 @@ import {
 } from "../HocComponents";
 import { SiOpensea } from "react-icons/si";
 import GenericTitle from "../components/GenericTitle/GenericTitle";
+import Loader from "../components/Loader/Loader";
+import { SyncLoader } from "react-spinners";
 
 const StyledNFTList = styled(HBox)`
   z-index: 99999;
@@ -45,9 +41,11 @@ const StyledNFTList = styled(HBox)`
 `;
 
 const NftCollectionList = () => {
-  const NFT_QUANTITY = 10;
+  const NFT_QUANTITY = 8000;
+  const NFTs_PER_PAGE = 40;
   const [nftSelected, setNftSelected] = useState(null);
   const [nftList, setNftList] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
   const {
     getIPFSInfo,
     getMintedNFTs,
@@ -59,17 +57,13 @@ const NftCollectionList = () => {
   const { showPopUp, useTextModal } = useModals();
   const [mintedCount, setMintedCount] = useState(null);
   const [nftSearch, setNftSearch] = useState("");
-  const [pagination, setPagination] = useState({
-    limit: 10,
-    offset: 0,
-  });
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     getInfo();
-
     fetchMintedCount();
-  }, []);
+  }, [currentPage]);
 
   const fetchMintedCount = async () => {
     const count = await getMintedCount();
@@ -77,12 +71,11 @@ const NftCollectionList = () => {
   };
 
   const getInfo = async () => {
-    const nftMintedList = await getMintedNFTs(); // Llamada a la función para obtener los NFTs minteados
+    setLoading(true);
+    const nftMintedList = await getMintedNFTs();
 
-    // Filtra el primer elemento
     const filteredNFTs = nftMintedList.slice(1);
 
-    // Ordena los NFTs por el número al final de la URI
     const sortedNFTs = filteredNFTs.sort((a, b) => {
       const aNumber = parseInt(a.uri.match(/(\d+)\.json$/)[1]);
       const bNumber = parseInt(b.uri.match(/(\d+)\.json$/)[1]);
@@ -91,24 +84,28 @@ const NftCollectionList = () => {
 
     const data = [];
 
-    for (let id = 0; id < NFT_QUANTITY; id++) {
+    const startIndex = (currentPage - 1) * NFTs_PER_PAGE;
+    const endIndex = startIndex + NFTs_PER_PAGE;
+
+    for (let id = startIndex; id < endIndex; id++) {
       const nft = sortedNFTs.find(
         (nft) => parseInt(nft.uri.match(/(\d+)\.json$/)[1]) === id
       );
       if (nft) {
         try {
-          const info = await getIPFSInfo(nft.uri); // Llamada a tu función que interactúa con IPFS
-          data.push(info); // Agregar la respuesta al array
+          const info = await getIPFSInfo(nft.uri);
+          data.push(info);
         } catch (error) {
           console.error(`Error fetching data for URI ${nft.uri}:`, error);
-          data.push(null); // En caso de error, agregar un valor nulo
+          data.push(null);
         }
       } else {
-        data.push(null); // Si no existe el NFT, agregar un valor nulo
+        data.push(null);
       }
     }
 
-    setNftList(data); // Actualizar el estado con los datos obtenidos
+    setNftList(data);
+    setLoading(false);
   };
 
   const handleSearch = async (id) => {
@@ -136,7 +133,8 @@ const NftCollectionList = () => {
       >
         <NightBackground />
       </View>
-      <HBox direction="column" align="center" justify="center">
+
+      <HBox direction="column" align="center" justify="center" width="100%">
         <GenericTitle
           title="Pixel Brainer"
           subtitle="Collection"
@@ -185,10 +183,8 @@ const NftCollectionList = () => {
               onChange={(e) => setNftSearch(e.target.value)}
               type="number"
               onKeyDown={(e) => {
-                console.log(e.key);
                 if (e.key === "Enter") {
-                  const id = Number(nftSearch); // Convertir a número
-                  console.log(isNaN(id) || id < 0 || id > 8000);
+                  const id = Number(nftSearch);
                   if (isNaN(id) || id < 0 || id > 8000) {
                     HPopUp({
                       type: "error",
@@ -198,49 +194,55 @@ const NftCollectionList = () => {
                     return;
                   }
 
-                  handleSearch(id); // Ejecutar la búsqueda
+                  handleSearch(id);
                 }
               }}
             />
             <HPagination
-              totalPages={NFT_QUANTITY / pagination.limit}
-              currentPage={NFT_QUANTITY / 10}
-              setPagination={setPagination}
+              totalPages={Math.ceil(NFT_QUANTITY / NFTs_PER_PAGE)}
+              currentPage={currentPage}
+              setPagination={setCurrentPage}
               margin="0 0 0 1em"
             />
           </HBox>
         </HBox>
-        <StyledNFTList
-          align="center"
-          justify="space-between"
-          width="90%"
-          wrap="wrap"
-          margin="1em 0"
-        >
-          {nftList.map((nft, index) => (
-            <FloatAnimation delay={index} key={index}>
-              <motion.div
-                className={`animate__animated animate__fadeInUp animations`}
-                onClick={() => {
-                  if (!nft) return false;
-                  setNftSelected(nft);
-                }}
-              >
-                <img
-                  src={nft?.image ?? "/nftCollectionImages/unknown.png"}
-                  alt="NFT"
-                  style={{
-                    width: "200px",
-                    height: "200px",
-                    objectFit: "cover",
-                    borderRadius: "10px",
-                    margin: "1em",
+        {loading ? (
+          <HBox width="90%" justify="center" align="center" height="40vh">
+            <SyncLoader loading={loading} color="#ba68c8" />
+          </HBox>
+        ) : (
+          <StyledNFTList
+            align="center"
+            justify="space-between"
+            width="90%"
+            wrap="wrap"
+            margin="1em 0"
+          >
+            {nftList.map((nft, index) => (
+              <FloatAnimation delay={index} key={index}>
+                <motion.div
+                  className={`animate__animated animate__fadeInUp animations`}
+                  onClick={() => {
+                    if (!nft) return false;
+                    setNftSelected(nft);
                   }}
-                />
-              </motion.div>
-            </FloatAnimation>
-          ))}
-        </StyledNFTList>
+                >
+                  <img
+                    src={nft?.image ?? "/nftCollectionImages/unknown.png"}
+                    alt="NFT"
+                    style={{
+                      width: "200px",
+                      height: "200px",
+                      objectFit: "cover",
+                      borderRadius: "10px",
+                      margin: "1em",
+                    }}
+                  />
+                </motion.div>
+              </FloatAnimation>
+            ))}
+          </StyledNFTList>
+        )}
       </HBox>
       {nftSelected && (
         <NftDetails

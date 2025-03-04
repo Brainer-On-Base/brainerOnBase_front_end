@@ -23,7 +23,7 @@ const Loader = ({ size, margin, color, showLoading, speed }) => {
           <SyncLoader
             size={size || 10}
             margin={margin || 2}
-            color={color || "#3247b0"}
+            color={color || "#ba68c8"}
             loading={showLoading}
             speed={speed || 1}
           />

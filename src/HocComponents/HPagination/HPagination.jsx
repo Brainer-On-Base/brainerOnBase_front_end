@@ -23,10 +23,7 @@ const HPagination = ({
       <HButton
         disabled={currentPage === 1}
         onClick={() => {
-          setPagination((prev) => ({
-            ...prev,
-            offset: prev?.offset - prev?.limit,
-          }));
+          setPagination(currentPage - 1);
         }}
         padding={"5px 10px"}
         borderRadius="8px"
@@ -43,10 +40,7 @@ const HPagination = ({
         fontSize={"25px"}
         disabled={currentPage === totalPages}
         onClick={() => {
-          setPagination((prev) => ({
-            ...prev,
-            offset: prev?.offset + prev?.limit,
-          }));
+          setPagination(currentPage + 1);
         }}
         borderRadius="8px"
       >
