@@ -12,19 +12,19 @@ const StyledTitle = styled.h1`
     -0.0125786164em 0.0125786164em 0 #f8b8b8, -0.0125786164em -0.0125786164em;
   &:nth-of-type(1) {
     margin-top: 40px;
-    font-size: 100px;
+    font-size: 90px;
     color: #ff437d;
   }
   &:nth-of-type(2) {
     margin-top: -30px;
-    font-size: 80px;
+    font-size: ${(props) => props.subtitleFontSize || "80px"};
     color: #888;
     color: white;
     text-shadow: none;
   }
 `;
 
-const GenericTitle = ({ title, subtitle, ...props }) => {
+const GenericTitle = ({ title, subtitle, subtitleFontSize, ...props }) => {
   return (
     <HBox direction="column" {...props}>
       <StyledTitle
@@ -37,7 +37,8 @@ const GenericTitle = ({ title, subtitle, ...props }) => {
       </StyledTitle>
       {subtitle && (
         <StyledTitle
-          className={`animate__animated animate__fadeInDown animations`}
+          subtitleFontSize={subtitleFontSize}
+          className={`animate__animated animate__fadeInDown animate__delay-1s animations`}
         >
           {subtitle}
         </StyledTitle>
