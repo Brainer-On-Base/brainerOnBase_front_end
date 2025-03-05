@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BRAINER_BPC_NFT_ABI_CONTRACT,
   BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
@@ -7,12 +7,19 @@ import {
 import useModals from "./useSweetAlert";
 import AccountContext from "../provider/AccountProvider/AccountContext";
 import { ethers } from "ethers";
-import { useEffect } from "react";
 
 const UseContract = () => {
   const { account, setAccount, web3provider, setWeb3Provider, isConnected } =
     React.useContext(AccountContext);
   const { showPopUp } = useModals();
+
+  useEffect(() => {
+    const storedProvider = localStorage.getItem("web3provider");
+    if (storedProvider && !web3provider) {
+      const eth_web3_provider = new ethers.BrowserProvider(window.ethereum);
+      setWeb3Provider(eth_web3_provider);
+    }
+  }, [web3provider, setWeb3Provider]);
 
   const connectWallet = async () => {
     if (!window.ethereum) {
@@ -26,9 +33,9 @@ const UseContract = () => {
       setAccount(accounts[0]);
       showPopUp({ text: "Wallet connected!", icon: "success" });
 
-      // Utiliza BrowserProvider en ethers v6
       const eth_web3_provider = new ethers.BrowserProvider(window.ethereum);
       setWeb3Provider(eth_web3_provider);
+      localStorage.setItem("web3provider", "true");
     } catch (error) {
       showPopUp({
         text: "Error while connecting with Metamask. Try again later",
@@ -41,6 +48,7 @@ const UseContract = () => {
   const disconnectWallet = () => {
     setAccount(null);
     showPopUp({ text: "Wallet disconnected.", icon: "info" });
+    localStorage.removeItem("web3provider");
   };
 
   const mint_BPC1_NFT = async () => {

@@ -47,8 +47,6 @@ const NftDetails = ({ nftSelected, setNftSelected, nftList }) => {
       themeColors[backgroundColor[0].value.toLowerCase() + "Violet"]
     );
   };
-  console.log(nftSelected);
-  console.log(nftList);
   const handleNavigate = (type) => {
     let actualIndex = nftList.findIndex((nft) => nft.uri === nftSelected.uri);
     console.log(actualIndex);

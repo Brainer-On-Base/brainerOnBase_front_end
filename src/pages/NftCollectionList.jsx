@@ -44,7 +44,10 @@ const NftCollectionList = () => {
   const NFTs_PER_PAGE = 30;
   const [nftSelected, setNftSelected] = useState(null);
   const [nftList, setNftList] = useState([]);
-  const [mintedNftList, setMintedNftList] = useState([]);
+  const [mintedNftList, setMintedNftList] = useState(() => {
+    const storedMintedNftList = localStorage.getItem("mintedNftList");
+    return storedMintedNftList ? JSON.parse(storedMintedNftList) : [];
+  });
   const [currentPage, setCurrentPage] = useState(1);
   const {
     getIPFSInfo,
@@ -54,10 +57,13 @@ const NftCollectionList = () => {
     web3provider,
   } = UseContract();
   const { showPopUp, useTextModal } = useModals();
-  const [mintedCount, setMintedCount] = useState(null);
+  const [mintedCount, setMintedCount] = useState(() => {
+    const storedMintedCount = localStorage.getItem("mintedCount");
+    return storedMintedCount ? parseInt(storedMintedCount) : null;
+  });
   const [nftSearch, setNftSearch] = useState("");
   const [loading, setLoading] = useState(false);
-
+  console.log(web3provider);
   useEffect(() => {
     window.scrollTo(0, 0);
     getInfo();
@@ -67,6 +73,7 @@ const NftCollectionList = () => {
   const fetchMintedCount = async () => {
     const count = await getMintedCount();
     setMintedCount(count);
+    localStorage.setItem("mintedCount", count);
   };
 
   const getInfo = async () => {
@@ -83,6 +90,7 @@ const NftCollectionList = () => {
     });
 
     setMintedNftList(sortedNFTs);
+    localStorage.setItem("mintedNftList", JSON.stringify(sortedNFTs));
     const data = [];
 
     const startIndex = (currentPage - 1) * NFTs_PER_PAGE;
