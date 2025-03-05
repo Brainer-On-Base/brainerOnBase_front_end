@@ -68,6 +68,7 @@ const NftCollectionList = () => {
     getInfo();
     fetchMintedCount();
   }, [currentPage]);
+  const [onlyMinted, setOnlyMinted] = useState([]);
 
   const fetchMintedCount = async () => {
     const count = await getMintedCount();
@@ -88,9 +89,9 @@ const NftCollectionList = () => {
       return aNumber - bNumber;
     });
 
-    setMintedNftList(sortedNFTs);
     localStorage.setItem("mintedNftList", JSON.stringify(sortedNFTs));
     const data = [];
+    const mintedNftListTemplate = [];
 
     const startIndex = (currentPage - 1) * NFTs_PER_PAGE;
     const endIndex = startIndex + NFTs_PER_PAGE;
@@ -103,6 +104,7 @@ const NftCollectionList = () => {
         try {
           const info = await getIPFSInfo(nft.uri);
           data.push(info);
+          mintedNftListTemplate.push(info);
         } catch (error) {
           console.error(`Error fetching data for URI ${nft.uri}:`, error);
           data.push(null);
@@ -113,6 +115,7 @@ const NftCollectionList = () => {
     }
 
     setNftList(data);
+    setMintedNftList(mintedNftListTemplate);
     setLoading(false);
   };
 
@@ -176,6 +179,24 @@ const NftCollectionList = () => {
             >
               <SiOpensea />
             </HButton>
+
+            <HButton
+              style={{ zIndex: 999 }}
+              title="OpenSea"
+              fontSize={"1.5em"}
+              padding={"0.9em 1.2em"}
+              onClick={() => {
+                if (onlyMinted) {
+                  setNftList(mintedNftList);
+                } else {
+                  getInfo();
+                }
+                setOnlyMinted(!onlyMinted);
+              }} // ✅ Cierre correcto aquí
+            >
+              {onlyMinted ? "ONLY MINTED" : "ALL NFTs"}
+            </HButton>
+
             <HButton
               fontSize={"1.5em"}
               padding={"0.8em 1.2em"}
