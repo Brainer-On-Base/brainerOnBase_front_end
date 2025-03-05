@@ -289,6 +289,7 @@ const NftCollectionList = () => {
           setNftSelected={setNftSelected}
           nftList={mintedNftList}
           mintedNftList={mintedNftList}
+          getIPFSInfo={getIPFSInfo}
         />
       )}
 

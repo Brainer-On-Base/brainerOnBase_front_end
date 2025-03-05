@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { themeColors } from "../../themeColors";
 import { useNavigate, useParams } from "react-router-dom";
-import UseContract from "../../hooks/useContract";
 import {
   ArrowLeft,
   ArrowRight,
@@ -38,6 +37,7 @@ const NftDetails = ({
   setNftSelected,
   nftList,
   mintedNftList,
+  getIPFSInfo,
 }) => {
   const [backgroundColor, setBackgroundColor] = useState("#230f44");
   useEffect(() => {
@@ -52,29 +52,31 @@ const NftDetails = ({
       themeColors[backgroundColor[0].value.toLowerCase() + "Violet"]
     );
   };
-  const handleNavigate = (type) => {
-    console.log(mintedNftList);
-    console.log(nftSelected);
-    let actualIndex = mintedNftList.findIndex(
-      (nft) => nft.uri === nftSelected.uri
-    );
-    const nextNft2 = mintedNftList[actualIndex];
+  const handleNavigate = async (type) => {
+    const numberNftSelected = nftSelected.name.match(/#(\d+)/);
+    const selectedNumber = numberNftSelected
+      ? parseInt(numberNftSelected[1], 10)
+      : null;
+
+    let actualIndex = mintedNftList.findIndex((nft) => {
+      const match = nft.uri.match(/\/(\d+)\.json$/);
+      const nftNumber = match ? parseInt(match[1], 10) : null;
+      return nftNumber === selectedNumber;
+    });
 
     if (type === "+" && actualIndex < mintedNftList.length - 1) {
       actualIndex = actualIndex + 1;
     } else if (type === "-" && actualIndex > 0) {
       actualIndex = actualIndex - 1;
     }
-    const nextNft = mintedNftList[actualIndex];
-    console.log(nextNft2);
-    console.log(nextNft);
-    if (nextNft) {
-      setNftSelected(nextNft);
+    const nextNftObject = mintedNftList[actualIndex];
+    const nextNftLoaded = await getIPFSInfo(nextNftObject.uri);
+    if (nextNftLoaded) {
+      setNftSelected(nextNftLoaded);
     } else {
       console.warn(`NFT con tokenId ${actualIndex} no encontrado.`);
     }
   };
-
   return (
     <NFTDetailsModal>
       <HButton>

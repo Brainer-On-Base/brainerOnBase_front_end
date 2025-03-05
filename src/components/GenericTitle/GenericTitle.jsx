@@ -1,6 +1,7 @@
 import React from "react";
 import { HBox } from "../../HocComponents";
 import styled from "styled-components";
+import zIndex from "@mui/material/styles/zIndex";
 
 const StyledTitle = styled.h1`
   line-height: 1.1;
@@ -26,7 +27,7 @@ const StyledTitle = styled.h1`
 
 const GenericTitle = ({ title, subtitle, subtitleFontSize, ...props }) => {
   return (
-    <HBox direction="column" {...props}>
+    <HBox direction="column" {...props} style={{ zIndex: 999 }}>
       <StyledTitle
         style={{
           marginTop: "1em",
