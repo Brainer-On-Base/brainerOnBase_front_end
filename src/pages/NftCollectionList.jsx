@@ -63,7 +63,6 @@ const NftCollectionList = () => {
   });
   const [nftSearch, setNftSearch] = useState("");
   const [loading, setLoading] = useState(false);
-  console.log(web3provider);
   useEffect(() => {
     window.scrollTo(0, 0);
     getInfo();
@@ -277,12 +276,19 @@ const NftCollectionList = () => {
             ))}
           </StyledNFTList>
         )}
+        <HPagination
+          totalPages={Math.ceil(NFT_QUANTITY / NFTs_PER_PAGE)}
+          currentPage={currentPage}
+          setPagination={setCurrentPage}
+          margin="0 0 0 1em"
+        />
       </HBox>
       {nftSelected && (
         <NftDetails
           nftSelected={nftSelected}
           setNftSelected={setNftSelected}
           nftList={mintedNftList}
+          mintedNftList={mintedNftList}
         />
       )}
 

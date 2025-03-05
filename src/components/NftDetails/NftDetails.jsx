@@ -33,7 +33,12 @@ export const FloatAnimation = styled.div`
   }
 `;
 
-const NftDetails = ({ nftSelected, setNftSelected, nftList }) => {
+const NftDetails = ({
+  nftSelected,
+  setNftSelected,
+  nftList,
+  mintedNftList,
+}) => {
   const [backgroundColor, setBackgroundColor] = useState("#230f44");
   useEffect(() => {
     getBackground();
@@ -48,14 +53,20 @@ const NftDetails = ({ nftSelected, setNftSelected, nftList }) => {
     );
   };
   const handleNavigate = (type) => {
-    let actualIndex = nftList.findIndex((nft) => nft.uri === nftSelected.uri);
-    console.log(actualIndex);
-    if (type === "+" && actualIndex < nftList.length - 1) {
+    console.log(mintedNftList);
+    console.log(nftSelected);
+    let actualIndex = mintedNftList.findIndex(
+      (nft) => nft.uri === nftSelected.uri
+    );
+    const nextNft2 = mintedNftList[actualIndex];
+
+    if (type === "+" && actualIndex < mintedNftList.length - 1) {
       actualIndex = actualIndex + 1;
     } else if (type === "-" && actualIndex > 0) {
       actualIndex = actualIndex - 1;
     }
-    const nextNft = nftList[actualIndex];
+    const nextNft = mintedNftList[actualIndex];
+    console.log(nextNft2);
     console.log(nextNft);
     if (nextNft) {
       setNftSelected(nextNft);
