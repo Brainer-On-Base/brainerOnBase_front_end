@@ -1,6 +1,6 @@
 import React from "react";
 import { HBox, HTitle } from "../../HocComponents";
-import { NavbarItem } from "./marketplce.styled";
+import { CategoryItem, NavbarItem, SubCategoryItem } from "./marketplce.styled";
 
 const CATEGORIES = [
   "Furniture & Decoration",
@@ -57,7 +57,12 @@ const CATEGORIES_OPTIONS = {
   All: [],
 };
 
-const MarketplaceNavbar = ({ setCategorySelected, categorySelected }) => {
+const MarketplaceNavbar = ({
+  setCategorySelected,
+  categorySelected,
+  setSubCategorySelected,
+  subCategorySelected,
+}) => {
   return (
     <HBox
       background={"shadePurpleDark"}
@@ -70,31 +75,37 @@ const MarketplaceNavbar = ({ setCategorySelected, categorySelected }) => {
       style={{ zIndex: 999 }}
     >
       {CATEGORIES.map((category) => (
-        <NavbarItem key={category} width={"100%"} direction="column">
-          <HTitle
+        <NavbarItem
+          key={category}
+          width={"100%"}
+          direction="column"
+          selected={categorySelected === category}
+          padding={"0 0 0 40px"}
+        >
+          <CategoryItem
+            selected={categorySelected === category}
             width={"100%"}
             padding="10px"
-            margin={"0 0 0 40px"}
             fontSize="22px"
             fontWeight="bold"
             textAlign={"left"}
             onClick={() => setCategorySelected(category)}
           >
             {category}
-          </HTitle>
+          </CategoryItem>
           {categorySelected === category &&
             CATEGORIES_OPTIONS[category].map((subCategory) => (
-              <HTitle
+              <SubCategoryItem
                 key={subCategory}
                 width={"100%"}
-                margin={"0 0 0 80px"}
                 fontSize="18px"
-                fontWeight="normal"
+                fontWeight="bold"
                 textAlign={"left"}
-                onClick={() => setCategorySelected(subCategory)}
+                selected={subCategorySelected === subCategory}
+                onClick={() => setSubCategorySelected(subCategory)}
               >
                 {subCategory}
-              </HTitle>
+              </SubCategoryItem>
             ))}
         </NavbarItem>
       ))}

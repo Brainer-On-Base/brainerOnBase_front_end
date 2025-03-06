@@ -2,14 +2,32 @@ import styled from "styled-components";
 import { HBox, HTitle } from "../../HocComponents";
 
 export const NavbarItem = styled(HBox)`
-  font-family: "Luckiest Guy", cursive;
+  background: ${(props) =>
+    props.selected ? props.theme.shadePurpleMedium : "transparent"};
+  &:hover {
+    background: ${(props) =>
+      props.selected
+        ? props.theme.shadePurpleMedium
+        : props.theme.shadePurpleLight} !important;
+  }
+`;
+
+export const CategoryItem = styled(HTitle)`
   cursor: pointer;
   transition: all 0.3s ease;
+  font-family: "Luckiest Guy", cursive;
 
+  color: ${(props) =>
+    props.selected ? props.theme.goldColor : "inherit"} !important;
+`;
+
+export const SubCategoryItem = styled(HTitle)`
+  cursor: pointer;
   &:hover {
-    h1 {
-      color: ${(props) => props.theme.goldColor} !important;
-    }
-    background: ${(props) => props.theme.shadePurpleLight} !important;
+    color: ${(props) => props.theme.goldColor} !important;
   }
+  font-family: inherit !important;
+
+  color: ${(props) =>
+    props.selected ? props.theme.goldColor : "inherit"} !important;
 `;

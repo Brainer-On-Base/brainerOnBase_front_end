@@ -71,6 +71,7 @@ const Marketplace = () => {
         setCategorySelected={setCategorySelected}
         categorySelected={categorySelected}
         setSubCategorySelected={setSubCategorySelected}
+        subCategorySelected={subCategorySelected}
       />
       <HBox
         width="75%"
