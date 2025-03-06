@@ -96,6 +96,7 @@ const MarketplaceNavbar = ({
           {categorySelected === category &&
             CATEGORIES_OPTIONS[category].map((subCategory) => (
               <SubCategoryItem
+                useTitleCase={false}
                 key={subCategory}
                 width={"100%"}
                 fontSize="18px"

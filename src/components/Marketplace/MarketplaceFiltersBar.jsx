@@ -35,7 +35,7 @@ const MarketplaceFiltersBar = ({
         {categorySelected !== "All" && (
           <>
             <TbFilter size={30} />
-            <HTitle fontSize={"18px"} height={"auto"}>
+            <HTitle fontSize={"18px"} height={"auto"} useTitleCase={true}>
               Filters:
             </HTitle>
           </>
@@ -52,7 +52,9 @@ const MarketplaceFiltersBar = ({
               justify="space-between"
               width="auto"
             >
-              <HTitle fontSize={"14px"}>{categorySelected}</HTitle>
+              <HTitle fontSize={"14px"} useTitleCase={false}>
+                {categorySelected}
+              </HTitle>
               <HButton
                 onClick={() => setCategorySelected("All")}
                 margin={"0 0 0 20px"}
@@ -71,7 +73,9 @@ const MarketplaceFiltersBar = ({
                 justify="space-between"
                 width="auto"
               >
-                <HTitle fontSize={"14px"}>{subCategorySelected}</HTitle>
+                <HTitle fontSize={"14px"} useTitleCase={false}>
+                  {subCategorySelected}
+                </HTitle>
                 <HButton
                   onClick={() => setSubCategorySelected("All")}
                   margin={"0 0 0 20px"}

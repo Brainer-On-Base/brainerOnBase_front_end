@@ -18,6 +18,7 @@ const HTitle = ({
   borderRadius,
   width,
   height,
+  useTitleCase = true,
   ...props
 }) => {
   return (
@@ -36,6 +37,7 @@ const HTitle = ({
       background={background}
       borderRadius={borderRadius}
       height={height}
+      useTitleCase={useTitleCase}
       {...props}
     >
       {children ?? text}

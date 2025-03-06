@@ -20,4 +20,6 @@ export const HTitleText = styled.h1`
   background: ${({ theme, background }) =>
     theme?.[background] || background || "transparent"};
   border-radius: ${({ borderRadius }) => borderRadius || "0"};
+  font-family: ${({ useTitleCase }) =>
+    useTitleCase ? "Luckiest Guy, cursive" : "monospace"};
 `;

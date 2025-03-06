@@ -15,7 +15,6 @@ export const NavbarItem = styled(HBox)`
 export const CategoryItem = styled(HTitle)`
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: "Luckiest Guy", cursive;
 
   color: ${(props) =>
     props.selected ? props.theme.goldColor : "inherit"} !important;
@@ -26,7 +25,6 @@ export const SubCategoryItem = styled(HTitle)`
   &:hover {
     color: ${(props) => props.theme.goldColor} !important;
   }
-  font-family: inherit !important;
 
   color: ${(props) =>
     props.selected ? props.theme.goldColor : "inherit"} !important;
