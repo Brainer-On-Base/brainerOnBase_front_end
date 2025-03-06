@@ -3,7 +3,6 @@ import { HBox } from "../../HocComponents";
 import MarketplaceNavbar from "./MarketplaceNavbar";
 import MarketplaceFiltersBar from "./MarketplaceFiltersBar";
 import MarketplaceItem from "./MarketplaceItem";
-import NFTCard from "../NFTCard/NFTCard";
 
 const items = [
   {
@@ -89,11 +88,13 @@ const Marketplace = () => {
         subCategorySelected={subCategorySelected}
       />
       <HBox
-        width="75%"
+        width="80%"
         background={"shadePurpleDark"}
         borderRadius="10px"
         height="100%"
         direction="column"
+        justify="center"
+        align="center"
         style={{ zIndex: 999 }}
         overflowX="hidden"
       >
@@ -105,14 +106,19 @@ const Marketplace = () => {
           selectViewType={selectViewType}
           setSelectViewType={setSelectViewType}
         />
-        <HBox width="100%" gap="20px" wrap="wrap" justify="flex-start">
+        <HBox
+          width="100%"
+          gap="20px"
+          wrap="wrap"
+          justify="center"
+          align="center"
+        >
           {items.map((item) => (
-            // <MarketplaceItem
-            //   key={item.id}
-            //   item={item}
-            //   selectViewType={selectViewType}
-            // />
-            <NFTCard nftSelected={item} />
+            <MarketplaceItem
+              key={item.id}
+              item={item}
+              selectViewType={selectViewType}
+            />
           ))}
         </HBox>
       </HBox>

@@ -29,6 +29,7 @@ export const HBoxContainer = styled.div`
     height: 10px; /* Alto de la barra horizontal */
   }
 
+  box-sizing: border-box;
   &::-webkit-scrollbar-track {
     background: ${({ theme }) =>
       theme?.shadePurpleLight || "#3c1b85"}; /* Color del track */

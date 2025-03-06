@@ -72,7 +72,7 @@ const MarketplaceNavbar = ({
       background={"shadePurpleDark"}
       direction="column"
       borderRadius="0.5em"
-      width="25%"
+      width="20%"
       height="100%"
       gap="0"
       overflowX="hidden"
@@ -88,7 +88,7 @@ const MarketplaceNavbar = ({
         >
           <NavbarItem
             width={"100%"}
-            padding={"10px 0 5px 40px"}
+            padding={"10px 10px 5px 20px"}
             fontSize="22px"
             fontWeight="bold"
             textAlign={"left"}

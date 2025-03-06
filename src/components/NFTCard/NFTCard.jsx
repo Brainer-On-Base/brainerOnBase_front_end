@@ -11,7 +11,7 @@ const NFTCard = ({ nftSelected, backgroundColor, width, height, imgWidth }) => {
       imgWidth={imgWidth}
     >
       <div className="card-container">
-        <HTitle fontSize={"26px"} color={"goldColor"}>
+        <HTitle fontSize={"26px"} color={"goldColor"} textAlign={"center"}>
           {nftSelected?.name}
         </HTitle>
         <img
