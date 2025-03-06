@@ -1,6 +1,10 @@
 import React from "react";
 import { HBox, HTitle } from "../../HocComponents";
-import { CategoryItem, NavbarItem, SubCategoryItem } from "./marketplce.styled";
+import {
+  NavbarContainer,
+  NavbarItem,
+  NavbarSubItem,
+} from "./marketplce.styled";
 
 const CATEGORIES = [
   "Furniture & Decoration",
@@ -75,42 +79,42 @@ const MarketplaceNavbar = ({
       style={{ zIndex: 999 }}
     >
       {CATEGORIES.map((category) => (
-        <NavbarItem
+        <NavbarContainer
           key={category}
           width={"100%"}
           direction="column"
           selected={categorySelected === category}
-          padding={"0 0 0 40px"}
+          gap="0"
         >
-          <CategoryItem
-            selected={categorySelected === category}
+          <NavbarItem
             width={"100%"}
-            padding="10px"
+            padding={"10px 0 5px 40px"}
             fontSize="22px"
             fontWeight="bold"
             textAlign={"left"}
+            useTitleCase={true}
+            selected={categorySelected === category}
             onClick={() => setCategorySelected(category)}
           >
             {category}
-          </CategoryItem>
+          </NavbarItem>
           {categorySelected === category &&
             CATEGORIES_OPTIONS[category].map((subCategory) => (
-              <SubCategoryItem
-                useTitleCase={false}
+              <NavbarSubItem
                 key={subCategory}
                 width={"100%"}
+                padding={"2px 0 2px 60px"}
                 fontSize="18px"
-                fontWeight="bold"
+                fontWeight="normal"
                 textAlign={"left"}
                 selected={subCategorySelected === subCategory}
                 onClick={() => setSubCategorySelected(subCategory)}
-                margin={"0 0 0 40px"}
-                padding={"0 0 8px 0"}
+                useTitleCase={false}
               >
                 {subCategory}
-              </SubCategoryItem>
+              </NavbarSubItem>
             ))}
-        </NavbarItem>
+        </NavbarContainer>
       ))}
     </HBox>
   );

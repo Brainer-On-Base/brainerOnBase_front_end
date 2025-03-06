@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { HBox } from "../../HocComponents";
 import MarketplaceNavbar from "./MarketplaceNavbar";
 import MarketplaceFiltersBar from "./MarketplaceFiltersBar";
+import MarketplaceItem from "./MarketplaceItem";
 
 const items = [
   {
@@ -91,21 +92,15 @@ const Marketplace = () => {
           selectViewType={selectViewType}
           setSelectViewType={setSelectViewType}
         />
-        {items.map((item) => (
-          <HBox
-            key={item.id}
-            direction="column"
-            align="center"
-            padding="10px"
-            borderRadius="10px"
-            gap="10px"
-          >
-            <img src={item.image} alt={item.name} />
-            <p>{item.name}</p>
-            <p>{item.category}</p>
-            <p>{item.price}</p>
-          </HBox>
-        ))}
+        <HBox width="100%" gap="20px" wrap="wrap" justify="flex-start">
+          {items.map((item) => (
+            <MarketplaceItem
+              key={item.id}
+              item={item}
+              selectViewType={selectViewType}
+            />
+          ))}
+        </HBox>
       </HBox>
     </HBox>
   );

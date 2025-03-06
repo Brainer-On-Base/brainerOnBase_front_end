@@ -1,7 +1,37 @@
 import React from "react";
+import { HBox, HTitle, HButton } from "../../HocComponents";
 
-const MarketplaceItem = () => {
-  return <div></div>;
+const MarketplaceItem = ({ selectViewType, item }) => {
+  return (
+    <HBox
+      key={item.id}
+      direction="column"
+      align="center"
+      padding="20px"
+      borderRadius="15px"
+      gap="15px"
+      background={"shadePurpleLight"}
+      boxShadow="0 4px 8px rgba(0, 0, 0, 0.1)"
+      transition="transform 0.2s"
+      hoverTransform="scale(1.05)"
+    >
+      <img
+        src={item.image}
+        alt={item.name}
+        style={{ borderRadius: "10px", width: "100%", height: "auto" }}
+      />
+      <HTitle fontSize="24px" fontWeight="bold">
+        {item.name}
+      </HTitle>
+      <HTitle fontSize="18px" color="gray">
+        {item.category} {item.subCategory ? ` - ${item.subCategory}` : ""}
+      </HTitle>
+      <HTitle fontSize="20px" color="gold">
+        ${item.price}
+      </HTitle>
+      <HButton onClick={() => selectViewType(item.id)}>View Details</HButton>
+    </HBox>
+  );
 };
 
 export default MarketplaceItem;
