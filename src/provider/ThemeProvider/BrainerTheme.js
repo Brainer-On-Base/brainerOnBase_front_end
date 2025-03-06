@@ -14,7 +14,7 @@ export const LightTheme = {
   BoxShadowPurple: "3px 3px 4px rgba(106, 27, 154, 0.8)",
   BoxShadowPurpleComplete: "0px 3px 20px #6a1b9a",
   BoxShadowGrey: "3px 3px 4px rgba(113, 113, 113, 0.8)",
-  goldColor: "#FFB600",
+  goldColor: "#ffe600",
   shadowGold: "linear-gradient(180deg, #FFB600 0%, #FDCC06 37%, #FFB600 100%)",
   shadeGold:
     "linear-gradient(270deg, #FFB600 8.68%, #FDCC06 42.32%, #FFB600 86.35%)",
