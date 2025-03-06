@@ -80,10 +80,23 @@ const Marketplace = () => {
         borderRadius="10px"
         height="100%"
         direction="column"
+        style={{ zIndex: 999 }}
       >
-        <MarketplaceFiltersBar categorySelected={categorySelected} />
+        <MarketplaceFiltersBar
+          categorySelected={categorySelected}
+          subCategorySelected={subCategorySelected}
+          setCategorySelected={setCategorySelected}
+          setSubCategorySelected={setSubCategorySelected}
+        />
         {items.map((item) => (
-          <HBox key={item.id} direction="column" align="center">
+          <HBox
+            key={item.id}
+            direction="column"
+            align="center"
+            padding="10px"
+            borderRadius="10px"
+            gap="10px"
+          >
             <img src={item.image} alt={item.name} />
             <p>{item.name}</p>
             <p>{item.category}</p>

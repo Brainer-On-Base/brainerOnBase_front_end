@@ -103,6 +103,8 @@ const MarketplaceNavbar = ({
                 textAlign={"left"}
                 selected={subCategorySelected === subCategory}
                 onClick={() => setSubCategorySelected(subCategory)}
+                margin={"0 0 0 40px"}
+                padding={"0 0 8px 0"}
               >
                 {subCategory}
               </SubCategoryItem>

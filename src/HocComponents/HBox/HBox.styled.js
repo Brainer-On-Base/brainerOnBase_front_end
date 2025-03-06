@@ -20,6 +20,7 @@ export const HBoxContainer = styled.div`
   transition: all 0.3s ease;
   overflow-x: ${(props) => props.overflowX ?? "auto"};
   overflow-y: ${(props) => props.overflowY ?? "auto"};
+  transition: all 0.3s ease;
 
   /* Estilos de la barra de scroll */
   &::-webkit-scrollbar {
