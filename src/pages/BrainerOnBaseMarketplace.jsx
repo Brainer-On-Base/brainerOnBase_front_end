@@ -5,8 +5,13 @@ import { View } from "@react-three/drei";
 import NightBackground from "../components/NIghtBackground";
 import { HBox } from "../HocComponents";
 import GenericTitle from "../components/GenericTitle/GenericTitle";
+import Footer from "../components/Footer";
+import Marketplace from "../components/Marketplace/Marketplace";
+import UseContract from "../hooks/useContract";
 
 const BrainerOnBaseMarketplace = () => {
+  const { account, isConnected } = UseContract();
+
   return (
     <StyledAppContainer>
       <Navbar />
@@ -21,13 +26,15 @@ const BrainerOnBaseMarketplace = () => {
       >
         <NightBackground />
       </View>
-      <HBox direction="column" justify="flex-start" height="100vh">
+      <HBox direction="column" justify="flex-start" height="auto" width="90%">
         <GenericTitle
           title="Marketplace"
           // subtitle="Buy or sell your NFTs"
           // subtitleFontSize={"40px"}
         />
+        <Marketplace />
       </HBox>
+      <Footer />
     </StyledAppContainer>
   );
 };
