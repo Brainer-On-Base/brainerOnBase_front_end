@@ -6,7 +6,7 @@ export const NFTCardContainer = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   padding: 1.5em;
-  max-width: 850px;
+  max-width: ${(props) => props.height || "850px"};
   border-radius: 20px;
   box-sizing: border-box;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
@@ -14,7 +14,7 @@ export const NFTCardContainer = styled(motion.div)`
   color: #ffffff;
   overflow: hidden;
   z-index: 9999999;
-  height: 700px;
+  height: ${(props) => props.height || "700px"};
 
   .card-container {
     display: flex;
@@ -26,14 +26,6 @@ export const NFTCardContainer = styled(motion.div)`
     border-radius: 15px;
     background: rgba(0, 0, 0, 0.2); /* Fondo translúcido */
     z-index: 9999999;
-
-    h2 {
-      margin: 0 0 0.5em;
-      font-size: 2em;
-      font-weight: bold;
-      color: #ffe600; /* Color destacado para el título */
-      text-align: center;
-    }
   }
 
   img {

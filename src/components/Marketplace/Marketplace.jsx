@@ -3,6 +3,7 @@ import { HBox } from "../../HocComponents";
 import MarketplaceNavbar from "./MarketplaceNavbar";
 import MarketplaceFiltersBar from "./MarketplaceFiltersBar";
 import MarketplaceItem from "./MarketplaceItem";
+import NFTCard from "../NFTCard/NFTCard";
 
 const items = [
   {
@@ -106,11 +107,12 @@ const Marketplace = () => {
         />
         <HBox width="100%" gap="20px" wrap="wrap" justify="flex-start">
           {items.map((item) => (
-            <MarketplaceItem
-              key={item.id}
-              item={item}
-              selectViewType={selectViewType}
-            />
+            // <MarketplaceItem
+            //   key={item.id}
+            //   item={item}
+            //   selectViewType={selectViewType}
+            // />
+            <NFTCard nftSelected={item} />
           ))}
         </HBox>
       </HBox>
