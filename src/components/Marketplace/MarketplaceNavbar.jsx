@@ -1,5 +1,5 @@
 import React from "react";
-import { HBox, HTitle } from "../../HocComponents";
+import { HBox } from "../../HocComponents";
 import {
   NavbarContainer,
   NavbarItem,
@@ -14,6 +14,7 @@ const CATEGORIES = [
   "Special Items",
   "Collectibles & Exclusives",
   "Boosts & Power-ups",
+  "Pixel Brainer NFTs",
   "All",
 ];
 
@@ -57,6 +58,15 @@ const CATEGORIES_OPTIONS = {
     "Experience Bonuses",
     "Construction or Growth Accelerators",
     "Energy Items",
+  ],
+  "Pixel Brainer NFTs": [
+    "Common",
+    "Uncommon",
+    "Rare",
+    "Epic",
+    "Legendary",
+    "Mythical",
+    "Unique",
   ],
   All: [],
 };
