@@ -5,8 +5,11 @@ import NightBackground from "../components/NIghtBackground";
 import Navbar from "../components/Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
 import AccountContext from "../provider/AccountProvider/AccountContext";
+import GenericTitle from "../components/GenericTitle/GenericTitle";
+import Footer from "../components/Footer";
+import { HBox } from "../HocComponents";
 
-const PlayerPage = () => {
+const BrainerOnBaseProfile = () => {
   const { account, setAccount, web3provider, setWeb3Provider, isConnected } =
     useContext(AccountContext);
   const navigate = useNavigate();
@@ -39,8 +42,16 @@ const PlayerPage = () => {
       >
         <NightBackground />
       </View>
+      <HBox direction="column" justify="flex-start" height="auto" width="95%">
+        <GenericTitle
+          title="PROFILE"
+          // subtitle="Buy or sell your NFTs"
+          // subtitleFontSize={"40px"}
+        />
+      </HBox>
+      <Footer />
     </StyledAppContainer>
   );
 };
 
-export default PlayerPage;
+export default BrainerOnBaseProfile;

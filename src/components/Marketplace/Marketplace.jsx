@@ -80,7 +80,7 @@ const Marketplace = () => {
   }, [categorySelected]);
 
   return (
-    <HBox width="100%" align="flex-start">
+    <HBox width="100%" align="flex-start" gap="5px" height="100%">
       <MarketplaceNavbar
         setCategorySelected={setCategorySelected}
         categorySelected={categorySelected}

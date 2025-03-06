@@ -10,7 +10,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons"; // Iconos adicionales
 import UseContract from "../hooks/useContract";
 import { useNavigate } from "react-router-dom";
-import zIndex from "@mui/material/styles/zIndex";
 
 const ConnectWallet = () => {
   const {
@@ -43,20 +42,14 @@ const ConnectWallet = () => {
               transition: "max-height 0.3s ease, opacity 0.3s ease",
             }}
           >
-            <div
-              style={styles.menuItem}
-              onClick={() => navigate("/player/profile")}
-            >
+            <div style={styles.menuItem} onClick={() => navigate("/profile")}>
               <FontAwesomeIcon
                 icon={faUserCircle}
                 style={styles.menuItemIcon}
               />
               Profile
             </div>
-            <div
-              style={styles.menuItem}
-              onClick={() => navigate("/player/inventory")}
-            >
+            <div style={styles.menuItem} onClick={() => navigate("/inventory")}>
               <FontAwesomeIcon icon={faBoxOpen} style={styles.menuItemIcon} />
               Inventory
             </div>

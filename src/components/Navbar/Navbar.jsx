@@ -18,8 +18,8 @@ function Navbar({}) {
   const isPlaying = location.pathname === "/game";
   const isFromSocietyLogic =
     location.pathname === "/marketplace" ||
-    location.pathname === "/player/profile" ||
-    location.pathname === "/player/inventory";
+    location.pathname === "/profile" ||
+    location.pathname === "/inventory";
   const { isConnected } = UseContract();
 
   const pages = [
@@ -95,13 +95,13 @@ function Navbar({}) {
         >
           <HButton
             style={{ zIndex: 99999 }}
-            onClick={() => navigate("/player/profile")}
+            onClick={() => navigate("/profile")}
           >
             PROFILE
           </HButton>
           <HButton
             style={{ zIndex: 99999 }}
-            onClick={() => navigate("/player/inventory")}
+            onClick={() => navigate("/inventory")}
           >
             INVENTORY
           </HButton>
