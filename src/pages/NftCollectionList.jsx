@@ -120,9 +120,14 @@ const NftCollectionList = () => {
   };
 
   const handleSearch = async (id) => {
-    const nft = mintedNftList.find(
-      (nft) => parseInt(nft.uri.match(/(\d+)\.json$/)[1]) === id
-    );
+    const nft = mintedNftList.find((nft) => {
+      const numberNftSelected = nft.name.match(/#(\d+)/);
+      const selectedNumber = numberNftSelected
+        ? parseInt(numberNftSelected[1], 10)
+        : null;
+      return selectedNumber === id;
+    });
+    console.log(nft);
     if (!nft) {
       setNftList([
         {
@@ -133,19 +138,7 @@ const NftCollectionList = () => {
       ]);
       return;
     }
-    try {
-      const info = await getIPFSInfo(nft.uri);
-      setNftList([info]);
-    } catch (error) {
-      console.error(`Error fetching data for URI ${nft.uri}:`, error);
-      setNftList([
-        {
-          id,
-          image: "/nftCollectionImages/unknown.png",
-          name: `NFT ${id} not found`,
-        },
-      ]);
-    }
+    setNftList([nft]);
   };
 
   return (
