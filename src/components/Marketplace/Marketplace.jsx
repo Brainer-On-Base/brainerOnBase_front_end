@@ -58,6 +58,7 @@ const items = [
 const Marketplace = () => {
   const [categorySelected, setCategorySelected] = useState("All");
   const [subCategorySelected, setSubCategorySelected] = useState("All");
+  const [selectViewType, setSelectViewType] = useState("grid");
 
   useEffect(() => {
     if (categorySelected === "All") {
@@ -87,6 +88,8 @@ const Marketplace = () => {
           subCategorySelected={subCategorySelected}
           setCategorySelected={setCategorySelected}
           setSubCategorySelected={setSubCategorySelected}
+          selectViewType={selectViewType}
+          setSelectViewType={setSelectViewType}
         />
         {items.map((item) => (
           <HBox

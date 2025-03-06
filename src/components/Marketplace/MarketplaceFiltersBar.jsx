@@ -7,13 +7,16 @@ import {
   HTitle,
 } from "../../HocComponents";
 import { NavbarItem } from "./marketplce.styled";
-import { TbFilter, TbX } from "react-icons/tb";
+import { TbFilter, TbList, TbX } from "react-icons/tb";
+import { MdOutlineGridView } from "react-icons/md";
 
 const MarketplaceFiltersBar = ({
   categorySelected,
   setCategorySelected,
   subCategorySelected,
   setSubCategorySelected,
+  setSelectViewType,
+  selectViewType,
 }) => {
   return (
     <HBox
@@ -23,14 +26,38 @@ const MarketplaceFiltersBar = ({
       overflowX="auto"
       overflowY="hidden"
       gap="0"
-      justify="space-between"
       align="flex-start"
       direction="column"
     >
-      <HBox width="100%">
+      <HBox width="100%" justify="space-between">
         <HSearchInput />
-        <HPagination margin="0" />
+
+        <HBox>
+          <HPagination margin="0" />
+          <HBox style={{ zIndex: 9999 }}>
+            {selectViewType === "list" ? (
+              <HButton
+                margin="0 10px 0 0"
+                padding="5px"
+                onClick={() => setSelectViewType("grid")}
+              >
+                <TbList size={30} />
+              </HButton>
+            ) : (
+              <HButton
+                margin="0 10px 0 0"
+                padding="5px"
+                onClick={() => setSelectViewType("list")}
+              >
+                <MdOutlineGridView size={30} />
+              </HButton>
+            )}
+          </HBox>
+        </HBox>
       </HBox>
+
+      {/* FILTERS */}
+
       <HBox width="100%" gap="10px" margin="20px 0 0 0" justify="flex-start">
         {categorySelected !== "All" && (
           <>
@@ -41,6 +68,7 @@ const MarketplaceFiltersBar = ({
           </>
         )}
       </HBox>
+
       <HBox width="100%" gap="10px" margin="20px 0 0 0" justify="flex-start">
         {categorySelected !== "All" && (
           <>
