@@ -5,7 +5,7 @@ const MarketplaceItem = ({ selectViewType, item }) => {
   return (
     <HBox
       key={item.id}
-      direction="column"
+      direction={selectViewType === "grid" ? "column" : "row"}
       align="center"
       padding="20px"
       borderRadius="15px"
@@ -14,12 +14,21 @@ const MarketplaceItem = ({ selectViewType, item }) => {
       boxShadow="0 4px 8px rgba(0, 0, 0, 0.1)"
       transition="transform 0.2s"
       hoverTransform="scale(1.05)"
+      width={selectViewType === "grid" ? "200px" : "100%"}
+      height={selectViewType === "grid" ? "300px" : "50px"}
     >
-      <img
-        src={item.image}
-        alt={item.name}
-        style={{ borderRadius: "10px", width: "100%", height: "auto" }}
-      />
+      <HBox>
+        <img
+          src={item.image}
+          alt={item.name}
+          style={{
+            borderRadius: "10px",
+            width: "100%",
+            height: "auto",
+            objectFit: "cover",
+          }}
+        />
+      </HBox>
       <HTitle fontSize="24px" fontWeight="bold">
         {item.name}
       </HTitle>

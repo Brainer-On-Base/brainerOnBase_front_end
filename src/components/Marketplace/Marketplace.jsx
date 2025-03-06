@@ -10,49 +10,61 @@ const items = [
     name: "Golden Throne",
     category: "Furniture & Decoration",
     price: 500,
-    image: "placeholder.jpg",
+    owner: "John Doe",
+    image: "./commonBrainer.png",
   },
   {
     id: 2,
     name: "Mystic Cape",
     category: "Clothing & Accessories",
     price: 300,
-    image: "placeholder.jpg",
+    owner: "John Doe",
+    image: "./commonBrainer.png",
   },
   {
     id: 3,
     name: "Cyber Dog",
     category: "Pets & Accessories",
     price: 800,
-    image: "placeholder.jpg",
+    owner: "John Doe",
+
+    image: "./commonBrainer.png",
   },
   {
     id: 4,
     name: "Energy Drink",
     category: "Food & Drinks",
     price: 50,
-    image: "placeholder.jpg",
+    owner: "John Doe",
+
+    image: "./commonBrainer.png",
   },
   {
     id: 5,
     name: "Teleport Crystal",
     category: "Special & Functional Items",
     price: 1000,
-    image: "placeholder.jpg",
+    owner: "John Doe",
+
+    image: "./commonBrainer.png",
   },
   {
     id: 6,
     name: "Rare Collectible Coin",
     category: "Collectibles & Exclusives",
     price: 2000,
-    image: "placeholder.jpg",
+    owner: "John Doe",
+
+    image: "./commonBrainer.png",
   },
   {
     id: 7,
     name: "Speed Boost",
     category: "Boosts & Power-ups",
     price: 150,
-    image: "placeholder.jpg",
+    owner: "John Doe",
+
+    image: "./commonBrainer.png",
   },
 ];
 
