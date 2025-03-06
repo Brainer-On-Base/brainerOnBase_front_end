@@ -7,7 +7,7 @@ const MarketplaceItem = ({ selectViewType, item }) => {
       key={item.id}
       direction={selectViewType === "grid" ? "column" : "row"}
       align="center"
-      padding="30px"
+      padding="20px"
       borderRadius="15px"
       gap="15px"
       background={"shadeViolet"}
@@ -16,25 +16,24 @@ const MarketplaceItem = ({ selectViewType, item }) => {
       justify="flex-start"
       hoverTransform="scale(1.05)"
       width={selectViewType === "grid" ? "250px" : "100%"}
-      height={selectViewType === "grid" ? "400px" : "50px"}
+      height={selectViewType === "grid" ? "450px" : "50px"}
     >
+      <HTitle
+        fontSize="20px"
+        fontWeight="bold"
+        color={"goldColor"}
+        textAlign={"center"}
+      >
+        {item.name}
+      </HTitle>
       <HBox
         boxShadow={"0 4px 8px rgba(0, 0, 0, 0.1)"}
         borderRadius="10px"
         width="100%"
-        height="200px"
+        height="auto"
         overflow="hidden"
         direction="column"
-        padding="20px"
       >
-        <HTitle
-          fontSize="24px"
-          fontWeight="bold"
-          color={"goldColor"}
-          textAlign={"center"}
-        >
-          {item.name}
-        </HTitle>
         <img
           src={item.image}
           alt={item.name}
@@ -60,8 +59,8 @@ const MarketplaceItem = ({ selectViewType, item }) => {
         width="100%"
       >
         <HTitle fontSize="18px">Price:</HTitle>
-        <HTitle fontSize="18px" color="gold">
-          ${item.price}
+        <HTitle fontSize="18px" color="gold" useTitleCase={false}>
+          ${item.price} ${item?.eth ?? "0.2 ETH"}
         </HTitle>
       </HBox>
       <HBox>

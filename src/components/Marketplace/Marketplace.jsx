@@ -97,6 +97,7 @@ const Marketplace = () => {
         align="center"
         style={{ zIndex: 999 }}
         overflowX="hidden"
+        padding="20px 5px"
       >
         <MarketplaceFiltersBar
           categorySelected={categorySelected}
