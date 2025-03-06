@@ -9,6 +9,7 @@ import {
 import { NavbarItem } from "./marketplce.styled";
 import { TbFilter, TbList, TbX } from "react-icons/tb";
 import { MdOutlineGridView } from "react-icons/md";
+import { boxSizing } from "@mui/system";
 
 const MarketplaceFiltersBar = ({
   categorySelected,
@@ -23,11 +24,14 @@ const MarketplaceFiltersBar = ({
       width="100%"
       borderRadius="10px"
       height="auto"
-      overflowX="auto"
+      overflowX="hidden"
       overflowY="hidden"
       gap="0"
       align="flex-start"
       direction="column"
+      justify="space-around"
+      padding="20px 20px 0 20px"
+      style={{ boxSizing: "border-box" }}
     >
       <HBox width="100%" justify="space-between">
         <HSearchInput />

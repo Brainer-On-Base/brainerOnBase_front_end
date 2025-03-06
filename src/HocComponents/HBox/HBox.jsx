@@ -19,6 +19,7 @@ const HBox = ({
   overflowX = "visible",
   overflowY = "visible",
   boxShadow,
+  customBorder,
   ...props
 }) => {
   return (
@@ -38,6 +39,7 @@ const HBox = ({
       overflowX={overflowX}
       overflowY={overflowY}
       boxShadow={boxShadow}
+      customBorder={customBorder}
       {...props}
     >
       {children}

@@ -78,11 +78,11 @@ const Marketplace = () => {
       <HBox
         width="75%"
         background={"shadePurpleDark"}
-        padding="20px"
         borderRadius="10px"
         height="100%"
         direction="column"
         style={{ zIndex: 999 }}
+        overflowX="hidden"
       >
         <MarketplaceFiltersBar
           categorySelected={categorySelected}

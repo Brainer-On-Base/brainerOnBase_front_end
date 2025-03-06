@@ -22,7 +22,7 @@ export const HBoxContainer = styled.div`
   overflow-y: ${(props) => props.overflowY ?? "auto"};
   transition: all 0.3s ease;
   box-shadow: ${(props) => props.boxShadow || "none"};
-
+  ${({ customBorder }) => customBorder && `${customBorder};`}
   /* Estilos de la barra de scroll */
   &::-webkit-scrollbar {
     width: 8px; /* Ancho de la barra vertical */
