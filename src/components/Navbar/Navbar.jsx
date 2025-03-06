@@ -10,10 +10,17 @@ import { StyledNavbarContainer } from "../styled-components/container";
 import { Stack } from "@mui/material";
 import ConnectWallet from "../ConnectWallet";
 import NavbarMobile from "./NavbarMobile";
+import { HBox, HButton } from "../../HocComponents";
+import UseContract from "../../hooks/useContract";
 
 function Navbar({}) {
   const location = useLocation();
   const isPlaying = location.pathname === "/game";
+  const isFromSocietyLogic =
+    location.pathname === "/marketplace" ||
+    location.pathname === "/player/profile" ||
+    location.pathname === "/player/inventory";
+  const { isConnected } = UseContract();
 
   const pages = [
     {
@@ -37,10 +44,10 @@ function Navbar({}) {
     //   name: 'SWAP',
     //   navigate: '/home#swap',
     // },
-    {
-      name: "MARKETPLACE",
-      navigate: "/marketplace",
-    },
+    // {
+    //   name: "MARKETPLACE",
+    //   navigate: "/marketplace",
+    // },
     // {
     //   name: 'LAUNCH',
     //   navigate: '/game',
@@ -68,6 +75,44 @@ function Navbar({}) {
 
   return (
     <StyledNavbarContainer position="fixed" scrolled={scrolled}>
+      {isConnected && isFromSocietyLogic && (
+        <HBox
+          width="100%"
+          // background={"shadePurpleDark"}
+          // borderRadius="10px"
+          // height="100%"
+          align="center"
+          justify="flex-end"
+          padding="5px"
+          style={{
+            zIndex: "99999999999999999999999",
+            position: "fixed",
+            top: "80px",
+            right: "20px",
+          }}
+          overflowX="hidden"
+          direction="row"
+        >
+          <HButton
+            style={{ zIndex: 99999 }}
+            onClick={() => navigate("/player/profile")}
+          >
+            PROFILE
+          </HButton>
+          <HButton
+            style={{ zIndex: 99999 }}
+            onClick={() => navigate("/player/inventory")}
+          >
+            INVENTORY
+          </HButton>
+          <HButton
+            style={{ zIndex: 99999 }}
+            onClick={() => navigate("/marketplace")}
+          >
+            MARKETPLACE
+          </HButton>
+        </HBox>
+      )}
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}>

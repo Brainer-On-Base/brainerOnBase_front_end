@@ -3,11 +3,12 @@ import { StyledAppContainer } from "../components/styled-components/container";
 import Navbar from "../components/Navbar/Navbar";
 import { View } from "@react-three/drei";
 import NightBackground from "../components/NIghtBackground";
-import { HBox } from "../HocComponents";
+import { HBox, HButton } from "../HocComponents";
 import GenericTitle from "../components/GenericTitle/GenericTitle";
 import Footer from "../components/Footer";
 import Marketplace from "../components/Marketplace/Marketplace";
 import UseContract from "../hooks/useContract";
+import zIndex from "@mui/material/styles/zIndex";
 
 const BrainerOnBaseMarketplace = () => {
   const { account, isConnected } = UseContract();
@@ -15,6 +16,7 @@ const BrainerOnBaseMarketplace = () => {
   return (
     <StyledAppContainer>
       <Navbar />
+
       <View
         style={{
           width: "100%",
@@ -26,12 +28,13 @@ const BrainerOnBaseMarketplace = () => {
       >
         <NightBackground />
       </View>
-      <HBox direction="column" justify="flex-start" height="auto" width="90%">
+      <HBox direction="column" justify="flex-start" height="auto" width="95%">
         <GenericTitle
           title="Marketplace"
           // subtitle="Buy or sell your NFTs"
           // subtitleFontSize={"40px"}
         />
+
         <Marketplace />
       </HBox>
       <Footer />

@@ -86,7 +86,7 @@ const MarketplaceNavbar = ({
       height="100%"
       gap="0"
       overflowX="hidden"
-      style={{ zIndex: 999 }}
+      style={{ zIndex: 999, flexGrow: 1 }}
     >
       {CATEGORIES.map((category) => (
         <NavbarContainer

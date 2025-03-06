@@ -6,9 +6,11 @@ import {
   faBoxOpen,
   faUserCircle,
   faSignOutAlt,
+  faShop,
 } from "@fortawesome/free-solid-svg-icons"; // Iconos adicionales
 import UseContract from "../hooks/useContract";
 import { useNavigate } from "react-router-dom";
+import zIndex from "@mui/material/styles/zIndex";
 
 const ConnectWallet = () => {
   const {
@@ -58,6 +60,13 @@ const ConnectWallet = () => {
               <FontAwesomeIcon icon={faBoxOpen} style={styles.menuItemIcon} />
               Inventory
             </div>
+            <div
+              style={styles.menuItem}
+              onClick={() => navigate("/marketplace")}
+            >
+              <FontAwesomeIcon icon={faShop} style={styles.menuItemIcon} />
+              Marketplace
+            </div>
 
             <div style={styles.menuItem} onClick={disconnectWallet}>
               <FontAwesomeIcon
@@ -91,6 +100,7 @@ const styles = {
     cursor: "pointer",
     transition: "background-color 0.3s, transform 0.3s",
     marginLeft: "10px",
+    zIndex: "9999999999999999",
   },
   walletIcon: {
     marginRight: "8px",
