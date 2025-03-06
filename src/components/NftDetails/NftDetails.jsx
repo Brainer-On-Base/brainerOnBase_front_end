@@ -6,12 +6,10 @@ import {
   ArrowLeft,
   ArrowRight,
   CloseIcon,
-  NFTCardContainer,
   NFTDetailsModal,
-  TraitContainer,
-  TraitTag,
 } from "./NftDetailes.styled";
 import { HButton } from "../../HocComponents";
+import NFTCard from "../NFTCard/NFTCard";
 
 export const FloatAnimation = styled.div`
   z-index: 999999999;
@@ -53,29 +51,16 @@ const NftDetails = ({
     );
   };
   const handleNavigate = async (type) => {
-    const numberNftSelected = nftSelected.name.match(/#(\d+)/);
-    const selectedNumber = numberNftSelected
-      ? parseInt(numberNftSelected[1], 10)
-      : null;
-
-    let actualIndex = mintedNftList.findIndex((nft) => {
-      const match = nft.uri.match(/\/(\d+)\.json$/);
-      const nftNumber = match ? parseInt(match[1], 10) : null;
-      return nftNumber === selectedNumber;
-    });
+    let actualIndex = mintedNftList.findIndex(
+      (nft) => nft.name === nftSelected.name
+    );
 
     if (type === "+" && actualIndex < mintedNftList.length - 1) {
       actualIndex = actualIndex + 1;
     } else if (type === "-" && actualIndex > 0) {
       actualIndex = actualIndex - 1;
     }
-    const nextNftObject = mintedNftList[actualIndex];
-    const nextNftLoaded = await getIPFSInfo(nextNftObject.uri);
-    if (nextNftLoaded) {
-      setNftSelected(nextNftLoaded);
-    } else {
-      console.warn(`NFT con tokenId ${actualIndex} no encontrado.`);
-    }
+    setNftSelected(mintedNftList[actualIndex]);
   };
   return (
     <NFTDetailsModal>
@@ -84,25 +69,7 @@ const NftDetails = ({
       </HButton>
       <ArrowLeft onClick={() => handleNavigate("-")} />
       <FloatAnimation>
-        <NFTCardContainer background={backgroundColor}>
-          <div className="card-container">
-            <h2>{nftSelected?.name}</h2>
-            <img
-              src={nftSelected?.image}
-              alt="NFT image"
-              style={{ zIndex: 99999 }}
-            />
-            <TraitContainer>
-              {nftSelected?.attributes.map((attr, index) => (
-                <TraitTag key={index}>
-                  <p>
-                    <strong>{attr.trait_type}:</strong> {attr.value}
-                  </p>
-                </TraitTag>
-              ))}
-            </TraitContainer>
-          </div>
-        </NFTCardContainer>
+        <NFTCard nftSelected={nftSelected} />
       </FloatAnimation>
       <ArrowRight onClick={() => handleNavigate("+")} />
     </NFTDetailsModal>
