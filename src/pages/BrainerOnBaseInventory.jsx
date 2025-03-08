@@ -8,6 +8,7 @@ import AccountContext from "../provider/AccountProvider/AccountContext";
 import { HBox } from "../HocComponents";
 import GenericTitle from "../components/GenericTitle/GenericTitle";
 import Footer from "../components/Footer";
+import Inventory from "../components/Inventory/Inventory";
 
 const BrainerOnBaseInventory = () => {
   const { account, setAccount, web3provider, setWeb3Provider, isConnected } =
@@ -48,6 +49,7 @@ const BrainerOnBaseInventory = () => {
           // subtitle="Buy or sell your NFTs"
           // subtitleFontSize={"40px"}
         />
+        <Inventory />
       </HBox>
       <Footer />
     </StyledAppContainer>
