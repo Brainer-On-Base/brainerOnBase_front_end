@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { HBox } from "../../../HocComponents";
-import { NavbarInventory } from "./NavbarInventory";
-import OnSale from "./OnSale";
-import SellToDao from "./SellToDao";
-import MyInventory from "./MyInventory";
+import { NavbarHub } from "./NavbarHub";
+import OnSale from "./HubOnSale";
+import SellToDao from "./HubSellToDao";
+import MyInventory from "./HubInventory";
+import HubWallet from "./HubWallet";
+import HubCharacter from "./HubCharacter";
+import HubNotifications from "./HubNotifications";
 
-// 🔥 INVENTORY
-const Inventory = () => {
+// 🔥 PLAYER HUB
+const PlayerHub = () => {
   const [currentView, setView] = useState("inventory");
 
   const renderContent = () => {
@@ -18,6 +20,12 @@ const Inventory = () => {
         return <OnSale />;
       case "sellDao":
         return <SellToDao />;
+      case "notifications":
+        return <HubNotifications />;
+      case "character":
+        return <HubCharacter />;
+      case "wallet":
+        return <HubWallet />;
       default:
         return null;
     }
@@ -33,7 +41,7 @@ const Inventory = () => {
       style={{ zIndex: 999, minHeight: "90vh" }}
       overflowX="hidden"
     >
-      <NavbarInventory currentView={currentView} setView={setView} />
+      <NavbarHub currentView={currentView} setView={setView} />
 
       <HBox
         background={"shadePurpleDark"}
@@ -50,4 +58,4 @@ const Inventory = () => {
   );
 };
 
-export default Inventory;
+export default PlayerHub;

@@ -1,7 +1,7 @@
 import React from "react";
 import { HBox } from "../../../HocComponents";
 import { NavbarContainer, NavbarSubItem } from "./marketplce.styled";
-import { SidebarButton } from "../inventory/NavbarInventory";
+import { SidebarButton } from "../playerHub/NavbarHub";
 
 const CATEGORIES = [
   "Furniture & Decoration",

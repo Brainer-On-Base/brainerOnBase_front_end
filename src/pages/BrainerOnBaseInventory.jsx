@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AccountContext from "../provider/AccountProvider/AccountContext";
-import Inventory from "../components/society/inventory/Inventory";
+import Inventory from "../components/society/playerHub/PlayyerHub";
 import AppLayout from "../components/AppLayout/AppLayout";
 
 const BrainerOnBaseInventory = () => {
@@ -23,11 +23,7 @@ const BrainerOnBaseInventory = () => {
     };
   }, []);
 
-  return (
-    <AppLayout title="INVENTORY">
-      <Inventory />
-    </AppLayout>
-  );
+  return <AppLayout title="INVENTORY"></AppLayout>;
 };
 
 export default BrainerOnBaseInventory;

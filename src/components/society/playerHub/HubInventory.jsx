@@ -56,7 +56,7 @@ const EmptySlot = styled(Slot)`
   color: #aaa;
   font-style: italic;
 `;
-const MyInventory = () => {
+const HubInventory = () => {
   return (
     <InventoryGrid>
       {Array.from({ length: totalSlots }).map((_, index) => {
@@ -77,4 +77,4 @@ const MyInventory = () => {
   );
 };
 
-export default MyInventory;
+export default HubInventory;

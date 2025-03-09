@@ -1,7 +1,7 @@
 import React from "react";
 import { HBox } from "../../../HocComponents";
 
-const SellToDao = () => {
+const HubSellToDao = () => {
   return (
     <HBox
       width="100%"
@@ -22,4 +22,4 @@ const SellToDao = () => {
   );
 };
 
-export default SellToDao;
+export default HubSellToDao;

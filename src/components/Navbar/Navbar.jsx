@@ -10,12 +10,12 @@ import { StyledNavbarContainer } from "../styled-components/container";
 import { Stack } from "@mui/material";
 import ConnectWallet from "../ConnectWallet";
 import NavbarMobile from "./NavbarMobile";
-import { HBox, HButton } from "../../HocComponents";
 import UseContract from "../../hooks/useContract";
 
 function Navbar({}) {
   const location = useLocation();
   const isPlaying = location.pathname === "/game";
+  const { isConnected } = UseContract();
 
   const pages = [
     {
@@ -35,14 +35,14 @@ function Navbar({}) {
     //   name: 'TOKENOMICS',
     //   navigate: '/home#tokenomics',
     // },
-    // {
-    //   name: 'SWAP',
-    //   navigate: '/home#swap',
-    // },
-    // {
-    //   name: "MARKETPLACE",
-    //   navigate: "/marketplace",
-    // },
+    {
+      name: "MARKETPLACE",
+      navigate: "/marketplace",
+    },
+    isConnected && {
+      name: "HUB",
+      navigate: "/playerHub",
+    },
     // {
     //   name: 'LAUNCH',
     //   navigate: '/game',

@@ -4,20 +4,16 @@ import App from "../pages/App";
 import BrainerOnBaseMarketplace from "../pages/BrainerOnBaseMarketplace";
 import BrainerOnBaseMain from "../pages/BrainerOnBaseGame";
 import NftCollectionList from "../pages/NftCollectionList";
-import BrainerOnBaseInventory from "../pages/BrainerOnBaseInventory";
-import BrainerOnBaseProfile from "../pages/BrainerOnBaseProfile";
-import BrainerOnBaseSociety from "../pages/BrainerOnBaseSociety";
+import BrainerOnBasePlayerHub from "../pages/BrainerOnBasePlayerHub";
 
 const Routes = () => {
   return (
     <ReactRoutes>
       <Route path="/home" element={<Home />} />
-      <Route path="/society" element={<BrainerOnBaseSociety />} />
+      <Route path="/playerHub" element={<BrainerOnBasePlayerHub />} />
       <Route path={"/game"} element={<BrainerOnBaseMain />} />
       <Route path={"/marketplace"} element={<BrainerOnBaseMarketplace />} />
       <Route path={"/nft-list"} element={<NftCollectionList />} />
-      <Route path={"/profile"} element={<BrainerOnBaseProfile />} />
-      <Route path={"/inventory"} element={<BrainerOnBaseInventory />} />
       <Route path={"/"} element={<App />} />
     </ReactRoutes>
   );
