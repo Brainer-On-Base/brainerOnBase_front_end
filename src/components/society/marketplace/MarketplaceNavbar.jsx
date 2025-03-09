@@ -5,6 +5,8 @@ import {
   NavbarItem,
   NavbarSubItem,
 } from "./marketplce.styled";
+import { SidebarButton } from "../inventory/NavbarInventory";
+import zIndex from "@mui/material/styles/zIndex";
 
 const CATEGORIES = [
   "Furniture & Decoration",
@@ -81,12 +83,12 @@ const MarketplaceNavbar = ({
     <HBox
       background={"shadePurpleDark"}
       direction="column"
-      borderRadius="0.5em"
       width="20%"
       height="100%"
-      gap="0"
-      overflowX="hidden"
-      style={{ zIndex: 999, flexGrow: 1 }}
+      style={{ minHeight: "70vh", zIndex: 9999 }}
+      borderRadius="10px"
+      justify="flex-start"
+      padding="20px 10px"
     >
       {CATEGORIES.map((category) => (
         <NavbarContainer
@@ -94,20 +96,17 @@ const MarketplaceNavbar = ({
           width={"100%"}
           direction="column"
           selected={categorySelected === category}
-          gap="0"
+          gap="15px"
+          borderRadius="10px 10px 0 0"
         >
-          <NavbarItem
+          <SidebarButton
             width={"100%"}
-            padding={"10px 10px 5px 20px"}
-            fontSize="22px"
-            fontWeight="bold"
-            textAlign={"left"}
             useTitleCase={true}
-            selected={categorySelected === category}
+            active={categorySelected === category}
             onClick={() => setCategorySelected(category)}
           >
             {category}
-          </NavbarItem>
+          </SidebarButton>
           {categorySelected === category &&
             CATEGORIES_OPTIONS[category].map((subCategory) => (
               <NavbarSubItem

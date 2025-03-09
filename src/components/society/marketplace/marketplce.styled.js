@@ -2,8 +2,7 @@ import styled from "styled-components";
 import { HBox, HTitle } from "../../../HocComponents";
 
 export const NavbarContainer = styled(HBox)`
-  background: ${(props) =>
-    props.selected && props.theme.shadePurpleMedium} !important;
+  background: ${(props) => props.selected && "#783af463"} !important;
 `;
 
 export const NavbarItem = styled(HTitle)`
