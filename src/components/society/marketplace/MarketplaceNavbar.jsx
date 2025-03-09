@@ -98,7 +98,13 @@ const MarketplaceNavbar = ({
             width={"100%"}
             useTitleCase={true}
             active={categorySelected === category}
-            onClick={() => setCategorySelected(category)}
+            onClick={() => {
+              if (categorySelected === category) {
+                setCategorySelected("All");
+              } else {
+                setCategorySelected(category);
+              }
+            }}
           >
             {category}
           </SidebarButton>
@@ -112,7 +118,13 @@ const MarketplaceNavbar = ({
                 fontWeight="normal"
                 textAlign={"left"}
                 selected={subCategorySelected === subCategory}
-                onClick={() => setSubCategorySelected(subCategory)}
+                onClick={() => {
+                  if (subCategorySelected === subCategory) {
+                    setSubCategorySelected("All");
+                  } else {
+                    setSubCategorySelected(subCategory);
+                  }
+                }}
                 useTitleCase={false}
               >
                 {subCategory}
