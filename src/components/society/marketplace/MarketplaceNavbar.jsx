@@ -1,12 +1,7 @@
 import React from "react";
 import { HBox } from "../../../HocComponents";
-import {
-  NavbarContainer,
-  NavbarItem,
-  NavbarSubItem,
-} from "./marketplce.styled";
+import { NavbarContainer, NavbarSubItem } from "./marketplce.styled";
 import { SidebarButton } from "../inventory/NavbarInventory";
-import zIndex from "@mui/material/styles/zIndex";
 
 const CATEGORIES = [
   "Furniture & Decoration",
@@ -97,7 +92,7 @@ const MarketplaceNavbar = ({
           direction="column"
           selected={categorySelected === category}
           gap="15px"
-          borderRadius="10px 10px 0 0"
+          borderRadius="10px"
         >
           <SidebarButton
             width={"100%"}
@@ -112,7 +107,7 @@ const MarketplaceNavbar = ({
               <NavbarSubItem
                 key={subCategory}
                 width={"100%"}
-                padding={"2px 0 2px 60px"}
+                padding={"2px 0 2px 40px"}
                 fontSize="18px"
                 fontWeight="normal"
                 textAlign={"left"}

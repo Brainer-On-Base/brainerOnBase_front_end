@@ -77,6 +77,9 @@ const Marketplace = () => {
     if (categorySelected === "All") {
       setSubCategorySelected("All");
     }
+    if (categorySelected !== "All" && subCategorySelected !== "All") {
+      setSubCategorySelected("All");
+    }
   }, [categorySelected]);
 
   return (

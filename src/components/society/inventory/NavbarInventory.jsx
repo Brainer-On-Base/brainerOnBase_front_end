@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { HBox, HButton } from "../../../HocComponents";
-import { maxHeight, minHeight } from "@mui/system";
 
 export const SidebarButton = styled(HButton)`
   background: ${({ active }) => (active ? "#7d3cff" : "#2d0d56")};
@@ -14,12 +13,12 @@ export const SidebarButton = styled(HButton)`
   justify-content: flex-start;
   width: 100%;
   font-size: 20px;
-  border: 1px solid transparent !important;
+  border: ${({ active }) =>
+    active ? "1px solid white" : "1px solid transparent "}!important;
 
   &:hover {
     border: 1px solid white !important;
-    /* background: #7d3cff; */
-    transform: translateX(5px);
+    ${({ active }) => !active && "transform: translateX(5px)"};
   }
 `;
 
