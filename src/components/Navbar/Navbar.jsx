@@ -16,11 +16,6 @@ import UseContract from "../../hooks/useContract";
 function Navbar({}) {
   const location = useLocation();
   const isPlaying = location.pathname === "/game";
-  const isFromSocietyLogic =
-    location.pathname === "/marketplace" ||
-    location.pathname === "/profile" ||
-    location.pathname === "/inventory";
-  const { isConnected } = UseContract();
 
   const pages = [
     {
@@ -75,44 +70,6 @@ function Navbar({}) {
 
   return (
     <StyledNavbarContainer position="fixed" scrolled={scrolled}>
-      {isConnected && isFromSocietyLogic && (
-        <HBox
-          width="100%"
-          // background={"shadePurpleDark"}
-          // borderRadius="10px"
-          // height="100%"
-          align="center"
-          justify="flex-end"
-          padding="5px"
-          style={{
-            zIndex: "99999999999999999999999",
-            position: "fixed",
-            top: "80px",
-            right: "20px",
-          }}
-          overflowX="hidden"
-          direction="row"
-        >
-          <HButton
-            style={{ zIndex: 99999 }}
-            onClick={() => navigate("/profile")}
-          >
-            PROFILE
-          </HButton>
-          <HButton
-            style={{ zIndex: 99999 }}
-            onClick={() => navigate("/inventory")}
-          >
-            INVENTORY
-          </HButton>
-          <HButton
-            style={{ zIndex: 99999 }}
-            onClick={() => navigate("/marketplace")}
-          >
-            MARKETPLACE
-          </HButton>
-        </HBox>
-      )}
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
