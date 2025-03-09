@@ -13,19 +13,18 @@ export const Button = styled.button`
   width: ${({ width }) => width || "auto"};
   height: ${({ height }) => height || "auto"};
   border-radius: ${({ borderRadius }) => borderRadius || "8px"};
-  border: none;
   outline: none;
   transition: all 0.3s ease;
   padding: ${({ padding }) => padding ?? "10px"};
   text-transform: uppercase;
   margin: ${({ margin }) => margin || "0"};
   cursor: pointer;
-  border: 1px solid transparent;
+  border: ${({ border }) => border ?? "1px solid transparent"};
   font-family: "Luckiest Guy", cursive;
 
   &:hover {
     transition: all 0.3s ease;
     border: ${({ border, theme }) =>
-      border || "1px solid" + theme.buttonBorderHover};
+      border || "1px solid" + theme.buttonBorderHover} !important;
   }
 `;
