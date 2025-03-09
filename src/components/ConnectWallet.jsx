@@ -42,7 +42,7 @@ const ConnectWallet = () => {
               transition: "max-height 0.3s ease, opacity 0.3s ease",
             }}
           >
-            <div style={styles.menuItem} onClick={() => navigate("/profile")}>
+            {/* <div style={styles.menuItem} onClick={() => navigate("/profile")}>
               <FontAwesomeIcon
                 icon={faUserCircle}
                 style={styles.menuItemIcon}
@@ -59,7 +59,7 @@ const ConnectWallet = () => {
             >
               <FontAwesomeIcon icon={faShop} style={styles.menuItemIcon} />
               Marketplace
-            </div>
+            </div> */}
 
             <div style={styles.menuItem} onClick={disconnectWallet}>
               <FontAwesomeIcon
