@@ -1,6 +1,5 @@
 import React from "react";
-import { HBox } from "../../HocComponents";
-import { minHeight } from "@mui/system";
+import { HBox } from "../../../HocComponents";
 
 const Inventory = () => {
   return (
