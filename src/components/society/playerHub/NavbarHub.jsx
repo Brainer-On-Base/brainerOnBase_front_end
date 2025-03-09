@@ -1,9 +1,17 @@
 import styled from "styled-components";
-import { HBox, HButton } from "../../../HocComponents";
+import { HBox, HButton, HTitle } from "../../../HocComponents";
+import { GiOpenTreasureChest } from "react-icons/gi";
+import { TbWallet } from "react-icons/tb";
+import { MdOutlineSell } from "react-icons/md";
+import { IoLogInOutline, IoNotificationsOutline } from "react-icons/io5";
+import { TbBrandCashapp } from "react-icons/tb";
+import { FiUser } from "react-icons/fi";
+import { PiTreasureChest } from "react-icons/pi";
 
 // 👉 StyledComponent para los botones del sidebar
 export const SidebarButton = styled(HButton)`
   background: ${({ active }) => (active ? "#7d3cff" : "#2d0d56")};
+  display: flex;
   color: #fff;
   border: none;
   padding: 12px;
@@ -12,6 +20,8 @@ export const SidebarButton = styled(HButton)`
   cursor: pointer;
   transition: all 0.3s ease;
   justify-content: flex-start;
+  align-items: center !important;
+  height: 100%;
   width: 100%;
   font-size: 20px;
   border: ${({ active }) =>
@@ -25,14 +35,82 @@ export const SidebarButton = styled(HButton)`
 
 // 👉 Datos para render dinámico
 const navItems = [
-  { key: "character", label: "🧍 Mi Personaje" },
-  { key: "inventory", label: "🎒 Inventario" },
-  { key: "notifications", label: " Notifications" },
-  { key: "onSale", label: "🛒 En Venta" },
-  { key: "sellDao", label: "🏦 Vender al DAO" },
+  {
+    key: "character",
+    label: (
+      <>
+        <FiUser size={30} style={{ marginRight: "8px" }} />
+        <HTitle fontSize="22px" align="center">
+          Character
+        </HTitle>
+      </>
+    ),
+  },
+  {
+    key: "inventory",
+    label: (
+      <>
+        <PiTreasureChest size={30} style={{ marginRight: "8px" }} />
+        <HTitle fontSize="22px" align="center">
+          Inventory
+        </HTitle>
+      </>
+    ),
+  },
+  {
+    key: "notifications",
+    label: (
+      <>
+        <IoNotificationsOutline size={30} style={{ marginRight: "8px" }} />
+        <HTitle fontSize="22px" align="center">
+          Notifications
+        </HTitle>
+      </>
+    ),
+  },
+  {
+    key: "onSale",
+    label: (
+      <>
+        <MdOutlineSell size={30} style={{ marginRight: "8px" }} />
+        <HTitle fontSize="22px" align="center">
+          On sale
+        </HTitle>
+      </>
+    ),
+  },
+  {
+    key: "sellDao",
+    label: (
+      <>
+        <TbBrandCashapp size={30} style={{ marginRight: "8px" }} />
+        <HTitle fontSize="22px" align="center">
+          Sell to DAO
+        </HTitle>
+      </>
+    ),
+  },
   // { key: "personalData", label: "📋 Datos Personales" },
-  { key: "wallet", label: "👛 Mi Wallet" },
-  { key: "logout", label: "🚪 Cerrar Sesión" },
+  {
+    key: "wallet",
+    label: (
+      <>
+        <TbWallet size={30} style={{ marginRight: "8px" }} />
+        <HTitle fontSize="22px" align="center">
+          MY WALLET
+        </HTitle>
+      </>
+    ),
+  },
+  {
+    key: "logout",
+    label: (
+      <>
+        <IoLogInOutline size={30} style={{ marginRight: "8px" }} />
+        <HTitle fontSize="22px">SIGN OUT</HTitle>
+      </>
+    ),
+  },
   // Futuro:
   // { key: "craft", label: "⚒️ Craftear" },
 ];

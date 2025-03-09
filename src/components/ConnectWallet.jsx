@@ -10,6 +10,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons"; // Iconos adicionales
 import UseContract from "../hooks/useContract";
 import { useNavigate } from "react-router-dom";
+import { TbWallet } from "react-icons/tb";
+import { IoLogInOutline } from "react-icons/io5";
 
 const ConnectWallet = () => {
   const {
@@ -28,7 +30,7 @@ const ConnectWallet = () => {
     <>
       {account ? (
         <div style={styles.accountContainer} onClick={toggleUserMenu}>
-          <FontAwesomeIcon icon={faWallet} style={styles.walletIcon} />
+          <TbWallet size={30} style={styles.walletIcon} />
           <span style={styles.accountText}>
             {`${account.substring(0, 6)}...${account.substring(
               account.length - 4
@@ -62,10 +64,7 @@ const ConnectWallet = () => {
             </div> */}
 
             <div style={styles.menuItem} onClick={disconnectWallet}>
-              <FontAwesomeIcon
-                icon={faSignOutAlt}
-                style={styles.menuItemIcon}
-              />
+              <IoLogInOutline size={30} style={styles.menuItemIcon} />
               Disconnect
             </div>
           </div>

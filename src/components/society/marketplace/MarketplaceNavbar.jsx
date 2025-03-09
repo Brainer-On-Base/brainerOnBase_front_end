@@ -4,6 +4,7 @@ import { NavbarContainer, NavbarSubItem } from "./marketplce.styled";
 import { SidebarButton } from "../playerHub/NavbarHub";
 
 const CATEGORIES = [
+  "All",
   "Furniture & Decoration",
   "Clothing & Accessories",
   "Human Pets",
@@ -12,10 +13,11 @@ const CATEGORIES = [
   "Collectibles & Exclusives",
   "Boosts & Power-ups",
   "Pixel Brainer NFTs",
-  "All",
 ];
 
 const CATEGORIES_OPTIONS = {
+  All: [],
+
   "Furniture & Decoration": [
     "Chairs",
     "Sofas",
@@ -65,7 +67,6 @@ const CATEGORIES_OPTIONS = {
     "Mythical",
     "Unique",
   ],
-  All: [],
 };
 
 const MarketplaceNavbar = ({
