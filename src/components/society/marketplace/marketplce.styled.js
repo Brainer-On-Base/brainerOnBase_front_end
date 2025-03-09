@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { HBox, HTitle } from "../../HocComponents";
+import { HBox, HTitle } from "../../../HocComponents";
 
 export const NavbarContainer = styled(HBox)`
   background: ${(props) =>

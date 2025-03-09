@@ -9,6 +9,7 @@ import { HBox } from "../HocComponents";
 import GenericTitle from "../components/GenericTitle/GenericTitle";
 import Footer from "../components/Footer";
 import Inventory from "../components/Inventory/Inventory";
+import AppLayout from "../components/AppLayout/AppLayout";
 
 const BrainerOnBaseInventory = () => {
   const { account, setAccount, web3provider, setWeb3Provider, isConnected } =
@@ -30,29 +31,9 @@ const BrainerOnBaseInventory = () => {
   }, []);
 
   return (
-    <StyledAppContainer>
-      <Navbar />
-      <View
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "absolute",
-          top: 0,
-          bottom: 0,
-        }}
-      >
-        <NightBackground />
-      </View>
-      <HBox direction="column" justify="flex-start" height="auto" width="95%">
-        <GenericTitle
-          title="INVENTORY"
-          // subtitle="Buy or sell your NFTs"
-          // subtitleFontSize={"40px"}
-        />
-        <Inventory />
-      </HBox>
-      <Footer />
-    </StyledAppContainer>
+    <AppLayout title="INVENTORY">
+      <Inventory />
+    </AppLayout>
   );
 };
 

@@ -6,39 +6,18 @@ import NightBackground from "../components/NIghtBackground";
 import { HBox, HButton } from "../HocComponents";
 import GenericTitle from "../components/GenericTitle/GenericTitle";
 import Footer from "../components/Footer";
-import Marketplace from "../components/Marketplace/Marketplace";
+import Marketplace from "../components/society/marketplace/Marketplace";
 import UseContract from "../hooks/useContract";
 import zIndex from "@mui/material/styles/zIndex";
+import AppLayout from "../components/AppLayout/AppLayout";
 
 const BrainerOnBaseMarketplace = () => {
   const { account, isConnected } = UseContract();
 
   return (
-    <StyledAppContainer>
-      <Navbar />
-
-      <View
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "absolute",
-          top: 0,
-          bottom: 0,
-        }}
-      >
-        <NightBackground />
-      </View>
-      <HBox direction="column" justify="flex-start" height="auto" width="95%">
-        <GenericTitle
-          title="Marketplace"
-          // subtitle="Buy or sell your NFTs"
-          // subtitleFontSize={"40px"}
-        />
-
-        <Marketplace />
-      </HBox>
-      <Footer />
-    </StyledAppContainer>
+    <AppLayout title={"Marketplace"}>
+      <Marketplace />
+    </AppLayout>
   );
 };
 

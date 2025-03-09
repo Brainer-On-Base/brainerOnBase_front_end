@@ -5,7 +5,7 @@ import {
   HPagination,
   HSearchInput,
   HTitle,
-} from "../../HocComponents";
+} from "../../../HocComponents";
 import { NavbarItem } from "./marketplce.styled";
 import { TbFilter, TbList, TbX } from "react-icons/tb";
 import { MdOutlineGridView } from "react-icons/md";

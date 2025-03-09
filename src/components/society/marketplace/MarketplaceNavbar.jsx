@@ -1,5 +1,5 @@
 import React from "react";
-import { HBox } from "../../HocComponents";
+import { HBox } from "../../../HocComponents";
 import {
   NavbarContainer,
   NavbarItem,

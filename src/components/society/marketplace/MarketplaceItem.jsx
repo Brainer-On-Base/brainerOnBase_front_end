@@ -1,5 +1,5 @@
 import React from "react";
-import { HBox, HTitle, HButton } from "../../HocComponents";
+import { HBox, HTitle, HButton } from "../../../HocComponents";
 
 const MarketplaceItem = ({ selectViewType, item }) => {
   return (

@@ -13,6 +13,7 @@ import RoadmapSection from "../components/home/RoadmapSection";
 import { StyledLaunchGameButton } from "../components/styled-components/buttons";
 import NFTCollections from "../components/home/NFTCollections";
 import TokenSection from "../components/home/TokenSection";
+import AppLayout from "../components/AppLayout/AppLayout";
 
 export default function Home() {
   const [showHistory, setShowHistory] = useState("/home");
@@ -34,33 +35,22 @@ export default function Home() {
   }, [location]);
 
   return (
-    <StyledAppContainer>
-      <Navbar />
-      <View
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "absolute",
-          top: 0,
-          bottom: 0,
-        }}
-      >
-        <NightBackground />
-      </View>
-      {showHistory === "/home" && <WelcomeSection />}
-      {showHistory === "/home#history" && <HistorySection />}
-      {showHistory === "/home#about" && <AboutSection />}
-      {showHistory === "/home#roadmap" && <RoadmapSection />}
-      <NFTCollections />
+    <AppLayout>
+      <>
+        {showHistory === "/home" && <WelcomeSection />}
+        {showHistory === "/home#history" && <HistorySection />}
+        {showHistory === "/home#about" && <AboutSection />}
+        {showHistory === "/home#roadmap" && <RoadmapSection />}
+        <NFTCollections />
 
-      <TokenSection />
-      <TokenomicsSection />
-      <StyledLaunchGameButton
-        onClick={() => window.open("https://docs.braineronbase.com")}
-      >
-        WHITE PAPER
-      </StyledLaunchGameButton>
-      <Footer />
-    </StyledAppContainer>
+        <TokenSection />
+        <TokenomicsSection />
+        <StyledLaunchGameButton
+          onClick={() => window.open("https://docs.braineronbase.com")}
+        >
+          WHITE PAPER
+        </StyledLaunchGameButton>
+      </>
+    </AppLayout>
   );
 }

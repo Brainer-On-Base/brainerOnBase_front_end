@@ -8,6 +8,7 @@ import AccountContext from "../provider/AccountProvider/AccountContext";
 import GenericTitle from "../components/GenericTitle/GenericTitle";
 import Footer from "../components/Footer";
 import { HBox } from "../HocComponents";
+import AppLayout from "../components/AppLayout/AppLayout";
 
 const BrainerOnBaseProfile = () => {
   const { account, setAccount, web3provider, setWeb3Provider, isConnected } =
@@ -28,30 +29,7 @@ const BrainerOnBaseProfile = () => {
     };
   }, []);
 
-  return (
-    <StyledAppContainer>
-      <Navbar />
-      <View
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "absolute",
-          top: 0,
-          bottom: 0,
-        }}
-      >
-        <NightBackground />
-      </View>
-      <HBox direction="column" justify="flex-start" height="auto" width="95%">
-        <GenericTitle
-          title="PROFILE"
-          // subtitle="Buy or sell your NFTs"
-          // subtitleFontSize={"40px"}
-        />
-      </HBox>
-      <Footer />
-    </StyledAppContainer>
-  );
+  return <AppLayout title="PROFILE"></AppLayout>;
 };
 
 export default BrainerOnBaseProfile;

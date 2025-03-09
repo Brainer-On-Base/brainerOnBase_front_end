@@ -8,11 +8,10 @@ import NightBackground from "../components/NIghtBackground";
 import Navbar from "../components/Navbar/Navbar";
 import UseContract from "../hooks/useContract";
 import { StyledButton } from "../components/styled-components/buttons";
-import Game from "../components/game/Game";
-import { styled } from "@mui/system";
-import SocietyMap from "../components/game/SocietyMap";
-import GameSettings from "../components/game/GameSettings";
-import MainMenu from "../components/game/MainMenu";
+import Game from "../components/society/game/Game";
+import SocietyMap from "../components/society/game/SocietyMap";
+import GameSettings from "../components/society/game/GameSettings";
+import MainMenu from "../components/society/game/MainMenu";
 
 export default function BrainerOnBaseMain() {
   const { isConnected, connectWallet } = UseContract();

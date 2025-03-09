@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { HBox, HButton } from "../../HocComponents";
+import { HBox, HButton } from "../../../HocComponents";
 import MarketplaceNavbar from "./MarketplaceNavbar";
 import MarketplaceFiltersBar from "./MarketplaceFiltersBar";
 import MarketplaceItem from "./MarketplaceItem";
