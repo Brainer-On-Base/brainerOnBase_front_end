@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { HBox, HButton } from "../../../HocComponents";
+import { FiRefreshCcw } from "react-icons/fi";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 const characterTemplate = {
   image:
@@ -73,12 +75,15 @@ const HubCharacter = () => {
                 <ActionButton
                   onClick={() => console.log(`Swap ${attr.trait_type}`)}
                 >
-                  Intercambiar
+                  <FiRefreshCcw style={{ marginRight: "8px" }} />
+                  {attr.value === "Empty" ? "Add" : "change"}
                 </ActionButton>
                 <RemoveButton
+                  disabled={attr.value === "Empty"}
                   onClick={() => console.log(`Remove ${attr.trait_type}`)}
                 >
-                  Quitar
+                  <FaRegTrashAlt style={{ marginRight: "8px" }} />
+                  remove
                 </RemoveButton>
               </ButtonsContainer>
             </TraitCard>
