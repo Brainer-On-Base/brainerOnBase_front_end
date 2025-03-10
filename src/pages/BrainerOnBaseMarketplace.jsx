@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyledAppContainer } from "../components/styled-components/container";
 import Navbar from "../components/Navbar/Navbar";
 import { View } from "@react-three/drei";
@@ -14,8 +14,15 @@ import AppLayout from "../components/AppLayout/AppLayout";
 const BrainerOnBaseMarketplace = () => {
   const { account, isConnected } = UseContract();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const element = document.getElementById("marketplace");
+    console.log(element);
+    element.scrollIntoView({ behavior: "smooth" });
+  }, []);
+
   return (
-    <AppLayout title={"Marketplace"}>
+    <AppLayout title={"Marketplace"} id={"marketplace"}>
       <Marketplace />
     </AppLayout>
   );

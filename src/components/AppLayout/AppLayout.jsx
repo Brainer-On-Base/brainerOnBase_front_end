@@ -7,9 +7,9 @@ import { HBox } from "../../HocComponents";
 import GenericTitle from "../GenericTitle/GenericTitle";
 import Footer from "../Footer";
 
-const AppLayout = ({ title, subtitle, children }) => {
+const AppLayout = ({ title, subtitle, children, id }) => {
   return (
-    <StyledAppContainer>
+    <StyledAppContainer id={id}>
       <Navbar />
 
       <View
