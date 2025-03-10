@@ -131,7 +131,7 @@ export const NavbarHub = ({ currentView, setView }) => {
       width="20%"
       background={"shadePurpleDark"}
       height="100%"
-      style={{ minHeight: "70vh", maxHeight: "90vh" }}
+      style={{ minHeight: "70vh", height: "100%" }}
       borderRadius="10px"
       justify="flex-start"
       padding="20px 10px"
