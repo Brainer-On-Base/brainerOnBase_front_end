@@ -51,6 +51,9 @@ const PlayerHub = () => {
         justify="flex-start"
         align="center"
         padding="20px"
+        style={{ minHeight: "70vh", maxHeight: "70vh" }}
+        overflowY="auto"
+        overflowX="hidden"
       >
         {renderContent()}
       </HBox>

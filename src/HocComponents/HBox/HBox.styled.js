@@ -31,19 +31,17 @@ export const HBoxContainer = styled.div`
 
   box-sizing: border-box;
   &::-webkit-scrollbar-track {
-    background: ${({ theme }) =>
-      theme?.shadePurpleLight || "#3c1b85"}; /* Color del track */
+    background: ${({ theme }) => theme?.shadeViolet}; /* Color del track */
     border-radius: 10px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: ${({ theme }) =>
-      theme?.shadePurpleDark || "#8545c7"}; /* Color del "pulgar" */
+    background: ${({ theme }) => theme?.purpleLight}; /* Color del "pulgar" */
     border-radius: 10px;
-    border: 2px solid ${({ theme }) => theme?.shadePurpleDark || "#3c1b85"};
+    border: 2px solid ${({ theme }) => theme?.purpleLight};
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: ${({ theme }) => theme?.shadePurpleLight || "#b090ff"};
+    background: ${({ theme }) => theme?.purpleLight};
   }
 `;

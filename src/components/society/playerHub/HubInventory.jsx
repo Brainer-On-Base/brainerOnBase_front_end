@@ -8,15 +8,14 @@ const items = [
 ];
 
 // Define cuántos slots tendrá tu inventario
-const totalSlots = 20;
+const totalSlots = 200;
 
 // Styled Components
 const InventoryGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(10, 1fr);
   gap: 10px;
   width: 100%;
-  max-width: 500px;
   padding: 10px;
 `;
 
