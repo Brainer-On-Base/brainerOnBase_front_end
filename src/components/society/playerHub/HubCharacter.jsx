@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { HBox, HButton, HTitle } from "../../../HocComponents";
 import { FiRefreshCcw } from "react-icons/fi";
-import { FaRegTrashAlt } from "react-icons/fa";
+import { FaPlus, FaRegTrashAlt } from "react-icons/fa";
+import { TbAd } from "react-icons/tb";
 
 // Datos del personaje
 const characterTemplate = {
@@ -91,7 +92,11 @@ const HubCharacter = () => {
                 <ActionButton
                   onClick={() => console.log(`Swap ${attr.trait_type}`)}
                 >
-                  <FiRefreshCcw style={{ marginRight: "8px" }} />
+                  {attr.value === "Empty" ? (
+                    <FaPlus style={{ marginRight: "8px" }} />
+                  ) : (
+                    <FiRefreshCcw style={{ marginRight: "8px" }} />
+                  )}
                   {attr.value === "Empty" ? "Add" : "Change"}
                 </ActionButton>
                 <RemoveButton
