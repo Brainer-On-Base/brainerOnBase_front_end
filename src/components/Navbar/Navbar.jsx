@@ -31,18 +31,26 @@ function Navbar({}) {
       navigate: "/home#roadmap",
     },
 
+    {
+      name: "NFT's",
+      navigate: "/nft-list",
+    },
+    {
+      name: "TOKEN",
+      navigate: "/token-details",
+    },
     // {
     //   name: 'TOKENOMICS',
     //   navigate: '/home#tokenomics',
     // },
-    {
-      name: "MARKETPLACE",
-      navigate: "/marketplace",
-    },
-    isConnected && {
-      name: "HUB",
-      navigate: "/playerHub",
-    },
+    // {
+    //   name: "MARKETPLACE",
+    //   navigate: "/marketplace",
+    // },
+    // isConnected && {
+    //   name: "HUB",
+    //   navigate: "/playerHub",
+    // },
     // {
     //   name: 'LAUNCH',
     //   navigate: '/game',

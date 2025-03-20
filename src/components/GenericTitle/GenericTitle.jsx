@@ -39,6 +39,7 @@ const GenericTitle = ({ title, subtitle, subtitleFontSize, ...props }) => {
       {subtitle && (
         <StyledTitle
           subtitleFontSize={subtitleFontSize}
+          style={{ marginTop: "-1em" }}
           className={`animate__animated animate__fadeInDown animate__delay-1s animations`}
         >
           {subtitle}

@@ -22,6 +22,7 @@ import {
 import { SiOpensea } from "react-icons/si";
 import GenericTitle from "../components/GenericTitle/GenericTitle";
 import { SyncLoader } from "react-spinners";
+import AppLayout from "../components/AppLayout/AppLayout";
 
 const StyledNFTList = styled(HBox)`
   z-index: 99999;
@@ -142,20 +143,7 @@ const NftCollectionList = () => {
   };
 
   return (
-    <StyledAppContainer>
-      <Navbar />
-      <View
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "absolute",
-          top: 0,
-          bottom: 0,
-        }}
-      >
-        <NightBackground />
-      </View>
-
+    <AppLayout>
       <HBox direction="column" align="center" justify="center" width="100%">
         <GenericTitle
           title="Pixel Brainer"
@@ -308,7 +296,7 @@ const NftCollectionList = () => {
       )}
 
       <Footer />
-    </StyledAppContainer>
+    </AppLayout>
   );
 };
 
