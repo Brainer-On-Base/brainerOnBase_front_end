@@ -6,7 +6,6 @@ const BrainerOnBasePlayerHub = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     const element = document.getElementById("playerHub");
-    console.log(element);
     element.scrollIntoView({ behavior: "smooth" });
   }, []);
   return (

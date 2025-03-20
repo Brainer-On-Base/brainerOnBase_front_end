@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const HBoxContainer = styled.div`
+  z-index: 1;
   display: flex;
   flex-direction: ${(props) => props.direction}; /* Dirección (row o column) */
   gap: ${(props) => props.gap}; /* Espaciado entre elementos */

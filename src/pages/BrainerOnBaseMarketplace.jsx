@@ -17,7 +17,6 @@ const BrainerOnBaseMarketplace = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     const element = document.getElementById("marketplace");
-    console.log(element);
     element.scrollIntoView({ behavior: "smooth" });
   }, []);
 
