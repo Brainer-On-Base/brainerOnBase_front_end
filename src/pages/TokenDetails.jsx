@@ -296,14 +296,6 @@ export const PreSaleButton = styled(HButton)`
   padding: 15px 30px;
   border-radius: 12px;
   font-size: 18px;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0px 4px 15px rgba(255, 12, 223, 0.6);
-  }
 `;
 
 export const CoinWrapper = styled(motion.div)`

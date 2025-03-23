@@ -1098,7 +1098,7 @@ export const StyledTokenSection = styled(motion.div)`
       color: #ff437d !important;
     }
 
-    filter: drop-shadow(0 0 1em #ff437d);
+    filter: drop-shadow(0 0 1em #ff0cdf);
   }
 
   p {
