@@ -814,7 +814,7 @@ export const StyledCard = styled("div")`
   align-self: flex-start;
   margin: 0em 0em 2em 4em;
   display: flex;
-
+  text-align: left;
   img {
     width: 200px;
     height: 200px;

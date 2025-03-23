@@ -1,10 +1,31 @@
 import React, { useEffect } from "react";
-import AppLayout from "../components/AppLayout/AppLayout";
-import TokenomicsSection from "../components/home/TokenomicsSection";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { HBox, HTitle } from "../HocComponents";
-import TokenSection from "../components/home/TokenSection";
+import AppLayout from "../components/AppLayout/AppLayout";
+import TokenomicsSection from "../components/home/TokenomicsSection";
+import TokenAddress from "../components/home/TokenAddress";
+import BubbleDialog from "../components/BubbleDialog";
+import { HBox, HButton, HTitle } from "../HocComponents";
+import { width } from "@mui/system";
+
+// Coin rotatoria
+export const BrainerCoin = () => {
+  return (
+    <CoinWrapper
+      animate={{ rotateY: 360 }}
+      transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
+    >
+      <CoinContainer>
+        <img
+          src="/commonBrainer.png"
+          alt="Brainer Token"
+          width="90"
+          height="90"
+        />
+      </CoinContainer>
+    </CoinWrapper>
+  );
+};
 
 const TokenDetails = () => {
   useEffect(() => {
@@ -12,56 +33,259 @@ const TokenDetails = () => {
     const element = document.getElementById("brnrToken");
     element.scrollIntoView({ behavior: "smooth" });
   }, []);
+
   return (
     <AppLayout
+      useCoinRain={false}
       title="BRAINER TOKEN"
       subtitle="$BRNR"
       id={"brnrToken"}
       style={{ marginTop: "1em" }}
     >
-      <HBox>
-        <HBox
-          width="60%"
-          height="60%"
-          background={"shadePurpleDark"}
-          direction="column"
-          justify="flex-start"
-          align="flex-start"
-          padding="20px"
-          borderRadius="10px"
-          gap="40px"
-        >
-          <HTitle>Are you a no brainer?</HTitle>
-          <HTitle>Join the Brainer Society</HTitle>
-          <HTitle fontSize={"20px"} useTitleCase={false}>
-            **$BRNR** is more than just a currency; it’s the symbol of our
-            community, the engine that drives our ideas and our mission to break
-            free from centralized control. Join the Brainer revolution.
-          </HTitle>
-        </HBox>
-        <HBox width="40%" height="40%" background={"shadePurpleLight"}>
-          aaa
-        </HBox>
-      </HBox>
-      <TokenSection style={{ marginTop: "4em" }} />
+      <HBox
+        direction="column"
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "2em",
+          marginTop: "2em",
+        }}
+      >
+        {/* Rocket + Dialog */}
+        <RocketContainer>
+          <motion.img
+            src="/brainerCoin5.png"
+            alt="Brainer Rocket"
+            width="200px"
+            height="200px"
+            style={{
+              position: "absolute",
+              left: "0",
+              bottom: "0",
+              transform: "scaleX(-1)", // Flip hacia la izquierda
+            }}
+            initial={{
+              x: -300, // Comienza 300px a la izquierda (ajustable)
+              opacity: 0, // Desaparecido al principio
+            }}
+            animate={{
+              x: 0, // Termina en su posición natural (left: 0)
+              opacity: 1,
+              y: [0, -10, 0], // Movimiento flotante continuo
+            }}
+            transition={{
+              x: { duration: 1.5, ease: "easeOut" }, // Entrada suave desde la izquierda
+              opacity: { duration: 1.5 },
+              y: {
+                delay: 1.5, // Espera a que termine el movimiento de entrada antes de flotar
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              },
+            }}
+          />
 
-      {/* <TokenImage>
-          <motion.div
-            animate={{ rotateY: 360 }}
-            transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
+          <BubbleDialog
+            id="bubbletokenomics"
+            active={true}
+            positionDialogSpik={{
+              left: "10%",
+              bottom: "-4px",
+              rotate: "10deg",
+            }}
+            positionStyle={{
+              left: "100px",
+              top: "25px",
+            }}
+            width="220px"
+            height="10px"
+            className="animate__animated animate__fadeInUp animate__delay-1s"
           >
-            <img
-              src="/commonBrainer.png"
-              alt="Brainer Token"
-              width="200"
-              height="200"
-            />
-          </motion.div>
-        </TokenImage> */}
+            <p>Are you a no brainer?</p>
+          </BubbleDialog>
+        </RocketContainer>
+        {/* Info Box */}
 
+        <HBox
+          direction="column"
+          style={{ gap: "2em" }}
+          width="100%"
+          justify="center"
+          align="center"
+        >
+          <HTitle
+            fontSize={"70px"}
+            margin={"-60px 0 0 0"}
+            color={"goldColor"}
+            className="animate__animated animate__fadeInDown"
+          >
+            Be part of the journey
+          </HTitle>
+          <HBox
+            direction="column"
+            padding="20px 40px"
+            style={{ gap: "3em" }}
+            width={"100%"}
+            align="flex-end"
+            justify="center"
+          >
+            <HBox
+              width={"60%"}
+              padding={"20px 40px"}
+              borderRadius={"20px"}
+              background={"shadePurpleMedium"}
+              direction="column"
+              gap="2em"
+            >
+              <Paragraph useTitleCase={false}>
+                <strong>$BRNR</strong> is more than just a currency; it’s the
+                symbol of our community, the engine that drives our ideas and
+                our mission to break free from centralized control.
+              </Paragraph>
+              <PreSaleButton onClick={() => alert("Pre-Sale Coming Soon!")}>
+                Join Pre-Sale Now 🚀
+              </PreSaleButton>
+            </HBox>
+          </HBox>
+        </HBox>
+        <InfoContainer>
+          <SectionTitle>🔥 How to Join the Whitelist</SectionTitle>
+          <ListItem useTitleCase={false}>
+            1️⃣ Hold a <strong>Pixel Brainer NFT</strong> ➤ You'll automatically
+            receive an exclusive <strong>airdrop</strong> of $BRNR tokens.
+          </ListItem>
+          <ListItem useTitleCase={false}>
+            2️⃣ Participate in the <strong>Pre-Sale</strong> ➤ Contribute{" "}
+            <strong>0.02 ETH</strong> (or more) through the Pre-Sale Button and
+            receive $BRNR tokens equivalent to your contribution.
+          </ListItem>
+          <ListItem useTitleCase={false}>
+            🔥 Combine Both! ➤ Hold a Pixel Brainer NFT <strong>and</strong>{" "}
+            join the Pre-Sale to unlock <strong>both</strong> benefits:
+            <ul>
+              <li>An airdrop of $BRNR tokens</li>
+              <li>Plus the token equivalent of your Pre-Sale contribution</li>
+            </ul>
+          </ListItem>
+
+          <Divider />
+
+          <SectionTitle>🚀 Token Distribution & Liquidity Plan</SectionTitle>
+          <ListItem useTitleCase={false}>
+            • All ETH collected from the <strong>Pre-Sale</strong> will be
+            injected into the liquidity pool of $BRNR, ensuring a strong market
+            foundation.
+          </ListItem>
+          <ListItem useTitleCase={false}>
+            • Funds raised from NFT sales will be reinvested into the Brainer
+            Society project: game development, marketing, and ecosystem
+            expansion.
+          </ListItem>
+
+          <Paragraph useTitleCase={false}>
+            By supporting the project early, you're not only securing your spot
+            in the Brainer Society—you’re also fueling our journey to
+            decentralization and innovation.
+          </Paragraph>
+        </InfoContainer>
+      </HBox>
+
+      <TokenAddress style={{ marginTop: "4em" }} />
       <TokenomicsSection />
     </AppLayout>
   );
 };
+
+export const RocketContainer = styled.div`
+  height: 300px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+`;
+
+export const InfoContainer = styled.div`
+  width: 50%;
+  background: ${({ theme }) => theme.shadePurpleDark || "#2c003e"};
+  border-radius: 10px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 2px solid gold;
+`;
+
+export const Title = styled(HTitle)`
+  font-size: 32px;
+  color: gold;
+`;
+
+export const Subtitle = styled(HTitle)`
+  font-size: 24px;
+  color: white;
+`;
+
+export const Paragraph = styled(HTitle)`
+  font-size: 24px;
+  color: #d1d1d1;
+  line-height: 1.5;
+`;
+
+export const SectionTitle = styled(HTitle)`
+  font-size: 22px;
+  color: gold;
+`;
+
+export const ListItem = styled(HTitle)`
+  font-size: 16px;
+  color: #ffffff;
+  line-height: 1.5;
+  ul {
+    margin-top: 0.5em;
+    padding-left: 1.2em;
+    li {
+      list-style-type: disc;
+    }
+  }
+`;
+
+export const Divider = styled.hr`
+  width: 100%;
+  border: 1px solid gold;
+  margin: 1em 0;
+`;
+
+export const PreSaleButton = styled(HButton)`
+  /* color: #2c003e; */
+  padding: 15px 30px;
+  border-radius: 12px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 15px rgba(255, 12, 223, 0.6);
+  }
+`;
+
+export const CoinWrapper = styled(motion.div)`
+  width: 80px;
+  height: 80px;
+`;
+
+export const CoinContainer = styled.div`
+  background: ${({ theme }) => theme.shadePurpleDark || "#2c003e"};
+  border: 2px solid gold;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default TokenDetails;
