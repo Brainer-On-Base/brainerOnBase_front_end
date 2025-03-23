@@ -128,7 +128,9 @@ const TokenDetails = () => {
             ))}
           </StyledUl>
           <HInput
-            label={"ETH Amount (0.02 - 5)"}
+            className="animate__animated animate__fadeInUp"
+            label={"ETH Amount (0.02 - 5 ETH)"}
+            labelWeight={"bold"}
             placeholder="Enter ETH amount"
             width="80%"
             margin="1em 0"
@@ -141,6 +143,7 @@ const TokenDetails = () => {
             value={ethInput}
           />
           <HTitle
+            className="animate__animated animate__fadeInUp"
             fontSize={"16px"}
             color="white"
             useTitleCase={false}
