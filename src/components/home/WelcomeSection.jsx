@@ -10,6 +10,7 @@ import { ethers } from "ethers";
 import UseContract from "../../hooks/useContract";
 import { motion } from "framer-motion";
 import Loader from "../Loader/Loader";
+import { HButton } from "../../HocComponents";
 
 export default function WelcomeSection() {
   const { showPopUp, useTextModal } = useModals();
@@ -54,8 +55,9 @@ export default function WelcomeSection() {
             ARE YOU A NO <span>BRAINER</span>?
           </h1>
           <StyledFlexCenterContainer className={"welcome-actions"}>
-            <StyledButton
-              size={"2em"}
+            <HButton
+              fontSize={"2em"}
+              padding={"20px 40px"}
               className={"animate__animated animate__fadeIn animate__delay-2s"}
               onClick={() =>
                 useTextModal({
@@ -68,7 +70,7 @@ export default function WelcomeSection() {
               }
             >
               {APP_TEXTS.HOME_BUTTON_1}
-            </StyledButton>
+            </HButton>
             {web3provider && (
               <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">{`${mintedCount}/8000 minted`}</p>
             )}

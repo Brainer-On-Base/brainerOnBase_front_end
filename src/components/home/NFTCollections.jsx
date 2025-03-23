@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { StyledNFTCollectionsContainer } from "../styled-components/container";
 import { useNavigate } from "react-router-dom";
 import UseContract from "../../hooks/useContract";
-import { StyledButton } from "../styled-components/buttons";
+import { HButton } from "../../HocComponents";
 
 const NFTCollections = () => {
   const navigate = useNavigate();
@@ -185,14 +185,16 @@ const NFTCollections = () => {
         </motion.div>
       </motion.div>
       <motion.div style={{ marginTop: "-2rem", marginBottom: "3rem" }}>
-        <StyledButton
+        <HButton
+          fontSize={"2em"}
+          padding={"20px 40px"}
           className="brainer-button"
           onClick={() => {
             navigate("/nft-list");
           }}
         >
           VIEW ALL
-        </StyledButton>
+        </HButton>
       </motion.div>
     </StyledNFTCollectionsContainer>
   );
