@@ -11,6 +11,7 @@ import { Stack } from "@mui/material";
 import ConnectWallet from "../ConnectWallet";
 import NavbarMobile from "./NavbarMobile";
 import UseContract from "../../hooks/useContract";
+import BrainerOnBaseTitle from "../BrainerOnBaseTitle";
 
 function Navbar({}) {
   const location = useLocation();
@@ -82,22 +83,14 @@ function Navbar({}) {
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
             <Stack flexDirection={"row"} alignItems={"center"}>
-              <img
+              {/* <img
                 src="/commonBrainer.png"
                 onClick={() => {
                   navigate("/home");
                 }}
                 style={{ cursor: "pointer" }}
-              />
-              <Typography
-                onClick={() => {
-                  navigate("/home#home");
-                }}
-                className="navbaritems"
-                textAlign="center"
-              >
-                {isPlaying ? "GO BACK" : "BRAINER"}
-              </Typography>
+              /> */}
+              <BrainerOnBaseTitle text={isPlaying ? "GO BACK" : null} />
             </Stack>
           </Box>
 
