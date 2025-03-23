@@ -86,14 +86,19 @@ export default function WelcomeSection() {
                 <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">{`${mintedCount}/8000 minted`}</p>
               )}
             </HBox>
-            <HButton
-              fontSize={"2em"}
-              padding={"20px 40px"}
-              className={"animate__animated animate__fadeIn animate__delay-2s"}
-              onClick={() => navigate("/token-details")}
-            >
-              TOKEN PRE SALE
-            </HButton>
+            <HBox>
+              <HButton
+                fontSize={"2em"}
+                padding={"20px 40px"}
+                className={
+                  "animate__animated animate__fadeIn animate__delay-2s"
+                }
+                onClick={() => navigate("/token-details")}
+              >
+                TOKEN PRE SALE
+              </HButton>
+              <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">{`8000 in white list`}</p>
+            </HBox>
           </HBox>
 
           {/* <StyledButton 

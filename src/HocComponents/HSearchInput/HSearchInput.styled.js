@@ -27,8 +27,7 @@ export const SearchInputContainer = styled.div`
   display: flex;
   align-items: center;
   background: ${(props) => props.theme.buttonBackground}; /* Fondo del input */
-  border: 1px solid
-    ${(props) => props.borderColor || props.theme.buttonBorderHover};
+  border: 1px solid ${(props) => props.borderColor || props.theme.neonViolet};
   border-radius: ${(props) => props.borderRadius || "20px"};
   box-shadow: rgba(112, 37, 190, 0.11) 0px -6px 26px inset,
     rgba(112, 37, 190, 0.27) 4px 4px 26px inset;

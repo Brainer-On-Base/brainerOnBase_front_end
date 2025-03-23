@@ -75,6 +75,7 @@ const TokenDetails = () => {
       <HModal
         confirmText="Join"
         showModal={showModal}
+        buttonDisabled={ethInput < 0.02}
         onCloseFunction={() => setShowModal(false)}
         title="$BRNR PRE SALE"
       >
