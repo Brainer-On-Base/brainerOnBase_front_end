@@ -10,14 +10,15 @@ import {
 import HInput from "../HInput/HInput";
 import HButton from "../HButton/HButton";
 import { IoMdCloseCircleOutline } from "react-icons/io";
+import HTitle from "../HTitle/HTitle";
 
 const HModal = ({
   title = "Titolo",
   text = "",
   children,
   onConfirmFunction,
-  cancelText = "Cancella",
-  confirmText = "Accetta",
+  cancelText = "Cancel",
+  confirmText = "Accept",
   onCloseFunction,
   showModal = false,
   isInput = false,
@@ -62,7 +63,7 @@ const HModal = ({
         className={`animate__animated animate__slideInUp animate__faster`}
       >
         <ModalHeader>
-          <h3>{title}</h3>
+          <HTitle padding={"10px"}>{title}</HTitle>
           <CloseButton onClick={handleCancel}>
             <IoMdCloseCircleOutline size={40} />
           </CloseButton>
@@ -87,7 +88,7 @@ const HModal = ({
         <ModalFooter>
           <HButton
             onClick={handleConfirm}
-            fontSize={"var(--h5)"}
+            fontSize={"20px"}
             padding={"15px 20px"}
             disabled={
               buttonDisabled
@@ -100,7 +101,7 @@ const HModal = ({
           {showButtonCancel && (
             <HButton
               onClick={handleCancel}
-              fontSize={"var(--h5)"}
+              fontSize={"20px"}
               padding={"15px 20px"}
             >
               {cancelText}

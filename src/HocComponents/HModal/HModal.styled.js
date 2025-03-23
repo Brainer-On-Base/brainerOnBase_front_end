@@ -9,7 +9,7 @@ export const ModalContainer = styled("div")`
   height: 100%;
   background: rgb(0 0 0 / 69%); /* Fondo oscuro */
 
-  z-index: 997; /* Asegúrate de que esté detrás del modal */
+  z-index: 99999; /* Asegúrate de que esté detrás del modal */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,10 +39,6 @@ export const ModalHeader = styled("div")`
   padding: 15px;
   background: ${({ theme }) => theme.shadePurpleDark};
   text-transform: uppercase;
-  h3 {
-    font-size: 20px;
-    color: ${({ theme }) => theme.purpleLight2};
-  }
 `;
 
 // Botón de cerrar (a la derecha del header)
@@ -51,10 +47,10 @@ export const CloseButton = styled("button")`
   border: none;
   font-size: 20px;
   font-weight: bold;
-  cursor: pointer;
+  cursor: pointer !important;
 
   svg {
-    color: ${({ theme }) => theme.purpleLight2};
+    color: ${({ theme }) => "white"};
   }
 `;
 
@@ -62,7 +58,7 @@ export const CloseButton = styled("button")`
 export const ModalBody = styled("div")`
   border-radius: 20px;
   width: 500px;
-  background: ${({ theme }) => theme.shadePurpleLight};
+  background: ${({ theme }) => theme.shadeViolet};
   display: flex;
   flex-direction: column;
   padding: 0 0 16px 0;

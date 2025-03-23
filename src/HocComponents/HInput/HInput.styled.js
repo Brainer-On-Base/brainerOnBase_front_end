@@ -14,7 +14,7 @@ export const InputLabel = styled.label`
   font-size: ${({ labelSize }) =>
     labelSize || "var(--p16)"}; /* Tamaño de fuente del label */
   color: ${({ labelColor, theme }) =>
-    labelColor || theme.purpleMedium}; /* Color del label */
+    labelColor || theme.purpleLight}; /* Color del label */
   font-weight: ${({ labelWeight }) => labelWeight || "var(--weight-medium)"};
   display: flex;
   align-items: center;

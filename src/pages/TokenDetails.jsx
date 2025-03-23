@@ -1,14 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import AppLayout from "../components/AppLayout/AppLayout";
 import TokenomicsSection from "../components/home/TokenomicsSection";
 import TokenAddress from "../components/home/TokenAddress";
 import BubbleDialog from "../components/BubbleDialog";
-import { HBox, HButton, HTitle } from "../HocComponents";
+import { HBox, HButton, HInput, HModal, HTitle } from "../HocComponents";
 import { width } from "@mui/system";
 import { FloatAnimation } from "../components/NftDetails/NftDetails";
 import { useNavigate } from "react-router-dom";
+
+const StyledUl = styled(motion.ul)`
+  list-style-type: none;
+  padding: 0;
+
+  li {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    p {
+      color: white !important;
+    }
+
+    .bullet-icon {
+      width: 50px;
+      height: 50px;
+      margin-right: 1em;
+    }
+  }
+`;
 
 // Coin rotatoria
 export const BrainerCoin = () => {
@@ -31,12 +51,18 @@ export const BrainerCoin = () => {
 
 const TokenDetails = () => {
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
+  const [ethInput, setEthInput] = useState(0);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     const element = document.getElementById("brnrToken");
     element.scrollIntoView({ behavior: "smooth" });
   }, []);
+
+  const handleShowModal = (bool) => {
+    setShowModal(bool);
+  };
 
   return (
     <AppLayout
@@ -46,6 +72,91 @@ const TokenDetails = () => {
       id={"brnrToken"}
       style={{ marginTop: "1em" }}
     >
+      <HModal
+        confirmText="Join"
+        showModal={showModal}
+        onCloseFunction={() => setShowModal(false)}
+        title="$BRNR PRE SALE"
+      >
+        <HBox direction="column" width="100%">
+          <StyledUl
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.3, // Tiempo entre la animación de cada <li>
+                  duration: 0.5, // Duración de la animación del contenedor
+                },
+              },
+            }}
+          >
+            {[
+              {
+                text: "The BRNR token pre-sale is LIVE!",
+                icon: "./commonBrainer.png",
+              },
+              {
+                text: "💰 You can contribute anywhere from 0.02 ETH to 5 ETH.",
+                icon: "./commonBrainer.png",
+              },
+              {
+                text: " ⚡Important⚡Each wallet can only purchase once, so make sure to grab your tokens before it's too late! 🚀",
+                icon: "./commonBrainer.png",
+              },
+            ].map((item, index) => (
+              <motion.li
+                key={index}
+                variants={{
+                  hidden: { opacity: 0, y: 20 }, // Aparece desde abajo
+                  visible: { opacity: 1, y: 0 }, // Llega a su posición final
+                }}
+              >
+                <img
+                  src={item.icon}
+                  alt="Bullet Point"
+                  className="bullet-icon"
+                  width={"20px"}
+                />
+                <HTitle fontSize={"16px"} color="white" useTitleCase={false}>
+                  <span>{item.text.split(":")[0]} </span>
+                </HTitle>
+              </motion.li>
+            ))}
+          </StyledUl>
+          <HInput
+            label={"ETH Amount (0.02 - 5)"}
+            placeholder="Enter ETH amount"
+            width="80%"
+            margin="1em 0"
+            type="number"
+            onChange={(e) =>
+              setEthInput(
+                e.target.value > 5 ? 5 : e.target.value < 0 ? 0 : e.target.value
+              )
+            }
+            value={ethInput}
+          />
+          <HTitle
+            fontSize={"16px"}
+            color="white"
+            useTitleCase={false}
+            width={"62%"}
+            textAlign={"left"}
+          >
+            Total:{" "}
+            {new Intl.NumberFormat("en-US", {
+              style: "decimal",
+              minimumFractionDigits: 2, // Asegura dos decimales
+              maximumFractionDigits: 2, // Asegura dos decimales
+            }).format(ethInput * 10000)}{" "}
+            $BRNR
+          </HTitle>
+        </HBox>
+      </HModal>
       <HBox
         direction="column"
         style={{
@@ -146,7 +257,7 @@ const TokenDetails = () => {
                   our mission to break free from centralized control.
                 </Paragraph>
                 <HBox>
-                  <PreSaleButton onClick={() => alert("Pre-Sale Coming Soon!")}>
+                  <PreSaleButton onClick={() => handleShowModal(true)}>
                     Join Pre-Sale Now 🚀
                   </PreSaleButton>
                   <PreSaleButton
@@ -157,7 +268,7 @@ const TokenDetails = () => {
                       }
                     }}
                   >
-                    More details 🚀
+                    More details
                   </PreSaleButton>
                 </HBox>
               </HBox>
@@ -177,8 +288,8 @@ const TokenDetails = () => {
         </ListItem>
         <ListItem useTitleCase={false}>
           2️⃣ Participate in the <strong>Pre-Sale</strong> ➤ Contribute{" "}
-          <strong>0.02 ETH</strong> through the Pre-Sale Button and receive
-          $BRNR tokens equivalent to your contribution.
+          <strong>0.02 ETH</strong> (max 5) through the Pre-Sale Button and
+          receive $BRNR tokens equivalent to your contribution.
         </ListItem>
         <ListItem useTitleCase={false}>
           🔥 Combine Both! ➤ Hold a Pixel Brainer NFT <strong>and</strong> join
@@ -213,7 +324,7 @@ const TokenDetails = () => {
         </Paragraph>
         <PreSaleButton
           margin={"2em 0 0 0"}
-          onClick={() => alert("Pre-Sale Coming Soon!")}
+          onClick={() => handleShowModal(true)}
           width={"100%"}
         >
           Join Pre-Sale Now 🚀
@@ -258,6 +369,7 @@ export const Paragraph = styled(HTitle)`
   font-size: 24px;
   color: #d1d1d1;
   line-height: 1.5;
+  text-align: center;
 `;
 
 export const SectionTitle = styled(HTitle)`

@@ -92,6 +92,7 @@ const HInput = ({
           fontWeight={fontWeight}
           min={min ?? null}
           max={max ?? null}
+          step={type === "number" ? "any" : null}
         />
       </InputContainer>
     </HInputContainer>
