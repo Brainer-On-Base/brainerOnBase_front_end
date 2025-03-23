@@ -7,6 +7,8 @@ import TokenAddress from "../components/home/TokenAddress";
 import BubbleDialog from "../components/BubbleDialog";
 import { HBox, HButton, HTitle } from "../HocComponents";
 import { width } from "@mui/system";
+import { FloatAnimation } from "../components/NftDetails/NftDetails";
+import { useNavigate } from "react-router-dom";
 
 // Coin rotatoria
 export const BrainerCoin = () => {
@@ -28,6 +30,8 @@ export const BrainerCoin = () => {
 };
 
 const TokenDetails = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0);
     const element = document.getElementById("brnrToken");
@@ -60,8 +64,8 @@ const TokenDetails = () => {
             height="200px"
             style={{
               position: "absolute",
-              left: "0",
-              bottom: "0",
+              left: "-15px",
+              bottom: "110px",
               transform: "scaleX(-1)", // Flip hacia la izquierda
             }}
             initial={{
@@ -95,13 +99,15 @@ const TokenDetails = () => {
             }}
             positionStyle={{
               left: "100px",
-              top: "25px",
+              top: "-80px",
             }}
             width="220px"
             height="10px"
             className="animate__animated animate__fadeInUp animate__delay-1s"
           >
-            <p>Are you a no brainer?</p>
+            <HTitle fontSize={"16px"} color="black" useTitleCase={false}>
+              Are you a no brainer?
+            </HTitle>
           </BubbleDialog>
         </RocketContainer>
         {/* Info Box */}
@@ -113,85 +119,109 @@ const TokenDetails = () => {
           justify="center"
           align="center"
         >
-          <HTitle
-            fontSize={"70px"}
-            margin={"-60px 0 0 0"}
-            color={"goldColor"}
-            className="animate__animated animate__fadeInDown"
-          >
-            Be part of the journey
-          </HTitle>
           <HBox
             direction="column"
-            padding="20px 40px"
-            style={{ gap: "3em" }}
+            style={{ gap: "3em", marginTop: "-2em", marginBottom: "2em" }}
             width={"100%"}
             align="flex-end"
             justify="center"
           >
-            <HBox
-              width={"60%"}
-              padding={"20px 40px"}
-              borderRadius={"20px"}
-              background={"shadePurpleMedium"}
-              direction="column"
-              gap="2em"
-            >
-              <Paragraph useTitleCase={false}>
-                <strong>$BRNR</strong> is more than just a currency; it’s the
-                symbol of our community, the engine that drives our ideas and
-                our mission to break free from centralized control.
-              </Paragraph>
-              <PreSaleButton onClick={() => alert("Pre-Sale Coming Soon!")}>
-                Join Pre-Sale Now 🚀
-              </PreSaleButton>
-            </HBox>
+            <FloatAnimation>
+              <HBox
+                width={"70%"}
+                padding={"25px 40px"}
+                borderRadius={"20px"}
+                background={"shadeViolet"}
+                border="1px solid gold"
+                direction="column"
+                gap="2em"
+              >
+                <HTitle
+                  fontSize={"50px"}
+                  color={"goldColor"}
+                  className="animate__animated animate__fadeInDown"
+                >
+                  Be part of the journey
+                </HTitle>
+                <Paragraph useTitleCase={false}>
+                  <strong>$BRNR</strong> is more than just a currency; it’s the
+                  symbol of our community, the engine that drives our ideas and
+                  our mission to break free from centralized control.
+                </Paragraph>
+                <HBox>
+                  <PreSaleButton onClick={() => alert("Pre-Sale Coming Soon!")}>
+                    Join Pre-Sale Now 🚀
+                  </PreSaleButton>
+                  <PreSaleButton
+                    onClick={() => {
+                      const element = document.getElementById("join-whitelist");
+                      if (element) {
+                        element.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                  >
+                    More details 🚀
+                  </PreSaleButton>
+                </HBox>
+              </HBox>
+            </FloatAnimation>
           </HBox>
         </HBox>
-        <InfoContainer>
-          <SectionTitle>🔥 How to Join the Whitelist</SectionTitle>
-          <ListItem useTitleCase={false}>
-            1️⃣ Hold a <strong>Pixel Brainer NFT</strong> ➤ You'll automatically
-            receive an exclusive <strong>airdrop</strong> of $BRNR tokens.
-          </ListItem>
-          <ListItem useTitleCase={false}>
-            2️⃣ Participate in the <strong>Pre-Sale</strong> ➤ Contribute{" "}
-            <strong>0.02 ETH</strong> (or more) through the Pre-Sale Button and
-            receive $BRNR tokens equivalent to your contribution.
-          </ListItem>
-          <ListItem useTitleCase={false}>
-            🔥 Combine Both! ➤ Hold a Pixel Brainer NFT <strong>and</strong>{" "}
-            join the Pre-Sale to unlock <strong>both</strong> benefits:
-            <ul>
-              <li>An airdrop of $BRNR tokens</li>
-              <li>Plus the token equivalent of your Pre-Sale contribution</li>
-            </ul>
-          </ListItem>
-
-          <Divider />
-
-          <SectionTitle>🚀 Token Distribution & Liquidity Plan</SectionTitle>
-          <ListItem useTitleCase={false}>
-            • All ETH collected from the <strong>Pre-Sale</strong> will be
-            injected into the liquidity pool of $BRNR, ensuring a strong market
-            foundation.
-          </ListItem>
-          <ListItem useTitleCase={false}>
-            • Funds raised from NFT sales will be reinvested into the Brainer
-            Society project: game development, marketing, and ecosystem
-            expansion.
-          </ListItem>
-
-          <Paragraph useTitleCase={false}>
-            By supporting the project early, you're not only securing your spot
-            in the Brainer Society—you’re also fueling our journey to
-            decentralization and innovation.
-          </Paragraph>
-        </InfoContainer>
       </HBox>
 
       <TokenAddress style={{ marginTop: "4em" }} />
       <TokenomicsSection />
+
+      <InfoContainer id="join-whitelist">
+        <SectionTitle>🔥 How to Join the Whitelist</SectionTitle>
+        <ListItem useTitleCase={false}>
+          1️⃣ Hold a <strong>Pixel Brainer NFT</strong> ➤ You'll automatically
+          receive an exclusive <strong>airdrop</strong> of $BRNR tokens.
+        </ListItem>
+        <ListItem useTitleCase={false}>
+          2️⃣ Participate in the <strong>Pre-Sale</strong> ➤ Contribute{" "}
+          <strong>0.02 ETH</strong> through the Pre-Sale Button and receive
+          $BRNR tokens equivalent to your contribution.
+        </ListItem>
+        <ListItem useTitleCase={false}>
+          🔥 Combine Both! ➤ Hold a Pixel Brainer NFT <strong>and</strong> join
+          the Pre-Sale to unlock <strong>both</strong> benefits:
+          <ul>
+            <li>An airdrop of $BRNR tokens</li>
+            <li>Plus the token equivalent of your Pre-Sale contribution</li>
+          </ul>
+        </ListItem>
+
+        <Divider />
+
+        <SectionTitle>🚀 Token Distribution & Liquidity Plan</SectionTitle>
+        <ListItem useTitleCase={false}>
+          • All ETH collected from the <strong>Pre-Sale</strong> will be
+          injected into the liquidity pool of $BRNR, ensuring a strong market
+          foundation.
+        </ListItem>
+        <ListItem useTitleCase={false}>
+          • Funds raised from NFT sales will be reinvested into the Brainer
+          Society project: game development, marketing, and ecosystem expansion.
+        </ListItem>
+
+        <Paragraph
+          useTitleCase={false}
+          textAlign={"center"}
+          margin={"2em 0 0 0"}
+        >
+          By supporting the project early, you're not only securing your spot in
+          the Brainer Society—you’re also fueling our journey to
+          decentralization and innovation.
+        </Paragraph>
+        <PreSaleButton
+          margin={"2em 0 0 0"}
+          onClick={() => alert("Pre-Sale Coming Soon!")}
+          width={"100%"}
+        >
+          Join Pre-Sale Now 🚀
+        </PreSaleButton>
+      </InfoContainer>
     </AppLayout>
   );
 };
@@ -208,13 +238,13 @@ export const RocketContainer = styled.div`
 
 export const InfoContainer = styled.div`
   width: 50%;
-  background: ${({ theme }) => theme.shadePurpleDark || "#2c003e"};
+  background: ${({ theme }) => theme.shadeViolet || "#2c003e"};
   border-radius: 10px;
   padding: 30px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border: 2px solid gold;
+  border: 1px solid gold;
 `;
 
 export const Title = styled(HTitle)`
