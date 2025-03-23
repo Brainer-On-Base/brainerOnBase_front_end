@@ -12,6 +12,7 @@ import UseContract from "../hooks/useContract";
 import { useNavigate } from "react-router-dom";
 import { TbWallet } from "react-icons/tb";
 import { IoLogInOutline } from "react-icons/io5";
+import { HButton } from "../HocComponents";
 
 const ConnectWallet = () => {
   const {
@@ -29,7 +30,7 @@ const ConnectWallet = () => {
   return (
     <>
       {account ? (
-        <div style={styles.accountContainer} onClick={toggleUserMenu}>
+        <HButton style={styles.accountContainer} onClick={toggleUserMenu}>
           <TbWallet size={30} style={styles.walletIcon} />
           <span style={styles.accountText}>
             {`${account.substring(0, 6)}...${account.substring(
@@ -68,12 +69,12 @@ const ConnectWallet = () => {
               Disconnect
             </div>
           </div>
-        </div>
+        </HButton>
       ) : (
-        <button onClick={connectWalletProvider} style={styles.connectButton}>
+        <HButton onClick={connectWalletProvider} style={styles.connectButton}>
           <FontAwesomeIcon icon={faWallet} style={styles.walletIcon} />
           Connect
-        </button>
+        </HButton>
       )}
     </>
   );
@@ -87,7 +88,6 @@ const styles = {
     backgroundColor: "#1e1e1e",
     padding: "4px 8px",
     borderRadius: "20px",
-    border: "1px solid #ff437d",
     maxWidth: "200px",
     cursor: "pointer",
     transition: "background-color 0.3s, transform 0.3s",
@@ -116,10 +116,9 @@ const styles = {
     display: "flex",
     alignItems: "center",
     padding: "4px 8px",
-    backgroundColor: "#ff437d",
     color: "#fff",
     fontWeight: "bold",
-    border: "none",
+    border: "1px solid #ff0cdf",
     borderRadius: "20px",
     justifyContent: "flex-start",
     cursor: "pointer",
@@ -148,6 +147,7 @@ const styles = {
   },
   menuItemHover: {
     backgroundColor: "#3a3a3a",
+
     opacity: "0.9",
   },
   menuItemIcon: {
