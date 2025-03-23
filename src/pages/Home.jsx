@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { StyledAppContainer } from "../components/styled-components/container";
-import Navbar from "../components/Navbar/Navbar";
 import WelcomeSection from "../components/home/WelcomeSection";
-import Footer from "../components/Footer";
 import TokenomicsSection from "../components/home/TokenomicsSection";
 import HistorySection from "../components/home/HistorySection";
 import AboutSection from "../components/home/AboutSection";
 import { useLocation, useNavigate, Link } from "react-router-dom";
-import { Center, Html, View } from "@react-three/drei";
-import NightBackground from "../components/NIghtBackground";
 import RoadmapSection from "../components/home/RoadmapSection";
-import { StyledLaunchGameButton } from "../components/styled-components/buttons";
 import NFTCollections from "../components/home/NFTCollections";
 import TokenAddress from "../components/home/TokenAddress";
 import AppLayout from "../components/AppLayout/AppLayout";
+import { HButton } from "../HocComponents";
 
 export default function Home() {
   const [showHistory, setShowHistory] = useState("/home");
@@ -45,11 +40,13 @@ export default function Home() {
 
         <TokenAddress />
         <TokenomicsSection />
-        <StyledLaunchGameButton
+        <HButton
+          fontSize={"2em"}
+          padding={"20px 40px"}
           onClick={() => window.open("https://docs.braineronbase.com")}
         >
           WHITE PAPER
-        </StyledLaunchGameButton>
+        </HButton>
       </>
     </AppLayout>
   );
