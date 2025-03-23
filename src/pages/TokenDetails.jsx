@@ -135,12 +135,9 @@ const TokenDetails = () => {
                 border="1px solid gold"
                 direction="column"
                 gap="2em"
+                className="animate__animated animate__fadeInUp"
               >
-                <HTitle
-                  fontSize={"50px"}
-                  color={"goldColor"}
-                  className="animate__animated animate__fadeInDown"
-                >
+                <HTitle fontSize={"50px"} color={"goldColor"}>
                   Be part of the journey
                 </HTitle>
                 <Paragraph useTitleCase={false}>

@@ -5,7 +5,7 @@ export const LightTheme = {
   buttonColor: "white",
   buttonBackground: "#1a1a1a",
   buttonBorderHover: "#ff437d",
-  neonViolet: rgba(255, 12, 223, 0.6),
+  neonViolet: "#ff0cdf",
   shadeViolet: "linear-gradient(145deg, #2a0845, #6441a5)",
   shadePurpleLight: "linear-gradient(180deg, #ce93d8 0%, #ba68c8 100%)",
   shadePurpleMedium: "linear-gradient(180deg, #ba68c8 0%, #6a1b9a 100%)",

@@ -10,7 +10,8 @@ import { ethers } from "ethers";
 import UseContract from "../../hooks/useContract";
 import { motion } from "framer-motion";
 import Loader from "../Loader/Loader";
-import { HButton } from "../../HocComponents";
+import { HBox, HButton } from "../../HocComponents";
+import { useNavigate } from "react-router-dom";
 
 export default function WelcomeSection() {
   const { showPopUp, useTextModal } = useModals();
@@ -18,6 +19,7 @@ export default function WelcomeSection() {
   const [mintedCount, setMintedCount] = useState(null);
   const [loading, setLoading] = useState(false);
   const [refreshCount, setRefreshCount] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchMintedCount();
@@ -54,27 +56,45 @@ export default function WelcomeSection() {
           >
             ARE YOU A NO <span>BRAINER</span>?
           </h1>
-          <StyledFlexCenterContainer className={"welcome-actions"}>
+          <HBox
+            align="flex-start"
+            justify="center"
+            // className={"welcome-actions"}
+            direction="column"
+            gap="2em"
+          >
+            <HBox>
+              <HButton
+                fontSize={"2em"}
+                padding={"20px 40px"}
+                className={
+                  "animate__animated animate__fadeIn animate__delay-2s"
+                }
+                onClick={() =>
+                  useTextModal({
+                    textButton: APP_TEXTS.HOME_MODAL_TEXT_BUTTON,
+                    title: APP_TEXTS.HOME_MODAL_TITLE,
+                    text: APP_TEXTS.HOME_MODAL_DESCRIPTION,
+                    textColor: "white",
+                    onConfirmFunction: async () => await mintNft(),
+                  })
+                }
+              >
+                MINT NFT
+              </HButton>
+              {web3provider && (
+                <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">{`${mintedCount}/8000 minted`}</p>
+              )}
+            </HBox>
             <HButton
               fontSize={"2em"}
               padding={"20px 40px"}
               className={"animate__animated animate__fadeIn animate__delay-2s"}
-              onClick={() =>
-                useTextModal({
-                  textButton: APP_TEXTS.HOME_MODAL_TEXT_BUTTON,
-                  title: APP_TEXTS.HOME_MODAL_TITLE,
-                  text: APP_TEXTS.HOME_MODAL_DESCRIPTION,
-                  textColor: "white",
-                  onConfirmFunction: async () => await mintNft(),
-                })
-              }
+              onClick={() => navigate("/token-details")}
             >
-              {APP_TEXTS.HOME_BUTTON_1}
+              TOKEN PRE SALE
             </HButton>
-            {web3provider && (
-              <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">{`${mintedCount}/8000 minted`}</p>
-            )}
-          </StyledFlexCenterContainer>
+          </HBox>
 
           {/* <StyledButton 
         onClick={()=>  showPopUp({text:'Liquidity pool is not available yet', icon:'warning'})}
