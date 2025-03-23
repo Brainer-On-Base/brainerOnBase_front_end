@@ -4,7 +4,7 @@ import { useFrame } from "@react-three/fiber";
 
 const Coin = ({ position, scale, rotation }) => {
   const meshRef = useRef();
-  const coinTexture = useTexture("./coinimage2222.jpg");
+  const coinTexture = useTexture("./commonBrainer.png");
   const coinRef = useRef();
   const calcRandom = () => Math.random() * 10;
 
@@ -35,7 +35,8 @@ const Coin = ({ position, scale, rotation }) => {
         scale={[scale[0], 0.2, scale[2]]}
       >
         <cylinderGeometry args={[0.51, 0.51, 0.1, 32]} />
-        <meshBasicMaterial color="black" />
+        <meshBasicMaterial color={"#FFD700"} />{" "}
+        {/* Cambia a dorado, por ejemplo */}
       </mesh>
 
       <mesh ref={meshRef} position={position} scale={scale} rotation={rotation}>
