@@ -264,7 +264,7 @@ export const Paragraph = styled(HTitle)`
 `;
 
 export const SectionTitle = styled(HTitle)`
-  font-size: 22px;
+  font-size: 30px;
   color: gold;
 `;
 

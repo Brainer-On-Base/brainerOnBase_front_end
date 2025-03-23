@@ -22,9 +22,11 @@ export const Button = styled.button`
   border: ${({ border }) => border ?? "1px solid transparent"};
   font-family: "Luckiest Guy", cursive;
 
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 12, 223, 0.6);
   &:hover {
-    transition: all 0.3s ease;
-    border: ${({ border, theme }) =>
-      border || "1px solid" + theme.buttonBorderHover} !important;
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 15px rgba(255, 12, 223, 0.6) !important;
   }
 `;
