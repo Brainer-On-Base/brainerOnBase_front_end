@@ -91,6 +91,7 @@ const NFTCollections = () => {
             owning a piece of its early history.
           </p>
           <motion.ul
+            style={{ textAlign: "left" }}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
@@ -115,7 +116,7 @@ const NFTCollections = () => {
                 icon: "./commonBrainer.png",
               },
               {
-                text: "BE PART OF THE HISTORY: Owning a Pixel Brainer is a symbol of your support for the journey of Brainers to the moon and you will receive exclusive benefits in the future.",
+                text: "BE PART OF THE HISTORY: Owning a Pixel Brainer is a symbol of your support for the journey of Brainers to the moon. Holding will give you access to exclusive benefits and rewards.",
                 icon: "./commonBrainer.png",
               },
             ].map((item, index) => (

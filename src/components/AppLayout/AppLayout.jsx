@@ -6,8 +6,9 @@ import NightBackground from "../NIghtBackground";
 import { HBox } from "../../HocComponents";
 import GenericTitle from "../GenericTitle/GenericTitle";
 import Footer from "../Footer";
+import CoinRain from "../CoinRain";
 
-const AppLayout = ({ title, subtitle, children, id }) => {
+const AppLayout = ({ title, subtitle, children, id, useCoinRain }) => {
   return (
     <StyledAppContainer id={id}>
       <Navbar />
@@ -22,6 +23,7 @@ const AppLayout = ({ title, subtitle, children, id }) => {
         }}
       >
         <NightBackground />
+        {useCoinRain && <CoinRain />}
       </View>
       <HBox direction="column" justify="flex-start" height="auto" width="95%">
         {title && (

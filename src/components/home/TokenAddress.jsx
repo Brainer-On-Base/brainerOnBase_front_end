@@ -4,7 +4,7 @@ import useModals from "../../hooks/useSweetAlert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 
-const TokenSection = ({ ...props }) => {
+const TokenAddress = ({ ...props }) => {
   const { copied, copyToClipboard } = useModals();
 
   return (
@@ -27,4 +27,4 @@ const TokenSection = ({ ...props }) => {
   );
 };
 
-export default TokenSection;
+export default TokenAddress;

@@ -12,7 +12,7 @@ import NightBackground from "../components/NIghtBackground";
 import RoadmapSection from "../components/home/RoadmapSection";
 import { StyledLaunchGameButton } from "../components/styled-components/buttons";
 import NFTCollections from "../components/home/NFTCollections";
-import TokenSection from "../components/home/TokenSection";
+import TokenAddress from "../components/home/TokenAddress";
 import AppLayout from "../components/AppLayout/AppLayout";
 
 export default function Home() {
@@ -43,7 +43,7 @@ export default function Home() {
         {showHistory === "/home#roadmap" && <RoadmapSection />}
         <NFTCollections />
 
-        <TokenSection />
+        <TokenAddress />
         <TokenomicsSection />
         <StyledLaunchGameButton
           onClick={() => window.open("https://docs.braineronbase.com")}
