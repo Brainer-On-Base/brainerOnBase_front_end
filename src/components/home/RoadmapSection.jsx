@@ -151,7 +151,7 @@ export default function RoadmapSection() {
                 className="bullet-icon"
               />
               <p className="text">
-                Creation and airdrop of <span>NEURON</span>. The currency of
+                Creation and airdrop of <span>BRNR</span>. The currency of
                 Brainer Society.
               </p>
             </li>
