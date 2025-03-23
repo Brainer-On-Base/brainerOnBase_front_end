@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { StyledAppContainer } from "../components/styled-components/container";
-import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer";
-import NightBackground from "../components/NIghtBackground";
-import { View } from "@react-three/drei";
 import { motion } from "framer-motion";
 import UseContract from "../hooks/useContract";
 import NftDetails, {
   FloatAnimation,
 } from "../components/NftDetails/NftDetails";
 import styled from "styled-components";
-import useModals from "../hooks/useSweetAlert";
-import { APP_TEXTS } from "../APP_TEXTS";
 import {
   HBox,
   HButton,
@@ -23,6 +17,7 @@ import { SiOpensea } from "react-icons/si";
 import GenericTitle from "../components/GenericTitle/GenericTitle";
 import { SyncLoader } from "react-spinners";
 import AppLayout from "../components/AppLayout/AppLayout";
+import NFTMintModal from "../components/Modals/NFTMintModal";
 
 const StyledNFTList = styled(HBox)`
   z-index: 99999;
@@ -50,14 +45,9 @@ const NftCollectionList = () => {
     return storedMintedNftList ? JSON.parse(storedMintedNftList) : [];
   });
   const [currentPage, setCurrentPage] = useState(1);
-  const {
-    getIPFSInfo,
-    getMintedNFTs,
-    mint_BPC1_NFT,
-    getMintedCount,
-    web3provider,
-  } = UseContract();
-  const { showPopUp, useTextModal } = useModals();
+  const { getIPFSInfo, getMintedNFTs, getMintedCount, web3provider } =
+    UseContract();
+  const [showModal, setShowModal] = useState(false);
   const [mintedCount, setMintedCount] = useState(() => {
     const storedMintedCount = localStorage.getItem("mintedCount");
     return storedMintedCount ? parseInt(storedMintedCount) : null;
@@ -145,6 +135,7 @@ const NftCollectionList = () => {
   return (
     <AppLayout>
       <HBox direction="column" align="center" justify="center" width="100%">
+        <NFTMintModal setShowModal={setShowModal} showModal={showModal} />
         <GenericTitle
           title="Pixel Brainer"
           subtitle="Collection"
@@ -182,15 +173,7 @@ const NftCollectionList = () => {
               fontSize={"1.5em"}
               padding={"0.8em 1.2em"}
               style={{ zIndex: 999 }}
-              onClick={() =>
-                useTextModal({
-                  textButton: APP_TEXTS.HOME_MODAL_TEXT_BUTTON,
-                  title: APP_TEXTS.HOME_MODAL_TITLE,
-                  text: APP_TEXTS.HOME_MODAL_DESCRIPTION,
-                  textColor: "white",
-                  onConfirmFunction: async () => await mint_BPC1_NFT(),
-                })
-              }
+              onClick={() => setShowModal(true)}
               disabled={!web3provider || mintedCount >= 8000}
             >
               MINT

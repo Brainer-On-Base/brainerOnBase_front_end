@@ -1,25 +1,20 @@
 import React, { useEffect, useState } from "react";
-import {
-  StyledFlexCenterContainer,
-  StyledWelcomeSection2,
-} from "../styled-components/container";
-import { StyledButton } from "../styled-components/buttons";
+import { StyledWelcomeSection2 } from "../styled-components/container";
 import useModals from "../../hooks/useSweetAlert";
-import { APP_TEXTS } from "../../APP_TEXTS";
-import { ethers } from "ethers";
 import UseContract from "../../hooks/useContract";
-import { motion } from "framer-motion";
 import Loader from "../Loader/Loader";
 import { HBox, HButton } from "../../HocComponents";
 import { useNavigate } from "react-router-dom";
+import NFTMintModal from "../Modals/NFTMintModal";
 
 export default function WelcomeSection() {
-  const { showPopUp, useTextModal } = useModals();
+  const { showPopUp } = useModals();
   const { mint_BPC1_NFT, getMintedCount, web3provider } = UseContract();
   const [mintedCount, setMintedCount] = useState(null);
   const [loading, setLoading] = useState(false);
   const [refreshCount, setRefreshCount] = useState(false);
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     fetchMintedCount();
@@ -41,6 +36,7 @@ export default function WelcomeSection() {
     <StyledWelcomeSection2 style={{ alignItems: "flex-start" }} id="home">
       {/* <img src="rocket.png" className="baloon"/> */}
       {loading && <Loader showLoading={loading} />}
+      <NFTMintModal showModal={showModal} setShowModal={setShowModal} />
       <div className="home-text-container">
         <div>
           <h1 className={"animate__animated animate__backInDown"}>BRAINER</h1>
@@ -70,15 +66,7 @@ export default function WelcomeSection() {
                 className={
                   "animate__animated animate__fadeIn animate__delay-2s"
                 }
-                onClick={() =>
-                  useTextModal({
-                    textButton: APP_TEXTS.HOME_MODAL_TEXT_BUTTON,
-                    title: APP_TEXTS.HOME_MODAL_TITLE,
-                    text: APP_TEXTS.HOME_MODAL_DESCRIPTION,
-                    textColor: "white",
-                    onConfirmFunction: async () => await mintNft(),
-                  })
-                }
+                onClick={() => setShowModal(true)}
               >
                 MINT NFT
               </HButton>
