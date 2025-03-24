@@ -142,6 +142,9 @@ const TokenDetails = () => {
                 direction="column"
                 gap="2em"
                 className="animate__animated animate__fadeInUp"
+                boxShadow={
+                  "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px"
+                }
               >
                 <HTitle fontSize={"50px"} color={"goldColor"}>
                   Be part of the journey
@@ -248,6 +251,7 @@ export const InfoContainer = styled.div`
   flex-direction: column;
   gap: 20px;
   border: 1px solid gold;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 `;
 
 export const Title = styled(HTitle)`

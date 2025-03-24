@@ -816,7 +816,7 @@ export const StyledCard = styled("div")`
   margin: 0em 0em 2em 4em;
   display: flex;
   text-align: left;
-
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   img {
     width: 200px;
     height: 200px;
@@ -1081,9 +1081,10 @@ export const StyledTokenSection = styled(motion.div)`
   margin-bottom: 1em;
   cursor: pointer;
   transition: all 0.4s ease;
-
-  width: 100%;
-
+  background: ${({ theme }) => theme.shadeViolet || "#2c003e"};
+  padding: 40px;
+  width: 120%;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   h3 {
     transition: all 0.4s ease;
     font-size: 60px;
@@ -1097,10 +1098,9 @@ export const StyledTokenSection = styled(motion.div)`
 
   &:hover {
     p {
-      color: #ff437d !important;
+      color: #ff0cdf !important;
+      filter: drop-shadow(0 0 1em #ff0cdf);
     }
-
-    filter: drop-shadow(0 0 1em #ff0cdf);
   }
 
   p {
@@ -1112,7 +1112,7 @@ export const StyledTokenSection = styled(motion.div)`
     color: #888;
     transition: all 0.4s ease;
     text-align: center;
-    width: 80%;
+    width: 100%;
     max-width: 100%;
     overflow: hidden;
     white-space: nowrap;

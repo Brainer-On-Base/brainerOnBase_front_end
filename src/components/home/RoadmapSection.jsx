@@ -7,7 +7,7 @@ import { FloatAnimation } from "../NftDetails/NftDetails";
 const StyledRoadmapCard = styled(HBox)`
   font-family: inherit;
   font-family: "Luckiest Guy", cursive;
-
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   .text {
     margin: 0;
     font-size: 1em !important;
