@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
-import { styled, keyframes } from "@mui/system";
+import { keyframes } from "@mui/system";
 import { motion } from "framer-motion";
+import styled from "styled-components";
 
 // Define the floating animation
 const float = keyframes`
@@ -115,7 +116,8 @@ export const StyledNavbarContainer = styled("div")`
   top: 0;
   z-index: 99999999999;
   margin: 0 auto;
-  background-color: ${({ scrolled }) => (scrolled ? "#230f44" : "transparent")};
+  background-color: ${({ scrolled, theme }) =>
+    scrolled ? "#230f44" : "transparent"};
   transition: background-color 0.3s ease;
   height: 80px;
 
@@ -809,12 +811,12 @@ export const StyledCard = styled("div")`
   background-color: #1a1a1a;
   transition: border-color 0.25s;
   font-family: "Luckiest Guy", cursive;
-  // border-color: #ff437d;
   width: 900px;
   align-self: flex-start;
   margin: 0em 0em 2em 4em;
   display: flex;
   text-align: left;
+
   img {
     width: 200px;
     height: 200px;

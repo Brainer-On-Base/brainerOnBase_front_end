@@ -1,18 +1,12 @@
 import React from "react";
 import GenericTitle from "../GenericTitle/GenericTitle";
-import { HBox } from "../../HocComponents";
+import { HBox, HTitle } from "../../HocComponents";
 import styled from "styled-components";
+import { FloatAnimation } from "../NftDetails/NftDetails";
 
 const StyledRoadmapCard = styled(HBox)`
-  border-radius: 8px;
-  font-size: 1.8em;
   font-family: inherit;
-  background-color: ${(props) => props.theme.buttonBackground};
   font-family: "Luckiest Guy", cursive;
-
-  h2 {
-    font-size: 2em;
-  }
 
   .text {
     margin: 0;
@@ -35,6 +29,8 @@ const StyledRoadmapCard = styled(HBox)`
   ul {
     padding-left: 0;
     li {
+      font-size: 1.8em;
+
       margin: 0;
       display: flex;
       align-items: center;
@@ -70,7 +66,7 @@ const StyledRoadmapSection = styled(HBox)`
     right: 20px;
     transform: translateX(-50%); /* Para centrar horizontalmente */
     filter: drop-shadow(0 0 5em #c464ffaa);
-    z-index: 9999;
+    z-index: 99999999999;
     transition: transform 0.3s ease; /* Suaviza el giro al cambiar de dirección */
 
     /* Animación inicial al cargar */
@@ -99,76 +95,86 @@ export default function RoadmapSection() {
       <HBox direction="column" width="100%">
         <GenericTitle title="ROADMAP" />
         <img src="./spaceship.png" className={`img1 `} alt="spaceship" />
-
-        <StyledRoadmapCard
-          direction="column"
-          width="90%"
-          align="flex-start"
-          padding="20px 50px"
-        >
-          <h2 style={{ margin: 0 }}>Chapter 1</h2>
-          <p style={{ margin: 0, textAlign: "left" }} className="subtitle">
-            <span>The rise of the Brainers</span>
-          </p>
-          <ul>
-            <li>
-              <img
-                src={"./commonBrainer.png"}
-                alt="Bullet Point"
-                className="bullet-icon"
-              />
-              <p className="text">
-                Social media marketing campaign to build buzz and ignite{" "}
-                <span>community</span> engagement.
-              </p>
-            </li>
-            <li>
-              <img
-                src={"./commonBrainer.png"}
-                alt="Bullet Point"
-                className="bullet-icon"
-              />
-              <p className="text">
-                Creation of the <span>BRAINER SOCIETY</span> community.
-              </p>
-            </li>
-            <li>
-              <img
-                src={"./commonBrainer.png"}
-                alt="Bullet Point"
-                className="bullet-icon"
-              />
-              <p className="text">
-                Inaugural collection of <span>NFTs in pixelArt</span> of
-                different brainers.
-              </p>
-            </li>
-            {/* <li><p className="text">Drop of the main NFT character.</p></li> */}
-            <li>
-              <img
-                src={"./commonBrainer.png"}
-                alt="Bullet Point"
-                className="bullet-icon"
-              />
-              <p className="text">
-                Creation and airdrop of <span>BRNR</span>. The currency of
-                Brainer Society.
-              </p>
-            </li>
-            <li>
-              <img
-                src={"./commonBrainer.png"}
-                alt="Bullet Point"
-                className="bullet-icon"
-              />
-              <p className="text">
-                Fundraising campaign to gather resources to build the{" "}
-                <span>BRAINER SOCIETY</span> metaverse.
-              </p>
-            </li>
-          </ul>
-        </StyledRoadmapCard>
-
+        <FloatAnimation>
+          <StyledRoadmapCard
+            direction="column"
+            width="100%"
+            align="flex-start"
+            padding="20px 50px"
+            background={"shadeViolet"}
+            borderRadius={"20px"}
+            boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"}
+            border="1px solid gold"
+          >
+            <HTitle fontSize={"54px"} color={"white"}>
+              Chapter 1
+            </HTitle>
+            <HTitle
+              fontSize={"34px"}
+              color="neonViolet"
+              margin={"-0.8em 0 0 0"}
+            >
+              The rise of the Brainers
+            </HTitle>
+            <ul>
+              <li>
+                <img
+                  src={"./commonBrainer.png"}
+                  alt="Bullet Point"
+                  className="bullet-icon"
+                />
+                <p className="text">
+                  Social media marketing campaign to build buzz and ignite{" "}
+                  <span>community</span> engagement.
+                </p>
+              </li>
+              <li>
+                <img
+                  src={"./commonBrainer.png"}
+                  alt="Bullet Point"
+                  className="bullet-icon"
+                />
+                <p className="text">
+                  Creation of the <span>BRAINER SOCIETY</span> community.
+                </p>
+              </li>
+              <li>
+                <img
+                  src={"./commonBrainer.png"}
+                  alt="Bullet Point"
+                  className="bullet-icon"
+                />
+                <p className="text">
+                  Inaugural collection of <span>NFTs in pixelArt</span> of
+                  different brainers.
+                </p>
+              </li>
+              {/* <li><p className="text">Drop of the main NFT character.</p></li> */}
+              <li>
+                <img
+                  src={"./commonBrainer.png"}
+                  alt="Bullet Point"
+                  className="bullet-icon"
+                />
+                <p className="text">
+                  Creation and airdrop of <span>BRNR</span>. The currency of
+                  Brainer Society.
+                </p>
+              </li>
+              <li>
+                <img
+                  src={"./commonBrainer.png"}
+                  alt="Bullet Point"
+                  className="bullet-icon"
+                />
+                <p className="text">
+                  Fundraising campaign to gather resources to build the{" "}
+                  <span>BRAINER SOCIETY</span> metaverse.
+                </p>
+              </li>
+            </ul>
+          </StyledRoadmapCard>
+        </FloatAnimation>
         {/* <StyledRoadmapCard>
           <h2 style={{margin:0}}>Chapter 2</h2>
           <p style={{margin: 0, marginBottom: '1em'}}><span>Building the team</span></p>
