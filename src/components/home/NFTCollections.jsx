@@ -35,20 +35,19 @@ const NFTCollections = () => {
     <StyledNFTCollectionsContainer>
       <motion.img
         viewport={{ once: true, amount: 0.5 }}
-        src="/spaceship.png"
+        src="/shipbigbrain.png"
         alt="Ship 3"
         style={{
           position: "absolute",
           top: "80px",
           left: "-200px",
           width: "160px",
-          transform: "rotateY(180deg)",
         }}
-        ro
+        initial={{ scaleX: -1 }} // La voltea horizontalmente desde el inicio
         animate={{
-          x: ["120vw", "-120vw"], // Va de izquierda a derecha
+          x: ["120vw", "-120vw"], // Se mueve de derecha a izquierda
           y: [80, 400, 3000, 0], // Movimiento en onda
-          rotate: [0, -10, -100, 0], // Rotación oscilante
+          rotate: [0, 10, 100, 180], // Ahora gira hacia abajo en la caída
         }}
         transition={{
           repeat: Infinity,
