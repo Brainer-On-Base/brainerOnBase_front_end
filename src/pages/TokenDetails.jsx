@@ -10,6 +10,30 @@ import { FloatAnimation } from "../components/NftDetails/NftDetails";
 import { useNavigate } from "react-router-dom";
 import TokenPreSaleModal from "../components/Modals/TokenPreSaleModal";
 
+const TokenDetailContainer = styled(HBox)`
+  @media screen and (max-width: 900px) {
+    .disabled {
+      z-index: 99;
+    }
+    .text-container {
+      width: 100%;
+      h1 {
+        text-align: center;
+      }
+    }
+  }
+  @media screen and (max-width: 750px) {
+    .disabled {
+      display: none !important;
+    }
+    .text-container {
+      .actions {
+        flex-direction: column;
+      }
+    }
+  }
+`;
+
 // Coin rotatoria
 export const BrainerCoin = () => {
   return (
@@ -52,7 +76,7 @@ const TokenDetails = () => {
       style={{ marginTop: "1em" }}
     >
       <TokenPreSaleModal setShowModal={setShowModal} showModal={showModal} />
-      <HBox
+      <TokenDetailContainer
         direction="column"
         style={{
           justifyContent: "center",
@@ -68,6 +92,7 @@ const TokenDetails = () => {
             alt="Brainer Rocket"
             width="200px"
             height="200px"
+            className="disabled"
             style={{
               position: "absolute",
               left: "-15px",
@@ -109,7 +134,7 @@ const TokenDetails = () => {
             }}
             width="220px"
             height="10px"
-            className="animate__animated animate__fadeInUp animate__delay-1s"
+            className="animate__animated animate__fadeInUp animate__delay-1s disabled"
           >
             <HTitle fontSize={"16px"} color="black" useTitleCase={false}>
               Are you a no brainer?
@@ -141,7 +166,7 @@ const TokenDetails = () => {
                 border="1px solid gold"
                 direction="column"
                 gap="2em"
-                className="animate__animated animate__fadeInUp"
+                className="animate__animated animate__fadeInUp text-container"
                 boxShadow={
                   "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px"
                 }
@@ -154,7 +179,7 @@ const TokenDetails = () => {
                   symbol of our community, the engine that drives our ideas and
                   our mission to break free from centralized control.
                 </Paragraph>
-                <HBox>
+                <HBox className="actions">
                   <PreSaleButton onClick={() => handleShowModal(true)}>
                     Join Pre-Sale Now 🚀
                   </PreSaleButton>
@@ -173,7 +198,7 @@ const TokenDetails = () => {
             </FloatAnimation>
           </HBox>
         </HBox>
-      </HBox>
+      </TokenDetailContainer>
 
       <TokenAddress style={{ marginTop: "4em" }} />
       <TokenomicsSection />
@@ -211,15 +236,6 @@ const TokenDetails = () => {
           Society project: game development, marketing, and ecosystem expansion.
         </ListItem>
 
-        <Paragraph
-          useTitleCase={false}
-          textAlign={"center"}
-          margin={"2em 0 0 0"}
-        >
-          By supporting the project early, you're not only securing your spot in
-          the Brainer Society—you’re also fueling our journey to
-          decentralization and innovation.
-        </Paragraph>
         <PreSaleButton
           margin={"2em 0 0 0"}
           onClick={() => handleShowModal(true)}
@@ -227,6 +243,15 @@ const TokenDetails = () => {
         >
           Join Pre-Sale Now 🚀
         </PreSaleButton>
+        <Paragraph2
+          useTitleCase={false}
+          textAlign={"center"}
+          margin={"2em 0 0 0"}
+        >
+          By supporting the project early, you're not only securing your spot in
+          the Brainer Society—you’re also fueling our journey to
+          decentralization and innovation.
+        </Paragraph2>
       </InfoContainer>
     </AppLayout>
   );
@@ -243,7 +268,6 @@ export const RocketContainer = styled.div`
 `;
 
 export const InfoContainer = styled.div`
-  width: 50%;
   background: ${({ theme }) => theme.shadeViolet || "#2c003e"};
   border-radius: 10px;
   padding: 30px;
@@ -252,11 +276,19 @@ export const InfoContainer = styled.div`
   gap: 20px;
   border: 1px solid gold;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+  @media screen and (max-width: 900px) {
+    width: 100%;
+  }
 `;
 
 export const Title = styled(HTitle)`
   font-size: 32px;
   color: gold;
+
+  @media screen and (max-width: 550px) {
+    font-size: 24px !important;
+  }
 `;
 
 export const Subtitle = styled(HTitle)`
@@ -269,11 +301,32 @@ export const Paragraph = styled(HTitle)`
   color: #d1d1d1;
   line-height: 1.5;
   text-align: center;
+
+  @media screen and (max-width: 550px) {
+    font-size: 18px !important;
+  }
+`;
+export const Paragraph2 = styled(HTitle)`
+  font-size: 14px;
+  color: #d1d1d1;
+  margin: 0 auto;
+  width: 80%;
+  line-height: 1.5;
+  text-align: center;
+
+  @media screen and (max-width: 550px) {
+    font-size: 14px !important;
+  }
 `;
 
 export const SectionTitle = styled(HTitle)`
+  text-align: center;
   font-size: 30px;
+  width: 100%;
   color: gold;
+  @media screen and (max-width: 550px) {
+    font-size: 24px !important;
+  }
 `;
 
 export const ListItem = styled(HTitle)`
@@ -286,6 +339,10 @@ export const ListItem = styled(HTitle)`
     li {
       list-style-type: disc;
     }
+  }
+
+  @media screen and (max-width: 550px) {
+    font-size: 14px !important;
   }
 `;
 

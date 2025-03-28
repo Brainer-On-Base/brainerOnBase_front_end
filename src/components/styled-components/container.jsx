@@ -1145,6 +1145,7 @@ export const StyledTokenSection = styled(motion.div)`
 
     @media (max-width: 992px) {
       font-size: 1.8em;
+      width: 50%;
     }
 
     @media (max-width: 768px) {
