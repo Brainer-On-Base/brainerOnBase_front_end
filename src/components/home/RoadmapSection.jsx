@@ -44,6 +44,7 @@ const StyledRoadmapCard = styled(HBox)`
 
   @media screen and (max-width: 814px) {
     font-size: 1.2em;
+    padding: 10px 20px;
   }
 
   @media (max-width: 900px) {
@@ -79,6 +80,11 @@ const StyledRoadmapSection = styled(HBox)`
       position: absolute;
       left: 80%; /* Centra horizontalmente */
     }
+
+    .text {
+      font-size: 18px !important;
+      text-align: left;
+    }
   }
   @media (max-width: 750px) {
     .img1 {
@@ -86,13 +92,18 @@ const StyledRoadmapSection = styled(HBox)`
       position: absolute;
       left: 75%; /* Centra horizontalmente */
     }
+
+    p {
+      font-size: 10px !important;
+      text-align: left;
+    }
   }
 `;
 
 export default function RoadmapSection() {
   return (
     <StyledRoadmapSection id="roadmap" ship={0} width="100%">
-      <HBox direction="column" width="100%">
+      <HBox direction="column" width="100%" className="roadmap">
         <GenericTitle title="ROADMAP" />
         <img src="./spaceship.png" className={`img1 `} alt="spaceship" />
         <FloatAnimation>
