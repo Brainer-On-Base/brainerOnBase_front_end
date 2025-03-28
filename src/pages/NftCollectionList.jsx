@@ -147,6 +147,8 @@ const NftCollectionList = () => {
           width="100%"
           wrap="wrap"
           background={"shadeViolet"}
+          padding="1em 2em"
+          boxShadow={"0 0 10px #000000"}
         >
           <HBox>
             <HButton
