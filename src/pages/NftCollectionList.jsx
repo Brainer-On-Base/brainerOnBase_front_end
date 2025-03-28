@@ -141,7 +141,13 @@ const NftCollectionList = () => {
           subtitle="Collection"
           style={{ marginTop: "1em" }}
         />
-        <HBox align="center" justify="space-between" width="90%" wrap="wrap">
+        <HBox
+          align="center"
+          justify="space-between"
+          width="100%"
+          wrap="wrap"
+          background={"shadeViolet"}
+        >
           <HBox>
             <HButton
               style={{ zIndex: 999 }}

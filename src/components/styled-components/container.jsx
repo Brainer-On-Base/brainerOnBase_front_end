@@ -678,6 +678,8 @@ export const StyledFooterSection = styled(HBox)`
   align-items: center;
   overflow: visible;
   justify-content: flex-start;
+  margin-top: 5em;
+
   p {
     text-align: center;
     color: white;
