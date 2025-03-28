@@ -183,7 +183,7 @@ const NFTCollections = () => {
           ))}
         </motion.div>
       </motion.div>
-      <motion.div style={{ marginTop: "-2rem", marginBottom: "3rem" }}>
+      <motion.div style={{ marginBottom: "3rem" }}>
         <HButton
           fontSize={"2em"}
           padding={"20px 40px"}
