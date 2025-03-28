@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import { keyframes } from "@mui/system";
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { HBox } from "../../HocComponents";
 
 // Define the floating animation
 const float = keyframes`
@@ -659,20 +660,22 @@ export const StyledAstronautCard3 = styled(StyledAstronautCard)`
   animation: ${float} 5s ease-in-out infinite;
 `;
 
-export const StyledFooterSection = styled("div")`
+export const StyledFooterSection = styled(HBox)`
   //   background-color: #1a1a1a;
   /* background: url("/footerbck.png"); */
   background-size: repeat;
   position: relative;
-
+  box-shadow: rgba(0, 0, 0, 0.19) 0px -10px 20px,
+    /* Sombra principal arriba */ rgba(0, 0, 0, 0.23) 0px -6px 6px; /* Sombra secundaria arriba */
   width: 100%;
   display: flex;
   height: auto;
-  padding-top: 4em;
+  padding-top: 2em;
   margin-top: 2em;
   flex-direction: column;
   align-items: center;
   overflow: visible;
+  justify-content: flex-start;
   p {
     text-align: center;
     color: white;
@@ -706,6 +709,12 @@ export const StyledFooterSection = styled("div")`
     animation: rotateAndMoveUp 8s infinite alternate;
   }
 
+  .extra-info h1 {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   .social {
     display: none;
   }
@@ -717,6 +726,16 @@ export const StyledFooterSection = styled("div")`
     }
     .social {
       display: flex;
+    }
+
+    .extra-info {
+      position: relative !important;
+      display: flex !important;
+      flex-direction: row !important;
+      width: 100%;
+      top: 0 !important;
+      left: 0 !important;
+      flex-wrap: wrap !important;
     }
   }
 `;

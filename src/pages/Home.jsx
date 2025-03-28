@@ -41,6 +41,7 @@ export default function Home() {
         <TokenAddress />
         <TokenomicsSection />
         <HButton
+          margin={"0 0 40px 0"}
           fontSize={"2em"}
           padding={"20px 40px"}
           onClick={() => window.open("https://docs.braineronbase.com")}

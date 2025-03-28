@@ -5,15 +5,9 @@ import {
   StyledFooterSection,
 } from "./styled-components/container";
 import { StyledButton } from "./styled-components/buttons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowCircleLeft,
-  faArrowCircleRight,
-  faX,
-} from "@fortawesome/free-solid-svg-icons";
 import BubbleDialog from "./BubbleDialog";
-import { faDiscord, faTelegram } from "@fortawesome/free-brands-svg-icons";
 import { FaXTwitter } from "react-icons/fa6";
+import { HBox, HTitle } from "../HocComponents";
 
 export default function Footer() {
   const handleNavigateLink = (link) => {
@@ -21,7 +15,64 @@ export default function Footer() {
   };
 
   return (
-    <StyledFooterSection>
+    <StyledFooterSection background={"shadeViolet"}>
+      <HBox
+        width="100%"
+        className="extra-info"
+        direction="column"
+        align="flex-start"
+        style={{
+          position: "absolute",
+          left: 20,
+          top: 20,
+        }}
+      >
+        <HTitle
+          fontSize={"20px"}
+          useTitleCase={false}
+          style={{ cursor: "pointer" }}
+          onClick={() => handleNavigateLink("https://docs.braineronbase.com")}
+        >
+          The Team
+        </HTitle>
+        <HTitle
+          fontSize={"20px"}
+          useTitleCase={false}
+          style={{ cursor: "pointer" }}
+          onClick={() =>
+            handleNavigateLink(
+              "https://docs.braineronbase.com/brainer-on-base/brainer-fi"
+            )
+          }
+        >
+          Brainer Token
+        </HTitle>
+        <HTitle
+          fontSize={"20px"}
+          useTitleCase={false}
+          style={{ cursor: "pointer" }}
+          onClick={() =>
+            handleNavigateLink(
+              "https://docs.braineronbase.com/brainer-on-base/brainer-fi"
+            )
+          }
+        >
+          Tokenomics
+        </HTitle>
+        <HTitle
+          fontSize={"20px"}
+          useTitleCase={false}
+          style={{ cursor: "pointer" }}
+          onClick={() =>
+            handleNavigateLink(
+              "https://docs.braineronbase.com/brainer-on-base/brainer-pixel-art-collection"
+            )
+          }
+        >
+          Pixel Brainer Collection
+        </HTitle>
+      </HBox>
+
       <strong>Disclaimer: Not Financial Advice</strong>
       <p>
         <span>BRAINER</span> is a community-driven project created purely for
@@ -31,27 +82,15 @@ export default function Footer() {
       <p>
         We're <span>BUILDING</span> for the fun of it, and for all of us.
       </p>
-      <StyledFlexFullCenterContainer
-        style={{
-          // height: "280px",
-          // backgroundRepeat: "repeat",
-          // justifyContent: "center",
-          // alignItems: "flex-end",
-          // background: 'url("/footerbck.png")',
-          paddingBottom: "1em",
-        }}
+      <StyledFlexCenterContainer
+        style={{ width: "100%", justifyContent: "center" }}
       >
-        <StyledFlexCenterContainer
-          style={{ width: "100%", justifyContent: "center" }}
-        >
-          <img src="/brainerCoin.png" alt="Brainer Coin Logo" />
-          <p id="copyright" style={{ margin: "10px", color: " white" }}>
-            Copyright © 2024. All rights reserved. - braineronbase@gmail.com
-          </p>
-          <img src="/brainerCoin.png" alt="Brainer Coin Logo" />
-        </StyledFlexCenterContainer>
-      </StyledFlexFullCenterContainer>
-
+        <img src="/brainerCoin.png" alt="Brainer Coin Logo" />
+        <p id="copyright" style={{ margin: "10px", color: " white" }}>
+          Copyright © 2024. All rights reserved. - braineronbase@gmail.com
+        </p>
+        <img src="/brainerCoin.png" alt="Brainer Coin Logo" />
+      </StyledFlexCenterContainer>
       <BubbleDialog
         style={{ transform: "rotateX(360deg)", overflow: "hidden" }}
         id="bubbletokenomics"
@@ -62,8 +101,8 @@ export default function Footer() {
           rotate: "25deg",
         }}
         positionStyle={{
-          right: "80px",
-          top: "-10%",
+          right: "100px",
+          top: "-25%",
         }}
         width="180px"
         height="50px"
