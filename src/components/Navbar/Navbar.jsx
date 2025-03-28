@@ -81,7 +81,14 @@ function Navbar({}) {
     <StyledNavbarContainer position="fixed" scrolled={scrolled}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: "flex",
+              alignItems: "center",
+              paddingBottom: "10px",
+            }}
+          >
             <Stack flexDirection={"row"} alignItems={"center"}>
               {/* <img
                 src="/commonBrainer.png"

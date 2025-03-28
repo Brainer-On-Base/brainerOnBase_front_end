@@ -12,6 +12,8 @@ import { StyledButton } from "../components/styled-components/buttons";
 import { View } from "@react-three/drei";
 import NightBackground from "../components/NIghtBackground";
 import { motion } from "framer-motion";
+import BrainerOnBaseTitle from "../components/BrainerOnBaseTitle";
+import { HBox, HButton } from "../HocComponents";
 
 const FlyingShips = () => {
   return (
@@ -87,12 +89,17 @@ function App() {
             <img src={brainerCoin} className="logo" alt="Vite logo" />
           </a>
         </div>
-        <h1>BRAINER</h1>
-        <div className="card">
-          <StyledButton onClick={() => navigate("/home")}>
+        <BrainerOnBaseTitle fontSize={"60"} />
+
+        <HBox padding="20px 0 0 0">
+          <HButton
+            onClick={() => navigate("/home")}
+            padding={"10px 20px"}
+            fontSize={"28px"}
+          >
             JOIN THE SOCIETY
-          </StyledButton>
-        </div>
+          </HButton>
+        </HBox>
       </StyledHomeContent>
     </StyledInitAppContainer>
   );

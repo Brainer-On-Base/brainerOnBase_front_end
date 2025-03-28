@@ -16,12 +16,13 @@ const StyledBOBTitle = styled.div`
     cursor: pointer;
 
     &:nth-of-type(1) {
-      font-size: 40px;
+      font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : "40px")};
       color: white;
     }
     &:nth-of-type(2) {
-      margin-top: -30px;
-      font-size: 25px;
+      margin-top: ${({ fontSize }) =>
+        fontSize ? `-${fontSize - 20}px` : "-30px"};
+      font-size: ${({ fontSize }) => (fontSize ? `${fontSize / 2}px` : "25px")};
       text-align: center;
       color: white;
 
@@ -30,8 +31,8 @@ const StyledBOBTitle = styled.div`
       &::before {
         content: "";
         display: inline-block;
-        width: 25px; /* Ajusta el tamaño según el logo */
-        height: 25px;
+        width: ${({ fontSize }) => (fontSize ? `${fontSize / 2}px` : "25px")};
+        height: ${({ fontSize }) => (fontSize ? `${fontSize / 2}px` : "25px")};
         background-image: url("./baseLogo.png"); /* Cambia por la ruta de tu logo */
         background-size: contain;
         background-repeat: no-repeat;
@@ -42,10 +43,10 @@ const StyledBOBTitle = styled.div`
   }
 `;
 
-const BrainerOnBaseTitle = ({ title }) => {
+const BrainerOnBaseTitle = ({ title, fontSize }) => {
   const navigate = useNavigate();
   return (
-    <StyledBOBTitle onClick={() => navigate("/home#home")}>
+    <StyledBOBTitle onClick={() => navigate("/home#home")} fontSize={fontSize}>
       <h1 className={"animate__animated animate__backInDown"}>BRAINER</h1>
       <h1 className={"animate__animated animate__fadeInDown animate__delay-1s"}>
         N BASE
