@@ -277,8 +277,6 @@ const NftCollectionList = () => {
           getIPFSInfo={getIPFSInfo}
         />
       )}
-
-      <Footer />
     </AppLayout>
   );
 };
