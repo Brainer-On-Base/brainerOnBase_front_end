@@ -42,6 +42,7 @@ const HSearchInput = ({
         width={width}
         height={height}
         borderColor={borderColor}
+        className="search-input-container"
       >
         <TbSearch alt="search-icon" size={30} style={{ marginRight: "10px" }} />
         <SearchInput

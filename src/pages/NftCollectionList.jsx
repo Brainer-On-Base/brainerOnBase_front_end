@@ -21,17 +21,49 @@ import NFTMintModal from "../components/Modals/NFTMintModal";
 import AccountContext from "../provider/AccountProvider/AccountContext";
 
 const StyledNFTList = styled(HBox)`
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se ajusten */
+  justify-content: center;
+  gap: 10px; /* Espaciado entre imágenes */
   z-index: 99999;
 
   img {
-    width: 100%;
     height: auto;
     aspect-ratio: 1/1;
     object-fit: cover;
     border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+
     &:hover {
       cursor: pointer;
       filter: drop-shadow(0 0 1em #c464ffaa);
+      transform: scale(1.05);
+    }
+  }
+`;
+
+const StyledNFTListContainer = styled(HBox)`
+  @media screen and (max-width: 450px) {
+    .nft-list-actions1 {
+      flex-wrap: wrap;
+      padding: 0;
+      button {
+        font-size: 1.2em;
+        width: auto;
+      }
+      .minted-quantity {
+        font-size: 1.2em;
+      }
+    }
+
+    .nft-list-actions2 {
+      flex-wrap: wrap;
+      button {
+        font-size: 1.2em;
+      }
+      .search-input-container {
+        width: 100% !important;
+      }
     }
   }
 `;
@@ -135,7 +167,12 @@ const NftCollectionList = () => {
 
   return (
     <AppLayout>
-      <HBox direction="column" align="center" justify="center" width="100%">
+      <StyledNFTListContainer
+        direction="column"
+        align="center"
+        justify="center"
+        width="100%"
+      >
         <NFTMintModal
           setShowModal={setShowModal}
           showModal={showModal}
@@ -155,8 +192,9 @@ const NftCollectionList = () => {
           background={"shadeViolet"}
           padding="1em 2em"
           boxShadow={"0 0 10px #000000"}
+          className="nft-list-header"
         >
-          <HBox>
+          <HBox className="nft-list-actions1">
             <HButton
               style={{ zIndex: 999 }}
               title="OpenSea"
@@ -197,7 +235,7 @@ const NftCollectionList = () => {
             )}
           </HBox>
 
-          <HBox>
+          <HBox className="nft-list-actions2">
             {nftList.length === 1 && (
               <HButton
                 className="animate__animated animate__fadeIn animate__delay"
@@ -280,7 +318,7 @@ const NftCollectionList = () => {
           setPagination={setCurrentPage}
           margin="0 0 0 1em"
         />
-      </HBox>
+      </StyledNFTListContainer>
       {nftSelected && (
         <NftDetails
           nftSelected={nftSelected}
