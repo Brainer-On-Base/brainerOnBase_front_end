@@ -8,7 +8,7 @@ import useModals from "./useSweetAlert";
 import AccountContext from "../provider/AccountProvider/AccountContext";
 import { ethers } from "ethers";
 
-const UseContract = () => {
+const useContractPBC1 = () => {
   const { account, web3provider } = React.useContext(AccountContext);
   const { showPopUp } = useModals();
 
@@ -145,4 +145,4 @@ const UseContract = () => {
   };
 };
 
-export default UseContract;
+export default useContractPBC1;

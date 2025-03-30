@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { StyledWelcomeSection2 } from "../styled-components/container";
 import useModals from "../../hooks/useSweetAlert";
-import UseContract from "../../hooks/useContract";
+import useContractPBC1 from "../../hooks/useContractPBC1";
 import Loader from "../Loader/Loader";
 import { HBox, HButton } from "../../HocComponents";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ import NFTMintModal from "../Modals/NFTMintModal";
 
 export default function WelcomeSection() {
   const { showPopUp } = useModals();
-  const { mint_BPC1_NFT, getMintedCount, web3provider } = UseContract();
+  const { mint_BPC1_NFT, getMintedCount, web3provider } = useContractPBC1();
   const [mintedCount, setMintedCount] = useState(null);
   const [loading, setLoading] = useState(false);
   const [refreshCount, setRefreshCount] = useState(false);

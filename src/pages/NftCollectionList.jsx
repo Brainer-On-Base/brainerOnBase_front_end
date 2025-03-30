@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
-import UseContract from "../hooks/useContract";
+import useContractPBC1 from "../hooks/useContractPBC1";
 import NftDetails, {
   FloatAnimation,
 } from "../components/NftDetails/NftDetails";
@@ -46,7 +46,7 @@ const NftCollectionList = () => {
   });
   const [currentPage, setCurrentPage] = useState(1);
   const { getIPFSInfo, getMintedNFTs, getMintedCount, web3provider } =
-    UseContract();
+    useContractPBC1();
   const [showModal, setShowModal] = useState(false);
   const [mintedCount, setMintedCount] = useState(() => {
     const storedMintedCount = localStorage.getItem("mintedCount");

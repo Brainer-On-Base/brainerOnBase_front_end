@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { HBox, HModal, HTitle } from "../../HocComponents";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import UseContract from "../../hooks/useContract";
+import useContractPBC1 from "../../hooks/useContractPBC1";
 
 export const StyledUl = styled(motion.ul)`
   list-style-type: none;
@@ -24,7 +24,7 @@ export const StyledUl = styled(motion.ul)`
   }
 `;
 const NFTMintModal = ({ showModal, setShowModal }) => {
-  const { mint_BPC1_NFT } = UseContract();
+  const { mint_BPC1_NFT } = useContractPBC1();
   const [loading, setLoading] = useState(false);
 
   const mintNft = async () => {

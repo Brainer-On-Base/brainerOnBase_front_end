@@ -10,13 +10,13 @@ import { StyledNavbarContainer } from "../styled-components/container";
 import { Stack } from "@mui/material";
 import ConnectWallet from "../ConnectWallet";
 import NavbarMobile from "./NavbarMobile";
-import UseContract from "../../hooks/useContract";
+import useContractPBC1 from "../../hooks/useContractPBC1";
 import BrainerOnBaseTitle from "../BrainerOnBaseTitle";
 
 function Navbar({}) {
   const location = useLocation();
   const isPlaying = location.pathname === "/game";
-  const { isConnected } = UseContract();
+  const { isConnected } = useContractPBC1();
 
   const pages = [
     {

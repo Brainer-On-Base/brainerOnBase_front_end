@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { StyledNFTCollectionsContainer } from "../styled-components/container";
 import { useNavigate } from "react-router-dom";
-import UseContract from "../../hooks/useContract";
+import useContractPBC1 from "../../hooks/useContractPBC1";
 import { HButton } from "../../HocComponents";
 
 const NFTCollections = () => {
@@ -13,7 +13,7 @@ const NFTCollections = () => {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
   };
-  const { getIPFSInfo, getMintedNFTs } = UseContract();
+  const { getIPFSInfo, getMintedNFTs } = useContractPBC1();
 
   useEffect(() => {
     getHardCodeNFTs();

@@ -6,7 +6,7 @@ import {
 import { View } from "@react-three/drei";
 import NightBackground from "../components/NIghtBackground";
 import Navbar from "../components/Navbar/Navbar";
-import UseContract from "../hooks/useContract";
+import useContractPBC1 from "../hooks/useContractPBC1";
 import { StyledButton } from "../components/styled-components/buttons";
 import Game from "../components/society/game/Game";
 import SocietyMap from "../components/society/game/SocietyMap";

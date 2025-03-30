@@ -1,14 +1,6 @@
 import React, { useContext, useEffect } from "react";
-import { StyledAppContainer } from "../components/styled-components/container";
-import Navbar from "../components/Navbar/Navbar";
-import { View } from "@react-three/drei";
-import NightBackground from "../components/NIghtBackground";
-import { HBox, HButton } from "../HocComponents";
-import GenericTitle from "../components/GenericTitle/GenericTitle";
-import Footer from "../components/Footer";
 import Marketplace from "../components/society/marketplace/Marketplace";
-import UseContract from "../hooks/useContract";
-import zIndex from "@mui/material/styles/zIndex";
+import useContractPBC1 from "../hooks/useContractPBC1";
 import AppLayout from "../components/AppLayout/AppLayout";
 import AccountContext from "../provider/AccountProvider/AccountContext";
 
