@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StyledWelcomeSection2 } from "../styled-components/container";
-import useModals from "../../hooks/useSweetAlert";
 import useContractPBC1 from "../../hooks/useContractPBC1";
 import Loader from "../Loader/Loader";
 import { HBox, HButton } from "../../HocComponents";
 import { useNavigate } from "react-router-dom";
 import NFTMintModal from "../Modals/NFTMintModal";
+import AccountContext from "../../provider/AccountProvider/AccountContext";
 
 export default function WelcomeSection() {
-  const { showPopUp } = useModals();
-  const { mint_BPC1_NFT, getMintedCount, web3provider } = useContractPBC1();
+  const { getMintedCount } = useContractPBC1();
+  const { web3provider } = useContext(AccountContext);
   const [mintedCount, setMintedCount] = useState(null);
   const [loading, setLoading] = useState(false);
   const [refreshCount, setRefreshCount] = useState(false);
@@ -25,18 +25,16 @@ export default function WelcomeSection() {
     setMintedCount(count);
   };
 
-  const mintNft = async () => {
-    setLoading(true);
-    await mint_BPC1_NFT();
-    setRefreshCount(!refreshCount);
-    setLoading(false);
-  };
-
   return (
     <StyledWelcomeSection2 style={{ alignItems: "flex-start" }} id="home">
       {/* <img src="rocket.png" className="baloon"/> */}
       {loading && <Loader showLoading={loading} />}
-      <NFTMintModal showModal={showModal} setShowModal={setShowModal} />
+      <NFTMintModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        setLoading={setLoading}
+        setRefreshCount={setRefreshCount}
+      />
       <div className="home-text-container">
         <div>
           <h1 className={"animate__animated animate__backInDown"}>BRAINER</h1>

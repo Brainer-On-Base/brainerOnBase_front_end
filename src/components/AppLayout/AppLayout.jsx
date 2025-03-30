@@ -20,7 +20,6 @@ const AppLayout = ({ title, subtitle, children, id, useCoinRain }) => {
           position: "absolute",
           top: 0,
           bottom: 0,
-          zIndex: 0,
         }}
       >
         <NightBackground />

@@ -9,7 +9,7 @@ export const ModalContainer = styled("div")`
   height: 100%;
   background: rgb(0 0 0 / 69%); /* Fondo oscuro */
 
-  z-index: 99999999; /* Asegúrate de que esté detrás del modal */
+  z-index: 9999999; //Asegúrate de que esté detrás del modal
   display: flex;
   justify-content: center;
   align-items: center;

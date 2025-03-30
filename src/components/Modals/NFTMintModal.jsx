@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { HBox, HModal, HTitle } from "../../HocComponents";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import useContractPBC1 from "../../hooks/useContractPBC1";
+import AccountContext from "../../provider/AccountProvider/AccountContext";
 
 export const StyledUl = styled(motion.ul)`
   list-style-type: none;
@@ -23,13 +24,17 @@ export const StyledUl = styled(motion.ul)`
     }
   }
 `;
-const NFTMintModal = ({ showModal, setShowModal }) => {
+const NFTMintModal = ({
+  showModal,
+  setShowModal,
+  setLoading,
+  setRefreshCount,
+}) => {
   const { mint_BPC1_NFT } = useContractPBC1();
-  const [loading, setLoading] = useState(false);
-
   const mintNft = async () => {
     setLoading(true);
-    await mint_BPC1_NFT();
+    const res = await mint_BPC1_NFT();
+    setRefreshCount((prev) => !prev); // Cambia el estado para forzar la actualización del contador
     setLoading(false);
   };
 
@@ -39,6 +44,7 @@ const NFTMintModal = ({ showModal, setShowModal }) => {
       showModal={showModal}
       onCloseFunction={() => setShowModal(false)}
       title="BRAINER NFT COLLECTION"
+      onConfirmFunction={mintNft}
     >
       <HBox direction="column" width="100%">
         <StyledUl
