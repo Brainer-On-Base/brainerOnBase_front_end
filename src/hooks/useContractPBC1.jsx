@@ -48,7 +48,6 @@ const useContractPBC1 = () => {
   };
 
   const getMintedCount = async () => {
-    console.log("Fetching minted count...", web3provider);
     if (!web3provider) return 0;
     try {
       const nftContract = new ethers.Contract(
@@ -97,7 +96,6 @@ const useContractPBC1 = () => {
 
       // Si no hay tokens minteados, retornar un array vacío
       if (currentTokenId === 0) {
-        console.log("No NFTs have been minted yet.");
         return [];
       }
 

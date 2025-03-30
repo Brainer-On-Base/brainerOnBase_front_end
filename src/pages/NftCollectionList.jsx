@@ -120,7 +120,6 @@ const NftCollectionList = () => {
         : null;
       return selectedNumber === id;
     });
-    console.log(nft);
     if (!nft) {
       setNftList([
         {
