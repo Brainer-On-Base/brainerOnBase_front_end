@@ -3,7 +3,8 @@ import AccountContext from "./AccountContext";
 import { ethers } from "ethers";
 import useModals from "../../hooks/useSweetAlert";
 
-const BASE_SEPOLIA_RPC = "https://rpc.ankr.com/eth_sepolia";
+const BLOCKCHAIN_NODE_API_KEY =
+  "aa08e104106a6ef14af92760f3e089cc10edba5fd3de4200d10124c8597b2b07";
 
 const AccountProvider = ({ children }) => {
   const [account, setAccount] = React.useState(() => {
@@ -13,7 +14,9 @@ const AccountProvider = ({ children }) => {
   });
   const [web3provider, setWeb3Provider] = React.useState(() => {
     const provider = localStorage.getItem("web3provider");
-    return provider ? new ethers.BrowserProvider(window.ethereum) : null;
+    return provider && window?.ethereum
+      ? new ethers.BrowserProvider(window.ethereum)
+      : null;
   });
   const [contract, setContract] = React.useState(() => {
     const contractAddress = localStorage.getItem("contractAddress");
@@ -35,20 +38,18 @@ const AccountProvider = ({ children }) => {
       // Si hay una wallet conectada, usa su proveedor
       const eth_web3_provider = new ethers.BrowserProvider(window.ethereum);
       setWeb3Provider(eth_web3_provider);
-      console.log("Usando proveedor de la wallet");
       localStorage.setItem("web3provider", "wallet"); // Guardar que estamos usando la wallet
     } else {
-      // Si no hay wallet conectada, usamos el RPC público de Sepolia
-      const ethProvider = new ethers.JsonRpcProvider(
-        "https://rpc.ankr.com/eth_sepolia",
+      // Si no hay wallet conectada, usar el RPC público de Sepolia o el que uses
+      const providerToUse = new ethers.JsonRpcProvider(
+        `https://rpc.ankr.com/eth_sepolia/${BLOCKCHAIN_NODE_API_KEY}`,
         {
-          chainId: 11155111,
+          chainId: 11155111, // Sepolia
           name: "Base Sepolia",
         }
       );
-      setWeb3Provider(ethProvider);
-      console.log("Usando RPC público de Sepolia");
-      localStorage.setItem("web3provider", "rpc"); // Guardar que estamos usando el RPC
+      setWeb3Provider(providerToUse);
+      localStorage.setItem("web3provider", "rpc"); // Guardar en localStorage
     }
   }, []); // Solo se ejecuta una vez cuando el componente se monta
 

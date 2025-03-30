@@ -1,34 +1,31 @@
 .modalContainer {
-    border: 1px solid #ff437d;
-    background-color: #1a1a1a !important;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 0;
-    font-family: "Luckiest Guy", cursive;
-    border-radius: 2%;
-  }
+  border: 1px solid #ff437d;
+  background-color: #1a1a1a !important;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 0;
+  font-family: "Luckiest Guy", cursive;
+  border-radius: 2%;
+}
 
-
-.swal2-container{
-  z-index: 99999999999999999999;
+.swal2-container {
+  z-index: 999999999999999999999 !important;
   overflow: hidden !important;
 }
 
-div:where(.swal2-container) .swal2-html-container{
+div:where(.swal2-container) .swal2-html-container {
   font-family: monospace;
-
 }
 
-p{
+p {
   margin: 0;
 }
 
-p:first-child{
+p:first-child {
   color: #ff437d;
-  margin-bottom: 20px; 
-  
+  margin-bottom: 20px;
 }
 
-#colorpink{
+#colorpink {
   font-family: "Luckiest Guy", cursive;
   font-weight: bold;
   color: #ff437d;

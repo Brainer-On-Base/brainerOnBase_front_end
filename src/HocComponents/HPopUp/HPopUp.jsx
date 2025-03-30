@@ -7,7 +7,7 @@ export const HPopUp = ({ type = "success", message, customOptions = {} }) => {
   const options = {
     ...customOptions,
   };
-
+  console.log("AAAAAAAAAA");
   // Renderiza el toast según el tipo
   switch (type) {
     case "success":

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 import useContractPBC1 from "../hooks/useContractPBC1";
@@ -18,6 +18,7 @@ import GenericTitle from "../components/GenericTitle/GenericTitle";
 import { SyncLoader } from "react-spinners";
 import AppLayout from "../components/AppLayout/AppLayout";
 import NFTMintModal from "../components/Modals/NFTMintModal";
+import AccountContext from "../provider/AccountProvider/AccountContext";
 
 const StyledNFTList = styled(HBox)`
   z-index: 99999;
@@ -45,8 +46,8 @@ const NftCollectionList = () => {
     return storedMintedNftList ? JSON.parse(storedMintedNftList) : [];
   });
   const [currentPage, setCurrentPage] = useState(1);
-  const { getIPFSInfo, getMintedNFTs, getMintedCount, web3provider } =
-    useContractPBC1();
+  const { web3provider } = useContext(AccountContext);
+  const { getIPFSInfo, getMintedNFTs, getMintedCount } = useContractPBC1();
   const [showModal, setShowModal] = useState(false);
   const [mintedCount, setMintedCount] = useState(() => {
     const storedMintedCount = localStorage.getItem("mintedCount");
@@ -54,11 +55,12 @@ const NftCollectionList = () => {
   });
   const [nftSearch, setNftSearch] = useState("");
   const [loading, setLoading] = useState(false);
+  const [refreshCount, setRefreshCount] = useState(false);
   useEffect(() => {
     window.scrollTo(0, 0);
     getInfo();
     fetchMintedCount();
-  }, [currentPage]);
+  }, [currentPage, refreshCount]);
   const [onlyMinted, setOnlyMinted] = useState([]);
 
   const fetchMintedCount = async () => {
@@ -135,7 +137,12 @@ const NftCollectionList = () => {
   return (
     <AppLayout>
       <HBox direction="column" align="center" justify="center" width="100%">
-        <NFTMintModal setShowModal={setShowModal} showModal={showModal} />
+        <NFTMintModal
+          setShowModal={setShowModal}
+          showModal={showModal}
+          setLoading={setLoading}
+          setRefreshCount={setRefreshCount}
+        />
         <GenericTitle
           title="Pixel Brainer"
           subtitle="Collection"
@@ -182,7 +189,6 @@ const NftCollectionList = () => {
               padding={"0.8em 1.2em"}
               style={{ zIndex: 999 }}
               onClick={() => setShowModal(true)}
-              disabled={!web3provider || mintedCount >= 8000}
             >
               MINT
             </HButton>

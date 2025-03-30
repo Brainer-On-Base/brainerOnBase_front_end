@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   BRAINER_BPC_NFT_ABI_CONTRACT,
   BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
   BRAINER_IPFS_METADATA,
 } from "../CONSTANTS";
-import useModals from "./useSweetAlert";
 import AccountContext from "../provider/AccountProvider/AccountContext";
 import { ethers } from "ethers";
+import { HPopUp } from "../HocComponents";
 
 const useContractPBC1 = () => {
-  const { account, web3provider } = React.useContext(AccountContext);
-  const { showPopUp } = useModals();
+  const { account, web3provider, isConnected } = useContext(AccountContext);
 
   const mint_BPC1_NFT = async () => {
-    if (!web3provider) {
-      showPopUp({ text: "Connect your wallet first.", icon: "warning" });
+    if (!isConnected) {
+      HPopUp({
+        message: "Connect your wallet first.",
+        type: "warning",
+      });
       return;
     }
 
@@ -32,10 +34,16 @@ const useContractPBC1 = () => {
         value: ethers.parseEther("0.01"),
       });
       await tx.wait();
-      showPopUp({ text: "NFT minted successfully!", icon: "success" });
+      HPopUp({
+        message: "NFT minted successfully!",
+        type: "success",
+      });
     } catch (error) {
       console.error("Error minting NFT:", error);
-      showPopUp({ text: "Error minting NFT. Try again later", icon: "error" });
+      HPopUp({
+        message: "Error minting NFT. Try again later",
+        type: "error",
+      });
     }
   };
 
