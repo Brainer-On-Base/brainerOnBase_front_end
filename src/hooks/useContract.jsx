@@ -9,47 +9,8 @@ import AccountContext from "../provider/AccountProvider/AccountContext";
 import { ethers } from "ethers";
 
 const UseContract = () => {
-  const { account, setAccount, web3provider, setWeb3Provider, isConnected } =
-    React.useContext(AccountContext);
+  const { account, web3provider } = React.useContext(AccountContext);
   const { showPopUp } = useModals();
-
-  useEffect(() => {
-    const storedProvider = localStorage.getItem("web3provider");
-    if (storedProvider && !web3provider) {
-      const eth_web3_provider = new ethers.BrowserProvider(window.ethereum);
-      setWeb3Provider(eth_web3_provider);
-    }
-  }, [web3provider, setWeb3Provider]);
-
-  const connectWallet = async () => {
-    if (!window.ethereum) {
-      showPopUp({ text: "Metamask is not installed", icon: "error" });
-      return;
-    }
-    try {
-      const accounts = await window.ethereum.request({
-        method: "eth_requestAccounts",
-      });
-      setAccount(accounts[0]);
-      showPopUp({ text: "Wallet connected!", icon: "success" });
-
-      const eth_web3_provider = new ethers.BrowserProvider(window.ethereum);
-      setWeb3Provider(eth_web3_provider);
-      localStorage.setItem("web3provider", "true");
-    } catch (error) {
-      showPopUp({
-        text: "Error while connecting with Metamask. Try again later",
-        icon: "error",
-      });
-      console.error(error);
-    }
-  };
-
-  const disconnectWallet = () => {
-    setAccount(null);
-    showPopUp({ text: "Wallet disconnected.", icon: "info" });
-    localStorage.removeItem("web3provider");
-  };
 
   const mint_BPC1_NFT = async () => {
     if (!web3provider) {
@@ -79,6 +40,7 @@ const UseContract = () => {
   };
 
   const getMintedCount = async () => {
+    console.log("Fetching minted count...", web3provider);
     if (!web3provider) return 0;
     try {
       const nftContract = new ethers.Contract(
@@ -175,12 +137,7 @@ const UseContract = () => {
   };
 
   return {
-    connectWallet,
-    disconnectWallet,
     mint_BPC1_NFT,
-    account,
-    web3provider,
-    isConnected,
     getMintedCount,
     getIPFSInfo,
     getMintedNFTs,

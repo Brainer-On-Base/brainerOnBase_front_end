@@ -1,6 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AccountContext from "./AccountContext";
 import { ethers } from "ethers";
+import useModals from "../../hooks/useSweetAlert";
+
+const BASE_SEPOLIA_RPC = "https://rpc.ankr.com/eth_sepolia";
 
 const AccountProvider = ({ children }) => {
   const [account, setAccount] = React.useState(() => {
@@ -22,31 +25,63 @@ const AccountProvider = ({ children }) => {
         )
       : null;
   });
-  const [isConnected, setIsConnected] = React.useState(!!account);
-  const [refreshContractProvider, setContractRefresh] = React.useState(false);
+  const [isConnected, setIsConnected] = useState(!!account);
+  const { showPopUp } = useModals();
 
   useEffect(() => {
-    if (account) {
-      localStorage.setItem("account", account);
-      setIsConnected(true);
+    const storedProvider = localStorage.getItem("web3provider");
 
-      if (!web3provider) {
-        try {
-          const eth_web3_provider = new ethers.BrowserProvider(window.ethereum);
-          setWeb3Provider(eth_web3_provider);
-          localStorage.setItem("web3provider", "true");
-        } catch (error) {
-          console.error("Error recreando el proveedor:", error);
-        }
-      }
+    if (storedProvider && window.ethereum) {
+      // Si hay una wallet conectada, usa su proveedor
+      const eth_web3_provider = new ethers.BrowserProvider(window.ethereum);
+      setWeb3Provider(eth_web3_provider);
+      console.log("Usando proveedor de la wallet");
+      localStorage.setItem("web3provider", "wallet"); // Guardar que estamos usando la wallet
     } else {
-      setIsConnected(false);
-      setAccount(null);
-      setWeb3Provider(null);
-      localStorage.removeItem("account");
-      localStorage.removeItem("web3provider");
+      // Si no hay wallet conectada, usamos el RPC público de Sepolia
+      const ethProvider = new ethers.JsonRpcProvider(
+        "https://rpc.ankr.com/eth_sepolia",
+        {
+          chainId: 11155111,
+          name: "Base Sepolia",
+        }
+      );
+      setWeb3Provider(ethProvider);
+      console.log("Usando RPC público de Sepolia");
+      localStorage.setItem("web3provider", "rpc"); // Guardar que estamos usando el RPC
     }
-  }, [account, refreshContractProvider]);
+  }, []); // Solo se ejecuta una vez cuando el componente se monta
+
+  const connectWallet = async () => {
+    if (!window.ethereum) {
+      showPopUp({ text: "Metamask is not installed", icon: "error" });
+      return;
+    }
+    try {
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      setAccount(accounts[0]);
+      showPopUp({ text: "Wallet connected!", icon: "success" });
+
+      const eth_web3_provider = new ethers.BrowserProvider(window.ethereum);
+      setWeb3Provider(eth_web3_provider);
+      localStorage.setItem("web3provider", "true");
+    } catch (error) {
+      showPopUp({
+        text: "Error while connecting with Metamask. Try again later",
+        icon: "error",
+      });
+      console.error(error);
+    }
+  };
+
+  const disconnectWallet = () => {
+    setAccount(null);
+    showPopUp({ text: "Wallet disconnected.", icon: "info" });
+    setIsConnected(false);
+    localStorage.removeItem("web3provider");
+  };
 
   return (
     <AccountContext.Provider
@@ -58,7 +93,8 @@ const AccountProvider = ({ children }) => {
         setWeb3Provider,
         setContract,
         isConnected,
-        setContractRefresh,
+        connectWallet,
+        disconnectWallet,
       }}
     >
       {children}
