@@ -47,6 +47,7 @@ export const StyledAppContainer = styled("div")`
   justify-content: center;
   flex-direction: column;
   margin: 0 auto;
+  overflow-x: hidden;
 
   .minted-quantity {
     font-family: "Luckiest Guy", cursive;
@@ -488,6 +489,12 @@ export const StyledWelcomeSection2 = styled("div")`
   }
 
   @media (max-width: 415px) {
+    button .welcome-actions {
+      width: 100% !important;
+    }
+    .minted-quantity {
+      display: none;
+    }
     .home-text-container {
       h1 {
         &:nth-of-type(1) {

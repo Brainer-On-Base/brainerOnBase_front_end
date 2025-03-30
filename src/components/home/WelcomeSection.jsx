@@ -53,7 +53,7 @@ export default function WelcomeSection() {
           <HBox
             align="flex-start"
             justify="center"
-            // className={"welcome-actions"}
+            className={"welcome-actions"}
             direction="column"
             gap="2em"
           >
