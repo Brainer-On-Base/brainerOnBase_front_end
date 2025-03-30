@@ -57,14 +57,14 @@ export const CloseIcon = styled(TbX)`
 
 export const NFTDetailsModal = styled.div`
   position: fixed;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, 0.587);
   padding: 2em;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  z-index: 999999999999;
+  z-index: 999 !important;
   width: 400px;
   width: 100%;
   display: flex;

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { StyledAppContainer } from "../components/styled-components/container";
 import Navbar from "../components/Navbar/Navbar";
 import { View } from "@react-three/drei";
@@ -10,9 +10,10 @@ import Marketplace from "../components/society/marketplace/Marketplace";
 import UseContract from "../hooks/useContract";
 import zIndex from "@mui/material/styles/zIndex";
 import AppLayout from "../components/AppLayout/AppLayout";
+import AccountContext from "../provider/AccountProvider/AccountContext";
 
 const BrainerOnBaseMarketplace = () => {
-  const { account, isConnected } = UseContract();
+  const { account, isConnected } = useContext(AccountContext);
 
   useEffect(() => {
     window.scrollTo(0, 0);
