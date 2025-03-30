@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faWallet,
@@ -13,13 +13,14 @@ import { useNavigate } from "react-router-dom";
 import { TbWallet } from "react-icons/tb";
 import { IoLogInOutline } from "react-icons/io5";
 import { HButton } from "../HocComponents";
+import AccountContext from "../provider/AccountProvider/AccountContext";
 
 const ConnectWallet = () => {
   const {
     connectWallet: connectWalletProvider,
     disconnectWallet,
     account,
-  } = UseContract();
+  } = useContext(AccountContext);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const navigate = useNavigate();
 
