@@ -68,12 +68,13 @@ const AccountProvider = ({ children }) => {
       const eth_web3_provider = new ethers.BrowserProvider(window.ethereum);
       setWeb3Provider(eth_web3_provider);
       localStorage.setItem("web3provider", "true");
+      setIsConnected(true);
     } catch (error) {
       showPopUp({
         text: "Error while connecting with Metamask. Try again later",
         icon: "error",
       });
-      console.error(error);
+      setIsConnected(false);
     }
   };
 

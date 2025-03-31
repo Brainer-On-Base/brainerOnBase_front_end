@@ -30,8 +30,9 @@ const useContractPBC1 = () => {
       );
 
       // Llama a la función de minting y espera la transacción
+      const mintPrice = await nftContract.getMintPrice();
       const tx = await nftContract.mintNFT(account, {
-        value: ethers.parseEther("0.01"),
+        value: mintPrice,
       });
       await tx.wait();
       HPopUp({
@@ -49,6 +50,7 @@ const useContractPBC1 = () => {
 
   const getMintedCount = async () => {
     if (!web3provider) return 0;
+
     try {
       const nftContract = new ethers.Contract(
         BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
@@ -56,10 +58,9 @@ const useContractPBC1 = () => {
         web3provider
       );
 
-      const getCurrentTokenId = await nftContract.getFunction("currentTokenId");
-      const mintedCount = await getCurrentTokenId();
-
-      return mintedCount;
+      const mintedCount = await nftContract.currentTokenId(); // ✅
+      console.log("Minted count:", mintedCount.toString());
+      return Number(mintedCount);
     } catch (error) {
       console.error("Error fetching minted count:", error);
       return 0;
