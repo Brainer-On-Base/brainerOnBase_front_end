@@ -30,15 +30,7 @@ export const FloatAnimation = styled.div`
   }
 `;
 
-const NftDetails = ({
-  nftSelected,
-  setNftSelected,
-  nftList,
-  mintedNftList,
-  getIPFSInfo,
-}) => {
-  console.log("nftSelected", nftSelected);
-  console.log("mintedNftList", mintedNftList);
+const NftDetails = ({ nftSelected, setNftSelected, mintedNftList }) => {
   const [backgroundColor, setBackgroundColor] = useState("#230f44");
   useEffect(() => {
     getBackground();

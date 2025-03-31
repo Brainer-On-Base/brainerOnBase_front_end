@@ -89,6 +89,7 @@ const NftCollectionList = () => {
     fetchMintedCount();
     if (onlyMintedViewActive) {
       getOnlyMintedView();
+      setCurrentPage(1);
     } else {
       getInfo();
     }
@@ -227,7 +228,7 @@ const NftCollectionList = () => {
               padding={"0.9em 1.2em"}
               onClick={() => setOnlyMintedViewActive(!onlyMintedViewActive)}
             >
-              {onlyMintedViewActive ? "ONLY MINTED" : "ALL NFTs"}
+              {onlyMintedViewActive ? "ONLY MINTED" : "ALL"}
             </HButton>
             <HButton
               fontSize={"1.5em"}
@@ -296,7 +297,11 @@ const NftCollectionList = () => {
             margin="1em 0"
           >
             {nftList.map((nft, index) => (
-              <FloatAnimation delay={index} key={index}>
+              <FloatAnimation
+                delay={index}
+                key={index}
+                title={!nft ? "Unknown Brainer - Not minted yet!" : nft.name}
+              >
                 <motion.div
                   className={`animate__animated animate__fadeInUp animations`}
                   onClick={() => {
