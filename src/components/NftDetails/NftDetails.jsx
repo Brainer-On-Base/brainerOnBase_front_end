@@ -64,8 +64,8 @@ const NftDetails = ({
   };
   return (
     <NFTDetailsModal>
-      <HButton>
-        <CloseIcon onClick={() => setNftSelected(null)} />
+      <HButton onClick={() => setNftSelected(null)} className="closeButton">
+        <CloseIcon />
       </HButton>
       <ArrowLeft onClick={() => handleNavigate("-")} />
       <FloatAnimation>

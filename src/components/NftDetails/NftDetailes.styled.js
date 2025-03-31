@@ -70,4 +70,13 @@ export const NFTDetailsModal = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
 `;
