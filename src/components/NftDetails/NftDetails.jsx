@@ -37,6 +37,8 @@ const NftDetails = ({
   mintedNftList,
   getIPFSInfo,
 }) => {
+  console.log("nftSelected", nftSelected);
+  console.log("mintedNftList", mintedNftList);
   const [backgroundColor, setBackgroundColor] = useState("#230f44");
   useEffect(() => {
     getBackground();
@@ -51,27 +53,37 @@ const NftDetails = ({
     );
   };
   const handleNavigate = async (type) => {
+    if (mintedNftList.length === 1) return;
     let actualIndex = mintedNftList.findIndex(
       (nft) => nft.name === nftSelected.name
     );
 
-    if (type === "+" && actualIndex < mintedNftList.length - 1) {
-      actualIndex = actualIndex + 1;
-    } else if (type === "-" && actualIndex > 0) {
-      actualIndex = actualIndex - 1;
+    if (type === "+") {
+      actualIndex = (actualIndex + 1) % mintedNftList.length;
+    } else if (type === "-") {
+      actualIndex =
+        (actualIndex - 1 + mintedNftList.length) % mintedNftList.length;
     }
+
     setNftSelected(mintedNftList[actualIndex]);
   };
+
   return (
     <NFTDetailsModal>
       <HButton onClick={() => setNftSelected(null)} className="closeButton">
         <CloseIcon />
       </HButton>
-      <ArrowLeft onClick={() => handleNavigate("-")} />
+      <ArrowLeft
+        onClick={() => handleNavigate("-")}
+        disabled={mintedNftList.length === 1}
+      />
       <FloatAnimation>
         <NFTCard nftSelected={nftSelected} />
       </FloatAnimation>
-      <ArrowRight onClick={() => handleNavigate("+")} />
+      <ArrowRight
+        onClick={() => handleNavigate("+")}
+        disabled={mintedNftList.length === 1}
+      />
     </NFTDetailsModal>
   );
 };

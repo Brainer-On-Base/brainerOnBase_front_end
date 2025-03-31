@@ -22,9 +22,9 @@ import AccountContext from "../provider/AccountProvider/AccountContext";
 
 const StyledNFTList = styled(HBox)`
   display: flex;
-  flex-wrap: wrap; /* Permite que los elementos se ajusten */
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 10px; /* Espaciado entre imágenes */
+  gap: 10px;
   z-index: 99999;
 
   img {
@@ -73,27 +73,26 @@ const NftCollectionList = () => {
   const NFTs_PER_PAGE = 10;
   const [nftSelected, setNftSelected] = useState(null);
   const [nftList, setNftList] = useState([]);
-  const [mintedNftList, setMintedNftList] = useState(() => {
-    const storedMintedNftList = localStorage.getItem("mintedNftList");
-    return storedMintedNftList ? JSON.parse(storedMintedNftList) : [];
-  });
+  const [mintedNftList, setMintedNftList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const { web3provider } = useContext(AccountContext);
   const { getIPFSInfo, getMintedNFTs, getMintedCount } = useContractPBC1();
   const [showModal, setShowModal] = useState(false);
-  const [mintedCount, setMintedCount] = useState(() => {
-    const storedMintedCount = localStorage.getItem("mintedCount");
-    return storedMintedCount ? parseInt(storedMintedCount) : null;
-  });
+  const [mintedCount, setMintedCount] = useState(null);
   const [nftSearch, setNftSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const [refreshCount, setRefreshCount] = useState(false);
+  const [onlyMintedViewActive, setOnlyMintedViewActive] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
-    getInfo();
     fetchMintedCount();
-  }, [currentPage, refreshCount]);
-  const [onlyMinted, setOnlyMinted] = useState([]);
+    if (onlyMintedViewActive) {
+      getOnlyMintedView();
+    } else {
+      getInfo();
+    }
+  }, [currentPage, refreshCount, onlyMintedViewActive]);
 
   const fetchMintedCount = async () => {
     const count = await getMintedCount();
@@ -105,19 +104,16 @@ const NftCollectionList = () => {
     setLoading(true);
     setNftSearch("");
     const nftMintedList = await getMintedNFTs();
+    const sortedNFTs = nftMintedList
+      .filter((nft) => nft.uri && nft.uri.trim() !== "")
+      .sort((a, b) => {
+        const aNumber = parseInt(a.uri.match(/(\d+)\.json$/)[1]);
+        const bNumber = parseInt(b.uri.match(/(\d+)\.json$/)[1]);
+        return aNumber - bNumber;
+      });
 
-    const filteredNFTs = nftMintedList.slice(1);
-
-    const sortedNFTs = filteredNFTs.sort((a, b) => {
-      const aNumber = parseInt(a.uri.match(/(\d+)\.json$/)[1]);
-      const bNumber = parseInt(b.uri.match(/(\d+)\.json$/)[1]);
-      return aNumber - bNumber;
-    });
-
-    localStorage.setItem("mintedNftList", JSON.stringify(sortedNFTs));
     const data = [];
-    const mintedNftListTemplate = [];
-
+    const mintedNfts = [];
     const startIndex = (currentPage - 1) * NFTs_PER_PAGE;
     const endIndex = startIndex + NFTs_PER_PAGE;
 
@@ -129,7 +125,7 @@ const NftCollectionList = () => {
         try {
           const info = await getIPFSInfo(nft.uri);
           data.push(info);
-          mintedNftListTemplate.push(info);
+          mintedNfts.push(info);
         } catch (error) {
           console.error(`Error fetching data for URI ${nft.uri}:`, error);
           data.push(null);
@@ -138,9 +134,30 @@ const NftCollectionList = () => {
         data.push(null);
       }
     }
-
+    setMintedNftList(mintedNfts);
     setNftList(data);
-    setMintedNftList(mintedNftListTemplate);
+    setLoading(false);
+  };
+
+  const getOnlyMintedView = async () => {
+    setLoading(true);
+    const nfts = await getMintedNFTs();
+    const mintedList = nfts.filter((nft) => nft.uri && nft.uri.trim() !== "");
+    let mintedNfts = [];
+
+    for (let id = 0; id < mintedList.length; id++) {
+      const uri = mintedList[id].uri;
+      if (uri) {
+        try {
+          const info = await getIPFSInfo(uri);
+          mintedNfts.push(info);
+        } catch (error) {
+          console.error(`Error fetching data for URI ${uri}:`, error);
+        }
+      }
+    }
+    setMintedNftList(mintedNfts);
+    setNftList(mintedNfts);
     setLoading(false);
   };
 
@@ -203,24 +220,15 @@ const NftCollectionList = () => {
             >
               <SiOpensea />
             </HButton>
-
             <HButton
               style={{ zIndex: 999 }}
-              title="OpenSea"
+              title="Toggle View"
               fontSize={"1.5em"}
               padding={"0.9em 1.2em"}
-              onClick={() => {
-                if (onlyMinted) {
-                  setNftList(mintedNftList);
-                } else {
-                  getInfo();
-                }
-                setOnlyMinted(!onlyMinted);
-              }} // ✅ Cierre correcto aquí
+              onClick={() => setOnlyMintedViewActive(!onlyMintedViewActive)}
             >
-              {onlyMinted ? "ONLY MINTED" : "ALL NFTs"}
+              {onlyMintedViewActive ? "ONLY MINTED" : "ALL NFTs"}
             </HButton>
-
             <HButton
               fontSize={"1.5em"}
               padding={"0.8em 1.2em"}
@@ -229,12 +237,10 @@ const NftCollectionList = () => {
             >
               MINT
             </HButton>
-
             {web3provider && (
               <p className="minted-quantity">{`${mintedCount}/8000 minted`}</p>
             )}
           </HBox>
-
           <HBox className="nft-list-actions2">
             {nftList.length === 1 && (
               <HButton
@@ -262,13 +268,15 @@ const NftCollectionList = () => {
                     });
                     return;
                   }
-
                   handleSearch(id);
                 }
               }}
             />
             <HPagination
-              totalPages={Math.ceil(NFT_QUANTITY / NFTs_PER_PAGE)}
+              totalPages={Math.ceil(
+                (onlyMintedViewActive ? mintedNftList.length : NFT_QUANTITY) /
+                  NFTs_PER_PAGE
+              )}
               currentPage={currentPage}
               setPagination={setCurrentPage}
               margin="0 0 0 1em"
@@ -313,7 +321,10 @@ const NftCollectionList = () => {
           </StyledNFTList>
         )}
         <HPagination
-          totalPages={Math.ceil(NFT_QUANTITY / NFTs_PER_PAGE)}
+          totalPages={Math.ceil(
+            (onlyMintedViewActive ? mintedNftList.length : NFT_QUANTITY) /
+              NFTs_PER_PAGE
+          )}
           currentPage={currentPage}
           setPagination={setCurrentPage}
           margin="0 0 0 1em"
