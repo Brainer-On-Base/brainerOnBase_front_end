@@ -70,7 +70,6 @@ const useContractPBC1 = () => {
       );
 
       const mintedCount = await nftContract.currentTokenId(); // ✅
-      console.log("Minted count:", mintedCount.toString());
       return Number(mintedCount);
     } catch (error) {
       console.error("Error fetching minted count:", error);
