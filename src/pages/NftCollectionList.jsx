@@ -19,6 +19,8 @@ import { SyncLoader } from "react-spinners";
 import AppLayout from "../components/AppLayout/AppLayout";
 import NFTMintModal from "../components/Modals/NFTMintModal";
 import AccountContext from "../provider/AccountProvider/AccountContext";
+import FiltersPanel from "../components/FilterNftList";
+import { FaFilter } from "react-icons/fa6";
 
 const StyledNFTList = styled(HBox)`
   display: flex;
@@ -44,6 +46,9 @@ const StyledNFTList = styled(HBox)`
 
 const StyledNFTListContainer = styled(HBox)`
   @media screen and (max-width: 450px) {
+    .filterspanel {
+      display: none;
+    }
     .nft-list-actions1 {
       flex-wrap: wrap;
       padding: 0;
@@ -83,6 +88,7 @@ const NftCollectionList = () => {
   const [loading, setLoading] = useState(false);
   const [refreshCount, setRefreshCount] = useState(false);
   const [onlyMintedViewActive, setOnlyMintedViewActive] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -214,6 +220,16 @@ const NftCollectionList = () => {
         >
           <HBox className="nft-list-actions1">
             <HButton
+              className="filterspanel"
+              style={{ zIndex: 999 }}
+              title="Show filters"
+              fontSize={"1.5em"}
+              padding={"0.9em 1.2em"}
+              onClick={() => setShowFilters(!showFilters)}
+            >
+              <FaFilter />
+            </HButton>
+            <HButton
               style={{ zIndex: 999 }}
               title="OpenSea"
               fontSize={"1.5em"}
@@ -289,41 +305,44 @@ const NftCollectionList = () => {
             <SyncLoader loading={loading} color="#ba68c8" />
           </HBox>
         ) : (
-          <StyledNFTList
-            align="center"
-            justify="space-between"
-            width="90%"
-            wrap="wrap"
-            margin="1em 0"
-          >
-            {nftList.map((nft, index) => (
-              <FloatAnimation
-                delay={index}
-                key={index}
-                title={!nft ? "Unknown Brainer - Not minted yet!" : nft.name}
-              >
-                <motion.div
-                  className={`animate__animated animate__fadeInUp animations`}
-                  onClick={() => {
-                    if (!nft) return false;
-                    setNftSelected(nft);
-                  }}
+          <HBox>
+            {/* {showFilters && <FiltersPanel setNftList={setNftList} />} */}
+            <StyledNFTList
+              align="center"
+              justify="space-between"
+              width="90%"
+              wrap="wrap"
+              margin="1em 0"
+            >
+              {nftList.map((nft, index) => (
+                <FloatAnimation
+                  delay={index}
+                  key={index}
+                  title={!nft ? "Unknown Brainer - Not minted yet!" : nft.name}
                 >
-                  <img
-                    src={nft?.image ?? "/nftCollectionImages/unknown.png"}
-                    alt="NFT"
-                    style={{
-                      width: "200px",
-                      height: "200px",
-                      objectFit: "cover",
-                      borderRadius: "10px",
-                      margin: "1em",
+                  <motion.div
+                    className={`animate__animated animate__fadeInUp animations`}
+                    onClick={() => {
+                      if (!nft) return false;
+                      setNftSelected(nft);
                     }}
-                  />
-                </motion.div>
-              </FloatAnimation>
-            ))}
-          </StyledNFTList>
+                  >
+                    <img
+                      src={nft?.image ?? "/nftCollectionImages/unknown.png"}
+                      alt="NFT"
+                      style={{
+                        width: "200px",
+                        height: "200px",
+                        objectFit: "cover",
+                        borderRadius: "10px",
+                        margin: "1em",
+                      }}
+                    />
+                  </motion.div>
+                </FloatAnimation>
+              ))}
+            </StyledNFTList>
+          </HBox>
         )}
         <HPagination
           totalPages={Math.ceil(
