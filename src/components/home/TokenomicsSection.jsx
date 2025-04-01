@@ -36,13 +36,14 @@ export default function TokenomicsSection() {
         <div>
           <h2>LIQUIDITY & MARKETS</h2>
           <p style={{ marginTop: "-40px", marginBottom: "2em" }}>
-            65% - 6.500.000.000
+            55% - 5.500.000.000
           </p>
           <p>
-            Liquidity and accessibility! We allocate a significant portion of
-            our token supply to ensure ample liquidity on exchanges. This
-            facilitates <span>SMOOTH TRADING EXPERIENCES</span> for our users
-            and supports the growth of our token in various markets.
+            Jump into the <span>SOCIETY</span>, play our <span>GAME</span>, and
+            burn while you earn. Every move, every quest, every win burns
+            tokens.
+            <span>INVITE</span> your crew, explore the <span>WORLD</span>, and
+            fuel the fire together.
           </p>
         </div>
         <img style={{ marginRight: 0 }} src="./trading.png" />
@@ -64,10 +65,12 @@ export default function TokenomicsSection() {
             20% - 2,000,000,000
           </p>
           <p>
-            Join our <span>SOCIETY</span> and dive into our <span>GAME</span>!
-            Discover a exciting way to <span>BURN TOKENS</span> and{" "}
-            <span>EARN TOKENS</span> by playing in our society.{" "}
-            <span>INVITE</span> friends and explore our <span>WORLD</span>.{" "}
+            Join our <span>SOCIETY</span> and dive into the <span>GAME</span>!
+            Fuel your adventure by <span>PLAYING TO EARN</span> and triggering{" "}
+            <span>TOKEN BURNS</span> through your actions. This allocation
+            powers the entire <span>GAME ECONOMY</span>: from rewards to burn
+            mechanics.
+            <span> INVITE</span> your crew and explore our <span>WORLD</span>
           </p>
         </div>
       </StyledCard>
@@ -86,16 +89,39 @@ export default function TokenomicsSection() {
             10% - 1.000.000.000
           </p>
           <p>
-            {" "}
-            Our talented developers are committed to <span>
-              BUILDING
-            </span> and <span>IMPROVING</span> our <span>SOCIETY</span>. With
-            years of <span>EXPERIENCE</span> in the industry, they work
-            tirelessly to deliver innovative solutions and drive the success of
-            our <span>WORLD</span>.
+            The minds behind the madness. Our devs are here to{" "}
+            <span>BUILD</span> the metaverse, craft experiences, and push
+            updates non-stop. With vision, code, and a lot of coffee, they keep
+            the <span>BRAINER SOCIETY</span> alive and growing.
           </p>
         </div>
         <img style={{ marginRight: 0 }} src="./development.png" />
+      </StyledCard>
+      <StyledCard
+        className={`animate__animated ${
+          isVisible[4] ? "animate__backInLeft" : ""
+        } target`}
+        style={{
+          visibility: isVisible[4] ? "visible" : "hidden",
+          alignItems: "center",
+        }}
+      >
+        <img style={{ marginLeft: 0 }} src="./rewards2.png" />
+
+        <div>
+          <h2>REWARDS & GOVERNANCE</h2>
+          <p style={{ marginTop: "-40px", marginBottom: "2em" }}>
+            10% - 1.000.000.000
+          </p>
+          <p>
+            We empower our community through <span>STAKING REWARDS</span> and{" "}
+            <span>GOVERNANCE</span>. Token holders who stake will earn passive
+            income while also gaining a voice in key decisions.{" "}
+            <span>YOUR TOKENS</span> don’t just sit — they{" "}
+            <span>WORK FOR YOU</span>. This 10% fuels participation, engagement,
+            and shared ownership of our <span>SOCIETY</span>.
+          </p>
+        </div>
       </StyledCard>
       <StyledCard
         className={`animate__animated ${
@@ -106,47 +132,20 @@ export default function TokenomicsSection() {
           alignItems: "center",
         }}
       >
-        <img style={{ marginLeft: 0 }} src="./marketingBrain.png" />
         <div>
           <h2>MARKETING & PROMOTION</h2>
           <p style={{ marginTop: "-40px", marginBottom: "2em" }}>
             5% - 500.000.000
           </p>
           <p>
-            Spread the word and be part of our journey! <span>Marketing</span>{" "}
-            plays a crucial role in increasing awareness and adoption of our
-            project. From social media campaigns to{" "}
-            <span>STRATEGIC PARTNERSHIPS</span>, we invest in various marketing
-            initiatives to reach new audiences and promote{" "}
-            <span>OUR VISION</span>.
+            You can build the best game ever — but without exposure, no one
+            plays it. That’s where <span>MARKETING</span> comes in. From viral
+            drops to <span>STRATEGIC COLLABS</span>, this fund helps us make
+            noise, get seen, and bring new brains into the fam.
           </p>
         </div>
+        <img style={{ marginRight: 0 }} src="./marketingBrain.png" />
       </StyledCard>
-      {/* <StyledCard
-        className={`animate__animated ${
-          isVisible[4] ? "animate__backInLeft" : ""
-        } target`}
-        style={{
-          visibility: isVisible[4] ? "visible" : "hidden",
-          alignItems: "center",
-        }}
-      >
-        <div>
-          <h2>TOKEN BURNING</h2>
-          <p style={{ marginTop: "-40px", marginBottom: "2em" }}>
-            5% - 500.000.000
-          </p>
-          <p>
-            Enhance token value through <span>BURNING</span>! We believe in
-            maintaining a healthy <span>TOKEN ECONOMY</span> by periodically
-            burning a portion of our tokens. This reduces the total supply in
-            circulation, potentially increasing the value of remaining tokens
-            over time. Join us as we strive to create value for our token
-            holders through strategic <span>TOKEN MANAGMENT</span>.
-          </p>
-        </div>
-        <img style={{ marginRight: 0 }} src="./burning.png" />
-      </StyledCard> */}
     </StyledTokenomicsSection>
   );
 }
