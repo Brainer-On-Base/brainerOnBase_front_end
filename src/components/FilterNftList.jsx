@@ -7,12 +7,21 @@ const PanelWrapper = styled.div`
   border-radius: 10px;
   box-shadow: 0 0 10px #000000aa;
   z-index: 9999;
-  width: 20%;
+  width: 25%;
+  gap: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  justify-content: center;
+  box-sizing: border-box;
+
+  transition: "height 0.3s ease, opacity 0.3s ease";
 `;
 
 const categoryOptions = {
   eyes: [
-    "",
+    "All",
     "Normal",
     "Angry",
     "Thunder",
@@ -28,7 +37,7 @@ const categoryOptions = {
     "Square Glasses",
   ],
   hat: [
-    "",
+    "All",
     "Evil Horns",
     "Violet Hat",
     "Yellow Hat",
@@ -59,9 +68,9 @@ const categoryOptions = {
     "Saint Patrick Hat",
     "Chef Hat",
   ],
-  mouth: ["", "Normal", "Golden Teeth", "Smile", "Tongue", "Circular"],
+  mouth: ["All", "Normal", "Golden Teeth", "Smile", "Tongue", "Circular"],
   background: [
-    "",
+    "All",
     "Deep Violet",
     "Royal Purple",
     "Grape",
@@ -70,7 +79,7 @@ const categoryOptions = {
     "Amethyst Glow",
   ],
   extra: [
-    "",
+    "All",
     "Cactus",
     "Mushrooms Shower",
     "Easter Egg",
@@ -86,16 +95,28 @@ const FiltersPanel = ({ onChangeFilters }) => {
     mouth: "",
     background: "",
     extra: "",
+    onlyMintedView: false,
   });
 
   const handleChange = (category, value) => {
     const newFilters = { ...filters, [category]: value };
+    console.log("New filters:", newFilters);
     setFilters(newFilters);
     onChangeFilters(newFilters);
   };
 
   return (
     <PanelWrapper>
+      <HButton
+        style={{ zIndex: 999 }}
+        title="Toggle View"
+        fontSize={"1.5em"}
+        padding={"0.9em 1.2em"}
+        onClick={() => handleChange("onlyMintedView", !filters.onlyMintedView)}
+      >
+        {!filters.onlyMintedView ? "ONLY MINTED" : "ALL"}
+      </HButton>
+
       {Object.entries(categoryOptions).map(([category, options]) => (
         <HDropdown
           key={category}
@@ -103,8 +124,7 @@ const FiltersPanel = ({ onChangeFilters }) => {
           options={options}
           value={filters[category]}
           onChange={(e) => handleChange(category, e.target.value)}
-          width="200px"
-          margin="0.5em 0"
+          width="90%"
         />
       ))}
     </PanelWrapper>

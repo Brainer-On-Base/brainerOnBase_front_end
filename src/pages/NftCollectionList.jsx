@@ -192,6 +192,12 @@ const NftCollectionList = () => {
     setNftList([nft]);
   };
 
+  const onChangeFilters = async (filters) => {
+    const { onlyMintedView } = filters;
+    setOnlyMintedViewActive(onlyMintedView);
+    setNftSearch("");
+  };
+
   return (
     <AppLayout>
       {loadingMint && <Loader showLoading={loadingMint} />}
@@ -223,7 +229,7 @@ const NftCollectionList = () => {
           className="nft-list-header"
         >
           <HBox className="nft-list-actions1">
-            {/* <HButton
+            <HButton
               className="filterspanel"
               style={{ zIndex: 999 }}
               title="Show filters"
@@ -232,16 +238,8 @@ const NftCollectionList = () => {
               onClick={() => setShowFilters(!showFilters)}
             >
               <FaFilter />
-            </HButton> */}
-            <HButton
-              style={{ zIndex: 999 }}
-              title="Toggle View"
-              fontSize={"1.5em"}
-              padding={"0.9em 1.2em"}
-              onClick={() => setOnlyMintedViewActive(!onlyMintedViewActive)}
-            >
-              {!onlyMintedViewActive ? "ONLY MINTED" : "ALL"}
             </HButton>
+
             <HButton
               style={{ zIndex: 999 }}
               title="OpenSea"
@@ -260,7 +258,7 @@ const NftCollectionList = () => {
               MINT
             </HButton>
             {web3provider && (
-              <p className="minted-quantity">{`${mintedCount}/8000 minted`}</p>
+              <p className="minted-quantity">{`${mintedCount}/5000 minted`}</p>
             )}
           </HBox>
           <HBox className="nft-list-actions2">
@@ -310,8 +308,18 @@ const NftCollectionList = () => {
             <SyncLoader loading={loading} color="#ba68c8" />
           </HBox>
         ) : (
-          <HBox>
-            {/* {showFilters && <FiltersPanel setNftList={setNftList} />} */}
+          <HBox
+            align="flex-start"
+            justify="center"
+            width="100%"
+            maring="0 auto"
+          >
+            {showFilters && (
+              <FiltersPanel
+                showFilters={showFilters}
+                onChangeFilters={onChangeFilters}
+              />
+            )}
             <StyledNFTList
               align="center"
               justify="space-between"

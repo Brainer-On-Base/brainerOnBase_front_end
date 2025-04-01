@@ -10,6 +10,7 @@ import { FloatAnimation } from "../components/NftDetails/NftDetails";
 import { useNavigate } from "react-router-dom";
 import TokenPreSaleModal from "../components/Modals/TokenPreSaleModal";
 import WhitePaperButton from "../components/WhitePaperButton";
+import { display } from "@mui/system";
 
 const TokenDetailContainer = styled(HBox)`
   @media screen and (max-width: 900px) {
@@ -226,17 +227,17 @@ const TokenDetails = () => {
       <InfoContainer id="join-whitelist">
         <SectionTitle>🔥 How to Join the Whitelist</SectionTitle>
         <ListItem useTitleCase={false}>
-          1️⃣ Hold a <strong>Pixel Brainer NFT</strong> ➤ You'll automatically
-          receive an exclusive <strong>airdrop</strong> of $BRNR tokens.
+          1️⃣ Hold a Pixel Brainer NFT ➤ You'll automatically receive an
+          exclusive airdrop of $BRNR tokens.
         </ListItem>
         <ListItem useTitleCase={false}>
-          2️⃣ Participate in the <strong>Pre-Sale</strong> ➤ Contribute{" "}
-          <strong>0.02 ETH</strong> (max 5) through the Pre-Sale Button and
-          receive $BRNR tokens equivalent to your contribution.
+          2️⃣ Participate in the Pre-Sale ➤ Contribute 0.02 ETH (max 5) through
+          the Pre-Sale Button and receive $BRNR tokens equivalent to your
+          contribution.
         </ListItem>
-        <ListItem useTitleCase={false}>
-          🔥 Combine Both! ➤ Hold a Pixel Brainer NFT <strong>and</strong> join
-          the Pre-Sale to unlock <strong>both</strong> benefits:
+        <ListItem useTitleCase={false} style={{ display: "block" }}>
+          🔥 Combine Both! ➤ Hold a Pixel Brainer NFT and join the Pre-Sale to
+          unlock both benefits:
           <ul>
             <li>An airdrop of $BRNR tokens</li>
             <li>Plus the token equivalent of your Pre-Sale contribution</li>
@@ -247,13 +248,26 @@ const TokenDetails = () => {
 
         <SectionTitle>🚀 Token Distribution & Liquidity Plan</SectionTitle>
         <ListItem useTitleCase={false}>
-          • All ETH collected from the <strong>Pre-Sale</strong> will be
-          injected into the liquidity pool of $BRNR, ensuring a strong market
-          foundation.
+          • The Pre-Sale will offer 1 billion $BRNR tokens (10% of total
+          supply). These tokens will be sold to early backers at a discounted
+          price, supporting liquidity and strengthening the foundation of the
+          token's value.
+        </ListItem>
+        <ListItem useTitleCase={false}>
+          • 100% of the funds raised through the Pre-Sale will be allocated to
+          enhancing liquidity for $BRNR, ensuring a solid market foundation and
+          stronger price stability on both centralized and decentralized
+          exchanges.
+        </ListItem>
+        <ListItem useTitleCase={false}>
+          • A portion of the tokens from the Pre-Sale will be reserved for
+          staking, enabling users to participate in governance and earn rewards
+          as part of the Brainer Society ecosystem.
         </ListItem>
         <ListItem useTitleCase={false}>
           • Funds raised from NFT sales will be reinvested into the Brainer
-          Society project: game development, marketing, and ecosystem expansion.
+          Society ecosystem, including further game development, strategic
+          marketing, and community expansion.
         </ListItem>
 
         <PreSaleButton
@@ -298,7 +312,7 @@ export const InfoContainer = styled.div`
   gap: 20px;
   border: 1px solid gold;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-
+  width: 80%;
   @media screen and (max-width: 900px) {
     width: 100%;
   }
