@@ -9,6 +9,7 @@ import NFTCollections from "../components/home/NFTCollections";
 import TokenAddress from "../components/home/TokenAddress";
 import AppLayout from "../components/AppLayout/AppLayout";
 import { HButton } from "../HocComponents";
+import WhitePaperButton from "../components/WhitePaperButton";
 
 export default function Home() {
   const [showHistory, setShowHistory] = useState("/home");
@@ -40,14 +41,7 @@ export default function Home() {
 
         <TokenAddress />
         <TokenomicsSection />
-        <HButton
-          margin={"0 0 40px 0"}
-          fontSize={"2em"}
-          padding={"20px 40px"}
-          onClick={() => window.open("https://docs.braineronbase.com")}
-        >
-          WHITE PAPER
-        </HButton>
+        <WhitePaperButton />
       </>
     </AppLayout>
   );

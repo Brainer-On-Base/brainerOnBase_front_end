@@ -12,6 +12,7 @@ import {
   HPagination,
   HPopUp,
   HSearchInput,
+  HTitle,
 } from "../HocComponents";
 import { SiOpensea } from "react-icons/si";
 import GenericTitle from "../components/GenericTitle/GenericTitle";
@@ -357,7 +358,63 @@ const NftCollectionList = () => {
           setPagination={setCurrentPage}
           margin="0 0 0 1em"
         />
+        <FloatAnimation>
+          <HBox
+            padding={"25px 40px"}
+            margin="4em 0 0 0"
+            borderRadius={"20px"}
+            background={"shadeViolet"}
+            border="1px solid gold"
+            direction="column"
+            gap="2em"
+            className="animate__animated animate__fadeInUp text-container"
+            boxShadow={
+              "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px"
+            }
+          >
+            <HTitle fontSize={"50px"} color={"goldColor"}>
+              Mint Allocation
+            </HTitle>
+            <HTitle
+              width={"80%"}
+              useTitleCase={false}
+              fontSize={"1.5em"}
+              color="white"
+            >
+              All funds raised through the Pixel Brainer NFT mint will be
+              allocated as follows:
+            </HTitle>
+            <ul
+              style={{
+                listStyle: "none",
+                padding: 0,
+              }}
+            >
+              <li>
+                <HTitle useTitleCase={false} fontSize={"1.2em"} color="white">
+                  💧 60% - Liquidity for the upcoming $BRNR token
+                </HTitle>
+              </li>
+              <li>
+                <HTitle useTitleCase={false} fontSize={"1.2em"} color="white">
+                  🎮 20% - Development of Brainer Society game & ecosystem
+                </HTitle>
+              </li>
+              <li>
+                <HTitle useTitleCase={false} fontSize={"1.2em"} color="white">
+                  🚀 10% - Community growth & marketing efforts
+                </HTitle>
+              </li>
+              <li>
+                <HTitle useTitleCase={false} fontSize={"1.2em"} color="white">
+                  🧑‍💻 10% - Core team & future contributors
+                </HTitle>
+              </li>
+            </ul>
+          </HBox>
+        </FloatAnimation>
       </StyledNFTListContainer>
+
       {nftSelected && (
         <NftDetails
           nftSelected={nftSelected}

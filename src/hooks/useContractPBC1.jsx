@@ -29,27 +29,54 @@ const useContractPBC1 = () => {
         signer
       );
 
-      // Llama a la función de minting y espera la transacción
+      // ✅ Check si ya se mintearon todos
+      const currentTokenId = await nftContract.currentTokenId();
+      const maxSupply = await nftContract.maxSupply();
+      if (currentTokenId >= maxSupply) {
+        HPopUp({
+          message: "All NFTs have been minted.",
+          type: "info",
+        });
+        return;
+      }
+
       const mintPrice = await nftContract.getMintPrice();
+      const balance = await signer.getBalance();
+
+      if (balance < mintPrice) {
+        HPopUp({
+          message: "You don't have enough ETH to mint this NFT.",
+          type: "error",
+        });
+        return;
+      }
+
       const tx = await nftContract.mintNFT(account, {
         value: mintPrice,
       });
+
       await tx.wait();
+
       HPopUp({
-        message: "NFT minted successfully!",
+        message: "🎉 NFT minted successfully!",
         type: "success",
       });
     } catch (error) {
-      console.error("Error minting NFT:", error);
       let errorMessage = "Error minting NFT. Try again later";
-      if (error?.reason?.includes("Max 2 NFTs per wallet")) {
+
+      const errorText =
+        error?.reason ||
+        error?.error?.message ||
+        error?.data?.message ||
+        error?.message ||
+        "";
+
+      if (errorText.includes("Max 2 NFTs per wallet")) {
         errorMessage = "You can only mint up to 2 NFTs per wallet.";
-      } else if (error?.reason?.includes("Insufficient funds")) {
+      } else if (errorText.includes("Insufficient funds")) {
         errorMessage = "You don't have enough ETH to mint this NFT.";
-      } else if (error?.error?.message?.includes("Max 2 NFTs per wallet")) {
-        errorMessage = "You can only mint up to 2 NFTs per wallet.";
-      } else if (error?.error?.message?.includes("Insufficient funds")) {
-        errorMessage = "You don't have enough ETH to mint this NFT.";
+      } else if (errorText.includes("Max supply reached")) {
+        errorMessage = "All NFTs have been minted.";
       }
 
       HPopUp({

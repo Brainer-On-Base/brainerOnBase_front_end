@@ -9,14 +9,22 @@ import { HBox, HButton, HTitle } from "../HocComponents";
 import { FloatAnimation } from "../components/NftDetails/NftDetails";
 import { useNavigate } from "react-router-dom";
 import TokenPreSaleModal from "../components/Modals/TokenPreSaleModal";
+import WhitePaperButton from "../components/WhitePaperButton";
 
 const TokenDetailContainer = styled(HBox)`
   @media screen and (max-width: 900px) {
     .disabled {
       z-index: 99;
     }
+    .brnrocket {
+      width: 150px;
+      height: 150px;
+      top: -420px;
+    }
+
     .text-container {
       width: 100%;
+      margin: 0;
       h1 {
         text-align: center;
       }
@@ -92,7 +100,7 @@ const TokenDetails = () => {
             alt="Brainer Rocket"
             width="200px"
             height="200px"
-            className="disabled"
+            className="disabled brnrocket"
             style={{
               position: "absolute",
               left: "-15px",
@@ -132,12 +140,17 @@ const TokenDetails = () => {
               left: "100px",
               top: "-80px",
             }}
-            width="220px"
+            width="250px"
             height="10px"
             className="animate__animated animate__fadeInUp animate__delay-1s disabled"
           >
-            <HTitle fontSize={"16px"} color="black" useTitleCase={false}>
-              Are you a no brainer?
+            <HTitle
+              fontSize={"16px"}
+              color="black"
+              useTitleCase={false}
+              alignItems="center"
+            >
+              Are you a no brainer? <img src="/commonBrainer.png" width={30} />
             </HTitle>
           </BubbleDialog>
         </RocketContainer>
@@ -165,6 +178,7 @@ const TokenDetails = () => {
                 background={"shadeViolet"}
                 border="1px solid gold"
                 direction="column"
+                margin="0 4em"
                 gap="2em"
                 className="animate__animated animate__fadeInUp text-container"
                 boxShadow={
@@ -174,10 +188,16 @@ const TokenDetails = () => {
                 <HTitle fontSize={"50px"} color={"goldColor"}>
                   Be part of the journey
                 </HTitle>
+                <HTitle
+                  useTitleCase={false}
+                  margin={"-40px 0 0 0"}
+                  fontSize={"20px"}
+                >
+                  $BRNR isn’t just a token — it’s a movement.
+                </HTitle>
                 <Paragraph useTitleCase={false}>
-                  <strong>$BRNR</strong> is more than just a currency; it’s the
-                  symbol of our community, the engine that drives our ideas and
-                  our mission to break free from centralized control.
+                  In the Brainer ecosystem, you don’t just hold — you burn, you
+                  push, you fuel the mission.
                 </Paragraph>
                 <HBox className="actions">
                   <PreSaleButton onClick={() => handleShowModal(true)}>
@@ -253,6 +273,8 @@ const TokenDetails = () => {
           decentralization and innovation.
         </Paragraph2>
       </InfoContainer>
+
+      <WhitePaperButton />
     </AppLayout>
   );
 };
@@ -298,7 +320,6 @@ export const Subtitle = styled(HTitle)`
 
 export const Paragraph = styled(HTitle)`
   font-size: 24px;
-  color: #d1d1d1;
   line-height: 1.5;
   text-align: center;
 
