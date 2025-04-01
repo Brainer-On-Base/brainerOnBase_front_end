@@ -20,7 +20,7 @@ const TokenAddress = ({ ...props }) => {
         </h3>
         <p>
           <FontAwesomeIcon icon={faCopy} style={{ marginRight: "20px" }} />
-          0x5b8BB48898b67c3481677c5Ac462786c18Db11F6
+          0x317F5ab655Bb9c0bD309E65021fB495aDEa0B240
         </p>
       </div>
     </StyledTokenSection>
