@@ -41,8 +41,19 @@ const useContractPBC1 = () => {
       });
     } catch (error) {
       console.error("Error minting NFT:", error);
+      let errorMessage = "Error minting NFT. Try again later";
+      if (error?.reason?.includes("Max 2 NFTs per wallet")) {
+        errorMessage = "You can only mint up to 2 NFTs per wallet.";
+      } else if (error?.reason?.includes("Insufficient funds")) {
+        errorMessage = "You don't have enough ETH to mint this NFT.";
+      } else if (error?.error?.message?.includes("Max 2 NFTs per wallet")) {
+        errorMessage = "You can only mint up to 2 NFTs per wallet.";
+      } else if (error?.error?.message?.includes("Insufficient funds")) {
+        errorMessage = "You don't have enough ETH to mint this NFT.";
+      }
+
       HPopUp({
-        message: "Error minting NFT. Try again later",
+        message: errorMessage,
         type: "error",
       });
     }

@@ -32,11 +32,17 @@ const NFTMintModal = ({
 }) => {
   const { mint_BPC1_NFT } = useContractPBC1();
   const mintNft = async () => {
-    setLoading(true);
-    const res = await mint_BPC1_NFT();
-    setRefreshCount((prev) => !prev); // Cambia el estado para forzar la actualización del contador
+    try {
+      setLoading(true);
+      const res = await mint_BPC1_NFT();
+      console.log("Minting response:", res);
+      setRefreshCount((prev) => !prev); // Cambia el estado para forzar la actualización del contador
+    } catch (error) {
+      console.error("Error minting NFT:", error);
+    }
+
     setLoading(false);
-    setShowModal(false); // Cierra el modal después de la transacción
+    setShowModal(false);
   };
 
   return (

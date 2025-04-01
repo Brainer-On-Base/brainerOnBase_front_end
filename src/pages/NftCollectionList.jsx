@@ -21,6 +21,7 @@ import NFTMintModal from "../components/Modals/NFTMintModal";
 import AccountContext from "../provider/AccountProvider/AccountContext";
 import FiltersPanel from "../components/FilterNftList";
 import { FaFilter } from "react-icons/fa6";
+import Loader from "../components/Loader/Loader";
 
 const StyledNFTList = styled(HBox)`
   display: flex;
@@ -89,6 +90,7 @@ const NftCollectionList = () => {
   const [refreshCount, setRefreshCount] = useState(false);
   const [onlyMintedViewActive, setOnlyMintedViewActive] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  const [loadingMint, setLoadingMint] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -191,6 +193,7 @@ const NftCollectionList = () => {
 
   return (
     <AppLayout>
+      {loadingMint && <Loader showLoading={loadingMint} />}
       <StyledNFTListContainer
         direction="column"
         align="center"
@@ -200,7 +203,7 @@ const NftCollectionList = () => {
         <NFTMintModal
           setShowModal={setShowModal}
           showModal={showModal}
-          setLoading={setLoading}
+          setLoading={setLoadingMint}
           setRefreshCount={setRefreshCount}
         />
         <GenericTitle
@@ -219,7 +222,7 @@ const NftCollectionList = () => {
           className="nft-list-header"
         >
           <HBox className="nft-list-actions1">
-            <HButton
+            {/* <HButton
               className="filterspanel"
               style={{ zIndex: 999 }}
               title="Show filters"
@@ -228,6 +231,15 @@ const NftCollectionList = () => {
               onClick={() => setShowFilters(!showFilters)}
             >
               <FaFilter />
+            </HButton> */}
+            <HButton
+              style={{ zIndex: 999 }}
+              title="Toggle View"
+              fontSize={"1.5em"}
+              padding={"0.9em 1.2em"}
+              onClick={() => setOnlyMintedViewActive(!onlyMintedViewActive)}
+            >
+              {!onlyMintedViewActive ? "ONLY MINTED" : "ALL"}
             </HButton>
             <HButton
               style={{ zIndex: 999 }}
@@ -237,15 +249,7 @@ const NftCollectionList = () => {
             >
               <SiOpensea />
             </HButton>
-            <HButton
-              style={{ zIndex: 999 }}
-              title="Toggle View"
-              fontSize={"1.5em"}
-              padding={"0.9em 1.2em"}
-              onClick={() => setOnlyMintedViewActive(!onlyMintedViewActive)}
-            >
-              {onlyMintedViewActive ? "ONLY MINTED" : "ALL"}
-            </HButton>
+
             <HButton
               fontSize={"1.5em"}
               padding={"0.8em 1.2em"}
