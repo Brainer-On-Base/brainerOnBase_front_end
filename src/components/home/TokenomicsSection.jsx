@@ -99,10 +99,10 @@ export default function TokenomicsSection() {
       </StyledCard>
       <StyledCard
         className={`animate__animated ${
-          isVisible[4] ? "animate__backInLeft" : ""
+          isVisible[3] ? "animate__backInRight" : ""
         } target`}
         style={{
-          visibility: isVisible[4] ? "visible" : "hidden",
+          visibility: isVisible[3] ? "visible" : "hidden",
           alignItems: "center",
         }}
       >
@@ -125,10 +125,10 @@ export default function TokenomicsSection() {
       </StyledCard>
       <StyledCard
         className={`animate__animated ${
-          isVisible[3] ? "animate__backInRight" : ""
+          isVisible[4] ? "animate__backInLeft" : ""
         } target`}
         style={{
-          visibility: isVisible[3] ? "visible" : "hidden",
+          visibility: isVisible[4] ? "visible" : "hidden",
           alignItems: "center",
         }}
       >
