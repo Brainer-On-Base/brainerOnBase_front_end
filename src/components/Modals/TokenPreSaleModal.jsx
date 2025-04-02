@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { HBox, HInput, HModal, HTitle } from "../../HocComponents";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import useContractPreSale from "../../hooks/useContractPreSale";
+import { Loader } from "@react-three/drei";
+import { useEffect } from "react";
+import AccountContext from "../../provider/AccountProvider/AccountContext";
 
 export const StyledUl = styled(motion.ul)`
   list-style-type: none;
@@ -24,6 +28,25 @@ export const StyledUl = styled(motion.ul)`
 `;
 const TokenPreSaleModal = ({ showModal, setShowModal }) => {
   const [ethInput, setEthInput] = useState(0);
+  const { buyTokens, getUserContribution } = useContractPreSale();
+  const { isConnected } = useContext(AccountContext);
+  const [loading, setLoading] = useState(false);
+  const [userContribution, setUserContribution] = useState(0);
+
+  const buyTokensFunction = async (ethAmount) => {
+    setLoading(true);
+    await buyTokens(ethAmount);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    const fetchUserContribution = async () => {
+      const contribution = await getUserContribution();
+      setUserContribution(contribution);
+    };
+
+    fetchUserContribution();
+  }, [showModal]);
 
   return (
     <HModal
@@ -31,8 +54,11 @@ const TokenPreSaleModal = ({ showModal, setShowModal }) => {
       showModal={showModal}
       buttonDisabled={ethInput < 0.02}
       onCloseFunction={() => setShowModal(false)}
+      onConfirmFunction={() => buyTokensFunction(ethInput)}
       title="$BRNR PRE SALE"
     >
+      {loading && <Loader showLoading={loading} />}
+
       <HBox direction="column" width="100%">
         <StyledUl
           initial="hidden"
@@ -62,24 +88,32 @@ const TokenPreSaleModal = ({ showModal, setShowModal }) => {
               text: " ⚡Important⚡Each wallet can only purchase once, so make sure to grab your tokens before it's too late! 🚀",
               icon: "./commonBrainer.png",
             },
+            isConnected && {
+              text: `Your contribution: ${userContribution}/5.00 ETH`,
+              icon: "./commonBrainer.png",
+            },
           ].map((item, index) => (
-            <motion.li
-              key={index}
-              variants={{
-                hidden: { opacity: 0, y: 20 }, // Aparece desde abajo
-                visible: { opacity: 1, y: 0 }, // Llega a su posición final
-              }}
-            >
-              <img
-                src={item.icon}
-                alt="Bullet Point"
-                className="bullet-icon"
-                width={"20px"}
-              />
-              <HTitle fontSize={"16px"} color="white" useTitleCase={false}>
-                <span>{item.text.split(":")[0]} </span>
-              </HTitle>
-            </motion.li>
+            <>
+              {item.icon && (
+                <motion.li
+                  key={index}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 }, // Aparece desde abajo
+                    visible: { opacity: 1, y: 0 }, // Llega a su posición final
+                  }}
+                >
+                  <img
+                    src={item.icon}
+                    alt="Bullet Point"
+                    className="bullet-icon"
+                    width={"20px"}
+                  />
+                  <HTitle fontSize={"16px"} color="white" useTitleCase={false}>
+                    <span>{item.text} </span>
+                  </HTitle>
+                </motion.li>
+              )}
+            </>
           ))}
         </StyledUl>
         <HInput
@@ -110,7 +144,7 @@ const TokenPreSaleModal = ({ showModal, setShowModal }) => {
             style: "decimal",
             minimumFractionDigits: 2, // Asegura dos decimales
             maximumFractionDigits: 2, // Asegura dos decimales
-          }).format(ethInput * 10000)}{" "}
+          }).format(ethInput * 4000000)}{" "}
           $BRNR
         </HTitle>
       </HBox>

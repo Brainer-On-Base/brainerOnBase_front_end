@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ethers } from "ethers";
+import { Contract, formatEther, parseEther } from "ethers";
 import AccountContext from "../provider/AccountProvider/AccountContext";
 import { HPopUp } from "../HocComponents";
 import {
@@ -24,14 +24,15 @@ const useContractPreSale = () => {
     try {
       const signer = await web3provider.getSigner();
 
-      const presaleContract = new ethers.Contract(
+      const presaleContract = new Contract(
         BRAINER_PRESALE_CONTRACT_ADDRESS,
         BRAINER_PRESALE_ABI_CONTRACT.abi,
         signer
       );
 
+      console.log(typeof ethAmount, ethAmount);
       const tx = await presaleContract.buyTokens({
-        value: ethers.utils.parseEther(ethAmount.toString()),
+        value: parseEther(ethAmount),
       });
 
       await tx.wait();
@@ -67,7 +68,7 @@ const useContractPreSale = () => {
     try {
       const signer = await web3provider.getSigner();
 
-      const presaleContract = new ethers.Contract(
+      const presaleContract = new Contract(
         BRAINER_PRESALE_CONTRACT_ADDRESS,
         BRAINER_PRESALE_ABI_CONTRACT.abi,
         signer
@@ -101,9 +102,21 @@ const useContractPreSale = () => {
     }
   };
 
+  const getUserContribution = async () => {
+    const presaleContract = new Contract(
+      BRAINER_PRESALE_CONTRACT_ADDRESS,
+      BRAINER_PRESALE_ABI_CONTRACT.abi,
+      web3provider
+    );
+
+    const amount = await presaleContract.totalContributed(account);
+    return formatEther(amount);
+  };
+
   return {
     buyTokens,
     claimForNFT,
+    getUserContribution,
   };
 };
 

@@ -5,7 +5,7 @@ import {
   BRAINER_IPFS_METADATA,
 } from "../CONSTANTS";
 import AccountContext from "../provider/AccountProvider/AccountContext";
-import { ethers } from "ethers";
+import { Contract, formatEther } from "ethers";
 import { HPopUp } from "../HocComponents";
 
 const useContractPBC1 = () => {
@@ -22,21 +22,16 @@ const useContractPBC1 = () => {
 
     try {
       const signer = await web3provider.getSigner();
-
-      const nftContract = new ethers.Contract(
+      const nftContract = new Contract(
         BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
         BRAINER_BPC_NFT_ABI_CONTRACT.abi,
         signer
       );
 
-      // ✅ Check si ya se mintearon todos
       const currentTokenId = await nftContract.currentTokenId();
       const maxSupply = await nftContract.maxSupply();
       if (currentTokenId >= maxSupply) {
-        HPopUp({
-          message: "All NFTs have been minted.",
-          type: "info",
-        });
+        HPopUp({ message: "All NFTs have been minted.", type: "info" });
         return;
       }
 
@@ -51,19 +46,12 @@ const useContractPBC1 = () => {
         return;
       }
 
-      const tx = await nftContract.mintNFT(account, {
-        value: mintPrice,
-      });
-
+      const tx = await nftContract.mintNFT(account, { value: mintPrice });
       await tx.wait();
 
-      HPopUp({
-        message: "🎉 NFT minted successfully!",
-        type: "success",
-      });
+      HPopUp({ message: "🎉 NFT minted successfully!", type: "success" });
     } catch (error) {
       let errorMessage = "Error minting NFT. Try again later";
-
       const errorText =
         error?.reason ||
         error?.error?.message ||
@@ -79,10 +67,7 @@ const useContractPBC1 = () => {
         errorMessage = "All NFTs have been minted.";
       }
 
-      HPopUp({
-        message: errorMessage,
-        type: "error",
-      });
+      HPopUp({ message: errorMessage, type: "error" });
     }
   };
 
@@ -90,13 +75,13 @@ const useContractPBC1 = () => {
     if (!web3provider) return 0;
 
     try {
-      const nftContract = new ethers.Contract(
+      const nftContract = new Contract(
         BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
         BRAINER_BPC_NFT_ABI_CONTRACT.abi,
         web3provider
       );
 
-      const mintedCount = await nftContract.currentTokenId(); // ✅
+      const mintedCount = await nftContract.currentTokenId();
       return Number(mintedCount);
     } catch (error) {
       console.error("Error fetching minted count:", error);
@@ -105,58 +90,33 @@ const useContractPBC1 = () => {
   };
 
   const getIPFSInfo = async (uri) => {
-    const response = await fetch(uri)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch NFT data");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        return data;
-      })
-      .catch((error) => console.error(error));
-
-    return response;
+    try {
+      const response = await fetch(uri);
+      if (!response.ok) throw new Error("Failed to fetch NFT data");
+      return await response.json();
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
   };
 
   const getMintedNFTs = async (start = 0, end = 50) => {
     if (!web3provider) return [];
+
     try {
-      const nftContract = new ethers.Contract(
+      const nftContract = new Contract(
         BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
         BRAINER_BPC_NFT_ABI_CONTRACT.abi,
         web3provider
       );
 
-      // Obtener el valor actual de currentTokenId
       const currentTokenId = await getMintedCount();
+      if (currentTokenId === 0) return [];
+      if (end > currentTokenId) end = currentTokenId;
+      if (start > end) return [];
 
-      // Si no hay tokens minteados, retornar un array vacío
-      if (currentTokenId === 0) {
-        return [];
-      }
-
-      // Ajustar el valor de end si es mayor que currentTokenId
-      if (end > currentTokenId) {
-        end = currentTokenId;
-      }
-
-      // Asegurarse de que start no sea mayor que end
-      if (start > end) {
-        console.error("Start index cannot be greater than end index.");
-        return [];
-      }
-
-      // Llama a la nueva función getTokenURIs en lotes
       const uris = await nftContract.getTokenURIs(start, end);
-      const mintedNFTs = uris.map((uri, index) => ({
-        tokenId: start + index,
-        uri,
-      }));
-
-      // console.log("NFTs minteados:", mintedNFTs);
-      return mintedNFTs;
+      return uris.map((uri, index) => ({ tokenId: start + index, uri }));
     } catch (error) {
       console.error("Error fetching minted NFTs:", error);
       return [];
@@ -165,8 +125,9 @@ const useContractPBC1 = () => {
 
   const getNFTByTokenId = async (tokenId) => {
     if (!web3provider) return null;
+
     try {
-      const nftContract = new ethers.Contract(
+      const nftContract = new Contract(
         BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
         BRAINER_BPC_NFT_ABI_CONTRACT.abi,
         web3provider
