@@ -111,6 +111,7 @@ const TokenDetails = () => {
             height="200px"
             className="disabled brnrocket"
             style={{
+              zIndex: 9999,
               position: "absolute",
               left: "-15px",
               bottom: "110px",
