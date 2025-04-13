@@ -116,7 +116,7 @@ export const StyledNavbarContainer = styled("div")`
   justify-content: space-between;
   position: fixed;
   top: 0;
-  z-index: 12;
+  z-index: 2 !important;
   margin: 0 auto;
   background: ${({ scrolled, theme }) =>
     scrolled ? theme.shadeViolet : "transparent"};

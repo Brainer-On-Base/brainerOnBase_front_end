@@ -3,16 +3,16 @@ import { HBox, HInput, HModal, HTitle } from "../../HocComponents";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import useContractPreSale from "../../hooks/useContractPreSale";
-import { Loader } from "@react-three/drei";
 import { useEffect } from "react";
 import AccountContext from "../../provider/AccountProvider/AccountContext";
+import Loader from "../Loader/Loader";
 
 export const StyledUl = styled(motion.ul)`
   list-style-type: none;
   padding: 0;
-
+  margin: 0;
   li {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
     p {
@@ -26,11 +26,10 @@ export const StyledUl = styled(motion.ul)`
     }
   }
 `;
-const TokenPreSaleModal = ({ showModal, setShowModal }) => {
+const TokenPreSaleModal = ({ showModal, setShowModal, setLoading }) => {
   const [ethInput, setEthInput] = useState(0);
   const { buyTokens, getUserContribution } = useContractPreSale();
   const { isConnected } = useContext(AccountContext);
-  const [loading, setLoading] = useState(false);
   const [userContribution, setUserContribution] = useState(0);
 
   const buyTokensFunction = async (ethAmount) => {
@@ -57,8 +56,6 @@ const TokenPreSaleModal = ({ showModal, setShowModal }) => {
       onConfirmFunction={() => buyTokensFunction(ethInput)}
       title="$BRNR PRE SALE"
     >
-      {loading && <Loader showLoading={loading} />}
-
       <HBox direction="column" width="100%">
         <StyledUl
           initial="hidden"

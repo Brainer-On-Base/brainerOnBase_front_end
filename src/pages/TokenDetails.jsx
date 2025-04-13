@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import TokenPreSaleModal from "../components/Modals/TokenPreSaleModal";
 import WhitePaperButton from "../components/WhitePaperButton";
 import { display } from "@mui/system";
+import Loader from "../components/Loader/Loader";
 
 const TokenDetailContainer = styled(HBox)`
   @media screen and (max-width: 900px) {
@@ -65,6 +66,7 @@ export const BrainerCoin = () => {
 const TokenDetails = () => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -84,7 +86,13 @@ const TokenDetails = () => {
       id={"brnrToken"}
       style={{ marginTop: "1em" }}
     >
-      <TokenPreSaleModal setShowModal={setShowModal} showModal={showModal} />
+      {loading && <Loader showLoading={loading} />}
+
+      <TokenPreSaleModal
+        setShowModal={setShowModal}
+        showModal={showModal}
+        setLoading={setLoading}
+      />
       <TokenDetailContainer
         direction="column"
         style={{

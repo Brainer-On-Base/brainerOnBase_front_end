@@ -25,7 +25,13 @@ const AppLayout = ({ title, subtitle, children, id, useCoinRain }) => {
         <NightBackground />
         {useCoinRain && <CoinRain />}
       </View>
-      <HBox direction="column" justify="flex-start" height="auto" width="100%">
+      <HBox
+        direction="column"
+        justify="flex-start"
+        height="auto"
+        width="100%"
+        style={{ zIndex: 1 }}
+      >
         {title && (
           <GenericTitle
             title={title}
