@@ -40,6 +40,10 @@ function Navbar({}) {
       name: "TOKEN",
       navigate: "/token-details",
     },
+    {
+      name: "SOCIETY",
+      navigate: "/society",
+    },
     // {
     //   name: 'TOKENOMICS',
     //   navigate: '/home#tokenomics',
