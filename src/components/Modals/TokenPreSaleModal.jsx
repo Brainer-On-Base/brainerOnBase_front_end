@@ -13,7 +13,7 @@ export const StyledUl = styled(motion.ul)`
   margin: 0;
   li {
     margin-bottom: 10px;
-    display: flex;
+    display: flex !important;
     align-items: center;
     p {
       color: white !important;
@@ -82,7 +82,7 @@ const TokenPreSaleModal = ({ showModal, setShowModal, setLoading }) => {
               icon: "./commonBrainer.png",
             },
             {
-              text: " ⚡Important⚡Each wallet can only purchase once, so make sure to grab your tokens before it's too late! 🚀",
+              text: " ⚡Important⚡Each wallet purchase max 5 ETH, so make sure to grab your tokens before it's too late! 🚀",
               icon: "./commonBrainer.png",
             },
             isConnected && {
