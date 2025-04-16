@@ -22,6 +22,6 @@ export const HTitleText = styled.h1`
   border-radius: ${({ borderRadius }) => borderRadius || "0"};
   font-family: ${({ useTitleCase }) =>
     useTitleCase ? "Luckiest Guy, cursive" : "monospace"};
-  display: flex;
+  display: ${({ display }) => display || "flex"};
   align-items: center;
 `;
