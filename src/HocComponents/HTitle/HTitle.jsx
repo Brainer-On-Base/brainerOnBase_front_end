@@ -38,6 +38,7 @@ const HTitle = ({
       borderRadius={borderRadius}
       height={height}
       useTitleCase={useTitleCase}
+      display="flex"
       {...props}
     >
       {children ?? text}
