@@ -173,7 +173,18 @@ const BrainerSociety = () => {
                 </motion.li>
               ))}
             </StyledUl>
-            <HButton fontSize="20px">Mint Brainer Character</HButton>
+            <HButton disabled={true} fontSize="20px">
+              Mint Brainer Character
+            </HButton>
+            <HTitle
+              width={"100%"}
+              textAlign={"center"}
+              color={"lightPurple"}
+              fontSize={"16px"}
+              useTitleCase={false}
+            >
+              Mint will be activated when the pre sale is over.
+            </HTitle>
           </HBox>
         </FloatAnimation>
       </HBox>
