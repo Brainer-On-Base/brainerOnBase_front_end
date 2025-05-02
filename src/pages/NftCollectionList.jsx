@@ -84,7 +84,7 @@ const NftCollectionList = () => {
   const [mintedNftList, setMintedNftList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const { web3provider } = useContext(AccountContext);
-  const { getIPFSInfo, getMintedNFTs, getMintedCount } = useContractPBC1();
+  const { getIPFSInfo } = useContractPBC1();
   const [showModal, setShowModal] = useState(false);
   const [mintedCount, setMintedCount] = useState(0);
   const [nftSearch, setNftSearch] = useState("");
