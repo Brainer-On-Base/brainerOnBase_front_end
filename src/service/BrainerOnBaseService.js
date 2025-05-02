@@ -14,6 +14,17 @@ const BrainerOnBaseService = {
     }
   },
 
+  // Obtener la cantidad de NFTs creados
+  getNFTQuantityMinted: async () => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/nfts/minted`);
+      return response.data;
+    } catch (error) {
+      console.error("❌ Error fetching NFT quantity:", error.message);
+      throw error;
+    }
+  },
+
   // Obtener un NFT específico por su ID
   getNFTById: async (id) => {
     try {

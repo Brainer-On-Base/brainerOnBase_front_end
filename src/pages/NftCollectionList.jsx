@@ -86,7 +86,7 @@ const NftCollectionList = () => {
   const { web3provider } = useContext(AccountContext);
   const { getIPFSInfo, getMintedNFTs, getMintedCount } = useContractPBC1();
   const [showModal, setShowModal] = useState(false);
-  const [mintedCount, setMintedCount] = useState(null);
+  const [mintedCount, setMintedCount] = useState(0);
   const [nftSearch, setNftSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const [refreshCount, setRefreshCount] = useState(false);
@@ -97,6 +97,7 @@ const NftCollectionList = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchNFTs();
+    getMintedQuantity();
   }, [currentPage, refreshCount, onlyMintedViewActive]);
 
   const fetchNFTs = async () => {
@@ -109,7 +110,6 @@ const NftCollectionList = () => {
       };
       const response = await BrainerOnBaseService.getAllNFTs(params);
       setNftList(response.data);
-      setMintedCount(response.total);
     } catch (error) {
       console.error("Error fetching NFTs:", error.message);
     } finally {
@@ -130,9 +130,13 @@ const NftCollectionList = () => {
     }
   };
 
-  const getOnlyMintedView = async () => {
-    setOnlyMintedViewActive(!onlyMintedViewActive);
-    setCurrentPage(1);
+  const getMintedQuantity = async () => {
+    try {
+      const response = await BrainerOnBaseService.getNFTQuantityMinted();
+      setMintedCount(response.minted);
+    } catch (error) {
+      console.error("Error fetching minted count:", error.message);
+    }
   };
 
   return (
