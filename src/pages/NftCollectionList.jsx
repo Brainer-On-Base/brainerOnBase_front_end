@@ -23,6 +23,7 @@ import AccountContext from "../provider/AccountProvider/AccountContext";
 import FiltersPanel from "../components/FilterNftList";
 import { FaFilter } from "react-icons/fa6";
 import Loader from "../components/Loader/Loader";
+import BrainerOnBaseService from "../service/BrainerOnBaseService";
 
 const StyledNFTList = styled(HBox)`
   display: flex;
@@ -95,107 +96,43 @@ const NftCollectionList = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    fetchMintedCount();
-    if (onlyMintedViewActive) {
-      getOnlyMintedView();
-      setCurrentPage(1);
-    } else {
-      getInfo();
-    }
+    fetchNFTs();
   }, [currentPage, refreshCount, onlyMintedViewActive]);
 
-  const fetchMintedCount = async () => {
-    const count = await getMintedCount();
-    setMintedCount(count);
-    localStorage.setItem("mintedCount", count);
-  };
-
-  const getInfo = async () => {
+  const fetchNFTs = async () => {
     setLoading(true);
-    setNftSearch("");
-    const nftMintedList = await getMintedNFTs();
-    const sortedNFTs = nftMintedList
-      .filter((nft) => nft.uri && nft.uri.trim() !== "")
-      .sort((a, b) => {
-        const aNumber = parseInt(a.uri.match(/(\d+)\.json$/)[1]);
-        const bNumber = parseInt(b.uri.match(/(\d+)\.json$/)[1]);
-        return aNumber - bNumber;
-      });
-
-    const data = [];
-    const mintedNfts = [];
-    const startIndex = (currentPage - 1) * NFTs_PER_PAGE;
-    const endIndex = startIndex + NFTs_PER_PAGE;
-
-    for (let id = startIndex; id < endIndex; id++) {
-      const nft = sortedNFTs.find(
-        (nft) => parseInt(nft.uri.match(/(\d+)\.json$/)[1]) === id
-      );
-      if (nft) {
-        try {
-          const info = await getIPFSInfo(nft.uri);
-          data.push(info);
-          mintedNfts.push(info);
-        } catch (error) {
-          console.error(`Error fetching data for URI ${nft.uri}:`, error);
-          data.push(null);
-        }
-      } else {
-        data.push(null);
-      }
+    try {
+      const params = {
+        page: currentPage,
+        limit: NFTs_PER_PAGE,
+        minted: onlyMintedViewActive,
+      };
+      const response = await BrainerOnBaseService.getAllNFTs(params);
+      setNftList(response.data);
+      setMintedCount(response.total);
+    } catch (error) {
+      console.error("Error fetching NFTs:", error.message);
+    } finally {
+      setLoading(false);
     }
-    setMintedNftList(mintedNfts);
-    setNftList(data);
-    setLoading(false);
-  };
-
-  const getOnlyMintedView = async () => {
-    setLoading(true);
-    const nfts = await getMintedNFTs();
-    const mintedList = nfts.filter((nft) => nft.uri && nft.uri.trim() !== "");
-    let mintedNfts = [];
-
-    for (let id = 0; id < mintedList.length; id++) {
-      const uri = mintedList[id].uri;
-      if (uri) {
-        try {
-          const info = await getIPFSInfo(uri);
-          mintedNfts.push(info);
-        } catch (error) {
-          console.error(`Error fetching data for URI ${uri}:`, error);
-        }
-      }
-    }
-    setMintedNftList(mintedNfts);
-    setNftList(mintedNfts);
-    setLoading(false);
   };
 
   const handleSearch = async (id) => {
-    const nft = mintedNftList.find((nft) => {
-      const numberNftSelected = nft.name.match(/#(\d+)/);
-      const selectedNumber = numberNftSelected
-        ? parseInt(numberNftSelected[1], 10)
-        : null;
-      return selectedNumber === id;
-    });
-    if (!nft) {
-      setNftList([
-        {
-          id,
-          image: "/nftCollectionImages/unknown.png",
-          name: `NFT ${id} not found`,
-        },
-      ]);
-      return;
+    setLoading(true);
+    try {
+      const response = await BrainerOnBaseService.getNFTById(id);
+      console.log("NFT response:", response);
+      setNftList([response.data]);
+    } catch (error) {
+      console.error("Error searching NFT:", error.message);
+    } finally {
+      setLoading(false);
     }
-    setNftList([nft]);
   };
 
-  const onChangeFilters = async (filters) => {
-    const { onlyMintedView } = filters;
-    setOnlyMintedViewActive(onlyMintedView);
-    setNftSearch("");
+  const getOnlyMintedView = async () => {
+    setOnlyMintedViewActive(!onlyMintedViewActive);
+    setCurrentPage(1);
   };
 
   return (
@@ -262,10 +199,10 @@ const NftCollectionList = () => {
             )}
           </HBox>
           <HBox className="nft-list-actions2">
-            {nftList.length === 1 && (
+            {nftList?.length === 1 && (
               <HButton
                 className="animate__animated animate__fadeIn animate__delay"
-                onClick={() => getInfo()}
+                onClick={() => fetchNFTs()}
               >
                 Cancel Search
               </HButton>
@@ -294,7 +231,7 @@ const NftCollectionList = () => {
             />
             <HPagination
               totalPages={Math.ceil(
-                (onlyMintedViewActive ? mintedNftList.length : NFT_QUANTITY) /
+                (onlyMintedViewActive ? mintedNftList?.length : mintedCount) /
                   NFTs_PER_PAGE
               )}
               currentPage={currentPage}
@@ -327,7 +264,7 @@ const NftCollectionList = () => {
               wrap="wrap"
               margin="1em 0"
             >
-              {nftList.map((nft, index) => (
+              {nftList?.map((nft, index) => (
                 <FloatAnimation
                   delay={index}
                   key={index}
@@ -359,7 +296,7 @@ const NftCollectionList = () => {
         )}
         <HPagination
           totalPages={Math.ceil(
-            (onlyMintedViewActive ? mintedNftList.length : NFT_QUANTITY) /
+            (onlyMintedViewActive ? mintedNftList?.length : NFT_QUANTITY) /
               NFTs_PER_PAGE
           )}
           currentPage={currentPage}
