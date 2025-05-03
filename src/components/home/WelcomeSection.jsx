@@ -6,6 +6,7 @@ import { HBox, HButton } from "../../HocComponents";
 import { useNavigate } from "react-router-dom";
 import NFTMintModal from "../Modals/NFTMintModal";
 import AccountContext from "../../provider/AccountProvider/AccountContext";
+import BrainerOnBaseService from "../../service/BrainerOnBaseService";
 
 export default function WelcomeSection() {
   const { getMintedCount } = useContractPBC1();
@@ -17,12 +18,12 @@ export default function WelcomeSection() {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    fetchMintedCount();
+    if (mintedCount === null) fetchMintedCount();
   }, [refreshCount, getMintedCount]);
 
   const fetchMintedCount = async () => {
-    const count = await getMintedCount();
-    setMintedCount(count);
+    const count = await BrainerOnBaseService.getNFTQuantityMinted();
+    setMintedCount(count.minted);
   };
 
   return (
@@ -83,7 +84,7 @@ export default function WelcomeSection() {
               >
                 TOKEN PRE SALE
               </HButton>
-              <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">{`8000 in white list`}</p>
+              {/* <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">{`8000 in white list`}</p> */}
             </HBox>
           </HBox>
 

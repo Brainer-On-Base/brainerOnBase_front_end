@@ -77,8 +77,8 @@ const StyledNFTListContainer = styled(HBox)`
 `;
 
 const NftCollectionList = () => {
-  const NFT_QUANTITY = 50;
-  const NFTs_PER_PAGE = 10;
+  const NFT_QUANTITY = 5;
+  const NFTs_PER_PAGE = 5;
   const [nftSelected, setNftSelected] = useState(null);
   const [nftList, setNftList] = useState([]);
   const [mintedNftList, setMintedNftList] = useState([]);
@@ -109,6 +109,7 @@ const NftCollectionList = () => {
         minted: onlyMintedViewActive,
       };
       const response = await BrainerOnBaseService.getAllNFTs(params);
+      console.log("NFTs response:", response);
       setNftList(response.data);
     } catch (error) {
       console.error("Error fetching NFTs:", error.message);
@@ -234,10 +235,7 @@ const NftCollectionList = () => {
               }}
             />
             <HPagination
-              totalPages={Math.ceil(
-                (onlyMintedViewActive ? mintedNftList?.length : mintedCount) /
-                  NFTs_PER_PAGE
-              )}
+              totalPages={Math.ceil(NFT_QUANTITY / NFTs_PER_PAGE)}
               currentPage={currentPage}
               setPagination={setCurrentPage}
               margin="0 0 0 1em"
@@ -299,10 +297,7 @@ const NftCollectionList = () => {
           </HBox>
         )}
         <HPagination
-          totalPages={Math.ceil(
-            (onlyMintedViewActive ? mintedNftList?.length : NFT_QUANTITY) /
-              NFTs_PER_PAGE
-          )}
+          totalPages={Math.ceil(NFT_QUANTITY / NFTs_PER_PAGE)}
           currentPage={currentPage}
           setPagination={setCurrentPage}
           margin="0 0 0 1em"

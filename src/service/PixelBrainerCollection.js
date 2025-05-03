@@ -1,3 +1,4 @@
+import axios from "axios";
 import { API_BASE_URL } from "./BrainerOnBaseService";
 
 export const pixelBrainerCollectionEndpoints = {
@@ -35,7 +36,7 @@ export const pixelBrainerCollectionEndpoints = {
   },
 
   // Crear o actualizar un NFT
-  createOrUpdateNFT: async (nftData) => {
+  mintNFT: async (nftData) => {
     try {
       const response = await axios.post(`${API_BASE_URL}/nfts/mint`, nftData);
       return response.data;

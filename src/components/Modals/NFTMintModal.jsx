@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import useContractPBC1 from "../../hooks/useContractPBC1";
 import AccountContext from "../../provider/AccountProvider/AccountContext";
+import BrainerOnBaseService from "../../service/BrainerOnBaseService";
 
 export const StyledUl = styled(motion.ul)`
   list-style-type: none;
@@ -36,7 +37,18 @@ const NFTMintModal = ({
     try {
       setLoading(true);
       const res = await mint_BPC1_NFT();
+      BrainerOnBaseService.mintNFT({
+        tokenId: res.tokenId,
+        minted: true,
+        owner: res.owner,
+        walletAddress: res.walletAddress,
+        name: res.name,
+        image: res.image,
+        attributes: res.attributes,
+        metadata: res.metadata,
+      });
       console.log("Minting response:", res);
+
       setRefreshCount((prev) => !prev); // Cambia el estado para forzar la actualización del contador
     } catch (error) {
       console.error("Error minting NFT:", error);
