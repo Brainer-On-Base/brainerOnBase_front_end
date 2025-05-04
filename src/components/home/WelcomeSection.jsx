@@ -19,10 +19,11 @@ export default function WelcomeSection() {
 
   useEffect(() => {
     if (mintedCount === null) fetchMintedCount();
-  }, [refreshCount, getMintedCount]);
+  }, [refreshCount, mintedCount]);
 
   const fetchMintedCount = async () => {
     const count = await BrainerOnBaseService.getNFTQuantityMinted();
+    console.log("minted count", count);
     setMintedCount(count.minted);
   };
 

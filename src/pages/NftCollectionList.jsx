@@ -77,8 +77,8 @@ const StyledNFTListContainer = styled(HBox)`
 `;
 
 const NftCollectionList = () => {
-  const NFT_QUANTITY = 5;
-  const NFTs_PER_PAGE = 5;
+  const NFT_QUANTITY = 25;
+  const NFTs_PER_PAGE = 10;
   const [nftSelected, setNftSelected] = useState(null);
   const [nftList, setNftList] = useState([]);
   const [mintedNftList, setMintedNftList] = useState([]);
@@ -106,7 +106,6 @@ const NftCollectionList = () => {
       const params = {
         page: currentPage,
         limit: NFTs_PER_PAGE,
-        minted: onlyMintedViewActive,
       };
       const response = await BrainerOnBaseService.getAllNFTs(params);
       console.log("NFTs response:", response);
