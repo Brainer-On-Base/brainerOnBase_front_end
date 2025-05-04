@@ -90,22 +90,34 @@ const NftCollectionList = () => {
   const [nftSearch, setNftSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const [refreshCount, setRefreshCount] = useState(false);
-  const [onlyMintedViewActive, setOnlyMintedViewActive] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
   const [loadingMint, setLoadingMint] = useState(false);
+  const [filters, setFilters] = useState({
+    eyes: "",
+    hat: "",
+    mouth: "",
+    background: "",
+    extra: "",
+  });
+  const [onlyMintedView, setOnlyMintedView] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    fetchNFTs();
+    fetchNFTs(filters, onlyMintedView);
     getMintedQuantity();
-  }, [currentPage, refreshCount, onlyMintedViewActive]);
+  }, [currentPage, refreshCount, filters, onlyMintedView]);
 
-  const fetchNFTs = async () => {
+  const fetchNFTs = async (filters, onlyMintedView) => {
+    const cleanFilters = Object.fromEntries(
+      Object.entries(filters).filter(([_, value]) => value !== "")
+    );
     setLoading(true);
     try {
       const params = {
         page: currentPage,
         limit: NFTs_PER_PAGE,
+        minted: onlyMintedView ? true : undefined,
+        ...cleanFilters, // 🔥 Acá se agregan dinámicamente los filtros
       };
       const response = await BrainerOnBaseService.getAllNFTs(params);
       console.log("NFTs response:", response);
@@ -255,7 +267,11 @@ const NftCollectionList = () => {
             {showFilters && (
               <FiltersPanel
                 showFilters={showFilters}
-                onChangeFilters={onChangeFilters}
+                setShowFilters={setShowFilters}
+                setFilters={setFilters}
+                filters={filters}
+                setOnlyMintedView={setOnlyMintedView}
+                onlyMintedView={onlyMintedView}
               />
             )}
             <StyledNFTList

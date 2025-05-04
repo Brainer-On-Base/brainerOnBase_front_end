@@ -88,21 +88,19 @@ const categoryOptions = {
   ],
 };
 
-const FiltersPanel = ({ onChangeFilters }) => {
-  const [filters, setFilters] = useState({
-    eyes: "",
-    hat: "",
-    mouth: "",
-    background: "",
-    extra: "",
-    onlyMintedView: false,
-  });
-
+const FiltersPanel = ({
+  setOnlyMintedView,
+  setFilters,
+  filters,
+  onlyMintedView,
+}) => {
   const handleChange = (category, value) => {
     const newFilters = { ...filters, [category]: value };
-    console.log("New filters:", newFilters);
     setFilters(newFilters);
-    onChangeFilters(newFilters);
+  };
+
+  const toggleOnlyMinted = () => {
+    setOnlyMintedView(!onlyMintedView);
   };
 
   return (
@@ -112,9 +110,9 @@ const FiltersPanel = ({ onChangeFilters }) => {
         title="Toggle View"
         fontSize={"1.5em"}
         padding={"0.9em 1.2em"}
-        onClick={() => handleChange("onlyMintedView", !filters.onlyMintedView)}
+        onClick={toggleOnlyMinted}
       >
-        {!filters.onlyMintedView ? "ONLY MINTED" : "ALL"}
+        {!onlyMintedView ? "ONLY MINTED" : "ALL"}{" "}
       </HButton>
 
       {Object.entries(categoryOptions).map(([category, options]) => (
