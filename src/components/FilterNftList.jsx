@@ -20,7 +20,7 @@ const PanelWrapper = styled.div`
 `;
 
 const categoryOptions = {
-  eyes: [
+  Eyes: [
     "All",
     "Normal",
     "Angry",
@@ -36,7 +36,7 @@ const categoryOptions = {
     "Round Glasses",
     "Square Glasses",
   ],
-  hat: [
+  Headgear: [
     "All",
     "Evil Horns",
     "Violet Hat",
@@ -68,8 +68,8 @@ const categoryOptions = {
     "Saint Patrick Hat",
     "Chef Hat",
   ],
-  mouth: ["All", "Normal", "Golden Teeth", "Smile", "Tongue", "Circular"],
-  background: [
+  Mouth: ["All", "Normal", "Golden Teeth", "Smile", "Tongue", "Circular"],
+  Background: [
     "All",
     "Deep Violet",
     "Royal Purple",
@@ -78,7 +78,7 @@ const categoryOptions = {
     "Midnight Violet",
     "Amethyst Glow",
   ],
-  extra: [
+  Extra: [
     "All",
     "Cactus",
     "Mushrooms Shower",
@@ -86,35 +86,27 @@ const categoryOptions = {
     "Right Plant",
     "Left Plant",
   ],
+  Accessory1: [
+    "All",
+    "Sapphire Necklace",
+    "Gold Necklace",
+    "Diamond Necklace",
+    "Red Necklace",
+    "Green Necklace",
+    "Blue Necklace",
+    "Purple Necklace",
+    "Black Necklace",
+  ],
 };
 
-const FiltersPanel = ({
-  setOnlyMintedView,
-  setFilters,
-  filters,
-  onlyMintedView,
-}) => {
+const FiltersPanel = ({ setFilters, filters }) => {
   const handleChange = (category, value) => {
     const newFilters = { ...filters, [category]: value };
     setFilters(newFilters);
   };
 
-  const toggleOnlyMinted = () => {
-    setOnlyMintedView(!onlyMintedView);
-  };
-
   return (
     <PanelWrapper>
-      <HButton
-        style={{ zIndex: 999 }}
-        title="Toggle View"
-        fontSize={"1.5em"}
-        padding={"0.9em 1.2em"}
-        onClick={toggleOnlyMinted}
-      >
-        {!onlyMintedView ? "ONLY MINTED" : "ALL"}{" "}
-      </HButton>
-
       {Object.entries(categoryOptions).map(([category, options]) => (
         <HDropdown
           key={category}

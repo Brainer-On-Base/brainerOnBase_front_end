@@ -99,28 +99,25 @@ const NftCollectionList = () => {
     background: "",
     extra: "",
   });
-  const [onlyMintedView, setOnlyMintedView] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    fetchNFTs(filters, onlyMintedView);
+    fetchNFTs(filters);
     getMintedQuantity();
-  }, [currentPage, refreshCount, filters, onlyMintedView]);
+  }, [currentPage, refreshCount, filters, showFilters]);
 
-  const fetchNFTs = async (filters, onlyMintedView) => {
-    const cleanFilters = Object.fromEntries(
-      Object.entries(filters).filter(([_, value]) => value !== "")
-    );
+  const fetchNFTs = async (filters) => {
     setLoading(true);
+    let filtersToUse = filters;
+    if (!showFilters) filtersToUse = {};
     try {
       const params = {
         page: currentPage,
         limit: NFTs_PER_PAGE,
-        minted: onlyMintedView ? true : undefined,
-        ...cleanFilters, // 🔥 Acá se agregan dinámicamente los filtros
+        minted: showFilters ? true : undefined,
+        ...filtersToUse, // 🔥 Acá se agregan dinámicamente los filtros
       };
       const response = await BrainerOnBaseService.getAllNFTs(params);
-      console.log("NFTs response:", response);
       setNftList(response.data);
     } catch (error) {
       console.error("Error fetching NFTs:", error.message);
@@ -270,8 +267,6 @@ const NftCollectionList = () => {
                 setShowFilters={setShowFilters}
                 setFilters={setFilters}
                 filters={filters}
-                setOnlyMintedView={setOnlyMintedView}
-                onlyMintedView={onlyMintedView}
               />
             )}
             <StyledNFTList

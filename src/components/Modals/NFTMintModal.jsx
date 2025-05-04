@@ -32,50 +32,25 @@ const NFTMintModal = ({
   setLoading,
   setRefreshCount,
 }) => {
-  const { mint_BPC1_NFT } = useContractPBC1();
+  const { mint_BPC1_NFT, getIPFSInfo } = useContractPBC1();
   const mintNft = async () => {
     try {
       setLoading(true);
       // const res = await mint_BPC1_NFT();
-      const number = 9;
+      const number = 5;
+      const tokenURI = `https://braineronbase.com/ipfs/QmPBoGsoeHgHi2EYYUrmV6b1ZSLYDDXXy6Y5DYN9m6tPiE/${number}.json`;
+
+      const res = await getIPFSInfo(tokenURI);
+      console.log("IPFS response:", res);
       BrainerOnBaseService.mintNFT({
         tokenId: number,
         minted: true,
         owner: "0x1234567890abcdef1234567890abcdef12345678",
         mintedBy: "0x1234567890abcdef1234567890abcdef12345678",
-        tokenURI: `https://braineronbase.com/ipfs/QmZd9RMaxg7HhQNxLmbmJFCU7AC55eZ4F44FViZYb8yrmk/${number}.json`,
-        name: `Pixel Brainer #${number}`,
-        image: `https://braineronbase.com/ipfs/QmZd9RMaxg7HhQNxLmbmJFCU7AC55eZ4F44FViZYb8yrmk/${number}.png`,
-        attributes: [
-          {
-            trait_type: "Eyes",
-            value: "Angry",
-          },
-          {
-            trait_type: "Headgear",
-            value: "King Cap",
-          },
-          {
-            trait_type: "Mouth",
-            value: "Circular",
-          },
-          {
-            trait_type: "Accessory 1",
-            value: "Sapphire Necklace",
-          },
-          {
-            trait_type: "Accessory 2",
-            value: "Empty",
-          },
-          {
-            trait_type: "Background",
-            value: "Grape",
-          },
-          {
-            trait_type: "Extra",
-            value: "Empty",
-          },
-        ],
+        name: res.name,
+        image: res.image,
+        tokenURI: tokenURI,
+        attributes: res.attributes,
       });
       console.log("Minting response:", res);
 
