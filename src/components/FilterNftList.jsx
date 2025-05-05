@@ -114,6 +114,7 @@ const FiltersPanel = ({ setFilters, filters }) => {
           options={options}
           value={filters[category]}
           onChange={(e) => handleChange(category, e.target.value)}
+          labelColor="lightPurple"
           width="90%"
         />
       ))}

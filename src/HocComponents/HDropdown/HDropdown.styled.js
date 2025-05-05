@@ -6,6 +6,7 @@ export const DropdownContainer = styled.div`
     direction || "column"}; /* Dirección (row o column) */
   gap: ${({ gap }) => gap || "10px"}; /* Espaciado entre label y select */
   width: ${({ width }) => width || "auto"}; /* Ancho del contenedor */
+  align-items: center;
 `;
 
 export const DropdownSelect = styled.select`
