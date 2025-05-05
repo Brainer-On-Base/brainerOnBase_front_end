@@ -19,13 +19,18 @@ const HDropdown = ({
   labelColor = "",
   labelSize = "16px",
   selectPadding = "10px 20px",
+  labelPosition = "left",
   id,
   name,
   ...props
 }) => {
   return (
     <DropdownContainer direction={direction} gap={gap} {...props} width={width}>
-      <DropdownLabel labelColor={labelColor} labelSize={labelSize}>
+      <DropdownLabel
+        labelColor={labelColor}
+        labelSize={labelSize}
+        labelPosition={labelPosition}
+      >
         {label}
       </DropdownLabel>
       <DropdownSelect

@@ -40,7 +40,7 @@ export const DropdownLabel = styled.label`
     theme?.[labelColor] || labelColor || theme.purpleMedium};
   font-weight: ${({ labelWeight }) => labelWeight || "var(--weight-regular)"};
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   width: 100%;
 `;
