@@ -33,6 +33,7 @@ const NFTMintModal = ({
   setRefreshCount,
 }) => {
   const { mint_BPC1_NFT, getIPFSInfo } = useContractPBC1();
+  const { account } = useContext(AccountContext);
   const mintNft = async () => {
     try {
       setLoading(true);
@@ -45,8 +46,8 @@ const NFTMintModal = ({
       BrainerOnBaseService.mintNFT({
         tokenId: number,
         minted: true,
-        owner: "0x1234567890abcdef1234567890abcdef12345678",
-        mintedBy: "0x1234567890abcdef1234567890abcdef12345678",
+        owner: account,
+        mintedBy: account,
         name: res.name,
         image: res.image,
         tokenURI: tokenURI,
