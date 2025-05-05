@@ -77,7 +77,7 @@ const StyledNFTListContainer = styled(HBox)`
 `;
 
 const NftCollectionList = () => {
-  const NFT_QUANTITY = 5;
+  const NFT_QUANTITY = 50;
   const NFTs_PER_PAGE = 10;
   const [nftSelected, setNftSelected] = useState(null);
   const [nftList, setNftList] = useState([]);
@@ -208,7 +208,7 @@ const NftCollectionList = () => {
               MINT
             </HButton>
             {web3provider && (
-              <p className="minted-quantity">{`${mintedCount}/5000 minted`}</p>
+              <p className="minted-quantity">{`${mintedCount}/${NFT_QUANTITY} minted`}</p>
             )}
           </HBox>
           <HBox className="nft-list-actions2">

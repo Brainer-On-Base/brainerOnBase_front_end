@@ -51,6 +51,10 @@ const useContractPBC1 = () => {
         .then(async (res) => {
           const tokenURI = await nftContract.tokenURI(currentTokenId);
           const metadata = await getIPFSInfo(tokenURI);
+
+          const name = metadata.name;
+          const match = name.match(/#(\d+)$/);
+          const number = match ? parseInt(match[1]) : null;
           // 💾 Guardar en el backend
           await BrainerOnBaseService.mintNFT({
             tokenId: Number(currentTokenId),
@@ -59,11 +63,15 @@ const useContractPBC1 = () => {
             owner: address,
             name: metadata.name,
             image: metadata.image,
-            tokenURI,
+            tokenURI: tokenURI,
+            uriId: number,
             attributes: metadata.attributes,
           });
 
-          HPopUp({ message: "🎉 NFT minted successfully!", type: "success" });
+          HPopUp({
+            message: `🎉 NFT minted successfully!, you get the Pixel Brainer #${number}!`,
+            type: "success",
+          });
         });
 
       // 📦 Obtener tokenURI y metadata
