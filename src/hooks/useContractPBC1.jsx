@@ -7,16 +7,14 @@ import {
 import AccountContext from "../provider/AccountProvider/AccountContext";
 import { Contract, formatEther } from "ethers";
 import { HPopUp } from "../HocComponents";
+import BrainerOnBaseService from "../service/BrainerOnBaseService";
 
 const useContractPBC1 = () => {
   const { account, web3provider, isConnected } = useContext(AccountContext);
 
   const mint_BPC1_NFT = async () => {
     if (!isConnected) {
-      HPopUp({
-        message: "Connect your wallet first.",
-        type: "warning",
-      });
+      HPopUp({ message: "Connect your wallet first.", type: "warning" });
       return;
     }
 
@@ -35,8 +33,9 @@ const useContractPBC1 = () => {
         return;
       }
 
-      const mintPrice = await nftContract.getMintPrice();
-      const balance = await signer.getBalance();
+      const mintPrice = await nftContract.mintPrice();
+      const address = await signer.getAddress();
+      const balance = await signer.provider.getBalance(address);
 
       if (balance < mintPrice) {
         HPopUp({
@@ -46,28 +45,51 @@ const useContractPBC1 = () => {
         return;
       }
 
-      const tx = await nftContract.mintNFT(account, { value: mintPrice });
-      await tx.wait();
+      // 🧠 Mint
+      await nftContract
+        .mintNFT(address, { value: mintPrice })
+        .then(async (res) => {
+          const tokenURI = await nftContract.tokenURI(currentTokenId);
+          const metadata = await getIPFSInfo(tokenURI);
+          // 💾 Guardar en el backend
+          await BrainerOnBaseService.mintNFT({
+            tokenId: Number(currentTokenId),
+            minted: true,
+            mintedBy: address,
+            owner: address,
+            name: metadata.name,
+            image: metadata.image,
+            tokenURI,
+            attributes: metadata.attributes,
+          });
 
-      HPopUp({ message: "🎉 NFT minted successfully!", type: "success" });
+          HPopUp({ message: "🎉 NFT minted successfully!", type: "success" });
+        });
+
+      // 📦 Obtener tokenURI y metadata
+
+      // return { tokenId, tokenURI, ...metadata };
     } catch (error) {
+      console.log("❌ Error minting NFT:", error.reason);
+
       let errorMessage = "Error minting NFT. Try again later";
       const errorText =
-        error?.reason ||
-        error?.error?.message ||
-        error?.data?.message ||
-        error?.message ||
+        error?.reason ??
+        error?.error?.message ??
+        error?.data?.message ??
+        error?.message ??
         "";
-
-      if (errorText.includes("Max 2 NFTs per wallet")) {
+      console.log("Error text:", errorText);
+      if (errorText === "Max 2 per wallet") {
         errorMessage = "You can only mint up to 2 NFTs per wallet.";
       } else if (errorText.includes("Insufficient funds")) {
         errorMessage = "You don't have enough ETH to mint this NFT.";
-      } else if (errorText.includes("Max supply reached")) {
+      } else if (errorText.includes("Sold out")) {
         errorMessage = "All NFTs have been minted.";
       }
 
       HPopUp({ message: errorMessage, type: "error" });
+      throw error;
     }
   };
 
@@ -100,53 +122,10 @@ const useContractPBC1 = () => {
     }
   };
 
-  const getMintedNFTs = async (start = 0, end = 50) => {
-    if (!web3provider) return [];
-
-    try {
-      const nftContract = new Contract(
-        BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
-        BRAINER_BPC_NFT_ABI_CONTRACT.abi,
-        web3provider
-      );
-
-      const currentTokenId = await getMintedCount();
-      if (currentTokenId === 0) return [];
-      if (end > currentTokenId) end = currentTokenId;
-      if (start > end) return [];
-
-      const uris = await nftContract.getTokenURIs(start, end);
-      return uris.map((uri, index) => ({ tokenId: start + index, uri }));
-    } catch (error) {
-      console.error("Error fetching minted NFTs:", error);
-      return [];
-    }
-  };
-
-  const getNFTByTokenId = async (tokenId) => {
-    if (!web3provider) return null;
-
-    try {
-      const nftContract = new Contract(
-        BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
-        BRAINER_BPC_NFT_ABI_CONTRACT.abi,
-        web3provider
-      );
-
-      const uri = await nftContract.tokenURI(tokenId);
-      return { tokenId, uri };
-    } catch (error) {
-      console.error("Error fetching NFT by tokenId:", error);
-      return null;
-    }
-  };
-
   return {
     mint_BPC1_NFT,
     getMintedCount,
     getIPFSInfo,
-    getMintedNFTs,
-    getNFTByTokenId,
   };
 };
 

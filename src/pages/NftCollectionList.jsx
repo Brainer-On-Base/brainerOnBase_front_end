@@ -77,7 +77,7 @@ const StyledNFTListContainer = styled(HBox)`
 `;
 
 const NftCollectionList = () => {
-  const NFT_QUANTITY = 25;
+  const NFT_QUANTITY = 5;
   const NFTs_PER_PAGE = 10;
   const [nftSelected, setNftSelected] = useState(null);
   const [nftList, setNftList] = useState([]);

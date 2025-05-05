@@ -65,17 +65,17 @@ const NftDetails = ({ nftSelected, setNftSelected, mintedNftList }) => {
       <HButton onClick={() => setNftSelected(null)} className="closeButton">
         <CloseIcon />
       </HButton>
-      <ArrowLeft
+      {/* <ArrowLeft
         onClick={() => handleNavigate("-")}
         disabled={mintedNftList.length === 1}
-      />
+      /> */}
       <FloatAnimation>
         <NFTCard nftSelected={nftSelected} />
       </FloatAnimation>
-      <ArrowRight
+      {/* <ArrowRight
         onClick={() => handleNavigate("+")}
         disabled={mintedNftList.length === 1}
-      />
+      /> */}
     </NFTDetailsModal>
   );
 };

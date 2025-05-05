@@ -32,28 +32,12 @@ const NFTMintModal = ({
   setLoading,
   setRefreshCount,
 }) => {
-  const { mint_BPC1_NFT, getIPFSInfo } = useContractPBC1();
+  const { mint_BPC1_NFT } = useContractPBC1();
   const { account } = useContext(AccountContext);
   const mintNft = async () => {
     try {
       setLoading(true);
-      // const res = await mint_BPC1_NFT();
-      const number = 5;
-      const tokenURI = `https://braineronbase.com/ipfs/QmPBoGsoeHgHi2EYYUrmV6b1ZSLYDDXXy6Y5DYN9m6tPiE/${number}.json`;
-
-      const res = await getIPFSInfo(tokenURI);
-      console.log("IPFS response:", res);
-      BrainerOnBaseService.mintNFT({
-        tokenId: number,
-        minted: true,
-        owner: account,
-        mintedBy: account,
-        name: res.name,
-        image: res.image,
-        tokenURI: tokenURI,
-        attributes: res.attributes,
-      });
-      console.log("Minting response:", res);
+      await mint_BPC1_NFT();
 
       setRefreshCount((prev) => !prev); // Cambia el estado para forzar la actualización del contador
     } catch (error) {
