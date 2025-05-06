@@ -110,6 +110,7 @@ const NftCollectionList = () => {
     setLoading(true);
     let filtersToUse = filters;
     if (!showFilters) filtersToUse = {};
+    else setCurrentPage(1); // Reset to page 1 when filters are applied
     try {
       const params = {
         page: currentPage,
@@ -276,6 +277,19 @@ const NftCollectionList = () => {
               wrap="wrap"
               margin="1em 0"
             >
+              {nftList?.length === 0 && (
+                <HBox
+                  width="100%"
+                  justify="center"
+                  align="center"
+                  height="40vh"
+                  margin="0 auto"
+                >
+                  <HTitle fontSize={"2em"} color="white">
+                    No NFTs found
+                  </HTitle>
+                </HBox>
+              )}
               {nftList?.map((nft, index) => (
                 <FloatAnimation
                   delay={index}
