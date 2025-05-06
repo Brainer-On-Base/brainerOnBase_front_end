@@ -299,7 +299,7 @@ const NftCollectionList = () => {
                   <motion.div
                     className={`animate__animated animate__fadeInUp animations`}
                     onClick={() => {
-                      if (!nft) return false;
+                      if (!nft.image) return false;
                       setNftSelected(nft);
                     }}
                   >
