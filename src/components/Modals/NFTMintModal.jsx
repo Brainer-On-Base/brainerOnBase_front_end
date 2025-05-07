@@ -34,9 +34,11 @@ const NFTMintModal = ({
 }) => {
   const { mint_BPC1_NFT } = useContractPBC1();
   const { account } = useContext(AccountContext);
+
   const mintNft = async () => {
     try {
       setLoading(true);
+
       await mint_BPC1_NFT();
     } catch (error) {
       console.error("Error minting NFT:", error);

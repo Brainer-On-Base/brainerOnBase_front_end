@@ -288,7 +288,7 @@ const TokenDetails = () => {
         </PreSaleButton>
         <Paragraph2
           useTitleCase={false}
-          textAlign={"center"}
+          textalign={"center"}
           margin={"2em 0 0 0"}
         >
           By supporting the project early, you're not only securing your spot in

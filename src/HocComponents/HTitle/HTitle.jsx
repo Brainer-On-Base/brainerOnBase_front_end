@@ -6,7 +6,7 @@ const HTitle = ({
   fontSize, // Tamaño de la fuente
   fontWeight, // Peso de la fuente
   color, // Color del texto
-  textAlign, // Alineación del texto
+  textalign, // Alineación del texto
   margin, // Margen
   padding, // Padding
   lineHeight, // Altura de línea
@@ -27,7 +27,7 @@ const HTitle = ({
       fontSize={fontSize}
       fontWeight={fontWeight}
       color={color}
-      textAlign={textAlign}
+      textalign={textalign}
       margin={margin}
       padding={padding}
       lineHeight={lineHeight}

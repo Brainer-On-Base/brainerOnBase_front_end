@@ -2,11 +2,9 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const NFTCardContainer = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 1.5em;
-  max-width: ${(props) => props.height || "850px"};
+  margin: 4em auto;
+  max-width: ${(props) => props.width || "400px"};
   border-radius: 20px;
   box-sizing: border-box;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
@@ -14,8 +12,9 @@ export const NFTCardContainer = styled(motion.div)`
   color: #ffffff;
   overflow: hidden;
   z-index: 9999999;
-  height: ${(props) => props.height || "700px"};
+  height: ${(props) => props.height || "auto"};
 
+  margin-bottom: 8em;
   .card-container {
     display: flex;
     flex-direction: column;
@@ -30,7 +29,7 @@ export const NFTCardContainer = styled(motion.div)`
 
   img {
     width: 100%;
-    max-width: 350px;
+    max-width: 250px;
     height: auto;
     border-radius: 15px;
     border: 3px solid rgba(255, 255, 255, 0.2);
@@ -38,8 +37,11 @@ export const NFTCardContainer = styled(motion.div)`
   }
 
   @media (max-width: 814px) {
-    max-width: 100%;
+    max-width: 80%;
     padding: 1em;
+    img {
+      max-width: 150px;
+    }
   }
 `;
 

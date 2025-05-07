@@ -84,7 +84,7 @@ const NftCollectionList = () => {
   const [mintedNftList, setMintedNftList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const { web3provider } = useContext(AccountContext);
-  const { getIPFSInfo } = useContractPBC1();
+  const { getMintedCount } = useContractPBC1();
   const [showModal, setShowModal] = useState(false);
   const [mintedCount, setMintedCount] = useState(0);
   const [nftSearch, setNftSearch] = useState("");
@@ -103,7 +103,7 @@ const NftCollectionList = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchNFTs(filters);
-    getMintedQuantity();
+    fetchMintedCount();
   }, [currentPage, refreshCount, filters, showFilters]);
 
   const fetchNFTs = async (filters) => {
@@ -140,13 +140,9 @@ const NftCollectionList = () => {
     }
   };
 
-  const getMintedQuantity = async () => {
-    try {
-      const response = await BrainerOnBaseService.getNFTQuantityMinted();
-      setMintedCount(response.minted);
-    } catch (error) {
-      console.error("Error fetching minted count:", error.message);
-    }
+  const fetchMintedCount = async () => {
+    const count = await getMintedCount();
+    setMintedCount(count);
   };
 
   return (
@@ -341,7 +337,7 @@ const NftCollectionList = () => {
             }
           >
             <HTitle fontSize={"50px"} color={"goldColor"}>
-              Mint Allocation
+              NFTS Mint Allocation
             </HTitle>
             <HTitle
               width={"80%"}
@@ -365,7 +361,7 @@ const NftCollectionList = () => {
               </li>
               <li>
                 <HTitle useTitleCase={false} fontSize={"1.2em"} color="white">
-                  🎮 20% - Development of Brainer Society game & ecosystem
+                  🎮 20% - Development of Brainer Society Ecosystem
                 </HTitle>
               </li>
               <li>
@@ -389,7 +385,6 @@ const NftCollectionList = () => {
           setNftSelected={setNftSelected}
           nftList={mintedNftList}
           mintedNftList={mintedNftList}
-          getIPFSInfo={getIPFSInfo}
         />
       )}
     </AppLayout>

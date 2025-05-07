@@ -87,7 +87,8 @@ export default function Footer() {
       >
         <img src="/brainerCoin.png" alt="Brainer Coin Logo" />
         <p id="copyright" style={{ margin: "10px", color: " white" }}>
-          Copyright © 2024. All rights reserved. - braineronbase@gmail.com
+          Copyright © 2024. All rights reserved. -
+          braineronbaseofficial@gmail.com
         </p>
         <img src="/brainerCoin.png" alt="Brainer Coin Logo" />
       </StyledFlexCenterContainer>

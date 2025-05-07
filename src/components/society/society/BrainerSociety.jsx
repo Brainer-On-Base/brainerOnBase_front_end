@@ -178,7 +178,7 @@ const BrainerSociety = () => {
             </HButton>
             <HTitle
               width={"100%"}
-              textAlign={"center"}
+              textalign={"center"}
               color={"lightPurple"}
               fontSize={"16px"}
               useTitleCase={false}

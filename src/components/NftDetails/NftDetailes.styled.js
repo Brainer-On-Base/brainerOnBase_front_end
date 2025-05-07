@@ -73,10 +73,18 @@ export const NFTDetailsModal = styled.div`
 
   .closeButton {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 40px;
+    right: 0px;
     background-color: transparent;
     border: none;
     cursor: pointer;
+  }
+
+  @media (max-width: 814px) {
+    .closeButton {
+      top: 60px;
+      right: 0px;
+      z-index: 9999999;
+    }
   }
 `;

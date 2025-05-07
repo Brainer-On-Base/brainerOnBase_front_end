@@ -22,7 +22,7 @@ const MarketplaceItem = ({ selectViewType, item }) => {
         fontSize="20px"
         fontWeight="bold"
         color={"goldColor"}
-        textAlign={"center"}
+        textalign={"center"}
       >
         {item.name}
       </HTitle>

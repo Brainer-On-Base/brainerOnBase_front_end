@@ -8,6 +8,7 @@ import AccountContext from "../provider/AccountProvider/AccountContext";
 import { Contract, formatEther } from "ethers";
 import { HPopUp } from "../HocComponents";
 import BrainerOnBaseService from "../service/BrainerOnBaseService";
+import { use } from "react";
 
 const useContractPBC1 = () => {
   const { account, web3provider, isConnected } = useContext(AccountContext);

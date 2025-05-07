@@ -134,7 +134,7 @@ const TokenPreSaleModal = ({ showModal, setShowModal, setLoading }) => {
           color="white"
           useTitleCase={false}
           width={"62%"}
-          textAlign={"left"}
+          textalign={"left"}
         >
           Total:{" "}
           {new Intl.NumberFormat("en-US", {

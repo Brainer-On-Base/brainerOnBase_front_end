@@ -8,8 +8,8 @@ export const HTitleText = styled.h1`
   font-weight: ${({ fontWeight }) => fontWeight || "bold"}; /* Peso de fuente */
   color: ${({ color, theme }) =>
     theme?.[color] || color || "white" || "#000"}; /* Color del texto */
-  text-align: ${({ textAlign }) =>
-    textAlign || "left"}; /* Alineación del texto */
+  text-align: ${({ textalign }) =>
+    textalign || "left"}; /* Alineación del texto */
   margin: ${({ margin }) => margin || "0"}; /* Margen */
   padding: ${({ padding }) => padding || "0"}; /* Padding */
   line-height: ${({ lineHeight }) => lineHeight || "1.5"}; /* Altura de línea */

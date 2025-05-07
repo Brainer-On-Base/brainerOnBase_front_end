@@ -22,8 +22,8 @@ export default function WelcomeSection() {
   }, [refreshCount]);
 
   const fetchMintedCount = async () => {
-    const count = await BrainerOnBaseService.getNFTQuantityMinted();
-    setMintedCount(count.minted);
+    const count = await getMintedCount();
+    setMintedCount(count);
   };
 
   return (
