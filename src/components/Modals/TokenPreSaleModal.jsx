@@ -1,31 +1,11 @@
 import React, { useContext, useState } from "react";
 import { HBox, HInput, HModal, HTitle } from "../../HocComponents";
-import styled from "styled-components";
 import { motion } from "framer-motion";
 import useContractPreSale from "../../hooks/useContractPreSale";
 import { useEffect } from "react";
 import AccountContext from "../../provider/AccountProvider/AccountContext";
-import Loader from "../Loader/Loader";
+import { StyledUl } from "./modals.styled";
 
-export const StyledUl = styled(motion.ul)`
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  li {
-    margin-bottom: 10px;
-    display: flex !important;
-    align-items: center;
-    p {
-      color: white !important;
-    }
-
-    .bullet-icon {
-      width: 50px;
-      height: 50px;
-      margin-right: 1em;
-    }
-  }
-`;
 const TokenPreSaleModal = ({ showModal, setShowModal, setLoading }) => {
   const [ethInput, setEthInput] = useState(0);
   const { buyTokens, getUserContribution } = useContractPreSale();

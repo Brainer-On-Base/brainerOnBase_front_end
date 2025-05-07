@@ -1,31 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { HBox, HModal, HTitle } from "../../HocComponents";
-import styled from "styled-components";
 import { motion } from "framer-motion";
 import useContractPBC1 from "../../hooks/useContractPBC1";
-import AccountContext from "../../provider/AccountProvider/AccountContext";
-import BrainerOnBaseService from "../../service/BrainerOnBaseService";
+import { StyledUl } from "./modals.styled";
 
-export const StyledUl = styled(motion.ul)`
-  list-style-type: none;
-  padding: 0;
-
-  li {
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    p {
-      color: white !important;
-    }
-
-    .bullet-icon {
-      position: static !important;
-      width: 50px;
-      height: 50px;
-      margin-right: 1em;
-    }
-  }
-`;
 const NFTMintModal = ({
   showModal,
   setShowModal,
@@ -33,7 +11,6 @@ const NFTMintModal = ({
   setRefreshCount,
 }) => {
   const { mint_BPC1_NFT } = useContractPBC1();
-  const { account } = useContext(AccountContext);
 
   const mintNft = async () => {
     try {

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { HBox } from "../HocComponents";
 import AppLayout from "../components/AppLayout/AppLayout";
 import BrainerSociety from "../components/society/society/BrainerSociety";
 

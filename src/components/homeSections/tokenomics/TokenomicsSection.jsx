@@ -1,11 +1,10 @@
 import React from "react";
-import {
-  StyledCard,
-  StyledTokenomicsSection,
-} from "../styled-components/container";
-import handleAnimationScroll from "../../hooks/handleAnimationScroll";
-import BubbleDialog from "../BubbleDialog";
+import handleAnimationScroll from "../../../hooks/handleAnimationScroll";
 import { motion } from "framer-motion";
+import {
+  StyledTokenomicsSection,
+  StyledCard,
+} from "./tokenomicsSection.styled";
 
 export default function TokenomicsSection() {
   const { isVisible } = handleAnimationScroll(".target");

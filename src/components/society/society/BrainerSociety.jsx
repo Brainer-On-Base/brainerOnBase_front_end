@@ -2,11 +2,11 @@ import React from "react";
 import { HBox, HButton, HTitle } from "../../../HocComponents";
 import { NavbarHub } from "../playerHub/NavbarHub";
 import styled from "styled-components";
-import BubbleDialog from "../../BubbleDialog";
+import BubbleDialog from "../../BubbleDialog/BubbleDialog";
 import { RocketContainer } from "../../../pages/TokenDetails";
 import { motion } from "framer-motion";
 import { FloatAnimation } from "../../NftDetails/NftDetails";
-import { StyledUl } from "../../Modals/NFTMintModal";
+import { StyledUl } from "../../Modals/modals.styled";
 
 const SocietyContainer = styled(HBox)`
   img {

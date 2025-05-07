@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { StyledWelcomeSection2 } from "../styled-components/container";
-import useContractPBC1 from "../../hooks/useContractPBC1";
-import Loader from "../Loader/Loader";
-import { HBox, HButton } from "../../HocComponents";
+import useContractPBC1 from "../../../hooks/useContractPBC1";
+import Loader from "../../Loader/Loader";
+import { HBox, HButton } from "../../../HocComponents";
 import { useNavigate } from "react-router-dom";
-import NFTMintModal from "../Modals/NFTMintModal";
-import AccountContext from "../../provider/AccountProvider/AccountContext";
-import BrainerOnBaseService from "../../service/BrainerOnBaseService";
+import NFTMintModal from "../../Modals/NFTMintModal";
+import AccountContext from "../../../provider/AccountProvider/AccountContext";
+import { StyledWelcomeSection } from "./welcomeSection.styled";
 
 export default function WelcomeSection() {
   const { getMintedCount } = useContractPBC1();
@@ -27,7 +26,7 @@ export default function WelcomeSection() {
   };
 
   return (
-    <StyledWelcomeSection2 style={{ alignItems: "flex-start" }} id="home">
+    <StyledWelcomeSection style={{ alignItems: "flex-start" }} id="home">
       {/* <img src="rocket.png" className="baloon"/> */}
       {loading && <Loader showLoading={loading} />}
       <NFTMintModal
@@ -96,6 +95,6 @@ export default function WelcomeSection() {
         </div>
         <img src="moon.png" className="moon" />
       </div>
-    </StyledWelcomeSection2>
+    </StyledWelcomeSection>
   );
 }

@@ -1,22 +1,18 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { StyledNavbarContainer } from "../styled-components/container";
-import { Stack } from "@mui/material";
-import ConnectWallet from "../ConnectWallet";
+import { Button, Stack } from "@mui/material";
+import ConnectWallet from "../ConnectWallet/ConnectWallet";
 import NavbarMobile from "./NavbarMobile";
-import useContractPBC1 from "../../hooks/useContractPBC1";
-import BrainerOnBaseTitle from "../BrainerOnBaseTitle";
+import BrainerOnBaseTitle from "../BrainerOnBaseTitle/BrainerOnBaseTitle";
+import { StyledNavbarContainer } from "./navbar.styled";
 
 function Navbar({}) {
   const location = useLocation();
   const isPlaying = location.pathname === "/game";
-  const { isConnected } = useContractPBC1();
 
   const pages = [
     {
@@ -94,13 +90,6 @@ function Navbar({}) {
             }}
           >
             <Stack flexDirection={"row"} alignItems={"center"}>
-              {/* <img
-                src="/commonBrainer.png"
-                onClick={() => {
-                  navigate("/home");
-                }}
-                style={{ cursor: "pointer" }}
-              /> */}
               <BrainerOnBaseTitle text={isPlaying ? "GO BACK" : null} />
             </Stack>
           </Box>

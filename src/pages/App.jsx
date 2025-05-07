@@ -1,19 +1,13 @@
 import brainerCoin from "/moon.png";
 import "./App.css";
-import useModals from "../hooks/useSweetAlert";
-import CoinRain from "../components/CoinRain";
-import {
-  StyledAppContainer,
-  StyledHomeContent,
-  StyledInitAppContainer,
-} from "../components/styled-components/container";
+import { StyledHomeContent } from "../components/styled-components/container";
 import { useNavigate } from "react-router-dom";
-import { StyledButton } from "../components/styled-components/buttons";
 import { View } from "@react-three/drei";
 import NightBackground from "../components/NIghtBackground";
 import { motion } from "framer-motion";
 import BrainerOnBaseTitle from "../components/BrainerOnBaseTitle";
 import { HBox, HButton } from "../HocComponents";
+import { StyledInitAppContainer } from "../components/AppLayout/appLayout.styled";
 
 const FlyingShips = () => {
   return (
@@ -61,7 +55,6 @@ const FlyingShips = () => {
 };
 
 function App() {
-  const { useTextModal } = useModals();
   const navigate = useNavigate();
 
   return (

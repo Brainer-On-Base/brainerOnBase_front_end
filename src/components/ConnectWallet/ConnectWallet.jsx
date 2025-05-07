@@ -8,12 +8,11 @@ import {
   faSignOutAlt,
   faShop,
 } from "@fortawesome/free-solid-svg-icons"; // Iconos adicionales
-import useContractPBC1 from "../hooks/useContractPBC1";
 import { useNavigate } from "react-router-dom";
 import { TbWallet } from "react-icons/tb";
 import { IoLogInOutline } from "react-icons/io5";
-import { HButton } from "../HocComponents";
-import AccountContext from "../provider/AccountProvider/AccountContext";
+import { HButton } from "../../HocComponents";
+import AccountContext from "../../provider/AccountProvider/AccountContext";
 
 const ConnectWallet = () => {
   const {

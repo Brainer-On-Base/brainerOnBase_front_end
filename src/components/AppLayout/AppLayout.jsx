@@ -1,12 +1,12 @@
 import React from "react";
-import { StyledAppContainer } from "../styled-components/container";
 import Navbar from "../Navbar/Navbar";
 import { View } from "@react-three/drei";
-import NightBackground from "../NIghtBackground";
+import NightBackground from "../Threejs/NIghtBackground";
 import { HBox } from "../../HocComponents";
 import GenericTitle from "../GenericTitle/GenericTitle";
-import Footer from "../Footer";
-import CoinRain from "../CoinRain";
+import Footer from "../Footer/Footer";
+import CoinRain from "../Threejs/CoinRain";
+import { StyledAppContainer } from "./appLayout.styled";
 
 const AppLayout = ({ title, subtitle, children, id, useCoinRain }) => {
   return (

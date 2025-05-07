@@ -1,11 +1,11 @@
 import React from "react";
+import { StyledFlexFullCenterContainer } from "../../styled-components/container";
 import {
   StyledAboutSection,
   StyledAstronautCard1,
   StyledAstronautCard2,
   StyledAstronautCard3,
-  StyledFlexFullCenterContainer,
-} from "../styled-components/container";
+} from "./aboutSection.styled";
 
 export default function AboutSection() {
   return (

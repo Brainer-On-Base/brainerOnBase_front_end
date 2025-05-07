@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { StyledNFTCollectionsContainer } from "../styled-components/container";
 import { useNavigate } from "react-router-dom";
-import useContractPBC1 from "../../hooks/useContractPBC1";
-import { HButton } from "../../HocComponents";
+import { HButton } from "../../../HocComponents";
+import {
+  StyledNFTCollectionsContainer,
+  StyledNFTContentContainer,
+  StyledNFTDescription,
+  StyledNFTExamplesImages,
+} from "./nftSection.styled";
 
 const NFTCollections = () => {
   const navigate = useNavigate();
@@ -13,7 +17,6 @@ const NFTCollections = () => {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
   };
-  const { getIPFSInfo, getMintedNFTs } = useContractPBC1();
 
   useEffect(() => {
     getHardCodeNFTs();
@@ -66,7 +69,7 @@ const NFTCollections = () => {
         BRAINER 1ST PIXEL ART NFT COLLECTION
       </motion.h2>
 
-      <motion.div
+      <StyledNFTContentContainer
         className="nft-content-container"
         initial="hidden"
         whileInView="visible"
@@ -74,7 +77,7 @@ const NFTCollections = () => {
         variants={fadeInUp}
         transition={{ duration: 0.7, delay: 0.2 }} // 1.5s delay for smoother effect
       >
-        <motion.div
+        <StyledNFTDescription
           className="nft-description"
           initial="hidden"
           whileInView="visible"
@@ -138,9 +141,9 @@ const NFTCollections = () => {
               </motion.li>
             ))}
           </motion.ul>
-        </motion.div>
+        </StyledNFTDescription>
 
-        <motion.div
+        <StyledNFTExamplesImages
           className="nft-examples-images"
           initial="hidden"
           whileInView="visible"
@@ -181,8 +184,8 @@ const NFTCollections = () => {
               // }}
             />
           ))}
-        </motion.div>
-      </motion.div>
+        </StyledNFTExamplesImages>
+      </StyledNFTContentContainer>
       <motion.div style={{ marginBottom: "3rem" }}>
         <HButton
           fontSize={"2em"}

@@ -2,7 +2,6 @@ import { Menu, MenuItem, Typography, IconButton, Box } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import zIndex from "@mui/material/styles/zIndex";
 
 export default function NavbarMobile({ pages }) {
   const [anchorElNav, setAnchorElNav] = useState(null);

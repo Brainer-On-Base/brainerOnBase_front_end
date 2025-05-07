@@ -1,5 +1,5 @@
 import React from "react";
-import { NFTCardContainer, TraitTag, TraitContainer } from "./NftCard.styled";
+import { NFTCardContainer, TraitTag, TraitContainer } from "./nftCard.styled";
 import { HTitle } from "../../HocComponents";
 
 const NFTCard = ({ nftSelected, backgroundColor, width, height, imgWidth }) => {

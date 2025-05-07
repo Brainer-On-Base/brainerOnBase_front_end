@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { themeColors } from "../../themeColors";
-import { useNavigate, useParams } from "react-router-dom";
 import {
   ArrowLeft,
   ArrowRight,
   CloseIcon,
   NFTDetailsModal,
-} from "./NftDetailes.styled";
+} from "./nftDetails.styled";
 import { HButton } from "../../HocComponents";
 import NFTCard from "../NFTCard/NFTCard";
 

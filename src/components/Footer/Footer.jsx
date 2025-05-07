@@ -2,12 +2,12 @@ import React from "react";
 import {
   StyledFlexCenterContainer,
   StyledFlexFullCenterContainer,
-  StyledFooterSection,
-} from "./styled-components/container";
-import { StyledButton } from "./styled-components/buttons";
-import BubbleDialog from "./BubbleDialog";
+} from "../styled-components/container";
+import { StyledButton } from "../styled-components/buttons";
+import BubbleDialog from "../BubbleDialog/BubbleDialog";
 import { FaXTwitter } from "react-icons/fa6";
-import { HBox, HTitle } from "../HocComponents";
+import { HBox, HTitle } from "../../HocComponents";
+import { StyledFooterSection } from "./footer.styled.js";
 
 export default function Footer() {
   const handleNavigateLink = (link) => {

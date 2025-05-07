@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledBubbleDialog } from "./styled-components/container";
+import { StyledBubbleDialog } from "./bubbleDialog.styled";
 
 export default function BubbleDialog({
   active,
