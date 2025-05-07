@@ -16,7 +16,8 @@ const StyledRoadmapCard = styled(HBox)`
     color: white;
 
     span {
-      font-size: 0.9em;
+      font-family: "Luckiest Guy", cursive;
+      color: ${(props) => props.theme.neonViolet};
     }
   }
 
@@ -135,7 +136,7 @@ export default function RoadmapSection() {
                   className="bullet-icon"
                 />
                 <p className="text">
-                  Social media marketing campaign to build buzz and ignite{" "}
+                  Social media campaign to generate buzz and spark{" "}
                   <span>community</span> engagement.
                 </p>
               </li>
@@ -156,8 +157,8 @@ export default function RoadmapSection() {
                   className="bullet-icon"
                 />
                 <p className="text">
-                  Inaugural collection of <span>NFTs in pixelArt</span> of
-                  different brainers.
+                  Launch of the inaugural <span>NFT</span> collection in pixel
+                  art.
                 </p>
               </li>
               {/* <li><p className="text">Drop of the main NFT character.</p></li> */}
@@ -168,8 +169,8 @@ export default function RoadmapSection() {
                   className="bullet-icon"
                 />
                 <p className="text">
-                  <span>$BRNR</span> token creation. The currency of Brainer
-                  Society.
+                  Creation of <span>$BRNR</span> token — the official currency
+                  of Brainer Society.
                 </p>
               </li>
               <li>
@@ -179,8 +180,8 @@ export default function RoadmapSection() {
                   className="bullet-icon"
                 />
                 <p className="text">
-                  Fundraising campaign to gather resources to build the{" "}
-                  <span>BRAINER SOCIETY</span> metaverse.
+                  Fundraising to fuel the construction of the
+                  <span> BRAINER SOCIETY</span> metaverse.
                 </p>
               </li>
             </ul>

@@ -177,13 +177,13 @@ const BrainerSociety = () => {
               Mint Brainer Character
             </HButton>
             <HTitle
-              width={"100%"}
+              width={"80%"}
               textalign={"center"}
               color={"lightPurple"}
               fontSize={"16px"}
               useTitleCase={false}
             >
-              Mint will be activated when the pre sale is over.
+              Mint will be activated when the $BRNR pre sale is over.
             </HTitle>
           </HBox>
         </FloatAnimation>

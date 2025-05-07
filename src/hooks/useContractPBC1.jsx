@@ -1,14 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import {
   BRAINER_BPC_NFT_ABI_CONTRACT,
   BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
   BRAINER_IPFS_METADATA,
 } from "../CONSTANTS";
 import AccountContext from "../provider/AccountProvider/AccountContext";
-import { Contract, formatEther } from "ethers";
+import { Contract } from "ethers";
 import { HPopUp } from "../HocComponents";
 import BrainerOnBaseService from "../service/BrainerOnBaseService";
-import { use } from "react";
 
 const useContractPBC1 = () => {
   const { account, web3provider, isConnected } = useContext(AccountContext);
