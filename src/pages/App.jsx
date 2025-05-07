@@ -3,9 +3,9 @@ import "./App.css";
 import { StyledHomeContent } from "../components/styled-components/container";
 import { useNavigate } from "react-router-dom";
 import { View } from "@react-three/drei";
-import NightBackground from "../components/NIghtBackground";
+import NightBackground from "../components/Threejs/NIghtBackground";
 import { motion } from "framer-motion";
-import BrainerOnBaseTitle from "../components/BrainerOnBaseTitle";
+import BrainerOnBaseTitle from "../components/BrainerOnBaseTitle/BrainerOnBaseTitle";
 import { HBox, HButton } from "../HocComponents";
 import { StyledInitAppContainer } from "../components/AppLayout/appLayout.styled";
 

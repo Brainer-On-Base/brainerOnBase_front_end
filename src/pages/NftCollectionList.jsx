@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import Footer from "../components/Footer/Footer";
 import { motion } from "framer-motion";
 import useContractPBC1 from "../hooks/useContractPBC1";
 import NftDetails, {
@@ -20,7 +19,7 @@ import { SyncLoader } from "react-spinners";
 import AppLayout from "../components/AppLayout/AppLayout";
 import NFTMintModal from "../components/Modals/NFTMintModal";
 import AccountContext from "../provider/AccountProvider/AccountContext";
-import FiltersPanel from "../components/FilterNftList";
+import FiltersPanel from "../components/FilterNftList/FilterNftList";
 import { FaFilter } from "react-icons/fa6";
 import Loader from "../components/Loader/Loader";
 import BrainerOnBaseService from "../service/BrainerOnBaseService";

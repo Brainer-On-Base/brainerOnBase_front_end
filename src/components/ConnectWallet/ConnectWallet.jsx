@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faWallet,
@@ -45,14 +45,14 @@ const ConnectWallet = () => {
               transition: "max-height 0.3s ease, opacity 0.3s ease",
             }}
           >
-            {/* <div style={styles.menuItem} onClick={() => navigate("/profile")}>
+            <div style={styles.menuItem} onClick={() => navigate("/playerHub")}>
               <FontAwesomeIcon
                 icon={faUserCircle}
                 style={styles.menuItemIcon}
               />
-              Profile
+              HUB
             </div>
-            <div style={styles.menuItem} onClick={() => navigate("/inventory")}>
+            {/* <div style={styles.menuItem} onClick={() => navigate("/inventory")}>
               <FontAwesomeIcon icon={faBoxOpen} style={styles.menuItemIcon} />
               Inventory
             </div>

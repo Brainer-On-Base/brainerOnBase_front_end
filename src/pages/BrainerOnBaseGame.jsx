@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  StyledFlexFullCenterContainer,
-  StyledHomeSection,
-} from "../components/styled-components/container";
+import { StyledFlexFullCenterContainer } from "../components/styled-components/container";
 import { View } from "@react-three/drei";
-import NightBackground from "../components/NIghtBackground";
+import NightBackground from "../components/Threejs/NIghtBackground";
 import Navbar from "../components/Navbar/Navbar";
-import useContractPBC1 from "../hooks/useContractPBC1";
 import { StyledButton } from "../components/styled-components/buttons";
 import Game from "../components/society/game/Game";
 import SocietyMap from "../components/society/game/SocietyMap";

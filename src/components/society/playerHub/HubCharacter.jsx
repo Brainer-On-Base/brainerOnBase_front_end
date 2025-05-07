@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { HBox, HButton, HTitle } from "../../../HocComponents";
 import { FiRefreshCcw } from "react-icons/fi";
 import { FaPlus, FaRegTrashAlt } from "react-icons/fa";
 import { TbAd } from "react-icons/tb";
+import AccountContext from "../../../provider/AccountProvider/AccountContext";
+import { useNavigate } from "react-router-dom";
 
 // Datos del personaje
 const characterTemplate = {
