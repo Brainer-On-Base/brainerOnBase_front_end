@@ -75,7 +75,9 @@ const useContractPBC1 = () => {
         });
 
       // 📦 Obtener tokenURI y metadata
-
+      return {
+        success: true,
+      };
       // return { tokenId, tokenURI, ...metadata };
     } catch (error) {
       console.log("❌ Error minting NFT:", error.reason);

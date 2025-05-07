@@ -40,10 +40,10 @@ const NFTMintModal = ({
       setLoading(true);
 
       await mint_BPC1_NFT();
+      setRefreshCount((prev) => !prev); // Cambia el estado para forzar la actualización del contador
     } catch (error) {
       console.error("Error minting NFT:", error);
     }
-    setRefreshCount((prev) => !prev); // Cambia el estado para forzar la actualización del contador
 
     setLoading(false);
     setShowModal(false);
