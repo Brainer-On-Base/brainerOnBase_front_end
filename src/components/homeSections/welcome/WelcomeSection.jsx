@@ -69,7 +69,7 @@ export default function WelcomeSection() {
                 MINT NFT
               </HButton>
               {web3provider && (
-                <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">{`${mintedCount}/5000 minted`}</p>
+                <p className="animate__animated animate__fadeIn animate__delay-2s minted-quantity">{`${mintedCount}/50 minted`}</p>
               )}
             </HBox>
             <HBox>
