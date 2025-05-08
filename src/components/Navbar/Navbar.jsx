@@ -9,6 +9,8 @@ import ConnectWallet from "../ConnectWallet/ConnectWallet";
 import NavbarMobile from "./NavbarMobile";
 import BrainerOnBaseTitle from "../BrainerOnBaseTitle/BrainerOnBaseTitle";
 import { StyledNavbarContainer } from "./navbar.styled";
+import { HTitle } from "../../HocComponents";
+import { transform } from "framer-motion";
 
 function Navbar({}) {
   const location = useLocation();
@@ -89,8 +91,19 @@ function Navbar({}) {
               paddingBottom: "10px",
             }}
           >
-            <Stack flexDirection={"row"} alignItems={"center"}>
+            <Stack flexDirection={"column"} alignItems={"center"}>
               <BrainerOnBaseTitle text={isPlaying ? "GO BACK" : null} />
+              <HTitle
+                useTitleCase={false}
+                fontSize={"14px"}
+                style={{
+                  position: "absolute",
+                  top: "100px",
+                  left: "0%",
+                }}
+              >
+                🧠 Test version – Base Sepolia (dev) 🧠
+              </HTitle>
             </Stack>
           </Box>
 

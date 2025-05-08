@@ -52,7 +52,7 @@ const AccountProvider = ({ children }) => {
       setWeb3Provider(providerToUse);
       localStorage.setItem("web3provider", "rpc"); // Guardar en localStorage
     }
-  }, []); // Solo se ejecuta una vez cuando el componente se monta
+  }, []);
 
   const connectWallet = async () => {
     if (!window.ethereum) {
@@ -64,9 +64,19 @@ const AccountProvider = ({ children }) => {
         method: "eth_requestAccounts",
       });
       setAccount(accounts[0]);
+      const eth_web3_provider = new ethers.BrowserProvider(window.ethereum);
+      const network = await eth_web3_provider.getNetwork();
+
+      if (network.chainId !== 84532n) {
+        showPopUp({
+          text: "Please switch to the Base Sepolia network and refresh the page.",
+          icon: "warning",
+        });
+        setIsConnected(false);
+        return;
+      }
       showPopUp({ text: "Wallet connected!", icon: "success" });
 
-      const eth_web3_provider = new ethers.BrowserProvider(window.ethereum);
       setWeb3Provider(eth_web3_provider);
       localStorage.setItem("web3provider", "true");
       setIsConnected(true);
@@ -76,6 +86,7 @@ const AccountProvider = ({ children }) => {
         icon: "error",
       });
       setIsConnected(false);
+      localStorage.removeItem("web3provider");
     }
   };
 
