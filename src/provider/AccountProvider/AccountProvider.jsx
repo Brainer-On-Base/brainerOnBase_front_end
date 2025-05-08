@@ -4,8 +4,7 @@ import { ethers } from "ethers";
 import useModals from "../../hooks/useSweetAlert";
 import { BRAINER_BPC_NFT_ABI_CONTRACT } from "../../CONSTANTS";
 
-const BLOCKCHAIN_NODE_API_KEY =
-  "aa08e104106a6ef14af92760f3e089cc10edba5fd3de4200d10124c8597b2b07";
+const BLOCKCHAIN_NODE_API_KEY = import.meta.env.VITE_BLOCKCHAIN_NODE_API_KEY;
 
 const AccountProvider = ({ children }) => {
   const [account, setAccount] = React.useState(() => {

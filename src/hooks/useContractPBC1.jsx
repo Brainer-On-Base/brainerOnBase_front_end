@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import {
   BRAINER_BPC_NFT_ABI_CONTRACT,
   BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
-  BRAINER_IPFS_METADATA,
 } from "../CONSTANTS";
 import AccountContext from "../provider/AccountProvider/AccountContext";
 import { Contract } from "ethers";
@@ -74,7 +73,6 @@ const useContractPBC1 = () => {
           });
         });
 
-      // 📦 Obtener tokenURI y metadata
       return {
         success: true,
       };
