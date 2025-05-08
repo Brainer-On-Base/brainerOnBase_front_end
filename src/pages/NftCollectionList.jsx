@@ -77,10 +77,9 @@ const StyledNFTListContainer = styled(HBox)`
 
 const NftCollectionList = () => {
   const NFT_QUANTITY = 50;
-  const NFTs_PER_PAGE = 40;
+  const NFTs_PER_PAGE = 10;
   const [nftSelected, setNftSelected] = useState(null);
   const [nftList, setNftList] = useState([]);
-  const [mintedNftList, setMintedNftList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const { web3provider } = useContext(AccountContext);
   const { getMintedCount } = useContractPBC1();
@@ -379,12 +378,7 @@ const NftCollectionList = () => {
       </StyledNFTListContainer>
 
       {nftSelected && (
-        <NftDetails
-          nftSelected={nftSelected}
-          setNftSelected={setNftSelected}
-          nftList={mintedNftList}
-          mintedNftList={mintedNftList}
-        />
+        <NftDetails nftSelected={nftSelected} setNftSelected={setNftSelected} />
       )}
     </AppLayout>
   );
