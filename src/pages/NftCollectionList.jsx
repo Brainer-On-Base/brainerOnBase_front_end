@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import useContractPBC1 from "../hooks/useContractPBC1";
+import useContractPBC1 from "../hooks/contracts/useContractPBC1";
 import NftDetails, {
   FloatAnimation,
 } from "../components/NftDetails/NftDetails";

@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { Contract, formatEther, parseEther } from "ethers";
-import AccountContext from "../provider/AccountProvider/AccountContext";
-import { HPopUp } from "../HocComponents";
+import AccountContext from "../../provider/AccountProvider/AccountContext";
+import { HPopUp } from "../../HocComponents";
 import {
   BRAINER_PRESALE_CONTRACT_ADDRESS,
   BRAINER_PRESALE_ABI_CONTRACT,
-} from "../CONSTANTS";
+} from "../../CONSTANTS";
 
 const useContractPreSale = () => {
   const { account, web3provider, isConnected } = useContext(AccountContext);

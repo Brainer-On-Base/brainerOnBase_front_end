@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import useContractPBC1 from "../../../hooks/useContractPBC1";
+import useContractPBC1 from "../../../hooks/contracts/useContractPBC1";
 import Loader from "../../Loader/Loader";
 import { HBox, HButton } from "../../../HocComponents";
 import { useNavigate } from "react-router-dom";

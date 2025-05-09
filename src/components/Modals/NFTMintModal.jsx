@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { HBox, HModal, HTitle } from "../../HocComponents";
 import { motion } from "framer-motion";
-import useContractPBC1 from "../../hooks/useContractPBC1";
+import useContractPBC1 from "../../hooks/contracts/useContractPBC1";
 import { StyledUl } from "./modals.styled";
 
 const NFTMintModal = ({

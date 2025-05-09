@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import Marketplace from "../components/society/marketplace/Marketplace";
-import useContractPBC1 from "../hooks/useContractPBC1";
 import AppLayout from "../components/AppLayout/AppLayout";
 import AccountContext from "../provider/AccountProvider/AccountContext";
 

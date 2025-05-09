@@ -1,6 +1,6 @@
 import React from "react";
 import { StyledTokenSection } from "../styled-components/container";
-import useModals from "../../hooks/useSweetAlert";
+import useModals from "../../hooks/sweetAlertModal/useSweetAlert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 

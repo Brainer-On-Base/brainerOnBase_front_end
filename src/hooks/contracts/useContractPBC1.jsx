@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import {
   BRAINER_BPC_NFT_ABI_CONTRACT,
   BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
-} from "../CONSTANTS";
-import AccountContext from "../provider/AccountProvider/AccountContext";
+} from "../../CONSTANTS";
+import AccountContext from "../../provider/AccountProvider/AccountContext";
 import { Contract } from "ethers";
-import { HPopUp } from "../HocComponents";
-import BrainerOnBaseService from "../service/BrainerOnBaseService";
+import { HPopUp } from "../../HocComponents";
+import BrainerOnBaseService from "../../service/BrainerOnBaseService";
 
 const useContractPBC1 = () => {
   const { account, web3provider, isConnected } = useContext(AccountContext);

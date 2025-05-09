@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { HBox, HInput, HModal, HTitle } from "../../HocComponents";
 import { motion } from "framer-motion";
-import useContractPreSale from "../../hooks/useContractPreSale";
+import useContractPreSale from "../../hooks/contracts/useContractPreSale";
 import { useEffect } from "react";
 import AccountContext from "../../provider/AccountProvider/AccountContext";
 import { StyledUl } from "./modals.styled";
