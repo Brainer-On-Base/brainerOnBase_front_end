@@ -1,16 +1,20 @@
 import React from "react";
 import WalletsProvider from "./WalletsProviders";
-import AccountProvider from "./AccountProvider/AccountProvider";
+import AccountProvider from "./Web3Provider/Web3Provider";
 import BrainerThemeProvider from "./ThemeProvider/BrainerThemeProvider";
+import { Provider as ReduxBrainerStoreProvider } from "react-redux";
+import { store } from "../redux/store";
 
 export default function Provider({ children }) {
   return (
     <>
-      <BrainerThemeProvider>
-        <WalletsProvider>
-          <AccountProvider>{children}</AccountProvider>
-        </WalletsProvider>
-      </BrainerThemeProvider>
+      <ReduxBrainerStoreProvider store={store}>
+        <BrainerThemeProvider>
+          <WalletsProvider>
+            <AccountProvider>{children}</AccountProvider>
+          </WalletsProvider>
+        </BrainerThemeProvider>
+      </ReduxBrainerStoreProvider>
     </>
   );
 }
