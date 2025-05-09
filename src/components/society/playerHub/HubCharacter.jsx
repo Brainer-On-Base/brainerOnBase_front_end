@@ -4,7 +4,7 @@ import { HBox, HButton, HTitle } from "../../../HocComponents";
 import { FiRefreshCcw } from "react-icons/fi";
 import { FaPlus, FaRegTrashAlt } from "react-icons/fa";
 import { TbAd } from "react-icons/tb";
-import AccountContext from "../../../provider/AccountProvider/AccountContext";
+import Web3Context from "../../../provider/Web3Provider/Web3Context";
 import { useNavigate } from "react-router-dom";
 
 // Datos del personaje

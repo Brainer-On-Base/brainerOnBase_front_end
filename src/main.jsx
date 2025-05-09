@@ -10,8 +10,8 @@ import { HPopUpContainer } from "./HocComponents";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Provider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <Provider>
         <Routes />
         <Canvas
           style={{
@@ -28,7 +28,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Preload all />
         </Canvas>
         <HPopUpContainer />
-      </BrowserRouter>
-    </Provider>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );

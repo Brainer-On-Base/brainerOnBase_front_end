@@ -1,15 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { HBox, HInput, HModal, HTitle } from "../../HocComponents";
 import { motion } from "framer-motion";
 import useContractPreSale from "../../hooks/contracts/useContractPreSale";
 import { useEffect } from "react";
-import AccountContext from "../../provider/AccountProvider/AccountContext";
 import { StyledUl } from "./modals.styled";
+import { useSelector } from "react-redux";
 
 const TokenPreSaleModal = ({ showModal, setShowModal, setLoading }) => {
   const [ethInput, setEthInput] = useState(0);
   const { buyTokens, getUserContribution } = useContractPreSale();
-  const { isConnected } = useContext(AccountContext);
+  const { isConnected } = useSelector((state) => state.user);
+
   const [userContribution, setUserContribution] = useState(0);
 
   const buyTokensFunction = async (ethAmount) => {

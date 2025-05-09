@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Contract, formatEther, parseEther } from "ethers";
-import AccountContext from "../../provider/AccountProvider/AccountContext";
+import Web3Context from "../../provider/Web3Provider/Web3Context";
 import { HPopUp } from "../../HocComponents";
 import {
   BRAINER_PRESALE_CONTRACT_ADDRESS,
@@ -8,7 +8,7 @@ import {
 } from "../../CONSTANTS";
 
 const useContractPreSale = () => {
-  const { account, web3provider, isConnected } = useContext(AccountContext);
+  const { account, web3provider, isConnected } = useContext(Web3Context);
 
   const buyTokens = async (ethAmount) => {
     if (!isConnected) {
@@ -103,6 +103,7 @@ const useContractPreSale = () => {
   };
 
   const getUserContribution = async () => {
+    if (!web3provider) return false;
     const presaleContract = new Contract(
       BRAINER_PRESALE_CONTRACT_ADDRESS,
       BRAINER_PRESALE_ABI_CONTRACT.abi,

@@ -8,10 +8,10 @@ import Game from "../components/society/game/Game";
 import SocietyMap from "../components/society/game/SocietyMap";
 import GameSettings from "../components/society/game/GameSettings";
 import MainMenu from "../components/society/game/MainMenu";
-import AccountContext from "../provider/AccountProvider/AccountContext";
+import Web3Context from "../provider/Web3Provider/Web3Context";
 
 export default function BrainerOnBaseMain() {
-  const { connectWallet, isConnected } = useContext(AccountContext);
+  const { connectWallet, isConnected } = useContext(Web3Context);
   const [isGameStarted, setIsGameStarted] = React.useState(false);
   const [gameNavigation, setGameNavigation] = React.useState("main");
 

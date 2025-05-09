@@ -3,13 +3,15 @@ import {
   BRAINER_BPC_NFT_ABI_CONTRACT,
   BRAINER_BPC_NFT_MINT_CONTRACT_ADDRESS,
 } from "../../CONSTANTS";
-import AccountContext from "../../provider/AccountProvider/AccountContext";
+import Web3Context from "../../provider/Web3Provider/Web3Context";
 import { Contract } from "ethers";
 import { HPopUp } from "../../HocComponents";
 import BrainerOnBaseService from "../../service/BrainerOnBaseService";
+import { useSelector } from "react-redux";
 
 const useContractPBC1 = () => {
-  const { account, web3provider, isConnected } = useContext(AccountContext);
+  const { web3provider } = useContext(Web3Context);
+  const { isConnected } = useSelector((state) => state.user);
 
   const mint_BPC1_NFT = async () => {
     if (!isConnected) {

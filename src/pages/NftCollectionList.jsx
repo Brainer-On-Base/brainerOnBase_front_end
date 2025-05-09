@@ -18,7 +18,7 @@ import GenericTitle from "../components/GenericTitle/GenericTitle";
 import { SyncLoader } from "react-spinners";
 import AppLayout from "../components/AppLayout/AppLayout";
 import NFTMintModal from "../components/Modals/NFTMintModal";
-import AccountContext from "../provider/AccountProvider/AccountContext";
+import Web3Context from "../provider/Web3Provider/Web3Context";
 import FiltersPanel from "../components/FilterNftList/FilterNftList";
 import { FaFilter } from "react-icons/fa6";
 import Loader from "../components/Loader/Loader";
@@ -81,7 +81,7 @@ const NftCollectionList = () => {
   const [nftSelected, setNftSelected] = useState(null);
   const [nftList, setNftList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const { web3provider } = useContext(AccountContext);
+  const { web3provider } = useContext(Web3Context);
   const { getMintedCount } = useContractPBC1();
   const [showModal, setShowModal] = useState(false);
   const [mintedCount, setMintedCount] = useState(0);

@@ -4,12 +4,12 @@ import Loader from "../../Loader/Loader";
 import { HBox, HButton } from "../../../HocComponents";
 import { useNavigate } from "react-router-dom";
 import NFTMintModal from "../../Modals/NFTMintModal";
-import AccountContext from "../../../provider/AccountProvider/AccountContext";
+import Web3Context from "../../../provider/Web3Provider/Web3Context";
 import { StyledWelcomeSection } from "./welcomeSection.styled";
 
 export default function WelcomeSection() {
   const { getMintedCount } = useContractPBC1();
-  const { web3provider } = useContext(AccountContext);
+  const { web3provider } = useContext(Web3Context);
   const [mintedCount, setMintedCount] = useState(null);
   const [loading, setLoading] = useState(false);
   const [refreshCount, setRefreshCount] = useState(false);

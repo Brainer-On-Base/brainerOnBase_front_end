@@ -12,16 +12,15 @@ import { useNavigate } from "react-router-dom";
 import { TbWallet } from "react-icons/tb";
 import { IoLogInOutline } from "react-icons/io5";
 import { HButton } from "../../HocComponents";
-import AccountContext from "../../provider/AccountProvider/AccountContext";
+import Web3Context from "../../provider/Web3Provider/Web3Context";
+import { useSelector } from "react-redux";
 
 const ConnectWallet = () => {
-  const {
-    connectWallet: connectWalletProvider,
-    disconnectWallet,
-    account,
-  } = useContext(AccountContext);
+  const { connectWallet: connectWalletProvider, disconnectWallet } =
+    useContext(Web3Context);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const navigate = useNavigate();
+  const { wallet, isConnected } = useSelector((state) => state.user);
 
   const toggleUserMenu = () => {
     setShowUserMenu(!showUserMenu);
@@ -29,12 +28,12 @@ const ConnectWallet = () => {
 
   return (
     <>
-      {account ? (
+      {wallet && isConnected ? (
         <HButton style={styles.accountContainer} onClick={toggleUserMenu}>
           <TbWallet size={30} style={styles.walletIcon} />
           <span style={styles.accountText}>
-            {`${account.substring(0, 6)}...${account.substring(
-              account.length - 4
+            {`${wallet.substring(0, 6)}...${wallet.substring(
+              wallet.length - 4
             )}`}
           </span>
           <FontAwesomeIcon icon={faBars} style={styles.disconnectIcon} />

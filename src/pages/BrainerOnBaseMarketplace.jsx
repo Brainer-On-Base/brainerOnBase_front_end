@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import Marketplace from "../components/society/marketplace/Marketplace";
 import AppLayout from "../components/AppLayout/AppLayout";
-import AccountContext from "../provider/AccountProvider/AccountContext";
+import Web3Context from "../provider/Web3Provider/Web3Context";
 
 const BrainerOnBaseMarketplace = () => {
-  const { account, isConnected } = useContext(AccountContext);
+  const { account, isConnected } = useContext(Web3Context);
 
   useEffect(() => {
     window.scrollTo(0, 0);
