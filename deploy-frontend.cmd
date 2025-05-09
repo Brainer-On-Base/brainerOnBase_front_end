@@ -1,0 +1,6 @@
+@echo off
+echo Building frontend...
+call npm run build
+echo Deploying to VPS...
+scp -r dist\* root@145.223.96.84:/var/www/html
+echo Done!
