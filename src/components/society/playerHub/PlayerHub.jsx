@@ -10,7 +10,7 @@ import HubNotifications from "./HubNotifications";
 
 // 🔥 PLAYER HUB
 const PlayerHub = () => {
-  const [currentView, setView] = useState("inventory");
+  const [currentView, setView] = useState("character");
 
   const renderContent = () => {
     switch (currentView) {

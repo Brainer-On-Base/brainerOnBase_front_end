@@ -8,7 +8,7 @@ import {
   BRAINER_PRESALE_CONTRACT_ADDRESS,
 } from "../../CONSTANTS";
 import { HPopUp } from "../../HocComponents";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserData, setIsConnected } from "../../redux/slices/userSlice";
 import BrainerOnBaseService from "../../service/BrainerOnBaseService";
@@ -20,8 +20,9 @@ const Web3Provider = ({ children }) => {
   const [web3provider, setWeb3Provider] = useState(null);
   const [contract, setContract] = useState(null);
   const dispatch = useDispatch();
-  const { ...user } = useSelector((state) => state.user);
-  console.log("user", user);
+  const navigate = useNavigate();
+
+  //Check wallet connection status and reconnect if needed
   useEffect(() => {
     const wallet = localStorage.getItem("wallet");
 
@@ -55,6 +56,7 @@ const Web3Provider = ({ children }) => {
     }
   }, []);
 
+  //Check contract instance based on the current route
   useEffect(() => {
     if (!web3provider) return;
 
@@ -130,6 +132,7 @@ const Web3Provider = ({ children }) => {
     localStorage.removeItem("web3provider");
     dispatch(setIsConnected(false));
     dispatch(setUserData({}));
+    navigate("/");
   };
 
   const syncUserWithBackend = async (wallet) => {

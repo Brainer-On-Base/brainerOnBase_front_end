@@ -7,6 +7,8 @@ import { IoLogInOutline, IoNotificationsOutline } from "react-icons/io5";
 import { TbBrandCashapp } from "react-icons/tb";
 import { FiUser } from "react-icons/fi";
 import { PiTreasureChest } from "react-icons/pi";
+import { useContext } from "react";
+import Web3Context from "../../../provider/Web3Provider/Web3Context";
 
 // 👉 StyledComponent para los botones del sidebar
 export const SidebarButton = styled(HButton)`
@@ -107,7 +109,7 @@ const navItems = [
     label: (
       <>
         <IoLogInOutline size={30} style={{ marginRight: "8px" }} />
-        <HTitle fontSize="22px">SIGN OUT</HTitle>
+        <HTitle fontSize="22px">DISCONNECT</HTitle>
       </>
     ),
   },
@@ -116,11 +118,10 @@ const navItems = [
 ];
 
 export const NavbarHub = ({ currentView, setView }) => {
+  const { disconnectWallet } = useContext(Web3Context);
   const handleClick = (key) => {
     if (key === "logout") {
-      // Acá iría tu lógica para cerrar sesión
-      console.log("Cerrar sesión...");
-      return;
+      disconnectWallet();
     }
     setView(key);
   };
