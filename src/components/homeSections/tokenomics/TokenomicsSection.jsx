@@ -1,5 +1,5 @@
 import React from "react";
-import handleAnimationScroll from "../../../hooks/handleAnimationScroll";
+import handleAnimationScroll from "../../../hooks/utils/handleAnimationScroll";
 import { motion } from "framer-motion";
 import {
   StyledTokenomicsSection,
