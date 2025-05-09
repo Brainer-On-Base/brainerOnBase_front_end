@@ -125,37 +125,10 @@ export default function useModals() {
     );
   }, []);
 
-  const showPopUp = ({ text, icon }) => {
-    return Swal.fire({
-      toast: true,
-      position: "bottom",
-      icon: icon,
-      title: text,
-      showConfirmButton: false,
-      timer: 5000,
-      timerProgressBar: true,
-      showClass: {
-        popup: `
-            animate__animated
-            animate__fadeInUp
-            animate__faster
-          `,
-      },
-      hideClass: {
-        popup: `
-            animate__animated
-            animate__fadeOutDown
-            animate__faster
-          `,
-      },
-    });
-  };
-
   return {
     useTextModal,
     useInputModal,
     copied,
     copyToClipboard,
-    showPopUp,
   };
 }

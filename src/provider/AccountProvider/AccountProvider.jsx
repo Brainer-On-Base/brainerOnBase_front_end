@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import AccountContext from "./AccountContext";
 import { ethers } from "ethers";
-import useModals from "../../hooks/useSweetAlert";
 import { BRAINER_BPC_NFT_ABI_CONTRACT } from "../../CONSTANTS";
+import { HPopUp } from "../../HocComponents";
 
 const BLOCKCHAIN_NODE_API_KEY = import.meta.env.VITE_BLOCKCHAIN_NODE_API_KEY;
 
@@ -29,7 +29,6 @@ const AccountProvider = ({ children }) => {
       : null;
   });
   const [isConnected, setIsConnected] = useState(!!account);
-  const { showPopUp } = useModals();
 
   useEffect(() => {
     const storedProvider = localStorage.getItem("web3provider");
@@ -55,7 +54,10 @@ const AccountProvider = ({ children }) => {
 
   const connectWallet = async () => {
     if (!window.ethereum) {
-      showPopUp({ text: "Metamask is not installed", icon: "error" });
+      HPopUp({
+        message: "Please install Metamask to use this feature.",
+        type: "error",
+      });
       return;
     }
     try {
@@ -67,22 +69,26 @@ const AccountProvider = ({ children }) => {
       const network = await eth_web3_provider.getNetwork();
 
       if (network.chainId !== 84532n) {
-        showPopUp({
-          text: "Please switch to the Base Sepolia network and refresh the page.",
-          icon: "warning",
+        HPopUp({
+          message:
+            "Please switch to the Base Sepolia network and refresh the page.",
+          type: "error",
         });
         setIsConnected(false);
         return;
       }
-      showPopUp({ text: "Wallet connected!", icon: "success" });
+      HPopUp({
+        message: "Wallet connected successfully.",
+        type: "success",
+      });
 
       setWeb3Provider(eth_web3_provider);
       localStorage.setItem("web3provider", "true");
       setIsConnected(true);
     } catch (error) {
-      showPopUp({
-        text: "Error while connecting with Metamask. Try again later",
-        icon: "error",
+      HPopUp({
+        message: "Error while connecting with Metamask. Try again later",
+        type: "error",
       });
       setIsConnected(false);
       localStorage.removeItem("web3provider");
@@ -91,7 +97,10 @@ const AccountProvider = ({ children }) => {
 
   const disconnectWallet = () => {
     setAccount(null);
-    showPopUp({ text: "Wallet disconnected.", icon: "info" });
+    HPopUp({
+      message: "Wallet disconnected successfully.",
+      type: "success",
+    });
     setIsConnected(false);
     localStorage.removeItem("web3provider");
   };
