@@ -98,7 +98,7 @@ const MarketplaceNavbar = ({
           <SidebarButton
             width={"100%"}
             useTitleCase={true}
-            active={categorySelected === category}
+            $active={categorySelected === category}
             onClick={() => {
               if (categorySelected === category) {
                 setCategorySelected("All");

@@ -14,16 +14,16 @@ export const HBoxContainer = styled.div`
   padding: ${(props) => props.padding}; /* Padding */
   margin: ${(props) => props.margin}; /* Margin */
   border: ${(props) => props.border}; /* Border */
-  border-radius: ${(props) => props.borderRadius}; /* Bordes redondeados */
+  border-radius: ${(props) => props.$borderRadius}; /* Bordes redondeados */
   position: relative;
   background: ${({ theme, background }) =>
     theme?.[background] || background || "transparent"};
   transition: all 0.3s ease;
-  overflow-x: ${(props) => props.overflowX ?? "auto"};
-  overflow-y: ${(props) => props.overflowY ?? "auto"};
+  overflow-x: ${(props) => props.$overflowX ?? "auto"};
+  overflow-y: ${(props) => props.$overflowY ?? "auto"};
   transition: all 0.3s ease;
-  box-shadow: ${(props) => props.boxShadow || "none"};
-  ${({ customBorder }) => customBorder && `${customBorder};`}
+  box-shadow: ${(props) => props.$boxShadow || "none"};
+  ${({ $customBorder }) => $customBorder && `${$customBorder};`}
   /* Estilos de la barra de scroll */
   &::-webkit-scrollbar {
     width: 8px; /* Ancho de la barra vertical */

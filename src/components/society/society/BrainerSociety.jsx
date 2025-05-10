@@ -73,7 +73,7 @@ const BrainerSociety = () => {
 
         <BubbleDialog
           id="bubbletokenomics"
-          active={true}
+          $active={true}
           positionDialogSpik={{
             left: "10%",
             bottom: "-4px",

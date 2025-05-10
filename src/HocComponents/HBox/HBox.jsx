@@ -35,11 +35,11 @@ const HBox = ({
       padding={padding}
       margin={margin}
       border={border}
-      borderRadius={borderRadius}
-      overflowX={overflowX}
-      overflowY={overflowY}
+      $borderRadius={borderRadius}
+      $overflowX={overflowX}
+      $overflowY={overflowY}
       boxShadow={boxShadow}
-      customBorder={customBorder}
+      $customBorder={customBorder}
       {...props}
     >
       {children}

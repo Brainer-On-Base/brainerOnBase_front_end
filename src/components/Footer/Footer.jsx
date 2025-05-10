@@ -95,7 +95,7 @@ export default function Footer() {
       <BubbleDialog
         style={{ transform: "rotateX(360deg)", overflow: "hidden" }}
         id="bubbletokenomics"
-        active={true}
+        $active={true}
         positionDialogSpik={{
           left: "120px",
           bottom: "-4px",

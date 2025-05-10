@@ -10,8 +10,8 @@ export const TabContainer = styled.div`
 `;
 
 export const Tab = styled.h1`
-  background: ${({ theme, active }) =>
-    active ? theme.shadePurpleDark : "transparent"};
+  background: ${({ theme, $active }) =>
+    $active ? theme.shadePurpleDark : "transparent"};
   color: ${({ theme, active }) =>
     active ? theme.purpleLight : theme.purpleMedium};
   font-weight: var(--weight-bold);

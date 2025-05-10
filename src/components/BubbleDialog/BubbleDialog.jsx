@@ -2,7 +2,7 @@ import React from "react";
 import { StyledBubbleDialog } from "./bubbleDialog.styled";
 
 export default function BubbleDialog({
-  active,
+  $active,
   children,
   positionStyle,
   positionDialogSpik,
@@ -15,7 +15,7 @@ export default function BubbleDialog({
       width={width}
       positionspik={positionDialogSpik}
       {...props}
-      style={{ display: active ? "block" : "none", overflow: "hidden" }}
+      style={{ display: $active ? "block" : "none", overflow: "hidden" }}
     >
       {children}
     </StyledBubbleDialog>

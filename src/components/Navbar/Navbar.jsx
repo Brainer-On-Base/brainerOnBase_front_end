@@ -80,7 +80,7 @@ function Navbar({}) {
   }, []);
 
   return (
-    <StyledNavbarContainer position="fixed" scrolled={scrolled}>
+    <StyledNavbarContainer position="fixed" $scrolled={scrolled}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box

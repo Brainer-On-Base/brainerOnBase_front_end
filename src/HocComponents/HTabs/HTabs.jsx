@@ -7,7 +7,7 @@ const HTabs = ({ tabs, moreFont = true, ...props }) => {
       {tabs.map((tab, index) => (
         <Tab
           key={tab?.title + index}
-          active={tab.active}
+          $active={tab.active}
           onClick={tab.onClick}
           moreFont={moreFont}
         >

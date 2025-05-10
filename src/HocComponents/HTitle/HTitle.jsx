@@ -32,12 +32,12 @@ const HTitle = ({
       padding={padding}
       lineHeight={lineHeight}
       letterSpacing={letterSpacing}
-      textTransform={textTransform}
+      $textTransform={textTransform}
       as={as} // Permite cambiar el tipo de etiqueta (h1, h2, etc.)
       background={background}
       borderRadius={borderRadius}
       height={height}
-      useTitleCase={useTitleCase}
+      $useTitleCase={useTitleCase}
       display="flex"
       {...props}
     >

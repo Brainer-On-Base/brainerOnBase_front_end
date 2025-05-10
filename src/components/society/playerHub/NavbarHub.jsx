@@ -12,7 +12,7 @@ import Web3Context from "../../../provider/Web3Provider/Web3Context";
 
 // 👉 StyledComponent para los botones del sidebar
 export const SidebarButton = styled(HButton)`
-  background: ${({ active }) => (active ? "#7d3cff" : "#2d0d56")};
+  background: ${({ $active }) => ($active ? "#7d3cff" : "#2d0d56")};
   display: flex;
   color: #fff;
   border: none;
@@ -141,7 +141,7 @@ export const NavbarHub = ({ currentView, setView }) => {
       {navItems.map((item) => (
         <SidebarButton
           key={item.key}
-          active={currentView === item.key}
+          $active={currentView === item.key}
           onClick={() => handleClick(item.key)}
         >
           {item.label}

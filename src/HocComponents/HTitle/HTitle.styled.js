@@ -15,8 +15,8 @@ export const HTitleText = styled.h1`
   line-height: ${({ lineHeight }) => lineHeight || "1.5"}; /* Altura de línea */
   letter-spacing: ${({ letterSpacing }) =>
     letterSpacing || "normal"}; /* Espaciado entre letras */
-  text-transform: ${({ textTransform }) =>
-    textTransform || "none"}; /* Transformación del texto */
+  text-transform: ${({ $textTransform }) =>
+    $textTransform || "none"}; /* Transformación del texto */
   background: ${({ theme, background }) =>
     theme?.[background] || background || "transparent"};
   border-radius: ${({ borderRadius }) => borderRadius || "0"};

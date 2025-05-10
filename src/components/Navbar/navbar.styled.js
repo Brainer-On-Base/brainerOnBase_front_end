@@ -9,8 +9,8 @@ export const StyledNavbarContainer = styled("div")`
   top: 0;
   z-index: 2 !important;
   margin: 0 auto;
-  background: ${({ scrolled, theme }) =>
-    scrolled ? theme.shadeViolet : "transparent"};
+  background: ${({ $scrolled, theme }) =>
+    $scrolled ? theme.shadeViolet : "transparent"};
   background: ${({ theme }) => theme.shadeViolet};
   transition: background-color 0.3s ease;
   height: 80px;

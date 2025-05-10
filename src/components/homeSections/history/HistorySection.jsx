@@ -65,7 +65,7 @@ export default function HistorySection() {
       <BubbleDialog
         style={{ transform: "rotateX(360deg)" }}
         id="bubbletokenomics"
-        active={true}
+        $active={true}
         positionDialogSpik={{
           left: "-8px",
           bottom: "98%",
