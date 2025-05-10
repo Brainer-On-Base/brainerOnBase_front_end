@@ -35,6 +35,7 @@ const Web3Provider = ({ children }) => {
         if (network.chainId === 84532n) {
           await syncUserWithBackend(wallet);
           dispatch(setIsConnected(true));
+          dispatch(setUserData({ wallet }));
         } else {
           HPopUp({
             message: "Switch to Base Sepolia and refresh the page!",
@@ -114,6 +115,7 @@ const Web3Provider = ({ children }) => {
       localStorage.setItem("wallet", accounts[0]);
       setWeb3Provider(eth_web3_provider);
       dispatch(setIsConnected(true));
+      dispatch(setUserData({ wallet: accounts[0] }));
     } catch (error) {
       HPopUp({
         message: "Error while connecting with Metamask. Try again later",
