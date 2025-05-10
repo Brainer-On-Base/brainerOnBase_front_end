@@ -12,7 +12,7 @@ export const Button = styled.button`
   font-weight: ${({ fontWeight }) => fontWeight || "var(--weight-bold)"};
   width: ${({ width }) => width || "auto"};
   height: ${({ height }) => height || "auto"};
-  border-radius: ${({ borderRadius }) => borderRadius || "8px"};
+  border-radius: ${({ $borderRadius }) => $borderRadius || "8px"};
   outline: none;
   transition: all 0.3s ease;
   padding: ${({ padding }) => padding ?? "10px"};

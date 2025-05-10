@@ -8,19 +8,19 @@ const initialState = {
   experienceToNextLevel: 100,
   stats: {
     brainpower: 100,
-    focus: 20,
-    memory: 20,
-    logic: 20,
-    creativity: 20,
-    processingSpeed: 20,
+    focus: 0,
+    memory: 0,
+    logic: 0,
+    creativity: 0,
+    processingSpeed: 0,
   },
+  mainCharacterNFT: null,
   inventory: [],
   equippedItems: {},
-  ownedNFTs: [],
-  brnrBalance: 0,
   tickets: 0,
   achievements: [],
   isConnected: false,
+  lastLogin: null,
 };
 
 export const userSlice = createSlice({

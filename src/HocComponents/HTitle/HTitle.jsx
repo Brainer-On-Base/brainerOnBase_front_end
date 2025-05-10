@@ -24,18 +24,18 @@ const HTitle = ({
   return (
     <HTitleText
       width={width}
-      fontSize={fontSize}
-      fontWeight={fontWeight}
+      $fontSize={fontSize}
+      $fontWeight={fontWeight}
       color={color}
       textalign={textalign}
       margin={margin}
       padding={padding}
-      lineHeight={lineHeight}
-      letterSpacing={letterSpacing}
+      $lineHeight={lineHeight}
+      $letterSpacing={letterSpacing}
       $textTransform={textTransform}
       as={as} // Permite cambiar el tipo de etiqueta (h1, h2, etc.)
       background={background}
-      borderRadius={borderRadius}
+      $borderRadius={borderRadius}
       height={height}
       $useTitleCase={useTitleCase}
       display="flex"
