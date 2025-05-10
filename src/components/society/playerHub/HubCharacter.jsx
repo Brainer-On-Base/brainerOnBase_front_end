@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { HBox, HButton, HTitle } from "../../../HocComponents";
 import { FiRefreshCcw } from "react-icons/fi";
@@ -6,6 +6,7 @@ import { FaPlus, FaRegTrashAlt } from "react-icons/fa";
 import { TbAd } from "react-icons/tb";
 import Web3Context from "../../../provider/Web3Provider/Web3Context";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 // Datos del personaje
 const characterTemplate = {
@@ -28,12 +29,53 @@ const characterTemplate = {
 };
 
 const HubCharacter = () => {
-  const level = 5;
-  const currentXP = 350;
-  const xpToNextLevel = 500;
-  const rarity = "Epic";
+  const {
+    stats,
+    equippedItems,
+    username,
+    wallet,
+    level,
+    experience,
+    experienceToNextLevel,
+    mainCharacterNFT,
+  } = useSelector((state) => state.user);
+  const [xpProgress, setXPProgress] = useState(0);
+  const [characterRarity, setCharacterRarity] = useState("Common");
 
-  const xpProgress = (currentXP / xpToNextLevel) * 100;
+  //Calculate experience progress
+  useEffect(() => {
+    const calculateXPProgress = () => {
+      const progress = (experience / experienceToNextLevel) * 100;
+      setXPProgress(progress);
+    };
+
+    calculateXPProgress();
+  }, [experience, experienceToNextLevel]);
+
+  // Calculate rarity based on equipped items
+  useEffect(() => {
+    const calculateRarity = () => {
+      const rarityValues = {
+        Common: 0,
+        Rare: 0,
+        Epic: 0,
+        Legendary: 0,
+      };
+
+      Object.values(equippedItems).forEach((item) => {
+        const rarity = item?.rarity || "Common";
+        rarityValues[rarity] += 1;
+      });
+
+      const maxRarity = Object.keys(rarityValues).reduce((a, b) =>
+        rarityValues[a] > rarityValues[b] ? a : b
+      );
+
+      setCharacterRarity(maxRarity);
+    };
+
+    calculateRarity();
+  }, [equippedItems]);
 
   return (
     <HBox
@@ -46,12 +88,12 @@ const HubCharacter = () => {
       {/* Card Personaje */}
       <CardContainer>
         <CharacterImage
-          src={characterTemplate.image}
-          alt={characterTemplate.name}
+          src={mainCharacterNFT ?? "/nftCollectionImages/unknown.png"}
+          alt={mainCharacterNFT ?? "Unrevealed Brainer"}
         />
 
         <HBox width="120%" direction="column" align="flex-start">
-          <CharacterStat>Level {level}</CharacterStat>
+          <CharacterStat>Level {mainCharacterNFT ? level : 0}</CharacterStat>
 
           <HBox direction="column" align="flex-start" width="100%" gap="0">
             <XPBar>
@@ -59,28 +101,35 @@ const HubCharacter = () => {
             </XPBar>
 
             <XPText>
-              {currentXP} / {xpToNextLevel} XP
+              {experience} / {experienceToNextLevel} XP
             </XPText>
           </HBox>
 
           <HBox width="100%" justify="flex-start" align="center">
             <HTitle fontSize={"24px"}>Rarity:</HTitle>
-            <RarityTag rarity={rarity}>{rarity}</RarityTag>
+            <RarityTag rarity={characterRarity}>{characterRarity}</RarityTag>
           </HBox>
 
           <ActionButton onClick={() => console.log("Train Character")}>
             Train
           </ActionButton>
 
-          <ExternalLink href={characterTemplate.external_link} target="_blank">
-            View on Brainer Base
+          <ExternalLink
+            href={mainCharacterNFT ? mainCharacterNFT : "/society"}
+            target={mainCharacterNFT ? "_blank" : "_self"}
+          >
+            {mainCharacterNFT
+              ? "View on Brainer Base"
+              : "Main Character unrevealed"}
           </ExternalLink>
         </HBox>
       </CardContainer>
 
       {/* Info Extra del Personaje */}
       <HBox width="100%" direction="column" align="flex-start" padding="20px">
-        <CharacterName>Username: {characterTemplate.name}</CharacterName>
+        <CharacterName>
+          Username: {mainCharacterNFT ? name : "Unrevealed Brainer"}
+        </CharacterName>
 
         <Description>{characterTemplate.description}</Description>
 
