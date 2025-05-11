@@ -126,6 +126,12 @@ export const NavbarHub = ({ currentView, setView }) => {
     setView(key);
   };
 
+  const isDisabled = (key) => {
+    if (key === "logout" || key === "character" || key === "wallet")
+      return false; // El botón de logout nunca está deshabilitado
+    return true; // Los demás botones están habilitados si no estás en su vista correspondiente
+  };
+
   return (
     <HBox
       direction="column"
@@ -142,6 +148,7 @@ export const NavbarHub = ({ currentView, setView }) => {
         <SidebarButton
           key={item.key}
           $active={currentView === item.key}
+          disabled={isDisabled(item.key)}
           onClick={() => handleClick(item.key)}
         >
           {item.label}
