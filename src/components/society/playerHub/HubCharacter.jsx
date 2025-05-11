@@ -63,15 +63,22 @@ const HubCharacter = () => {
   }, [equippedItems]);
 
   const updateUsername = async (newUsername) => {
-    console.log("Updating username to:", newUsername);
-    // Aquí puedes llamar a la función para actualizar el nombre de usuario en tu backend
-    const res = await BrainerOnBaseService.editUser(wallet, newUsername);
-    console.log("Response from editUser:", res);
-    dispatch(setUserData({ username: newUsername }));
-    HPopUp({
-      message: "Username updated successfully!",
-      type: "success",
-    });
+    try {
+      await BrainerOnBaseService.editUser(wallet, newUsername);
+      dispatch(setUserData({ username: newUsername }));
+      HPopUp({
+        message: "Username updated successfully!",
+        type: "success",
+      });
+    } catch (error) {
+      console.error("Error updating username:", error);
+      HPopUp({
+        message: "Error updating username. Please try again.",
+        type: "error",
+      });
+      return;
+    }
+
     setModalEditUsername(false);
   };
 
