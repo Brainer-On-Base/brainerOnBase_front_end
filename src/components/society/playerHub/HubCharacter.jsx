@@ -160,44 +160,47 @@ const HubCharacter = () => {
         </Description>
 
         <TraitsContainer>
-          {Object.keys(equippedItems).map((attr) => (
-            <TraitCard key={attr}>
-              <HBox>
-                <HTitle fontSize={"24px"} width={"auto"} color={"white"}>
-                  <strong>{attr.toUpperCase()}</strong>:{" "}
-                </HTitle>
-                <HTitle
-                  fontSize={"24px"}
-                  useTitleCase={false}
-                  textTransform="none"
-                  align="left"
-                  color={"purpleLight"}
-                >
-                  {equippedItems[attr] ?? "Empty"}
-                </HTitle>
-              </HBox>
-              <ButtonsContainer>
-                <ActionButton
-                  onClick={() => console.log(`Swap ${attr}`)}
-                  disabled={!mainCharacterNFT}
-                >
-                  {!equippedItems[attr] ? (
-                    <FaPlus style={{ marginRight: "8px" }} />
-                  ) : (
-                    <FiRefreshCcw style={{ marginRight: "8px" }} />
-                  )}
-                  {!equippedItems[attr] ? "Add" : "Change"}
-                </ActionButton>
-                <RemoveButton
-                  disabled={!equippedItems[attr]}
-                  onClick={() => console.log(`Remove ${attr}`)}
-                >
-                  <FaRegTrashAlt style={{ marginRight: "8px" }} />
-                  Remove
-                </RemoveButton>
-              </ButtonsContainer>
-            </TraitCard>
-          ))}
+          {Object.keys(equippedItems).map(
+            (attr) =>
+              attr !== "_id" && (
+                <TraitCard key={attr}>
+                  <HBox>
+                    <HTitle fontSize={"24px"} width={"auto"} color={"white"}>
+                      <strong>{attr.toUpperCase()}</strong>:{" "}
+                    </HTitle>
+                    <HTitle
+                      fontSize={"24px"}
+                      useTitleCase={false}
+                      textTransform="none"
+                      align="left"
+                      color={"purpleLight"}
+                    >
+                      {equippedItems[attr] ?? "Empty"}
+                    </HTitle>
+                  </HBox>
+                  <ButtonsContainer>
+                    <ActionButton
+                      onClick={() => console.log(`Swap ${attr}`)}
+                      disabled={!mainCharacterNFT}
+                    >
+                      {!equippedItems[attr] ? (
+                        <FaPlus style={{ marginRight: "8px" }} />
+                      ) : (
+                        <FiRefreshCcw style={{ marginRight: "8px" }} />
+                      )}
+                      {!equippedItems[attr] ? "Add" : "Change"}
+                    </ActionButton>
+                    <RemoveButton
+                      disabled={!equippedItems[attr]}
+                      onClick={() => console.log(`Remove ${attr}`)}
+                    >
+                      <FaRegTrashAlt style={{ marginRight: "8px" }} />
+                      Remove
+                    </RemoveButton>
+                  </ButtonsContainer>
+                </TraitCard>
+              )
+          )}
         </TraitsContainer>
       </HBox>
 
@@ -296,8 +299,6 @@ const RemoveButton = styled(ActionButton)`
     background-color: #c0392b;
   }
 `;
-
-// NUEVOS COMPONENTES (RESPETANDO TU ESTILO)
 
 const CharacterStat = styled.div`
   margin-top: 15px;
