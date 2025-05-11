@@ -1,32 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { HBox, HButton, HTitle } from "../../../HocComponents";
+import { HBox, HButton, HModal, HPopUp, HTitle } from "../../../HocComponents";
 import { FiRefreshCcw } from "react-icons/fi";
-import { FaPlus, FaRegTrashAlt } from "react-icons/fa";
-import { TbAd } from "react-icons/tb";
-import Web3Context from "../../../provider/Web3Provider/Web3Context";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-
-// Datos del personaje
-const characterTemplate = {
-  image:
-    "https://braineronbase.com/ipfs/QmZd9RMaxg7HhQNxLmbmJFCU7AC55eZ4F44FViZYb8yrmk/2.png",
-  name: "Robter Brainer",
-  description:
-    "A unique Brainer, ready for new adventures in the Brainer Society.",
-  external_link: "https://braineronbase.com/nft-details/2",
-  attributes: [
-    { trait_type: "Body", value: "Brain" },
-    { trait_type: "Eyes", value: "Normal" },
-    { trait_type: "Headgear", value: "King Cap" },
-    { trait_type: "Mouth", value: "Normal" },
-    { trait_type: "Accessory 1", value: "Amethyst Necklace" },
-    { trait_type: "Accessory 2", value: "Empty" },
-    { trait_type: "Background", value: "Amethyst Glow" },
-    { trait_type: "Extra", value: "Empty" },
-  ],
-};
+import {
+  FaInfoCircle,
+  FaPencilAlt,
+  FaPlus,
+  FaRegTrashAlt,
+} from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import BrainerOnBaseService from "../../../service/BrainerOnBaseService";
+import { setUserData } from "../../../redux/slices/userSlice";
 
 const HubCharacter = () => {
   const {
@@ -41,7 +25,8 @@ const HubCharacter = () => {
   } = useSelector((state) => state.user);
   const [xpProgress, setXPProgress] = useState(0);
   const [characterRarity, setCharacterRarity] = useState("Common");
-
+  const [modalEditUsername, setModalEditUsername] = useState(false);
+  const dispatch = useDispatch();
   //Calculate experience progress
   useEffect(() => {
     const calculateXPProgress = () => {
@@ -77,6 +62,19 @@ const HubCharacter = () => {
     calculateRarity();
   }, [equippedItems]);
 
+  const updateUsername = async (newUsername) => {
+    console.log("Updating username to:", newUsername);
+    // Aquí puedes llamar a la función para actualizar el nombre de usuario en tu backend
+    const res = await BrainerOnBaseService.editUser(wallet, newUsername);
+    console.log("Response from editUser:", res);
+    dispatch(setUserData({ username: newUsername }));
+    HPopUp({
+      message: "Username updated successfully!",
+      type: "success",
+    });
+    setModalEditUsername(false);
+  };
+
   return (
     <HBox
       width="100%"
@@ -93,7 +91,9 @@ const HubCharacter = () => {
         />
 
         <HBox width="120%" direction="column" align="flex-start">
-          <CharacterStat>Level {mainCharacterNFT ? level : 0}</CharacterStat>
+          <CharacterStat level={level ?? 0}>
+            Level {mainCharacterNFT ? level : 0}
+          </CharacterStat>
 
           <HBox direction="column" align="flex-start" width="100%" gap="0">
             <XPBar>
@@ -108,9 +108,17 @@ const HubCharacter = () => {
           <HBox width="100%" justify="flex-start" align="center">
             <HTitle fontSize={"24px"}>Rarity:</HTitle>
             <RarityTag rarity={characterRarity}>{characterRarity}</RarityTag>
+            <FaInfoCircle
+              fontSize={"15px"}
+              style={{ position: "absolute", right: "0", top: "-10px" }}
+              title="Rarity based on equipped items"
+            />
           </HBox>
 
-          <ActionButton onClick={() => console.log("Train Character")}>
+          <ActionButton
+            onClick={() => console.log("Train Character")}
+            disabled={!mainCharacterNFT}
+          >
             Train
           </ActionButton>
 
@@ -127,32 +135,55 @@ const HubCharacter = () => {
 
       {/* Info Extra del Personaje */}
       <HBox width="100%" direction="column" align="flex-start" padding="20px">
-        <CharacterName>
-          Username: {mainCharacterNFT ? name : "Unrevealed Brainer"}
-        </CharacterName>
-
-        <Description>{characterTemplate.description}</Description>
+        <HBox>
+          <HTitle fontSize={"24px"}>Username:</HTitle>
+          <HTitle fontSize={"20px"} useTitleCase={false}>
+            {!mainCharacterNFT ? username || wallet : "Unrevealed Brainer"}
+          </HTitle>
+          <HButton
+            padding={"10px"}
+            // disabled={!mainCharacterNFT}
+            onClick={() => setModalEditUsername(true)}
+          >
+            <FaPencilAlt size={"14px"} />
+          </HButton>
+        </HBox>
+        <Description>
+          A unique Brainer, ready for new adventures in the Brainer Society
+        </Description>
 
         <TraitsContainer>
-          {characterTemplate.attributes.map((attr, index) => (
-            <TraitCard key={index}>
-              <TraitInfo>
-                <strong>{attr.trait_type}</strong>: {attr.value}
-              </TraitInfo>
+          {Object.keys(equippedItems).map((attr) => (
+            <TraitCard key={attr}>
+              <HBox>
+                <HTitle fontSize={"24px"} width={"auto"} color={"white"}>
+                  <strong>{attr.toUpperCase()}</strong>:{" "}
+                </HTitle>
+                <HTitle
+                  fontSize={"24px"}
+                  useTitleCase={false}
+                  textTransform="none"
+                  align="left"
+                  color={"purpleLight"}
+                >
+                  {equippedItems[attr] ?? "Empty"}
+                </HTitle>
+              </HBox>
               <ButtonsContainer>
                 <ActionButton
-                  onClick={() => console.log(`Swap ${attr.trait_type}`)}
+                  onClick={() => console.log(`Swap ${attr}`)}
+                  disabled={!mainCharacterNFT}
                 >
-                  {attr.value === "Empty" ? (
+                  {!equippedItems[attr] ? (
                     <FaPlus style={{ marginRight: "8px" }} />
                   ) : (
                     <FiRefreshCcw style={{ marginRight: "8px" }} />
                   )}
-                  {attr.value === "Empty" ? "Add" : "Change"}
+                  {!equippedItems[attr] ? "Add" : "Change"}
                 </ActionButton>
                 <RemoveButton
-                  disabled={attr.value === "Empty"}
-                  onClick={() => console.log(`Remove ${attr.trait_type}`)}
+                  disabled={!equippedItems[attr]}
+                  onClick={() => console.log(`Remove ${attr}`)}
                 >
                   <FaRegTrashAlt style={{ marginRight: "8px" }} />
                   Remove
@@ -162,6 +193,20 @@ const HubCharacter = () => {
           ))}
         </TraitsContainer>
       </HBox>
+
+      {/* Modal para editar el nombre */}
+      <HModal
+        title="Edit Username"
+        description="Change your username to a new one."
+        onCloseFunction={() => setModalEditUsername(false)}
+        onConfirmFunction={(value) => updateUsername(value)}
+        confirmText="Change"
+        cancelText="Cancel"
+        showModal={modalEditUsername}
+        inputType="text"
+        isInput={true}
+        placeholderInput="Enter new username"
+      />
     </HBox>
   );
 };
@@ -196,11 +241,6 @@ const CharacterImage = styled.img`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 `;
 
-const CharacterName = styled.h2`
-  font-size: 2em;
-  margin: 0 0 10px 0;
-`;
-
 const Description = styled.p`
   text-align: left;
   font-size: 1.2em;
@@ -223,10 +263,6 @@ const TraitCard = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-
-const TraitInfo = styled.div`
-  font-size: 1.2em;
 `;
 
 const ButtonsContainer = styled.div`
@@ -260,7 +296,7 @@ const CharacterStat = styled.div`
   margin-top: 15px;
   font-size: 1.4em;
   font-weight: bold;
-  color: #ffffff;
+  color: ${(props) => props.theme.goldColor};
 `;
 
 const XPBar = styled.div`

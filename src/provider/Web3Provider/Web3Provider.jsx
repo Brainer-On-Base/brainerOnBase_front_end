@@ -140,13 +140,13 @@ const Web3Provider = ({ children }) => {
   const syncUserWithBackend = async (wallet) => {
     if (!wallet) return;
     try {
-      const user = await BrainerOnBaseService.getUserByWallet(wallet);
-      dispatch(setUserData({ ...user, isConnected: true }));
+      const res = await BrainerOnBaseService.getUserByWallet(wallet);
+      dispatch(setUserData({ ...res.user, isConnected: true }));
     } catch (error) {
       // Si no existe, lo creamos
       try {
-        const newUser = await BrainerOnBaseService.createUser(wallet, wallet);
-        dispatch(setUserData({ ...newUser, isConnected: true }));
+        const res = await BrainerOnBaseService.createUser(wallet, wallet);
+        dispatch(setUserData({ ...res.user, isConnected: true }));
       } catch (createError) {
         console.error("❌ Error creating user:", createError.message);
         HPopUp({ message: "Error al crear el usuario", type: "error" });

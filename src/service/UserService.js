@@ -19,6 +19,19 @@ export const userEndpoints = {
     }
   },
 
+  editUser: async (wallet, username, mainCharacterNFT) => {
+    try {
+      const res = await axios.put(`${API_BASE_URL}/user/${wallet}/edit`, {
+        username,
+        mainCharacterNFT,
+      });
+      return res.data;
+    } catch (error) {
+      console.error("❌ Error editing user:", error.message);
+      throw error;
+    }
+  },
+
   getUserByWallet: async (wallet) => {
     try {
       const res = await axios.get(`${API_BASE_URL}/user/${wallet}`);
