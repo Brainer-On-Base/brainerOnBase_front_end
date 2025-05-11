@@ -38,7 +38,7 @@ const HBox = ({
       $borderRadius={borderRadius}
       $overflowX={overflowX}
       $overflowY={overflowY}
-      boxShadow={boxShadow}
+      $boxShadow={boxShadow}
       $customBorder={customBorder}
       {...props}
     >

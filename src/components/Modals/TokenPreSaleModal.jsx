@@ -71,7 +71,7 @@ const TokenPreSaleModal = ({ showModal, setShowModal, setLoading }) => {
               icon: "./commonBrainer.png",
             },
           ].map((item, index) => (
-            <>
+            <React.Fragment key={index}>
               {item.icon && (
                 <motion.li
                   key={index}
@@ -91,7 +91,7 @@ const TokenPreSaleModal = ({ showModal, setShowModal, setLoading }) => {
                   </HTitle>
                 </motion.li>
               )}
-            </>
+            </React.Fragment>
           ))}
         </StyledUl>
         <HInput
