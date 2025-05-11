@@ -15,7 +15,7 @@ export const StyledTitle = styled.h1`
   }
   &:nth-of-type(2) {
     margin-top: -30px;
-    font-size: ${(props) => props.subtitleFontSize || "80px"};
+    font-size: ${(props) => props.$subtitleFontSize || "80px"};
     color: #888;
     color: white;
     text-shadow: none;
