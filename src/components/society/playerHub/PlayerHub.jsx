@@ -5,7 +5,7 @@ import OnSale from "./HubOnSale";
 import SellToDao from "./HubSellToDao";
 import MyInventory from "./HubInventory";
 import HubWallet from "./HubWallet";
-import HubCharacter from "./HubCharacter";
+import HubCharacter from "./character/HubCharacter";
 import HubNotifications from "./HubNotifications";
 
 // 🔥 PLAYER HUB
